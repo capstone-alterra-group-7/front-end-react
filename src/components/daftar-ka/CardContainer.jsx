@@ -4,7 +4,7 @@ import "./styleKA.css";
 
 const CardContainer = () => {
   return (
-    <div className="h-[862px] overflow-y-scroll no-scrollbar">
+    <div className="h-[862px] overflow-y-scroll no-scrollbar py-8">
       <CardKA />
       <CardKA />
       <CardKA />

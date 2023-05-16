@@ -11,7 +11,7 @@ const LayoutDashboard = () => {
         <Sidebar />
       </div>
 
-      <div className="bg-[#F5F6F8] flex-1 py-5 px-10">
+      <div className="bg-[#F5F6F8] flex-1">
         <Outlet />
       </div>
     </div>
