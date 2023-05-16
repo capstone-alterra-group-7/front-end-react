@@ -1,13 +1,6 @@
 import React from "react";
-// import { Fragment } from "react";
-// import { Menu, Transition } from "@headlessui/react";
-// import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { Select, Option } from "@material-tailwind/react";
 
 const SelectSort = () => {
-  //   function classNames(...classes) {
-  //     return classes.filter(Boolean).join(" ");
-  //   }
   return (
     <div className="relative w-[192px] h-[52px] me-4">
       <select className="font-sans text-xl appearance-none cursor-pointer w-[192px] h-[52px] mx-4 absolute rounded-lg py-[12.5px] border-[1px] border-[#D2D7E0] px-4 leading-tight focus:outline-none focus:shadow-outline">
