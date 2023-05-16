@@ -12,6 +12,7 @@ import DaftarBerita from "../pages/daftar-berita/DaftarBerita";
 import PesananKA from "../pages/pesanan-ka/PesananKA";
 import PesananHotel from "../pages/pesanan-hotel/PesananHotel";
 import Refund from "../pages/refund/Refund";
+import DetailKA from "../pages/detail-ka/DetailKA";
 
 export const routes = [
   { path: "/", element: Home },
@@ -21,6 +22,7 @@ export const routes = [
 
   // ** DataBase
   { path: "/daftar-ka", element: DaftarKA },
+  { path: "/detail-ka", element: DetailKA },
   { path: "/daftar-hotel", element: DaftarHotel },
   { path: "/daftar-pengguna", element: DaftarPengguna },
   { path: "/daftar-promo", element: DaftarPromo },
