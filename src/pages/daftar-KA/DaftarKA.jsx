@@ -1,11 +1,31 @@
-import React from "react";
+// ** Import React
+import React, { useEffect } from "react";
+
+// ** Import Components
+import ModalDaftarKa from "../../components/daftar-ka/detail-kursi/ModalDaftarKa";
 import CardContainer from "../../components/daftar-ka/CardContainer";
 import SelectFilter from "../../components/daftar-ka/SelectFilter";
 import SelectSort from "../../components/daftar-ka/SelectSort";
 
+// ** Import Tw Elements
+import { Modal, Ripple, initTE } from "tw-elements";
+
+// ** import Other
+import { useNavigate } from "react-router-dom";
+
 const DaftarKA = () => {
+  useEffect(() => {
+    initTE({ Modal, Ripple });
+  }, []);
+
+  const navigate = useNavigate("");
+
+  const handleAdd = () => {
+    navigate("/daftar-ka/tambah-ka");
+  };
+
   return (
-    <div className="w-full">
+    <div className="relative w-full">
       <div className=" bg-white h-[158px] py-4 flex flex-col justify-center items-center">
         <h1 className="text-4xl font-bold w-[1064px] mt-4">Daftar KA</h1>
         <div class=" mb-4 flex  mt-10 w-[1064px]">
@@ -48,7 +68,11 @@ const DaftarKA = () => {
           <SelectSort />
           <SelectFilter />
           {/* Button */}
-          <button className="w-[187px] h-[52px] px-8 py-[13.5px] font-bold text-white bg-[#0080FF] flex rounded-lg">
+          <button
+            data-te-toggle="modal"
+            data-te-target="#modal-daftar-ka"
+            className="w-[187px] h-[52px] px-8 py-[13.5px] font-bold text-white bg-[#0080FF] flex rounded-lg"
+          >
             <span className="mr-[11px]">Tambah KA</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -64,6 +88,14 @@ const DaftarKA = () => {
           </button>
         </div>
       </div>
+
+      <ModalDaftarKa
+        title="Ingin Menambahkan Data KA?"
+        subTitle="This blog post has been published. Team members will be able to edit this post and republish changes."
+        titleButton="Iya, Tambahkan"
+        handleAdd={handleAdd}
+      />
+
       <CardContainer />
     </div>
   );
