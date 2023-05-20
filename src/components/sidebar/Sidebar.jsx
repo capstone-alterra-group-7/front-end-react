@@ -16,7 +16,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="mt-4">
+    <div className="mt-[17px] px-7">
       <div className="space-y-10">
         <div className="bg-[#D9D9D9] p-6"></div>
 
