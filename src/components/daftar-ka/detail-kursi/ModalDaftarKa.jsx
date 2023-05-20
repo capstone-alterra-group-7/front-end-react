@@ -11,7 +11,7 @@ const ModalDaftarKa = (props) => {
   return (
     <div
       data-te-modal-init=""
-      className="fixed left-0 top-[173px] z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none "
+      className="fixed left-0 top-37  z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none "
       id="modal-daftar-ka"
       tabIndex={-1}
       aria-labelledby="exampleModalLabel"

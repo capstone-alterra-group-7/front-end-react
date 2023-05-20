@@ -12,8 +12,8 @@ import DaftarBerita from "../pages/daftar-berita/DaftarBerita";
 import PesananKA from "../pages/pesanan-ka/PesananKA";
 import PesananHotel from "../pages/pesanan-hotel/PesananHotel";
 import Refund from "../pages/refund/Refund";
-import DetailKA from "../pages/detail-ka/DetailKA";
 import TambahKa from "../pages/daftar-KA/tambah-ka/TambahKa";
+import DetailKA from "../pages/daftar-KA/detail-ka/DetailKA";
 
 export const routes = [
   { path: "/", element: Home },

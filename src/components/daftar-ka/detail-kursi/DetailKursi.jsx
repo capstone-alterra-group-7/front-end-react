@@ -43,7 +43,7 @@ export const DetailKursi = () => {
           </div>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-4 pb-12">
           <h5 className="text-[12px] text-[#262627] font-[700]">Keterangan</h5>
 
           <div className="flex items-center gap-7">

@@ -22,11 +22,11 @@ const KursiAvailable = (props) => {
               </p>
             )}
             <div
-              className={` ${data.dummy ? "p-4" : "p-[27.5px]"} ${
+              className={`relative ${data.dummy ? "p-7" : "p-[27.5px]"} ${
                 space
                   ? i === 0 || i === 1
                     ? "bg-[#FFFFFF]"
-                    : `${data.dummy ? "bg-[#0080FF]" : "bg-[#CCE5FF]"}`
+                    : `${data.dummy ? "bg-[#0080FF] " : "bg-[#CCE5FF]"}`
                   : `${data.dummy ? "bg-[#0080FF]" : "bg-[#CCE5FF] w-full"}`
               } rounded-2xl w-full`}
             >
@@ -34,7 +34,7 @@ const KursiAvailable = (props) => {
                 <img
                   src={assets.iconKursiDetailKursi}
                   alt="p"
-                  className="mx-auto"
+                  className="absolute left-4 top-4"
                 />
               )}
             </div>

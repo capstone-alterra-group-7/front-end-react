@@ -15,7 +15,7 @@ const InputTambahKa = (props) => {
         onChange={onChange}
         type={type}
         placeholder={placeholder}
-        className={`border border-[#D2D7E0] bg-[#F9FAFB] focus:outline-none ${
+        className={`border border-[#D2D7E0] bg-[#F9FAFB] focus:outline-blue-500 ${
           label === "harga" ? "px-14" : "px-3 "
         } py-2 rounded-lg placeholder:text-[#717275] text-[20px] font-[400]`}
       />
