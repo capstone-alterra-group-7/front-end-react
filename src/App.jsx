@@ -2,7 +2,7 @@
 import LayoutDashboard from "./layouts/LayoutDashboard";
 
 // ** Import Route Map
-import { routes } from "./schema/route";
+import { routeLogin, routes } from "./schema/route";
 
 // ** Import Other
 import { Route, Routes } from "react-router-dom";
@@ -10,6 +10,8 @@ import { Route, Routes } from "react-router-dom";
 const App = () => {
   return (
     <Routes>
+      <Route path={routeLogin.path} element={<routeLogin.element />} />
+
       <Route element={<LayoutDashboard />}>
         {routes.map((route) => (
           <Route
