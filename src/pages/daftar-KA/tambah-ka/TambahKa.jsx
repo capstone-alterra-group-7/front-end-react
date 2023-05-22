@@ -9,21 +9,18 @@ import HeaderTambahKa from "../../../components/daftar-ka/tambah-ka/HeaderTambah
 import ModalDaftarKa from "../../../components/daftar-ka/ModalDaftarKa";
 import NavDetailka from "../../../components/daftar-ka/NavDetailka";
 import FormTambahKa from "../../../components/daftar-ka/tambah-ka/FormTambahKa";
+import GerbongDaftarKa from "../../../components/daftar-ka/tambah-ka/GerbongDaftarKa";
 
 const TambahKa = () => {
   // ** Local State
   const [input, setInput] = useState({
-    status: false,
-    noKa: "",
-    namaKa: "",
-    harga: "",
-    kelasKa: "",
-    stasiunAsal: "",
-    waktuBerangkat: "",
-    stasiunTujuan: "",
-    waktuTiba: "",
+    status: "nonactive",
+    code_train: "",
+    name: "",
     rute: [],
   });
+
+  console.log(input);
   const [nav, setNav] = useState("informasi");
   const [modal, setModal] = useState(false);
 
@@ -32,15 +29,7 @@ const TambahKa = () => {
   };
 
   const validate =
-    input.noKa === "" ||
-    input.namaKa === "" ||
-    input.harga === "" ||
-    input.kelasKa === "" ||
-    input.stasiunAsal === "" ||
-    input.waktuBerangkat === "" ||
-    input.stasiunTujuan === "" ||
-    input.waktuTiba === "" ||
-    input.rute.length === 0;
+    input.code_train === "" || input.name === "" || input.rute.length === 0;
 
   const dispatch = useDispatch();
 
@@ -58,11 +47,15 @@ const TambahKa = () => {
       <div className="w-[1142px] min-h-full mt-[64px] mx-auto bg-white rounded-3xl shadow-[0_1px_10px_rgb(0,0,0,0.2)]">
         <NavDetailka nav={nav} setNav={setNav} />
 
-        <FormTambahKa
-          input={input}
-          setInput={setInput}
-          handleOnChangeInput={handleOnChangeInput}
-        />
+        {nav === "informasi" ? (
+          <FormTambahKa
+            input={input}
+            setInput={setInput}
+            handleOnChangeInput={handleOnChangeInput}
+          />
+        ) : (
+          <GerbongDaftarKa />
+        )}
       </div>
 
       {modal && (

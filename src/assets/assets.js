@@ -18,6 +18,8 @@ import iconDeleteDaftarKa from "./daftar-ka/delete.svg";
 import iconBackDaftarKa from "./daftar-ka/back.svg";
 import iconInformasiDaftarKa from "./daftar-ka/detail/informasi.svg";
 import iconKursiDaftarKa from "./daftar-ka/detail/kursi.svg";
+import iconHapusDaftarKa from "./daftar-ka/detail/hapus.svg";
+import iconJamDaftarKa from "./daftar-ka/jam.svg";
 
 // ** Import For Modal
 import iconKeretaModalDaftarKa from "./daftar-ka/modal/iconKereta.svg";
@@ -41,4 +43,6 @@ export default {
   iconInformasiDaftarKa,
   iconKursiDaftarKa,
   iconBackDaftarKa,
+  iconHapusDaftarKa,
+  iconJamDaftarKa,
 };

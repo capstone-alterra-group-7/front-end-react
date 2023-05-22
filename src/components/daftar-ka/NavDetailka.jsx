@@ -23,16 +23,16 @@ const NavDetailka = ({ nav, setNav }) => {
 
         <div className="w-full space-y-4">
           <button
-            onClick={() => setNav("kursi")}
+            onClick={() => setNav("gerbong")}
             className={`flex items-center mx-auto ${
               nav === "kursi" ? "text-[#0080FF]" : "text-[#717275] "
             }  text-[16px] gap-2`}
           >
             <img src={assets.iconKursiDaftarKa} alt="kursi" />
-            Kursi
+            Gerbong
           </button>
 
-          {nav === "kursi" && (
+          {nav === "gerbong" && (
             <div className="bg-[#0080FF] px-24 rounded-t-3xl py-[2px]"></div>
           )}
         </div>

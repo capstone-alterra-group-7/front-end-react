@@ -22,7 +22,7 @@ const HeaderTambahKa = (props) => {
           onClick={() => setModal(true)}
           className="px-8 py-[13.5px] font-bold text-white disabled:bg-[#B3D9FF] bg-[#0080FF] flex gap-3 items-center rounded-lg disabled:cursor-not-allowed"
         >
-          <h1 className="mt-[1.2px]">Tambah KA</h1>
+          <h1 className="mt-[1.2px]">Simpan KA</h1>
           <img src={assets.iconButtonDaftarKa} alt="button" />
         </button>
       </div>
