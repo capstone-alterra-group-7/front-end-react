@@ -3,6 +3,12 @@ import iconNav from "./sidebar/icon-nav.svg";
 import logoKai from "./daftar-ka/logoKai.svg";
 import stepper from "./daftar-ka/stepper.svg";
 
+// ** Import Daftar Hotel
+import iconGpsMarker from "./daftar-hotel/gpsMarker.svg";
+import iconStarRating from "./daftar-hotel/star.svg";
+import iconStarNotRating from "./daftar-hotel/starNotFilled.svg";
+import imageHotel from "./daftar-hotel/gambarHotel.png";
+
 // ** Import Daftar Ka
 import iconLeftDetailKursi from "./daftar-ka/kursi/left.svg";
 import iconRigthDetailKursi from "./daftar-ka/kursi/right.svg";
@@ -41,4 +47,8 @@ export default {
   iconInformasiDaftarKa,
   iconKursiDaftarKa,
   iconBackDaftarKa,
+  iconGpsMarker,
+  iconStarRating,
+  iconStarNotRating,
+  imageHotel,
 };
