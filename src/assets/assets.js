@@ -19,6 +19,17 @@ import iconBackDaftarKa from "./daftar-ka/back.svg";
 import iconInformasiDaftarKa from "./daftar-ka/detail/informasi.svg";
 import iconKursiDaftarKa from "./daftar-ka/detail/kursi.svg";
 
+// ** Import Daftar Pengguna
+import nav from "./daftar-pengguna/nav.svg"
+import profile from "./daftar-pengguna/profile.svg"
+import profiledetail from "./daftar-pengguna/profiledetail.svg"
+import iconnav from "./daftar-pengguna/iconnav.svg"
+import iconmodal from './daftar-pengguna/modal/iconmodal.svg'
+import visiblePassword from "./daftar-pengguna/visiblepassword.svg"
+import notVisiblePassword from "./daftar-pengguna/notvisiblepassword.svg"
+import Prev from "./daftar-pengguna/Prev.svg"
+import Next from "./daftar-pengguna/Next.svg"
+
 // ** Import For Modal
 import iconKeretaModalDaftarKa from "./daftar-ka/modal/iconKereta.svg";
 
@@ -41,4 +52,13 @@ export default {
   iconInformasiDaftarKa,
   iconKursiDaftarKa,
   iconBackDaftarKa,
+  nav,
+  profile,
+  profiledetail,
+  iconnav,
+  iconmodal,
+  visiblePassword,
+  notVisiblePassword,
+  Prev,
+  Next,
 };
