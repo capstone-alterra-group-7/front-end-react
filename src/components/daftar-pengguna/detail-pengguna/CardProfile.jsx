@@ -43,7 +43,7 @@ export default function CardProfile({ data }) {
                 <tr>67890</tr>
                 <tr>{data.email}</tr>
                 <tr>
-                  aldidwikusumaaa
+                  {data.password}
                   <button 
                     className="ms-2"
                     onClick={togglePasswordVisibility}>
@@ -78,7 +78,7 @@ export default function CardProfile({ data }) {
 
             <th className='text-left font-normal ps-7 pt-4'>
                 <tr>{data.tanggalLahir}</tr>
-                <tr>{data.umurPengguna}</tr>
+                <tr>21 Tahun</tr>
                 <tr>{data.noTelp}</tr>
             </th>
                     

@@ -15,7 +15,7 @@ export default function EditPengguna() {
   const Navigate = useNavigate()
 
   const handleBack = () => {
-    Navigate("/detail-pengguna")
+    Navigate("/daftar-pengguna")
   }
 
   const handleAdd = () => {

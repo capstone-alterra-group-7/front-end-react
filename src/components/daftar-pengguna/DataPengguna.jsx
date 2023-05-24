@@ -38,7 +38,9 @@ export default function DataPengguna({ data }) {
                 <td className="whitespace-nowrap px-6 py-4">{data.tanggalDaftar}</td>
                 <td className="whitespace-nowrap px-6 py-4">{data.umurAkun}</td>
                 <td className="whitespace-nowrap py-4 items-center">
-                    <p className="bg-[#4CDB24] w-[192px] ms-10 text-center rounded-lg py-2 text-white">{data.statusAkun ? "Aktif" : "Tidak Aktif"}</p>
+                    <p className="bg-[#4CDB24] w-[192px] ms-10 text-center rounded-lg py-2 text-white">
+                        {data.statusAkun ? "Aktif" : "Tidak Aktif"}
+                    </p>
                 </td>
             </tr>
 
