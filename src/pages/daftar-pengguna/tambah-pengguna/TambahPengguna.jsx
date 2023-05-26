@@ -10,7 +10,11 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { tambahPengguna } from "../../../redux/daftar-pengguna/daftarPenggunaSlices";
 
-export default function TambahPengguna() {
+const TambahPengguna = () => {
+  
+    const [modal, setModal] = useState(false);
+    const [modalBack, setModalBack] = useState(false);
+
     const [input, setInput] = useState({
       email: "",
       password: "",
@@ -24,9 +28,14 @@ export default function TambahPengguna() {
       setInput({...input, [e.target.name] : e.target.value})
     }
 
-    const [modal, setModal] = useState(false);
-    const [modalBack, setModalBack] = useState(false);
-
+    const validateData =
+      input.email === "" ||
+      input.password === "" ||
+      input.confirmPassword === "" ||
+      input.nama === "" || 
+      input.noTelp === "" || 
+      input.tanggalLahir === "" 
+    
     const navigate = useNavigate()
 
     const dispatch = useDispatch()
@@ -47,7 +56,8 @@ export default function TambahPengguna() {
             
           <BarTambahPengguna 
             setModal={setModal}
-            setModalBack={setModalBack}/>
+            setModalBack={setModalBack}
+            validate={validateData}/>
         </div>
         <FormTambahPengguna
           input={input}
@@ -75,3 +85,5 @@ export default function TambahPengguna() {
     </div>
   )
 }
+
+export default TambahPengguna

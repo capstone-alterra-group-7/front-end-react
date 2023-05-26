@@ -3,8 +3,6 @@ import assets from "../../../assets/assets";
 
 // ** Import Other
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
 
 export default function CardProfile({ data }) {
 
@@ -13,7 +11,15 @@ export default function CardProfile({ data }) {
     function togglePasswordVisibility() {
         setIsPasswordVisible((prevState) => !prevState);
     }
-    
+
+    const date = new Date();
+
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+   
+    const currentDate = `${day}-${month}-${year}`;
+
   return (
     <div className="bg-white flex flex-col flex-wrap">
       <div className="flex flex-col items-center justify-center pt-4">
@@ -42,8 +48,8 @@ export default function CardProfile({ data }) {
             <th className='text-left font-normal ps-7 pt-4'>
                 <tr>67890</tr>
                 <tr>{data.email}</tr>
-                <tr>
-                  {data.password}
+                <tr className="flex">
+                  <p>{data.password}</p>
                   <button 
                     className="ms-2"
                     onClick={togglePasswordVisibility}>
@@ -54,7 +60,7 @@ export default function CardProfile({ data }) {
                       )}
                   </button>
                 </tr>
-                <tr>12 Januari 2023</tr>
+                <tr>{data.tanggalDaftar || currentDate}</tr>
                 <tr>{data.umurAkun}</tr>
                 <tr>{data.statusAkun}</tr>
             </th>
@@ -78,7 +84,7 @@ export default function CardProfile({ data }) {
 
             <th className='text-left font-normal ps-7 pt-4'>
                 <tr>{data.tanggalLahir}</tr>
-                <tr>21 Tahun</tr>
+                <tr>{data.umurPengguna}</tr>
                 <tr>{data.noTelp}</tr>
             </th>
                     
