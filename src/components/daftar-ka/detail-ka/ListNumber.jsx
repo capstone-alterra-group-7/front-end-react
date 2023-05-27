@@ -1,12 +1,17 @@
-import React from 'react'
+import React from "react";
 
-export default function ListNumber({label, rute}) {
+export default function ListNumber(props) {
+  const { label, data } = props;
+
   return (
-    <div className="wrapper flex py-2">
-        <div className='bg-[#0080FF] rounded-full w-[24px] h-[24px] flex justify-center items-center'>
-        <p className='font-medium text-white text-[16px]'>{label}</p>
-        </div>
-        <span className="ms-2 text-[16px]">{rute}</span>
+    <div className="flex py-2">
+      <div className="bg-[#0080FF] rounded-full w-[24px] h-[24px] flex justify-center items-center">
+        <p className="font-medium text-white text-[16px]">{label}</p>
+      </div>
+      <div>
+        <h1 className="ms-2  font-[600] text-[20px]">{data.name}</h1>
+        <h5 className="ms-2 text-[16px] font-[400]">{data.arrive_time}</h5>
+      </div>
     </div>
-  )
+  );
 }

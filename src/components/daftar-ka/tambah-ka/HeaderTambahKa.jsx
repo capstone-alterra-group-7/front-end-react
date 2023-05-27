@@ -5,7 +5,16 @@ import assets from "../../../assets/assets";
 import { Link } from "react-router-dom";
 
 const HeaderTambahKa = (props) => {
-  const { validate, setModal } = props;
+  const { validate, setModal, nav, setModalGerbong } = props;
+
+  const handleModal = () => {
+    if (nav === "informasi") {
+      setModal(true);
+    } else if (nav === "gerbong") {
+      setModalGerbong(true);
+    }
+  };
+
   return (
     <div className="space-y-6 bg-white py-7 px-8 shadow-md">
       <h1 className="text-[34px] font-[700] text-[#262627]">Tambah KA</h1>
@@ -19,10 +28,12 @@ const HeaderTambahKa = (props) => {
 
         <button
           disabled={validate}
-          onClick={() => setModal(true)}
+          onClick={handleModal}
           className="px-8 py-[13.5px] font-bold text-white disabled:bg-[#B3D9FF] bg-[#0080FF] flex gap-3 items-center rounded-lg disabled:cursor-not-allowed"
         >
-          <h1 className="mt-[1.2px]">Tambah KA</h1>
+          <h1 className="mt-[1.2px]">
+            {nav === "informasi" ? "Simpan Informasi" : "Simpan Gerbong"}
+          </h1>
           <img src={assets.iconButtonDaftarKa} alt="button" />
         </button>
       </div>
