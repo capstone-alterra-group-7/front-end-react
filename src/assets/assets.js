@@ -24,9 +24,28 @@ import iconDeleteDaftarKa from "./daftar-ka/delete.svg";
 import iconBackDaftarKa from "./daftar-ka/back.svg";
 import iconInformasiDaftarKa from "./daftar-ka/detail/informasi.svg";
 import iconKursiDaftarKa from "./daftar-ka/detail/kursi.svg";
+import iconHapusDaftarKa from "./daftar-ka/detail/hapus.svg";
+import iconJamDaftarKa from "./daftar-ka/jam.svg";
+import iconDropdownDaftarKa from "./daftar-ka/drop.svg";
+
+// ** Import Daftar Pengguna
+import nav from "./daftar-pengguna/nav.svg";
+import profile from "./daftar-pengguna/profile.svg";
+import profiledetail from "./daftar-pengguna/profiledetail.svg";
+import iconnav from "./daftar-pengguna/iconnav.svg";
+import iconmodal from "./daftar-pengguna/modal/iconmodal.svg";
+import visiblePassword from "./daftar-pengguna/visiblepassword.svg";
+import notVisiblePassword from "./daftar-pengguna/notvisiblepassword.svg";
+import Prev from "./daftar-pengguna/Prev.svg";
+import Next from "./daftar-pengguna/Next.svg";
 
 // ** Import For Modal
 import iconKeretaModalDaftarKa from "./daftar-ka/modal/iconKereta.svg";
+
+// ** Import For Login
+import iconUsernameLogin from "../assets/auth/username.svg";
+import backgroundLogin from "../assets/auth/background.svg";
+import iconPasswordLogin from "../assets/auth/password.svg";
 
 export default {
   iconNav,
@@ -51,4 +70,5 @@ export default {
   iconStarRating,
   iconStarNotRating,
   imageHotel,
+
 };

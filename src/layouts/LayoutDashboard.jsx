@@ -10,8 +10,8 @@ import { Outlet } from "react-router-dom";
 const LayoutDashboard = () => {
   return (
     <div className="flex relative">
-      <div className="bg-white w-[20rem]">
-        <div className="fixed h-full w-[315px] overflow-y-auto no-scrollbar">
+      <div className="bg-white w-[18rem]">
+        <div className="fixed h-full w-[290px] overflow-y-auto no-scrollbar">
           <Sidebar />
         </div>
       </div>
