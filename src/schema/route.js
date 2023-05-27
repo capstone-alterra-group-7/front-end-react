@@ -15,9 +15,9 @@ import Refund from "../pages/refund/Refund";
 import TambahKa from "../pages/daftar-KA/tambah-ka/TambahKa";
 import DetailKA from "../pages/daftar-KA/detail-ka/DetailKA";
 
-export const routes = [
-  { path: "/", element: Home },
+export const routeLogin = { path: "/", element: Auth };
 
+export const routes = [
   // ** DashBoard
   { path: "/dashboard", element: Dashboard },
 
