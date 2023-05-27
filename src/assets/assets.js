@@ -52,4 +52,7 @@ export default {
   iconUsernameLogin,
   backgroundLogin,
   iconPasswordLogin,
+  iconHapusDaftarKa,
+  iconJamDaftarKa,
+  iconDropdownDaftarKa,
 };
