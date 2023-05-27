@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 const TableDaftarKa = ({ data, index }) => {
   const navigate = useNavigate();
 
+  console.log(data);
+
   const handleNavigate = () => {
     navigate("/detail-ka", { state: { data } });
   };
