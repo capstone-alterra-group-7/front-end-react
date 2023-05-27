@@ -7,12 +7,10 @@ const NavDetailka = ({ nav, setNav }) => {
       <div className="grid grid-cols-2 border-b border-[#D2D7E0]">
         <div className="w-full space-y-4">
           <button
-            onClick={() => setNav("informasi")}
-            className={`flex items-center mx-auto ${
+            className={`flex items-center cursor-default mx-auto ${
               nav === "informasi" ? "text-[#0080FF]" : "text-[#717275] "
-            }  text-[16px] gap-2`}
+            }  text-[16px] gap-2 font-[600]`}
           >
-            <img src={assets.iconInformasiDaftarKa} alt="informasi" />
             Informasi KA
           </button>
 
@@ -23,12 +21,10 @@ const NavDetailka = ({ nav, setNav }) => {
 
         <div className="w-full space-y-4">
           <button
-            onClick={() => setNav("gerbong")}
-            className={`flex items-center mx-auto ${
-              nav === "kursi" ? "text-[#0080FF]" : "text-[#717275] "
-            }  text-[16px] gap-2`}
+            className={`flex items-center cursor-default mx-auto ${
+              nav === "gerbong" ? "text-[#0080FF]" : "text-[#717275] "
+            }  text-[16px] gap-2 font-[600]`}
           >
-            <img src={assets.iconKursiDaftarKa} alt="kursi" />
             Gerbong
           </button>
 

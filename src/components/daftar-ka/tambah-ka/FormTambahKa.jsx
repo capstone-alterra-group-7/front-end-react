@@ -32,7 +32,7 @@ const FormTambahKa = (props) => {
               onChange={(e) =>
                 setInput({
                   ...input,
-                  status: e.target.checked ? "Active" : "Non-Active",
+                  status: e.target.checked ? "aktif" : "non aktif",
                 })
               }
               value={input.status}
