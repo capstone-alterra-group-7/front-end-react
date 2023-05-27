@@ -18,9 +18,9 @@ import DetailPengguna from "../pages/daftar-pengguna/detail-pengguna/DetailPengg
 import TambahPengguna from "../pages/daftar-pengguna/tambah-pengguna/TambahPengguna";
 import EditPengguna from "../pages/daftar-pengguna/edit-pengguna/EditPengguna";
 
-export const routes = [
-  { path: "/", element: Home },
+export const routeLogin = { path: "/", element: Auth };
 
+export const routes = [
   // ** DashBoard
   { path: "/dashboard", element: Dashboard },
 

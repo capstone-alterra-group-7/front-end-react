@@ -36,10 +36,10 @@ const DetailKA = () => {
   };
 
   return (
-    <div className="bg-[#FFFFFF]">
+    <div className="bg-[#FFFFFF] fixed overflow-y-auto left-0 right-0 h-full">
       <div className="space-y-3">
         <div className="px-7 p-3">
-          <h1 className=" text-[34px] font-bold">Detail KA</h1>
+          <h1 className=" text-[34px] font-bold">Detail Kereta Api</h1>
 
           <div className="pt-7 flex justify-between items-center">
             <BackDetailKa />
