@@ -1,6 +1,3 @@
-// ** Import Assets
-import assets from "../../assets/assets";
-
 const NavDetailka = ({ nav, setNav }) => {
   return (
     <div className="navbar pt-4 pb-8">
