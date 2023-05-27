@@ -25,6 +25,11 @@ import iconDropdownDaftarKa from "./daftar-ka/drop.svg";
 // ** Import For Modal
 import iconKeretaModalDaftarKa from "./daftar-ka/modal/iconKereta.svg";
 
+// ** Import For Login
+import iconUsernameLogin from "../assets/auth/username.svg";
+import backgroundLogin from "../assets/auth/background.svg";
+import iconPasswordLogin from "../assets/auth/password.svg";
+
 export default {
   iconNav,
   logoKai,
@@ -44,9 +49,6 @@ export default {
   iconInformasiDaftarKa,
   iconKursiDaftarKa,
   iconBackDaftarKa,
-  iconHapusDaftarKa,
-  iconJamDaftarKa,
-  iconDropdownDaftarKa,
   iconUsernameLogin,
   backgroundLogin,
   iconPasswordLogin,
