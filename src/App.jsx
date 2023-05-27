@@ -6,6 +6,7 @@ import { routeLogin, routes } from "./schema/route";
 
 // ** Import Other
 import { Route, Routes } from "react-router-dom";
+import "tw-elements";
 
 const App = () => {
   return (
