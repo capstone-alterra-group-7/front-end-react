@@ -51,7 +51,14 @@ export default function CardProfile({ data }) {
                 <tr>67890</tr>
                 <tr>{data.email}</tr>
                 <tr className="flex">
-                  <p className="">{data.password}</p>
+                  <p className="">
+                    
+                    {isPasswordVisible ? (
+                      data.password
+                      ) : (
+                       "*************"
+                      )}
+                    </p>
                   <button 
                     className="ms-2"
                     onClick={togglePasswordVisibility}>
