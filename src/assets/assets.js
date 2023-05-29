@@ -39,6 +39,11 @@ import notVisiblePassword from "./daftar-pengguna/notvisiblepassword.svg";
 import Prev from "./daftar-pengguna/Prev.svg";
 import Next from "./daftar-pengguna/Next.svg";
 
+// ** Import Pesanan KA
+import search from './pesanan-ka/search.svg'
+import logoKAI from './pesanan-ka/logoKAI.svg'
+import direction from './pesanan-ka/direction.svg'
+
 // ** Import For Modal
 import iconKeretaModalDaftarKa from "./daftar-ka/modal/iconKereta.svg";
 
@@ -85,4 +90,7 @@ export default {
   iconUsernameLogin,
   backgroundLogin,
   iconPasswordLogin,
+  search,
+  logoKAI,
+  direction,
 };
