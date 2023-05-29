@@ -24,7 +24,7 @@ export default function TablePengguna() {
             <div className="inline-block min-w-full py-2">
                 <div className="overflow-hidden">
 
-                    <table className="min-w-full text-left items-center">
+                    <table className="min-w-full text-left items-center text-[#262627]">
                         
                         <thead className="border-b font-[700] text-[16px] ">
                             <tr>

@@ -20,13 +20,15 @@ export default function CardProfile({ data }) {
    
     const currentDate = `${day}-${month}-${year}`;
 
+    const umur = currentDate - data.umurPengguna
+
   return (
     <div className="bg-white flex flex-col flex-wrap">
-      <div className="flex flex-col items-center justify-center pt-4">
+      <div className="flex flex-col items-center justify-center pt-[40px]">
 
         <img src={assets.profiledetail} alt="profileimage" />
 
-        <h1 className="text-[24px] mt-4 mb-10">{data.nama}</h1>
+        <h1 className="text-[24px] mt-[24px] mb-10">{data.nama}</h1>
 
       </div>
 
@@ -49,12 +51,12 @@ export default function CardProfile({ data }) {
                 <tr>67890</tr>
                 <tr>{data.email}</tr>
                 <tr className="flex">
-                  <p>{data.password}</p>
+                  <p className="">{data.password}</p>
                   <button 
                     className="ms-2"
                     onClick={togglePasswordVisibility}>
                     {isPasswordVisible ? (
-                        <img src={assets.visiblePassword} alt="visiblepassword" />
+                      <img src={assets.visiblePassword} alt="visiblepassword" />
                       ) : (
                         <img src={assets.notVisiblePassword} alt="notvisiblepassword" />
                       )}
@@ -63,10 +65,8 @@ export default function CardProfile({ data }) {
                 <tr>{data.tanggalDaftar || currentDate}</tr>
                 <tr>{data.umurAkun}</tr>
                 <tr>{data.statusAkun}</tr>
-            </th>
-                    
+            </th>      
         </table>
-
       </div>
 
       <div className="detail-information m-6 border border-[#D2D7E0] rounded-xl p-5">
@@ -84,7 +84,7 @@ export default function CardProfile({ data }) {
 
             <th className='text-left font-normal ps-7 pt-4'>
                 <tr>{data.tanggalLahir}</tr>
-                <tr>{data.umurPengguna}</tr>
+                <tr>{data.umurPengguna || umur}</tr>
                 <tr>{data.noTelp}</tr>
             </th>
                     

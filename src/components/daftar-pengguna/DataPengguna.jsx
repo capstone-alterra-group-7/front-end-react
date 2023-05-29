@@ -53,7 +53,7 @@ const DataPengguna = ({ data,index }) => {
                 <td className="whitespace-nowrap py-4 items-center">
                     <p className={` ${
                         data.statusAkun === "Aktif" ? "bg-[#4CDB24]" : "bg-[#DB2D24]"
-                        } py-[7px] -mr-[6px] w-[190px] text-center rounded-xl text-white text-[15px] font-[600]`}>
+                        } py-[7px] -mr-[6px] w-[180px] text-center rounded-xl text-white text-[15px] font-[600]`}>
                         {data.statusAkun}
                     </p>
                 </td>
