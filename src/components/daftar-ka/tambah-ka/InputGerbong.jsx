@@ -1,7 +1,5 @@
-import React from "react";
-
 const InputGerbong = (props) => {
-  const { title, kursi } = props;
+  const { title, kursi, onChange } = props;
   return (
     <div className="flex items-center justify-between">
       <div className="space-y-3">
@@ -18,6 +16,8 @@ const InputGerbong = (props) => {
         <div className="relative">
           <input
             type="number"
+            name="price"
+            onChange={onChange}
             disabled={kursi === "-"}
             className="border border-[#D2D7E0] bg-[#F9FAFB] py-2  pl-14 pr-4 rounded-lg focus:outline-none w-[30rem] disabled:cursor-not-allowed"
           />

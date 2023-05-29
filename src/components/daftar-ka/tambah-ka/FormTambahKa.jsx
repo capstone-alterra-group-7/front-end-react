@@ -5,7 +5,7 @@ import { useState } from "react";
 import InputTambahKa from "./InputTambahKa";
 import ModalRuteTambahKa from "./ModalRuteTambahKa";
 
-// ** Import Other
+// ** Import Assets
 import assets from "../../../assets/assets";
 
 const FormTambahKa = (props) => {
@@ -32,7 +32,7 @@ const FormTambahKa = (props) => {
               onChange={(e) =>
                 setInput({
                   ...input,
-                  status: e.target.checked ? "aktif" : "non aktif",
+                  status: e.target.checked ? "available" : "nonavailable",
                 })
               }
               value={input.status}
@@ -45,7 +45,8 @@ const FormTambahKa = (props) => {
           </div>
 
           <p className="text-[16px] text-slate-900/50 font-[400]">
-            Kereta Api Masih {input.status}
+            Kereta Api Masih{" "}
+            {input.status === "available" ? "Aktif" : "Non Aktif"}
           </p>
         </div>
 

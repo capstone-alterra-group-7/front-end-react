@@ -1,5 +1,5 @@
 // ** Import React
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // ** Import Assets
 import assets from "../../../assets/assets";
@@ -13,31 +13,38 @@ import KelasEksekutif from "./KelasEksekutif";
 const GerbongDaftarKa = (props) => {
   const { input, setInput, handleOnChangeInput } = props;
 
-  // ** Local State
-  const [datasGerbong, setDatasGerbong] = useState([]);
-  const [classGerbong, setClassGerbong] = useState({
-    ekonomi: "",
-    bisnis: "",
-    eksekutif: "",
-  });
+  useEffect(() => {
+    if (input.class === "Ekonomi") {
+      setInput({ ...input, price: 0, class: "Ekonomi", name: "" });
+    } else if (input.class === "Bisnis") {
+      setInput({ ...input, price: 0, class: "Bisnis", name: "" });
+    } else if (input.class === "Eksekutif") {
+      setInput({ ...input, price: 0, class: "Eksekutif", name: "" });
+    }
+  }, [input.class]);
+
+  console.log(input);
 
   return (
     <div className=" py-4 h-full">
       <div className="space-y-7 px-10">
         <InputGerbong
           title="Ekonomi"
-          kursi={
-            input.class === "Ekonomi"
-              ? classGerbong.ekonomi.length === 0
-                ? "-"
-                : classGerbong.ekonomi
-              : "-"
-          }
+          onChange={handleOnChangeInput}
+          kursi={input.class === "Ekonomi" ? input.name : "-"}
         />
 
-        <InputGerbong title="Bisnis" kursi="-" />
+        <InputGerbong
+          onChange={handleOnChangeInput}
+          title="Bisnis"
+          kursi={input.class === "Bisnis" ? input.name : "-"}
+        />
 
-        <InputGerbong title="Eksekutif" kursi="-" />
+        <InputGerbong
+          onChange={handleOnChangeInput}
+          title="Eksekutif"
+          kursi={input.class === "Eksekutif" ? input.name : "-"}
+        />
       </div>
 
       <div className="bg-[#F5F6F8] p-1 w-full mt-12"></div>
@@ -58,7 +65,7 @@ const GerbongDaftarKa = (props) => {
           </h5>
 
           <button className="bg-[#F9FAFB] text-[#4B4C4E] border border-[#D2D7E0] py-[10px] px-5 flex items-center gap-2 rounded-lg">
-            Sebelumnya
+            Selanjutnya
             <img
               src={assets.iconRigthDetailKursi}
               alt="left"

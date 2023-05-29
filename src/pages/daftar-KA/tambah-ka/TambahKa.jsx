@@ -28,9 +28,8 @@ const TambahKa = () => {
     class: "",
     name: "",
     price: "",
+    train_id: 1,
   });
-
-  console.log(inputGerbong);
 
   const [nav, setNav] = useState("informasi");
   const [modal, setModal] = useState(false);
