@@ -47,6 +47,17 @@ import iconUsernameLogin from "../assets/auth/username.svg";
 import backgroundLogin from "../assets/auth/background.svg";
 import iconPasswordLogin from "../assets/auth/password.svg";
 
+// ** Import For Pesanan Hotel
+import iconNext from "../assets/pesanan-hotel/iconNext.svg";
+import iconPrevious from "../assets/pesanan-hotel/iconPrevious.svg";
+import imagePesananHotel from "../assets/pesanan-hotel/imagePesananHotel.svg";
+import iconCardPesanan1 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan1.svg"
+import iconCardPesanan2 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan2.svg"
+import iconCardPesanan3 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan3.svg"
+import iconCardPesanan4 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan4.svg"
+import iconCardPesanan5 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan5.svg"
+import iconCardPesanan6 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan6.svg"
+
 export default {
   iconNav,
   logoKai,
@@ -85,4 +96,13 @@ export default {
   iconUsernameLogin,
   backgroundLogin,
   iconPasswordLogin,
+  iconNext,
+  iconPrevious,
+  imagePesananHotel,
+  iconCardPesanan1,
+  iconCardPesanan2,
+  iconCardPesanan3,
+  iconCardPesanan4,
+  iconCardPesanan5,
+  iconCardPesanan6,
 };
