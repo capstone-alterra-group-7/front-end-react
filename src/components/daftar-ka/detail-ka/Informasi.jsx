@@ -35,7 +35,7 @@ const Informasi = ({ data }) => {
         </h2>
 
         <div className="pb-9 space-y-2">
-          {data.rute.map((rut, i) => (
+          {data.route.map((rut, i) => (
             <ListNumber key={i} label={i + 1} data={rut} />
           ))}
         </div>

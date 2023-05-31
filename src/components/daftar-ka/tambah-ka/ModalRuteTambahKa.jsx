@@ -1,5 +1,15 @@
+// ** Import React
 import { useState } from "react";
+
+// ** Import Assets
 import assets from "../../../assets/assets";
+
+// ** Import Other
+import useSWR from "swr";
+import { baseUrl } from "../../../services/base";
+import axios from "axios";
+
+const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const ModalRuteTambahKa = (props) => {
   const { setRute, setInput, input } = props;
@@ -7,30 +17,31 @@ const ModalRuteTambahKa = (props) => {
   // ** Local State
   const [selectStation, setSelectStation] = useState([]);
 
+  const { data: station, isLoading } = useSWR(
+    baseUrl("/admin/station"),
+    fetcher
+  );
+
   const handleAddRute = () => {
     setInput({ ...input, rute: selectStation });
 
     setRute(false);
   };
 
-  const handleChecked = (e) => {
+  const handleChecked = (e, id) => {
     const { checked, value } = e.target;
 
     if (checked) {
-      setSelectStation([...selectStation, { name: value, arrive_time: "" }]);
+      setSelectStation([
+        ...selectStation,
+        { name: value, arrive_time: "", station_id: id },
+      ]);
     } else {
       setSelectStation(
         selectStation.filter((station) => station.name !== value)
       );
     }
   };
-
-  const manimpulateStatsion = stations.map((station) => ({
-    ...station,
-    check: false,
-  }));
-
-  console.log(manimpulateStatsion);
 
   return (
     <div className="fixed z-50 duration-500 -top-20 right-0 left-0 bottom-0 flex justify-center items-center bg-gray-700/50">
@@ -51,17 +62,18 @@ const ModalRuteTambahKa = (props) => {
           </div>
 
           <div className="space-y-5 fixed h-[21rem] w-full overflow-y-auto">
-            {manimpulateStatsion.map((station, i) => (
+            {isLoading && <p>Loading...</p>}
+            {station?.data.map((station, i) => (
               <div key={i} className="flex gap-3">
                 <input
                   value={station.name}
                   defaultChecked={station.check}
-                  onChange={handleChecked}
+                  onChange={(e) => handleChecked(e, station.station_id)}
                   type="checkbox"
                   className="border-red-500"
                 />
                 <h5 className="text-[#262627] text-[20px] font-[300]">
-                  {station.name}
+                  {station.name} ({station.initial})
                 </h5>
               </div>
             ))}
