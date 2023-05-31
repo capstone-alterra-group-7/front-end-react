@@ -40,9 +40,9 @@ import Prev from "./daftar-pengguna/Prev.svg";
 import Next from "./daftar-pengguna/Next.svg";
 
 // ** Import Pesanan KA
-import search from './pesanan-ka/search.svg'
-import logoKAI from './pesanan-ka/logoKAI.svg'
-import direction from './pesanan-ka/direction.svg'
+import search from "./pesanan-ka/search.svg";
+import logoKAI from "./pesanan-ka/logoKAI.svg";
+import direction from "./pesanan-ka/direction.svg";
 
 // ** Import For Modal
 import iconKeretaModalDaftarKa from "./daftar-ka/modal/iconKereta.svg";
@@ -56,12 +56,12 @@ import iconPasswordLogin from "../assets/auth/password.svg";
 import iconNext from "../assets/pesanan-hotel/iconNext.svg";
 import iconPrevious from "../assets/pesanan-hotel/iconPrevious.svg";
 import imagePesananHotel from "../assets/pesanan-hotel/imagePesananHotel.svg";
-import iconCardPesanan1 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan1.svg"
-import iconCardPesanan2 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan2.svg"
-import iconCardPesanan3 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan3.svg"
-import iconCardPesanan4 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan4.svg"
-import iconCardPesanan5 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan5.svg"
-import iconCardPesanan6 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan6.svg"
+import iconCardPesanan1 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan1.svg";
+import iconCardPesanan2 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan2.svg";
+import iconCardPesanan3 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan3.svg";
+import iconCardPesanan4 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan4.svg";
+import iconCardPesanan5 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan5.svg";
+import iconCardPesanan6 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan6.svg";
 
 export default {
   iconNav,
@@ -104,5 +104,13 @@ export default {
   search,
   logoKAI,
   direction,
-
+  iconNext,
+  iconPrevious,
+  imagePesananHotel,
+  iconCardPesanan1,
+  iconCardPesanan2,
+  iconCardPesanan3,
+  iconCardPesanan4,
+  iconCardPesanan5,
+  iconCardPesanan6,
 };
