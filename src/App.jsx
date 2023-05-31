@@ -1,3 +1,6 @@
+// ** Import Components
+import PrivateRoute from "./components/PrivateRoute";
+
 // ** Import Layouts
 import LayoutDashboard from "./layouts/LayoutDashboard";
 
@@ -13,14 +16,16 @@ const App = () => {
     <Routes>
       <Route path={routeLogin.path} element={<routeLogin.element />} />
 
-      <Route element={<LayoutDashboard />}>
-        {routes.map((route) => (
-          <Route
-            path={route.path}
-            element={<route.element />}
-            key={route.path}
-          />
-        ))}
+      <Route element={<PrivateRoute />}>
+        <Route element={<LayoutDashboard />}>
+          {routes.map((route) => (
+            <Route
+              path={route.path}
+              element={<route.element />}
+              key={route.path}
+            />
+          ))}
+        </Route>
       </Route>
     </Routes>
   );

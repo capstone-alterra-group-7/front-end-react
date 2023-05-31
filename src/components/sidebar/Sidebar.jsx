@@ -10,9 +10,19 @@ import {
   transactions,
 } from "../../schema/navigation";
 
+// ** Import Ohter
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+
 const Sidebar = () => {
+  const navigate = useNavigate();
+
   const handleLogout = () => {
-    console.log("test");
+    Swal.fire("Success", "Anda Telah Berhasil Logout", "success");
+
+    sessionStorage.removeItem("token");
+
+    navigate("/");
   };
 
   return (

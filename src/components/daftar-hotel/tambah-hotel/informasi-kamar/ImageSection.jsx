@@ -8,7 +8,7 @@ const ImageSection = ({ imageUrl, setImageUrl }) => {
     <div className="w-full mb-6 flex flex-wrap gap-4">
       {imageUrl?.map((img, i) => {
         return (
-          <div className="relative">
+          <div className="relative" key={i}>
             <img src={img} alt="" className="w-32 h-32" key={i} />
             <img src={assets.iconClose} alt="" className="bg-white absolute top-1 right-1 rounded-full font-extrabold" />
           </div>
@@ -22,7 +22,6 @@ const ImageSection = ({ imageUrl, setImageUrl }) => {
           className="absolute w-full h-full opacity-0 cursor-pointer"
           placeholder="Input Image"
           onChange={(e) => {
-            console.log("print target files", e.target.files[0]);
             setImageUrl((prev) => [...prev, e.target.value]);
           }}
         />

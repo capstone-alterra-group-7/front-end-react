@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 const InformasiTambahHotel = () => {
   const [fasilitas, setFasilitas] = useState([]);
   const [imageUrl, setImageUrl] = useState([assets.imageHotel, assets.imageKamar2]);
-  console.log(imageUrl);
 
   useEffect(() => {
     initTE({ Select });
