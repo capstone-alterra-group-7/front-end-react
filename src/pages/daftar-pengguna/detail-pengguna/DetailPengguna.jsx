@@ -32,7 +32,7 @@ export default function DetailPengguna() {
     <div className="relative">
         <div className="bg-white px-7 pt-3 pb-6 space-y-6">
 
-          <h1 className="text-[34px] font-bold">Detail Pengguna</h1>
+          <h1 className="text-[32px] font-bold">Detail Pengguna</h1>
             
           <SecondBar setModal={setModal}/>
         </div>
