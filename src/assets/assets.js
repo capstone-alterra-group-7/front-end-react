@@ -97,4 +97,21 @@ export default {
   imageKamar2,
   iconClose,
   iconImageAdd,
+
+  iconHapusDaftarKa,
+  iconJamDaftarKa,
+  iconDropdownDaftarKa,
+  nav,
+  profile,
+  profiledetail,
+  iconnav,
+  iconmodal,
+  visiblePassword,
+  notVisiblePassword,
+  Prev,
+  Next,
+
+  iconUsernameLogin,
+  backgroundLogin,
+  iconPasswordLogin,
 };
