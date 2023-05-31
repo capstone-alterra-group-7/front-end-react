@@ -4,9 +4,9 @@ import assets from "../../assets/assets";
 
 const Auth = () => {
   const style = {
-    "background-image": `url(${assets.backgroundLogin})`,
-    "background-repeat": "no-repeat",
-    "background-size": "cover",
+    backgroundImage: `url(${assets.backgroundLogin})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
     position: "absolute",
     height: "100%",
     width: "100%",

@@ -8,18 +8,20 @@ import NavDetailka from "../../../components/daftar-ka/NavDetailka";
 import FormTambahKa from "../../../components/daftar-ka/tambah-ka/FormTambahKa";
 import GerbongDaftarKa from "../../../components/daftar-ka/tambah-ka/GerbongDaftarKa";
 
-// ** Import Redux
-import { useDispatch } from "react-redux";
-import { tambahKa } from "../../../redux/daftar-ka/daftarKaSlices";
-
 // ** Import Other
 import { useNavigate } from "react-router-dom";
 import { idGenerator } from "generate-custom-id";
+import { useSWRConfig } from "swr";
+import { baseUrl } from "../../../services/base";
+import axios from "axios";
+
+const fetcher = (url, payload) =>
+  axios.post(url, payload).then((res) => res.data);
 
 const TambahKa = () => {
   // ** Local State
   const [input, setInput] = useState({
-    status: "nonavailable",
+    status: "unavailable",
     name: "",
     rute: [],
   });
@@ -29,8 +31,9 @@ const TambahKa = () => {
     name: "",
     price: "",
   });
+  const [loading, setLoading] = useState(false);
 
-  console.log(inputGerbong);
+  const { mutate } = useSWRConfig();
 
   const [nav, setNav] = useState("informasi");
   const [modal, setModal] = useState(false);
@@ -46,8 +49,6 @@ const TambahKa = () => {
 
   const validate = input.name === "" || input.rute.length === 0;
 
-  const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   const code_train = idGenerator("example", 2, 1, {
@@ -55,14 +56,31 @@ const TambahKa = () => {
     trace: true,
   });
 
-  const handleTambahInformasiKa = () => {
-    dispatch(
-      tambahKa({ id: Math.ceil(Math.random() * 1000), code_train, ...input })
-    );
-    setNav("gerbong");
+  const handleTambahInformasiKa = async () => {
+    setLoading(true);
 
-    setModal(false);
-    // navigate("/daftar-ka");
+    fetcher(baseUrl("/admin/train"), {
+      code_train: code_train,
+      name: input.name,
+      route: input.rute.map((r) => ({
+        station_id: r.station_id,
+        arrive_time: r.arrive_time,
+      })),
+      status: input.status,
+    })
+      .then(() => {
+        mutate("/admin/train");
+
+        setNav("gerbong");
+
+        setModal(false);
+
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
   };
 
   const handleTambahGerbong = () => {
@@ -105,6 +123,7 @@ const TambahKa = () => {
           setModal={setModal}
           validate={validate}
           handle={handleTambahInformasiKa}
+          loading={loading}
         />
       )}
 

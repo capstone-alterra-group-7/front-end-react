@@ -1,7 +1,9 @@
-import React from "react";
-
 export default function ListNumber(props) {
   const { label, data } = props;
+
+  const {
+    station: { name, initial },
+  } = data;
 
   return (
     <div className="flex py-2">
@@ -9,7 +11,9 @@ export default function ListNumber(props) {
         <p className="font-medium text-white text-[16px]">{label}</p>
       </div>
       <div>
-        <h1 className="ms-2  font-[600] text-[20px]">{data.name}</h1>
+        <h1 className="ms-2  font-[600] text-[20px]">
+          {name} ({initial})
+        </h1>
         <h5 className="ms-2 text-[16px] font-[400]">{data.arrive_time}</h5>
       </div>
     </div>

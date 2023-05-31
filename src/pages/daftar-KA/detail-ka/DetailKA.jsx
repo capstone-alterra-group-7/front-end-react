@@ -9,30 +9,47 @@ import Informasi from "../../../components/daftar-ka/detail-ka/Informasi";
 import ModalDaftarKa from "../../../components/daftar-ka/ModalDaftarKa";
 import NavDetailka from "../../../components/daftar-ka/NavDetailka";
 
-// ** Import Redux
-import { useDispatch } from "react-redux";
-import { deleteKa } from "../../../redux/daftar-ka/daftarKaSlices";
-
 // ** Import Other
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useSWRConfig } from "swr";
+import { baseUrl } from "../../../services/base";
+import Swal from "sweetalert2";
+
+const fetcher = (url) => axios.delete(url).then((res) => res.data);
 
 const DetailKA = () => {
   // ** Local State
   const [nav, setNav] = useState("informasi");
   const [modal, setModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const { mutate } = useSWRConfig();
 
   const {
     state: { data },
   } = useLocation();
 
-  const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
-  const handleDeleteKa = () => {
-    dispatch(deleteKa(data.id));
+  const handleDeleteKa = async () => {
+    setLoading(true);
 
-    navigate("/daftar-ka");
+    fetcher(baseUrl(`/admin/train/${data.train_id}`))
+      .then((res) => {
+        Swal.fire("Success", `${res.message}`, "success");
+
+        mutate("/admin/train");
+
+        setLoading(false);
+
+        navigate("/daftar-ka");
+      })
+      .catch((err) => {
+        setLoading(false);
+
+        console.log(err);
+      });
   };
 
   return (
@@ -60,6 +77,7 @@ const DetailKA = () => {
           bgButton="bg-[#DB2D24]"
           titleButton="Iya, Hapus"
           setModal={setModal}
+          loading={loading}
           handle={handleDeleteKa}
         />
       )}

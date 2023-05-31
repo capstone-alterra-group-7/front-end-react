@@ -17,7 +17,7 @@ import DetailKA from "../pages/daftar-KA/detail-ka/DetailKA";
 import DetailPengguna from "../pages/daftar-pengguna/detail-pengguna/DetailPengguna";
 import TambahPengguna from "../pages/daftar-pengguna/tambah-pengguna/TambahPengguna";
 import EditPengguna from "../pages/daftar-pengguna/edit-pengguna/EditPengguna";
-import DetailPesananHotel from "../pages/pesanan-hotel/detail-pesananHotel/DetailPesananHotel";
+import DetailPesananKa from "../pages/pesanan-ka/detail-pesananKa/DetailPesananKa";
 
 export const routeLogin = { path: "/", element: Auth };
 
@@ -41,6 +41,7 @@ export const routes = [
 
   // ** Transaksi
   { path: "/pesanan-ka", element: PesananKA },
+  { path: "/detail-pesananKa", element: DetailPesananKa },
   { path: "/pesanan-hotel", element: PesananHotel },
   { path: "/refund", element: Refund },
 
