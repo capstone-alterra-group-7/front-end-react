@@ -33,10 +33,11 @@ export const routes = [
   { path: "/daftar-pengguna", element: DaftarPengguna },
   { path: "/detail-pengguna", element: DetailPengguna },
   { path: "/tambah-pengguna", element: TambahPengguna },
-  {path: "/edit-pengguna", element: EditPengguna},
+  { path: "/edit-pengguna", element: EditPengguna},
   { path: "/daftar-promo", element: DaftarPromo },
   { path: "/daftar-carousel", element: DaftarCarousel },
   { path: "/daftar-berita", element: DaftarBerita },
+  { path: "/detail-pesanan-hotel", element: DetailPesananHotel },
 
   // ** Transaksi
   { path: "/pesanan-ka", element: PesananKA },
