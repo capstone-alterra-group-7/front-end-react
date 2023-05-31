@@ -19,10 +19,13 @@ import DetailPenawaran from "../pages/daftar-hotel/detail-hotel/detail-penawaran
 import DetailKamar from "../pages/daftar-hotel/detail-hotel/detail-kamar/DetailKamar";
 import TambahHotel from "../pages/daftar-hotel/tambah-hotel/TambahHotel";
 import TambahAlamat from "../pages/daftar-hotel/tambah-hotel/TambahAlamat";
+import DetailPengguna from "../pages/daftar-pengguna/detail-pengguna/DetailPengguna";
+import TambahPengguna from "../pages/daftar-pengguna/tambah-pengguna/TambahPengguna";
+import EditPengguna from "../pages/daftar-pengguna/edit-pengguna/EditPengguna";
+
+export const routeLogin = { path: "/", element: Auth };
 
 export const routes = [
-  { path: "/", element: Home },
-
   // ** DashBoard
   { path: "/dashboard", element: Dashboard },
 
@@ -37,6 +40,9 @@ export const routes = [
   { path: "/detail-hotel/penawaran", element: DetailPenawaran },
   { path: "/detail-hotel/detail-kamar", element: DetailKamar },
   { path: "/daftar-pengguna", element: DaftarPengguna },
+  { path: "/detail-pengguna", element: DetailPengguna },
+  { path: "/tambah-pengguna", element: TambahPengguna },
+  { path: "/edit-pengguna", element: EditPengguna },
   { path: "/daftar-promo", element: DaftarPromo },
   { path: "/daftar-carousel", element: DaftarCarousel },
   { path: "/daftar-berita", element: DaftarBerita },
