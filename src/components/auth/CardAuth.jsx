@@ -32,10 +32,7 @@ const CardAuth = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post(
-        "https://capstone.hanifz.com/api/v1/login",
-        input
-      );
+      const res = await axios.post(baseUrl("/login"), input);
 
       const { data } = res;
 
