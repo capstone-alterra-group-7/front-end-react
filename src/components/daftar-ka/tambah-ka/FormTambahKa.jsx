@@ -9,7 +9,7 @@ import ModalRuteTambahKa from "./ModalRuteTambahKa";
 import assets from "../../../assets/assets";
 
 const FormTambahKa = (props) => {
-  const { input, setInput, handleOnChangeInput } = props;
+  const { input, setInput, handleOnChangeInput, edit, dataEdit } = props;
 
   // ** Local State
   const [rute, setRute] = useState(false);
@@ -29,6 +29,7 @@ const FormTambahKa = (props) => {
               Keaktifan Kereta Api
             </h1>
             <input
+              defaultChecked={edit && dataEdit.status === "available"}
               onChange={(e) =>
                 setInput({
                   ...input,
@@ -71,7 +72,7 @@ const FormTambahKa = (props) => {
 
         <div className="space-y-6">
           <div className="space-y-3">
-            {input.rute.map((rute, i) => (
+            {input?.rute.map((rute, i) => (
               <div
                 key={i}
                 className="bg-[#F9FAFB] py-2 px-3 rounded-lg border border-[#D2D7E0] flex justify-between"
@@ -112,7 +113,7 @@ const FormTambahKa = (props) => {
         )}
 
         <div className="space-y-6">
-          {input.rute.map((data, index) => (
+          {input?.rute.map((data, index) => (
             <div
               key={data.name}
               className="border border-[#E1E4EA] rounded-2xl bg-white p-5 flex justify-between"

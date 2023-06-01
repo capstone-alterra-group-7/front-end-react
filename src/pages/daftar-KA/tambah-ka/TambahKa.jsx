@@ -13,21 +13,38 @@ import { useDispatch } from "react-redux";
 import { addIdKa } from "../../../redux/daftar-ka/daftarKaSlices";
 
 // ** Import Other
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { idGenerator } from "generate-custom-id";
 import { useSWRConfig } from "swr";
 import { baseUrl } from "../../../services/base";
 import axios from "axios";
 
-const fetcher = (url, payload) =>
+const fetcherTambahKa = (url, payload) =>
   axios.post(url, payload).then((res) => res.data);
 
+const fetcherEditKa = (url, payload) =>
+  axios.put(url, payload).then((res) => res.data);
+
 const TambahKa = () => {
+  const { state } = useLocation();
+
+  const dataEdit = {
+    train_id: state?.train_id,
+    code_train: state?.code_train,
+    name: state?.name,
+    route: state?.route.map((data) => ({
+      station_id: data?.station_id,
+      name: data?.station?.name,
+      arrive_time: data?.arrive_time,
+    })),
+    status: state?.status,
+  };
+
   // ** Local State
   const [input, setInput] = useState({
-    status: "unavailable",
-    name: "",
-    rute: [],
+    status: state ? dataEdit.status : "unavailable",
+    name: state ? dataEdit.name : "",
+    rute: state ? dataEdit.route : [],
   });
 
   const [dataGerbong, setDataGerbong] = useState([]);
@@ -55,10 +72,10 @@ const TambahKa = () => {
     trace: true,
   });
 
-  const handleTambahInformasiKa = async () => {
+  const handleTambahInformasiKa = () => {
     setLoading(true);
 
-    fetcher(baseUrl("/admin/train"), {
+    fetcherTambahKa(baseUrl("/admin/train"), {
       code_train: code_train,
       name: input.name,
       route: input.rute.map((r) => ({
@@ -81,6 +98,35 @@ const TambahKa = () => {
         setModal(false);
 
         setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
+  };
+
+  const handleEditInformasiKa = () => {
+    setLoading(true);
+
+    fetcherEditKa(baseUrl(`/admin/train/${dataEdit.train_id}`), {
+      code_train: dataEdit.code_train,
+      name: input.name,
+      route: input.rute.map((r) => ({
+        station_id: r.station_id,
+        arrive_time: r.arrive_time,
+      })),
+      status: input.status,
+    })
+      .then(() => {
+        mutate("/admin/train");
+
+        // setNav("gerbong");
+
+        setModal(false);
+
+        setLoading(false);
+
+        navigate("/daftar-ka");
       })
       .catch((err) => {
         setLoading(false);
@@ -124,6 +170,8 @@ const TambahKa = () => {
         {nav === "informasi" ? (
           <FormTambahKa
             input={input}
+            edit={state}
+            dataEdit={dataEdit}
             setInput={setInput}
             handleOnChangeInput={handleOnChangeInput}
           />
@@ -139,7 +187,9 @@ const TambahKa = () => {
           bgButton="bg-[#0080FF]"
           titleButton="Iya, Simpan"
           setModal={setModal}
-          handle={handleTambahInformasiKa}
+          handle={
+            state === null ? handleTambahInformasiKa : handleEditInformasiKa
+          }
           loading={loading}
         />
       )}

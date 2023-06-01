@@ -22,6 +22,7 @@ const DetailKA = () => {
   // ** Local State
   const [nav, setNav] = useState("informasi");
   const [modal, setModal] = useState(false);
+  const [modalEdit, setModalEdit] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const { mutate } = useSWRConfig();
@@ -52,6 +53,10 @@ const DetailKA = () => {
       });
   };
 
+  const handleEditKa = () => {
+    navigate("/daftar-ka/tambah-ka", { state: data });
+  };
+
   return (
     <div className="bg-[#FFFFFF] fixed overflow-y-auto left-0 right-0 h-full">
       <div className="space-y-3">
@@ -61,7 +66,7 @@ const DetailKA = () => {
           <div className="pt-7 flex justify-between items-center">
             <BackDetailKa />
 
-            <ButtonDetailKa setModal={setModal} />
+            <ButtonDetailKa setModal={setModal} setModalEdit={setModalEdit} />
           </div>
         </div>
 
@@ -79,6 +84,18 @@ const DetailKA = () => {
           setModal={setModal}
           loading={loading}
           handle={handleDeleteKa}
+        />
+      )}
+
+      {modalEdit && (
+        <ModalDaftarKa
+          title="Ingin Mengedit Data KA?"
+          description=" This blog post has been published. Team members will be able to edit this post and republish changes."
+          bgButton="bg-[#0080FF]"
+          titleButton="Iya, Edit"
+          setModal={setModalEdit}
+          loading={loading}
+          handle={handleEditKa}
         />
       )}
     </div>
