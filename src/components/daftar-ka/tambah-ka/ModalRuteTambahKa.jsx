@@ -18,7 +18,7 @@ const ModalRuteTambahKa = (props) => {
   const [selectStation, setSelectStation] = useState([]);
 
   const { data: station, isLoading } = useSWR(
-    baseUrl("/admin/station"),
+    baseUrl("/public/station"),
     fetcher
   );
 
