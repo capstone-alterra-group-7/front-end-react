@@ -137,7 +137,7 @@ const TambahKa = () => {
   const handleTambahGerbong = () => {
     setLoading(true);
 
-    fetcher(baseUrl("/admin/train-carriage"), dataGerbong)
+    fetcherTambahKa(baseUrl("/admin/train-carriage"), dataGerbong)
       .then((res) => {
         console.log(res);
 
