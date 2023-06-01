@@ -45,7 +45,8 @@ const FormTambahKa = (props) => {
           </div>
 
           <p className="text-[16px] text-slate-900/50 font-[400]">
-            Kereta Api Masih {input.status}
+            Kereta Api Masih{" "}
+            {input.status === "available" ? "Aktif" : "Tidak Aktif"}
           </p>
         </div>
 

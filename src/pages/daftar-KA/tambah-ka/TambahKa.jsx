@@ -8,6 +8,10 @@ import NavDetailka from "../../../components/daftar-ka/NavDetailka";
 import FormTambahKa from "../../../components/daftar-ka/tambah-ka/FormTambahKa";
 import GerbongDaftarKa from "../../../components/daftar-ka/tambah-ka/GerbongDaftarKa";
 
+// ** Import Redux
+import { useDispatch } from "react-redux";
+import { addIdKa } from "../../../redux/daftar-ka/daftarKaSlices";
+
 // ** Import Other
 import { useNavigate } from "react-router-dom";
 import { idGenerator } from "generate-custom-id";
@@ -26,30 +30,25 @@ const TambahKa = () => {
     rute: [],
   });
 
-  const [inputGerbong, setInputGerbong] = useState({
-    class: "",
-    name: "",
-    price: "",
-  });
+  const [dataGerbong, setDataGerbong] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  const { mutate } = useSWRConfig();
-
   const [nav, setNav] = useState("informasi");
   const [modal, setModal] = useState(false);
   const [modalGerbong, setModalGerbong] = useState(false);
+
+  const { mutate } = useSWRConfig();
 
   const handleOnChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const handleOnChangeInputGerbong = (e) => {
-    setInputGerbong({ ...inputGerbong, [e.target.name]: e.target.value });
-  };
-
   const validate = input.name === "" || input.rute.length === 0;
 
+  const validateGerbong = dataGerbong.length === 0;
+
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const code_train = idGenerator("example", 2, 1, {
     prefix: "TRAIN",
@@ -68,7 +67,13 @@ const TambahKa = () => {
       })),
       status: input.status,
     })
-      .then(() => {
+      .then((res) => {
+        const {
+          data: { train_id },
+        } = res;
+
+        dispatch(addIdKa(train_id));
+
         mutate("/admin/train");
 
         setNav("gerbong");
@@ -84,13 +89,30 @@ const TambahKa = () => {
   };
 
   const handleTambahGerbong = () => {
-    navigate("/daftar-ka");
+    setLoading(true);
+
+    fetcher(baseUrl("/admin/train-carriage"), dataGerbong)
+      .then((res) => {
+        console.log(res);
+
+        mutate("/admin/train-carriage");
+
+        setModal(false);
+
+        setLoading(false);
+
+        navigate("/daftar-ka");
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
   };
 
   return (
     <div className="absolute left-0 right-0 bg-[#F5F6F8] pb-20">
       <HeaderTambahKa
-        validate={validate}
+        validate={nav === "informasi" ? validate : validateGerbong}
         setModal={setModal}
         setModalGerbong={setModalGerbong}
         nav={nav}
@@ -106,11 +128,7 @@ const TambahKa = () => {
             handleOnChangeInput={handleOnChangeInput}
           />
         ) : (
-          <GerbongDaftarKa
-            input={inputGerbong}
-            setInput={setInputGerbong}
-            handleOnChangeInput={handleOnChangeInputGerbong}
-          />
+          <GerbongDaftarKa datas={dataGerbong} setDatas={setDataGerbong} />
         )}
       </div>
 
@@ -121,7 +139,6 @@ const TambahKa = () => {
           bgButton="bg-[#0080FF]"
           titleButton="Iya, Simpan"
           setModal={setModal}
-          validate={validate}
           handle={handleTambahInformasiKa}
           loading={loading}
         />
@@ -134,8 +151,8 @@ const TambahKa = () => {
           bgButton="bg-[#0080FF]"
           titleButton="Iya, Simpan"
           setModal={setModalGerbong}
-          // validate={validate}
           handle={handleTambahGerbong}
+          loading={loading}
         />
       )}
     </div>
