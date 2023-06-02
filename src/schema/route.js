@@ -25,6 +25,7 @@ import EditPengguna from "../pages/daftar-pengguna/edit-pengguna/EditPengguna";
 import DetailPesananKa from "../pages/pesanan-ka/detail-pesananKa/DetailPesananKa";
 import TambahKamar from "../pages/daftar-hotel/tambah-hotel/TambahKamar";
 import TambahTawaran from "../pages/daftar-hotel/tambah-hotel/TambahTawaran";
+import DetailPesananHotel from "../pages/pesanan-hotel/detail-pesananHotel/DetailPesananHotel";
 
 export const routeLogin = { path: "/", element: Auth };
 
@@ -41,7 +42,10 @@ export const routes = [
   { path: "/daftar-hotel/tambah-hotel", element: TambahHotel },
   { path: "/daftar-hotel/tambah-hotel/tambah-alamat", element: TambahAlamat },
   { path: "/daftar-hotel/tambah-hotel/tambah-kamar", element: TambahKamar },
-  { path: "/daftar-hotel/tambah-hotel/tambah-kamar/tambah-penawaran", element: TambahTawaran },
+  {
+    path: "/daftar-hotel/tambah-hotel/tambah-kamar/tambah-penawaran",
+    element: TambahTawaran,
+  },
   { path: "/detail-hotel/penawaran", element: DetailPenawaran },
   { path: "/detail-hotel/detail-kamar", element: DetailKamar },
   { path: "/daftar-pengguna", element: DaftarPengguna },
