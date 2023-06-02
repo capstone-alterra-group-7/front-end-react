@@ -1,17 +1,22 @@
 // ** Import Components
 import Sidebar from "../components/sidebar/Sidebar";
 
+// ** Import Css
+import "./styleLayoutDashboard.css";
+
 // ** Import Other
 import { Outlet } from "react-router-dom";
 
 const LayoutDashboard = () => {
   return (
-    <div className="flex overflow-hidden">
-      <div className="bg-white h-full w-[20rem] px-9">
-        <Sidebar />
+    <div className="flex relative">
+      <div className="bg-white w-[18rem]">
+        <div className="fixed h-full w-[290px] overflow-y-auto no-scrollbar">
+          <Sidebar />
+        </div>
       </div>
 
-      <div className="bg-[#F5F6F8] flex-1 py-5 px-10">
+      <div className="bg-[#F5F6F8] min-h-[100vh] flex-1">
         <Outlet />
       </div>
     </div>

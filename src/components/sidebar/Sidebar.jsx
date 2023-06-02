@@ -10,19 +10,29 @@ import {
   transactions,
 } from "../../schema/navigation";
 
+// ** Import Ohter
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+
 const Sidebar = () => {
+  const navigate = useNavigate();
+
   const handleLogout = () => {
-    console.log("test");
+    Swal.fire("Success", "Anda Telah Berhasil Logout", "success");
+
+    sessionStorage.removeItem("token");
+
+    navigate("/");
   };
 
   return (
-    <div className="mt-4">
+    <div className="mt-[17px] px-7">
       <div className="space-y-10">
         <div className="bg-[#D9D9D9] p-6"></div>
 
         <SingleItem data={dashboard} />
 
-        <ManyItems title="DataBase" datas={databases} />
+        <ManyItems title="" datas={databases} />
 
         <ManyItems title="Transaksi" datas={transactions} />
 
