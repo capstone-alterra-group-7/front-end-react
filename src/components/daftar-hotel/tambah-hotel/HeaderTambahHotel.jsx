@@ -24,7 +24,7 @@ const HeaderTambahHotel = (props) => {
           className="px-8 py-[13.5px] font-bold text-white disabled:bg-[#B3D9FF] bg-[#0080FF] flex gap-3 items-center rounded-lg disabled:cursor-not-allowed"
         >
           <h1 className="mt-[1.2px]">Tambah Data Hotel</h1>
-          <img src={assets.iconButtonDaftarKa} alt="button" />
+          <img src={assets.iconSaveHotel} alt="button" />
         </button>
       </div>
     </div>

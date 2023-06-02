@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import assets from "../../../../../assets/assets";
 
+// Initialization for ES Users
+import { Carousel, initTE } from "tw-elements";
+
 const CarouselPhoto = () => {
+  useEffect(() => {
+    initTE({ Carousel });
+  }, []);
+
   return (
     <div id="carouselExampleControls" className="relative w-11/12 left-1/2 -translate-x-1/2" data-te-carousel-init data-te-carousel-slide>
       <div className="relative w-full overflow-hidden after:clear-both after:block after:content-['']">

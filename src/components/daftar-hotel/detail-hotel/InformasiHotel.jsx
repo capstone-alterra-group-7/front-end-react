@@ -135,7 +135,7 @@ const InformasiHotel = ({ data }) => {
             }
           >
             <h1 className="ms-4 font-semibold">Kebijakan Hotel</h1>
-            <img src={assets.iconUrutkanDaftarKa} alt="" className={`h-5 w-4 duration-300 ${isHidden.informasi ? "rotate-180" : ""}`} />
+            <img src={assets.iconUrutkanDaftarKa} alt="" className={`h-5 w-4 duration-300 ${isHidden.kebijakan ? "rotate-180" : ""}`} />
           </div>
           {isHidden.kebijakan ? null : <SectionKebijakan />}
         </div>

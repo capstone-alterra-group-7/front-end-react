@@ -31,15 +31,7 @@ const KebijakanHotel = () => {
 
       <div>
         <Policy clicked={clicked} setClicked={setClicked} title={"Antar Jemput Bandara"} desc={"Antar jemput bandara dikenakan biaya sebesar Rp 0"} name={"antarJemput"}>
-          <div className="mb-12">
-            <label htmlFor="biayaJemput" className={`text-sm ${clicked.antarJemput ? null : "opacity-50"}`}>
-              Biaya Jemput
-            </label>
-            <div className={`flex mt-2 h-11 w-1/4 border border-[#D2D7E0] rounded-lg ${clicked.antarJemput ? null : "opacity-50"}`}>
-              <h1 className="px-3 py-[0.625rem] border">Rp</h1>
-              <input type="text" className="px-3 py-[0.625rem] w-full rounded-lg" placeholder="cth:34.000" disabled={!clicked.antarJemput} />
-            </div>
-          </div>
+          <div className="mb-12"></div>
         </Policy>
 
         <Policy clicked={clicked} setClicked={setClicked} title={"Waktu Check-in/Check-out"} desc={"Waktu Check-in/Check-out"} name={"waktuCheckin"}>
@@ -80,15 +72,7 @@ const KebijakanHotel = () => {
         </Policy>
 
         <Policy clicked={clicked} setClicked={setClicked} title={"Deposit"} desc={"Pemesan Tidak perlu membayar deposit saat check-in. "} name={"deposit"}>
-          <div className="mb-12">
-            <label htmlFor="deposit" className={`text-sm ${clicked.deposit ? null : "opacity-50"}`}>
-              Jumlah Deposit
-            </label>
-            <div className={`flex mt-2 h-11 w-1/4 rounded-lg border border-[#D2D7E0] ${clicked.deposit ? null : "opacity-50"}`}>
-              <h1 className="px-3 py-[0.625rem] border">Rp</h1>
-              <input type="text" className="px-3 py-[0.625rem] w-full rounded-lg" placeholder="cth:34.000" disabled={!clicked.deposit} />
-            </div>
-          </div>
+          <div className="mb-12"></div>
         </Policy>
 
         <Policy
@@ -129,15 +113,7 @@ const KebijakanHotel = () => {
         </Policy>
 
         <Policy clicked={clicked} setClicked={setClicked} title={"Sarapan Tambahan"} desc={"Sarapan tambahan dikenakan biaya Rp 125.000/tamu"} name={"sarapanTambahan"}>
-          <div className="mb-12">
-            <label htmlFor="sarapahTambahan" className={`text-sm ${clicked.sarapanTambahan ? null : "opacity-50"}`}>
-              Biaya Tambahan
-            </label>
-            <div className={`flex mt-2 h-11 w-1/4 border border-[#D2D7E0] rounded-lg ${clicked.sarapanTambahan ? null : "opacity-50"}`}>
-              <h1 className="px-3 py-[0.625rem] border">Rp</h1>
-              <input type="text" className="px-3 py-[0.625rem] w-full rounded-lg" placeholder="cth:34.000" disabled={!clicked.sarapanTambahan} />
-            </div>
-          </div>
+          <div className="mb-12"></div>
         </Policy>
 
         <Policy clicked={clicked} setClicked={setClicked} title={"Sarapan"} desc={"Sarapan di hotel tersedia pukul 06:00 - 10:00"} name={"sarapan"}>

@@ -21,6 +21,8 @@ import imageKamar from "./daftar-hotel/detail-hotel/kamarHotel1.svg";
 import imageKamar2 from "./daftar-hotel/detail-hotel/kamarHotel2.svg";
 import iconClose from "./daftar-hotel/tambah-hotel/closeButton.svg";
 import iconImageAdd from "./daftar-hotel/tambah-hotel/imageAdd.svg";
+import iconAddKamar from "./daftar-hotel/tambah-hotel/iconAddKamar.svg";
+import iconSaveHotel from "./daftar-hotel/tambah-hotel/contentSave.svg";
 
 // ** Import Daftar Ka
 import iconLeftDetailKursi from "./daftar-ka/kursi/left.svg";
@@ -88,7 +90,6 @@ export default {
   iconGpsMarker,
   iconStarRating,
   iconStarNotRating,
-  imageHotel,
 
   iconReceipt,
   iconWifi,
@@ -102,6 +103,9 @@ export default {
   imageKamar2,
   iconClose,
   iconImageAdd,
+  imageHotel,
+  iconAddKamar,
+  iconSaveHotel,
 
   iconHapusDaftarKa,
   iconJamDaftarKa,

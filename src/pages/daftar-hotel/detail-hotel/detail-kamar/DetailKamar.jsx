@@ -1,10 +1,5 @@
 import React, { useState } from "react";
 
-// Initialization TW Elements for ES Users
-import { Carousel, initTE } from "tw-elements";
-
-initTE({ Carousel });
-
 // ** Import Component
 import BackButtonHotel from "../../../../components/daftar-hotel/detail-hotel/BackButtonHotel";
 import ButtonDetailHotel from "../../../../components/daftar-hotel/detail-hotel/ButtonDetailHotel";
