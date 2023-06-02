@@ -51,6 +51,7 @@ export const routes = [
   { path: "/daftar-promo", element: DaftarPromo },
   { path: "/daftar-carousel", element: DaftarCarousel },
   { path: "/daftar-berita", element: DaftarBerita },
+  { path: "/detail-pesanan-hotel", element: DetailPesananHotel },
 
   // ** Transaksi
   { path: "/pesanan-ka", element: PesananKA },

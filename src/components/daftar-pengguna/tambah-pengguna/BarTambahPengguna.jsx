@@ -9,7 +9,7 @@ export default function xBarTambahPengguna({setModal, setModalBack,validate}) {
             className="flex items-center"
             onClick={() => setModalBack(true)}>
             <img src={assets.iconBackDaftarKa} alt="back" />
-            <span className="ms-2 text-[#0080FF]">Kembali</span>
+            <span className="ms-2 text-[#0080FF] text-[16px]">Kembali</span>
         </button>
         
 
@@ -19,7 +19,7 @@ export default function xBarTambahPengguna({setModal, setModalBack,validate}) {
                 onClick={() => setModal(true)}
                 disabled={validate}>
 
-                <span className="ms-2 text-[18px] text-white ">Simpan Pengguna</span>
+                <span className="ms-2 text-[16px] text-white ">Simpan Pengguna</span>
 
                 <img src={assets.iconnav} alt="delete" />
             </button>

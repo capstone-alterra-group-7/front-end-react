@@ -10,45 +10,62 @@ import GerbongDaftarKa from "../../../components/daftar-ka/tambah-ka/GerbongDaft
 
 // ** Import Redux
 import { useDispatch } from "react-redux";
-import { tambahKa } from "../../../redux/daftar-ka/daftarKaSlices";
+import { addIdKa } from "../../../redux/daftar-ka/daftarKaSlices";
 
 // ** Import Other
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { idGenerator } from "generate-custom-id";
+import { useSWRConfig } from "swr";
+import { baseUrl } from "../../../services/base";
+import axios from "axios";
+
+const fetcherTambahKa = (url, payload) =>
+  axios.post(url, payload).then((res) => res.data);
+
+const fetcherEditKa = (url, payload) =>
+  axios.put(url, payload).then((res) => res.data);
 
 const TambahKa = () => {
+  const { state } = useLocation();
+
+  const dataEdit = {
+    train_id: state?.train_id,
+    code_train: state?.code_train,
+    name: state?.name,
+    route: state?.route.map((data) => ({
+      station_id: data?.station_id,
+      name: data?.station?.name,
+      arrive_time: data?.arrive_time,
+    })),
+    status: state?.status,
+  };
+
   // ** Local State
   const [input, setInput] = useState({
-    status: "nonavailable",
-    name: "",
-    rute: [],
+    status: state ? dataEdit.status : "unavailable",
+    name: state ? dataEdit.name : "",
+    rute: state ? dataEdit.route : [],
   });
 
-  const [inputGerbong, setInputGerbong] = useState({
-    class: "",
-    name: "",
-    price: "",
-  });
-
-  console.log(inputGerbong);
-
+  const [dataGerbong, setDataGerbong] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [nav, setNav] = useState("informasi");
   const [modal, setModal] = useState(false);
   const [modalGerbong, setModalGerbong] = useState(false);
+
+  const { mutate } = useSWRConfig();
 
   const handleOnChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const handleOnChangeInputGerbong = (e) => {
-    setInputGerbong({ ...inputGerbong, [e.target.name]: e.target.value });
-  };
-
   const validate = input.name === "" || input.rute.length === 0;
 
-  const dispatch = useDispatch();
+  const validateGerbong = dataGerbong.length === 0;
 
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const code_train = idGenerator("example", 2, 1, {
     prefix: "TRAIN",
@@ -56,23 +73,92 @@ const TambahKa = () => {
   });
 
   const handleTambahInformasiKa = () => {
-    dispatch(
-      tambahKa({ id: Math.ceil(Math.random() * 1000), code_train, ...input })
-    );
-    setNav("gerbong");
+    setLoading(true);
 
-    setModal(false);
-    // navigate("/daftar-ka");
+    fetcherTambahKa(baseUrl("/admin/train"), {
+      code_train: code_train,
+      name: input.name,
+      route: input.rute.map((r) => ({
+        station_id: r.station_id,
+        arrive_time: r.arrive_time,
+      })),
+      status: input.status,
+    })
+      .then((res) => {
+        const {
+          data: { train_id },
+        } = res;
+
+        dispatch(addIdKa(train_id));
+
+        mutate("/admin/train");
+
+        setNav("gerbong");
+
+        setModal(false);
+
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
+  };
+
+  const handleEditInformasiKa = () => {
+    setLoading(true);
+
+    fetcherEditKa(baseUrl(`/admin/train/${dataEdit.train_id}`), {
+      code_train: dataEdit.code_train,
+      name: input.name,
+      route: input.rute.map((r) => ({
+        station_id: r.station_id,
+        arrive_time: r.arrive_time,
+      })),
+      status: input.status,
+    })
+      .then(() => {
+        mutate("/admin/train");
+
+        // setNav("gerbong");
+
+        setModal(false);
+
+        setLoading(false);
+
+        navigate("/daftar-ka");
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
   };
 
   const handleTambahGerbong = () => {
-    navigate("/daftar-ka");
+    setLoading(true);
+
+    fetcherTambahKa(baseUrl("/admin/train-carriage"), dataGerbong)
+      .then((res) => {
+        console.log(res);
+
+        mutate("/admin/train-carriage");
+
+        setModal(false);
+
+        setLoading(false);
+
+        navigate("/daftar-ka");
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
   };
 
   return (
     <div className="absolute left-0 right-0 bg-[#F5F6F8] pb-20">
       <HeaderTambahKa
-        validate={validate}
+        validate={nav === "informasi" ? validate : validateGerbong}
         setModal={setModal}
         setModalGerbong={setModalGerbong}
         nav={nav}
@@ -84,15 +170,13 @@ const TambahKa = () => {
         {nav === "informasi" ? (
           <FormTambahKa
             input={input}
+            edit={state}
+            dataEdit={dataEdit}
             setInput={setInput}
             handleOnChangeInput={handleOnChangeInput}
           />
         ) : (
-          <GerbongDaftarKa
-            input={inputGerbong}
-            setInput={setInputGerbong}
-            handleOnChangeInput={handleOnChangeInputGerbong}
-          />
+          <GerbongDaftarKa datas={dataGerbong} setDatas={setDataGerbong} />
         )}
       </div>
 
@@ -103,8 +187,10 @@ const TambahKa = () => {
           bgButton="bg-[#0080FF]"
           titleButton="Iya, Simpan"
           setModal={setModal}
-          validate={validate}
-          handle={handleTambahInformasiKa}
+          handle={
+            state === null ? handleTambahInformasiKa : handleEditInformasiKa
+          }
+          loading={loading}
         />
       )}
 
@@ -115,8 +201,8 @@ const TambahKa = () => {
           bgButton="bg-[#0080FF]"
           titleButton="Iya, Simpan"
           setModal={setModalGerbong}
-          // validate={validate}
           handle={handleTambahGerbong}
+          loading={loading}
         />
       )}
     </div>

@@ -2,7 +2,15 @@
 import assets from "../../assets/assets";
 
 const ModalDaftarKa = (props) => {
-  const { title, description, bgButton, titleButton, setModal, handle } = props;
+  const {
+    title,
+    description,
+    bgButton,
+    titleButton,
+    setModal,
+    handle,
+    loading,
+  } = props;
 
   return (
     <div className="fixed z-50 duration-500 top-0 right-0 left-0 bottom-0 flex justify-center items-center bg-gray-700/50">
@@ -24,9 +32,10 @@ const ModalDaftarKa = (props) => {
 
           <button
             onClick={handle}
-            className={`text-[18px] font-[500] py-[11px] border border-[#D2D7E0] rounded-lg ${bgButton} text-white`}
+            className={`text-[18px] font-[500] py-[11px] border border-[#D2D7E0] rounded-lg ${bgButton} text-white disabled:bg-gray-500 `}
+            disabled={loading}
           >
-            {titleButton}
+            {loading ? "Loading..." : titleButton}
           </button>
         </div>
       </div>

@@ -4,13 +4,21 @@ import { useState } from "react";
 // ** Import Assets
 import assets from "../../assets/assets";
 
+// ** Import Redux
+import { useDispatch } from "react-redux";
+import { addActive } from "../../redux/sidebar/NavItemSlices";
+import { addToken } from "../../redux/auth/tokenSlices";
+
 // ** Import Other
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { baseUrl } from "../../services/base";
 
 const CardAuth = () => {
+  // ** Local State
   const [input, setInput] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
 
   const handleInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -18,12 +26,13 @@ const CardAuth = () => {
 
   const navigate = useNavigate();
 
+  const dispatch = useDispatch();
+
   const handleLogin = async () => {
+    setLoading(true);
+
     try {
-      const res = await axios.post(
-        "http://ec2-3-26-30-178.ap-southeast-2.compute.amazonaws.com:8088/api/v1/login",
-        input
-      );
+      const res = await axios.post(baseUrl("/login"), input);
 
       const { data } = res;
 
@@ -31,11 +40,19 @@ const CardAuth = () => {
 
       navigate("/dashboard");
 
+      setLoading(false);
+
+      dispatch(addToken(data.data.token));
+
+      dispatch(addActive("/dashboard"));
+
       sessionStorage.setItem("token", data.data.token);
     } catch (error) {
       const {
         response: { data },
       } = error;
+
+      setLoading(false);
 
       Swal.fire(`${data.message}`, `${data.errors}`, "error");
     }
@@ -90,7 +107,7 @@ const CardAuth = () => {
         disabled={validate}
         className="w-[612px] h-[44px] mt-[64px] mb-[15px] rounded-[8px] font-semibold text-[16px] text-white bg-[#0080FF] disabled:bg-blue-200 disabled:cursor-not-allowed"
       >
-        Masuk
+        {loading ? "Loading..." : " Masuk"}
       </button>
     </div>
     // </div>

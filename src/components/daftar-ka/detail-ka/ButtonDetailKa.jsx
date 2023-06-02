@@ -1,10 +1,13 @@
 // ** Import Assets
 import assets from "../../../assets/assets";
 
-const ButtonDetailKa = ({ setModal }) => {
+const ButtonDetailKa = ({ setModal, setModalEdit }) => {
   return (
     <div className="flex gap-3">
-      <button className=" px-9 py-[9.5px] font-[500] text-[#4B4C4E] border border-[#D2D7E0] bg-[#F9FAFB] flex items-center rounded-lg">
+      <button
+        onClick={() => setModalEdit(true)}
+        className=" px-9 py-[9.5px] font-[500] text-[#4B4C4E] border border-[#D2D7E0] bg-[#F9FAFB] flex items-center rounded-lg"
+      >
         <span className="me-2 text-[18px]">Edit</span>
         <img src={assets.iconEditDaftarKa} alt="edit" />
       </button>

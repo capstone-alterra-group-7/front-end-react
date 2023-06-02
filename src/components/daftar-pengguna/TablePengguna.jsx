@@ -24,24 +24,24 @@ export default function TablePengguna() {
             <div className="inline-block min-w-full py-2">
                 <div className="overflow-hidden">
 
-                    <table className="min-w-full text-left items-center">
+                    <table className="min-w-full text-left items-center text-[#262627]">
                         
-                        <thead className="border-b font-[700] ">
+                        <thead className="border-b font-[700] text-[16px] ">
                             <tr>
                                
                                 <th scope="col" className="px-6 py-4">
                                     Nama Pengguna
                                 </th>
 
-                                <th scope="col" className="px-6 py-4">
+                                <th scope="col" className="px-6 py-4 ">
                                     No Hp
                                 </th>
 
-                                <th scope="col" className="px-6 py-4 justify-center">
+                                <th scope="col" className="px-6 py-4 text-center">
                                     Tanggal Mendaftar
                                 </th>
 
-                                <th scope="col" className="px-6 py-4">
+                                <th scope="col" className="px-6 py-4 text-center">
                                     Umur Akun
                                 </th>
 
@@ -54,7 +54,7 @@ export default function TablePengguna() {
                         </thead>
 
                             {daftarPengguna.map((pengguna, index) => (
-                                <DataPengguna data={pengguna} key={index} />
+                                <DataPengguna data={pengguna} index={index} />
                             ))}
                         
                     </table>

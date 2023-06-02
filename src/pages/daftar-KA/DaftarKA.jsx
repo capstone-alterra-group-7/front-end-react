@@ -8,11 +8,17 @@ import Bar from "../../components/daftar-ka/Bar";
 // ** import Other
 import { useNavigate } from "react-router-dom";
 import TableDaftarKa from "../../components/daftar-ka/TableDaftarKa";
-import { useSelector } from "react-redux";
+import useSWR from "swr";
+import { baseUrl } from "../../services/base";
+import axios from "axios";
+
+const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const DaftarKA = () => {
-  // ** Redux State
-  const daftarKa = useSelector((state) => state.daftarKa);
+  const { data: daftarKa, isLoading } = useSWR(
+    baseUrl("/public/train"),
+    fetcher
+  );
 
   // ** Local State
   const [modal, setModal] = useState(false);
@@ -31,7 +37,7 @@ const DaftarKA = () => {
         <Bar setModal={setModal} />
       </div>
 
-      <div className="py-8 px-3">
+      <div className="pt-8 ">
         <div className="flex justify-between border-b pb-5 px-10 mb-1">
           <h1 className="text-[16px] font-[600] text-[#262627]">
             Nama Kereta Api
@@ -44,8 +50,10 @@ const DaftarKA = () => {
           </h1>
         </div>
 
-        {daftarKa.map((ka, index) => (
-          <TableDaftarKa key={ka.id} data={ka} index={index} />
+        {isLoading && <p className="text-center mt-6">loading....</p>}
+
+        {daftarKa?.data.map((ka, index) => (
+          <TableDaftarKa key={ka.train_id} data={ka} index={index} />
         ))}
       </div>
 

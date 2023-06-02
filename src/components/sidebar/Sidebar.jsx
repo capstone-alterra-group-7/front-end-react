@@ -32,7 +32,7 @@ const Sidebar = () => {
 
         <SingleItem data={dashboard} />
 
-        <ManyItems title="DataBase" datas={databases} />
+        <ManyItems title="" datas={databases} />
 
         <ManyItems title="Transaksi" datas={transactions} />
 

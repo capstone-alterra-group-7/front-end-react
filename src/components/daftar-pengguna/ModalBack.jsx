@@ -8,7 +8,7 @@ export default function ModalBack(props) {
         <div className="bg-white w-[600px] h-[325px] rounded-xl p-8">
             <img src={assets.iconmodal} alt="kereta" />
             <div className="mt-8 space-y-1">
-            <h1 className="font-[600] text-[24px] text-[#262627]">{title}</h1>
+            <h1 className="font-[600] text-[20px] text-[#262627]">{title}</h1>
 
             <p className="font-[300] text-[16px] text-[#717275]">{description}</p>
             </div>
@@ -16,14 +16,14 @@ export default function ModalBack(props) {
             <div className="grid grid-cols-2 mt-12 gap-5">
             <button
                 onClick={() => setModalBack(false)}
-                className="text-[18px] font-[500] text-[#4B4C4E] py-[11px] border border-[#D2D7E0] rounded-lg bg-[#F9FAFB]"
+                className="text-[16px] font-[500] text-[#4B4C4E] py-[11px] border border-[#D2D7E0] rounded-lg bg-[#F9FAFB]"
             >
                 Tidak
             </button>
 
             <button
                 onClick={handle}
-                className={`text-[18px] font-[500] py-[11px] border border-[#D2D7E0] rounded-lg ${bgButton} text-white`}
+                className={`text-[16px] font-[500] py-[11px] border border-[#D2D7E0] rounded-lg ${bgButton} text-white`}
             >
                 {titleButton}
             </button>
