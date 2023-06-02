@@ -16,7 +16,7 @@ const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const DaftarKA = () => {
   const { data: daftarKa, isLoading } = useSWR(
-    baseUrl("/public/train"),
+    baseUrl("/public/train?limit=9999"),
     fetcher
   );
 
