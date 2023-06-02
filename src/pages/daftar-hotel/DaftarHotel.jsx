@@ -5,8 +5,18 @@ import React, { useState } from "react";
 import HeaderHotel from "../../components/daftar-hotel/Header";
 import CardContainerHotel from "../../components/daftar-hotel/CardContainerHotel";
 
+// ** import Other
+import { useNavigate } from "react-router-dom";
+import ModalDaftarHotel from "../../components/daftar-hotel/ModalDaftarHotel";
+
 const DaftarHotel = () => {
   const [modal, setModal] = useState(false);
+
+  const navigate = useNavigate("");
+
+  const handleAdd = () => {
+    navigate("/daftar-hotel/tambah-hotel");
+  };
 
   return (
     <div className="relative">
@@ -16,6 +26,17 @@ const DaftarHotel = () => {
       </div>
 
       <CardContainerHotel />
+
+      {modal && (
+        <ModalDaftarHotel
+          title="Ingin Menambahkan Data Hotel?"
+          description=" This blog post has been published. Team members will be able to edit this post and republish changes."
+          bgButton="bg-[#0080FF]"
+          titleButton="Iya, Tambahkan"
+          setModal={setModal}
+          handle={handleAdd}
+        />
+      )}
     </div>
   );
 };

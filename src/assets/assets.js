@@ -4,10 +4,25 @@ import logoKai from "./daftar-ka/logoKai.svg";
 import stepper from "./daftar-ka/stepper.svg";
 
 // ** Import Daftar Hotel
+import iconBuilding from "./daftar-hotel/building.svg";
 import iconGpsMarker from "./daftar-hotel/gpsMarker.svg";
 import iconStarRating from "./daftar-hotel/star.svg";
 import iconStarNotRating from "./daftar-hotel/starNotFilled.svg";
 import imageHotel from "./daftar-hotel/gambarHotel.png";
+import iconReceipt from "./daftar-hotel/receipt.svg";
+import iconWifi from "./daftar-hotel/wifi.svg";
+import iconDownArrow from "./daftar-hotel/downArrow.svg";
+import imageProfile from "./daftar-hotel/imageProfile.svg";
+import iconSeat from "./daftar-hotel/airlineSeat.svg";
+import iconAccount from "./daftar-hotel/detail-hotel/account.svg";
+import iconBed from "./daftar-hotel/detail-hotel/bedEmpty.svg";
+import iconSpoonFork from "./daftar-hotel/detail-hotel/spoonFork.svg";
+import imageKamar from "./daftar-hotel/detail-hotel/kamarHotel1.svg";
+import imageKamar2 from "./daftar-hotel/detail-hotel/kamarHotel2.svg";
+import iconClose from "./daftar-hotel/tambah-hotel/closeButton.svg";
+import iconImageAdd from "./daftar-hotel/tambah-hotel/imageAdd.svg";
+import iconAddKamar from "./daftar-hotel/tambah-hotel/iconAddKamar.svg";
+import iconSaveHotel from "./daftar-hotel/tambah-hotel/contentSave.svg";
 
 // ** Import Daftar Ka
 import iconLeftDetailKursi from "./daftar-ka/kursi/left.svg";
@@ -82,10 +97,27 @@ export default {
   iconInformasiDaftarKa,
   iconKursiDaftarKa,
   iconBackDaftarKa,
+  iconBuilding,
   iconGpsMarker,
   iconStarRating,
   iconStarNotRating,
+
+  iconReceipt,
+  iconWifi,
+  iconDownArrow,
+  imageProfile,
+  iconSeat,
+  iconAccount,
+  iconBed,
+  iconSpoonFork,
+  imageKamar,
+  imageKamar2,
+  iconClose,
+  iconImageAdd,
   imageHotel,
+  iconAddKamar,
+  iconSaveHotel,
+
   iconHapusDaftarKa,
   iconJamDaftarKa,
   iconDropdownDaftarKa,
@@ -98,6 +130,10 @@ export default {
   notVisiblePassword,
   Prev,
   Next,
+
+  iconUsernameLogin,
+  backgroundLogin,
+  iconPasswordLogin,
   iconUsernameLogin,
   backgroundLogin,
   iconPasswordLogin,
