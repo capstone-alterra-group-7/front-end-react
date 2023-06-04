@@ -70,7 +70,7 @@ const DetailKA = () => {
           </div>
         </div>
 
-        <NavDetailka nav={nav} setNav={setNav} />
+        <NavDetailka nav={nav} setNav={setNav} isEdit={true} />
       </div>
 
       {nav === "informasi" ? <Informasi data={data} /> : <DetailKursi />}

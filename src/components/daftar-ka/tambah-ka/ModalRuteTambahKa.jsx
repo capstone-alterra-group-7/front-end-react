@@ -70,7 +70,7 @@ const ModalRuteTambahKa = (props) => {
                   defaultChecked={station.check}
                   onChange={(e) => handleChecked(e, station.station_id)}
                   type="checkbox"
-                  className="border-red-500"
+                  className="rounded-full"
                 />
                 <h5 className="text-[#262627] text-[20px] font-[300]">
                   {station.name} ({station.initial})
