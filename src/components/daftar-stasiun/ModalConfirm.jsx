@@ -3,7 +3,7 @@ import React from "react";
 const ModalConfirm = (props) => {
   const { setModal, handle, title, desc, bg, cancel, confirm } = props;
   return (
-    <div className="fixed z-100 duration-500 top-0 right-0 left-0 bottom-0 flex justify-center items-center bg-gray-700/50">
+    <div className="fixed z-100 duration-500 -top-6 right-0 left-0 bottom-0 flex justify-center items-center bg-gray-700/50">
       <div className="bg-white w-[500px] h-64 rounded-xl p-8">
         <h1 className="text-2xl font-semibold">{title}</h1>
         <h1 className="text-[15px] text-[#717275] mt-6">{desc}</h1>
@@ -17,7 +17,10 @@ const ModalConfirm = (props) => {
           >
             {cancel}
           </button>
-          <button className={`py-[10px] border text-[#FFFFFF] rounded-lg text-lg ${bg}`} onClick={handle}>
+          <button
+            className={`py-[10px] border text-[#FFFFFF] rounded-lg text-lg ${bg}`}
+            onClick={handle}
+          >
             {confirm}
           </button>
         </div>
