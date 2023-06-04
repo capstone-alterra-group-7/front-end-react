@@ -78,6 +78,16 @@ import iconCardPesanan4 from "../assets/pesanan-hotel/detail-pesananHotel/iconCa
 import iconCardPesanan5 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan5.svg";
 import iconCardPesanan6 from "../assets/pesanan-hotel/detail-pesananHotel/iconCardPesanan6.svg";
 
+// ** Import For Daftar Stasiun
+import iconDelete from "./daftar-stasiun/deleteForever.svg";
+
+// ** Import for Laporan Penjualan
+import iconScaleBalance from "./laporan-penjualan/scaleBalance.svg";
+import iconTrendingUp from "./laporan-penjualan/trendingUp.svg";
+import iconTrendingDown from "./laporan-penjualan/trendingDown.svg";
+import iconBuildingBlue from "./laporan-penjualan/officeBuilding.svg";
+import iconTrainOrange from "./laporan-penjualan/trainOrange.svg";
+
 export default {
   iconNav,
   logoKai,
@@ -149,4 +159,12 @@ export default {
   iconCardPesanan4,
   iconCardPesanan5,
   iconCardPesanan6,
+
+  iconDelete,
+
+  iconScaleBalance,
+  iconTrendingUp,
+  iconTrendingDown,
+  iconBuildingBlue,
+  iconTrainOrange,
 };

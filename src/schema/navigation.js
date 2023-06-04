@@ -12,7 +12,7 @@ export const databases = [
   { icon: assets.iconNav, name: "Daftar Hotel", link: "/daftar-hotel" },
   { icon: assets.iconNav, name: "Daftar Pengguna", link: "/daftar-pengguna" },
   { icon: assets.iconNav, name: "Daftar Promo", link: "/daftar-promo" },
-  { icon: assets.iconNav, name: "Daftar Carousel", link: "/daftar-carousel" },
+  { icon: assets.iconNav, name: "Daftar Stasiun", link: "/daftar-stasiun" },
   { icon: assets.iconNav, name: "Daftar Berita", link: "/daftar-berita" },
 ];
 
