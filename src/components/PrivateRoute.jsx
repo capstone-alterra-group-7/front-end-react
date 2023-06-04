@@ -5,13 +5,12 @@ import Swal from "sweetalert2";
 const PrivateRoute = () => {
   const token = sessionStorage.getItem("token");
 
-  // if (!token) {
-  //   Swal.fire("Gagal", "Token tidak valid", "error");
-  //   return <Navigate to="/" />;
-  // } else {
-  //   return <Outlet />;
-  // }
-  return <Outlet />;
+  if (!token) {
+    Swal.fire("Gagal", "Token tidak valid", "error");
+    return <Navigate to="/" />;
+  } else {
+    return <Outlet />;
+  }
 };
 
 export default PrivateRoute;
