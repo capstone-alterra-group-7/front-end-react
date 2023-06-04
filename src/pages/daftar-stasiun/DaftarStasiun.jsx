@@ -53,19 +53,19 @@ const DaftarStasiun = () => {
             </tbody>
           </table>
         </div>
-
-        {modal && (
-          <ModalConfirm
-            setModal={setModal}
-            handle={handleAdd}
-            title={"Ingin Menambahkan Data Stasiun?"}
-            desc={"Apakah stasiun tersebut dipastikan belum tercantum dalam database kami?"}
-            bg={"bg-[#0080FF]"}
-            cancel={"Batal"}
-            confirm={"Tambahkan Stasiun"}
-          />
-        )}
       </div>
+
+      {modal && (
+        <ModalConfirm
+          setModal={setModal}
+          handle={handleAdd}
+          title={"Ingin Menambahkan Data Stasiun?"}
+          desc={"Apakah stasiun tersebut dipastikan belum tercantum dalam database kami?"}
+          bg={"bg-[#0080FF]"}
+          cancel={"Batal"}
+          confirm={"Tambahkan Stasiun"}
+        />
+      )}
 
       {modalDetail.is_show && <ModalDetailStasiun data={modalDetail.data} setModalDetail={setModalDetail} />}
     </div>

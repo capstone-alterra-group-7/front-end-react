@@ -87,6 +87,9 @@ import iconTrendingUp from "./laporan-penjualan/trendingUp.svg";
 import iconTrendingDown from "./laporan-penjualan/trendingDown.svg";
 import iconBuildingBlue from "./laporan-penjualan/officeBuilding.svg";
 import iconTrainOrange from "./laporan-penjualan/trainOrange.svg";
+import iconFileExport from "./laporan-penjualan/fileExport.svg";
+import imageGraphPenjualan from "./laporan-penjualan/graphPenjualan.svg";
+import iconCalendar from "./laporan-penjualan/calendarMonth.svg";
 
 export default {
   iconNav,
@@ -167,4 +170,7 @@ export default {
   iconTrendingDown,
   iconBuildingBlue,
   iconTrainOrange,
+  iconFileExport,
+  imageGraphPenjualan,
+  iconCalendar,
 };
