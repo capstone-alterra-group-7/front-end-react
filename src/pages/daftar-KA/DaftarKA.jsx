@@ -59,9 +59,9 @@ const DaftarKA = () => {
           <TableDaftarKa key={ka.train_id} data={ka} index={index} />
         ))}
 
-        <div className="mb-[85px]"></div>
+        <div className="mb-[80px]"></div>
 
-        <div className="absolute bottom-0 flex items-center justify-between px-7 border-t-2  w-full py-4 bg-white ">
+        <div className="absolute bottom-0 flex items-center justify-between px-7 border-t-2 w-full py-4 bg-white ">
           <button
             disabled={changePage === 1 || isLoading}
             className="disabled:cursor-not-allowed border border-[#D2D7E0] bg-[#F9FAFB] text-[#262627] py-2 px-5 rounded-lg flex items-center gap-2 disabled:bg-[#FDFDFE] disabled:border-gray-200 disabled:text-gray-300"
