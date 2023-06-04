@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 // ** Import Component
-import BackButtonHotel from "../../../components/daftar-hotel/detail-hotel/BackButtonHotel";
 import HeaderTambahHotel from "../../../components/daftar-hotel/tambah-hotel/HeaderTambahHotel";
 import NavTambahHotel from "../../../components/daftar-hotel/tambah-hotel/NavTambahHotel";
 import InformasiTambahHotel from "../../../components/daftar-hotel/tambah-hotel/InformasiTambahHotel";
@@ -18,9 +17,6 @@ const TambahHotel = () => {
       <NavTambahHotel nav={nav} setNav={setNav} />
 
       {nav === "informasi" ? <InformasiTambahHotel /> : nav === "kebijakanHotel" ? <KebijakanKamar /> : <DaftarTambahKamar />}
-      {/* <div className="w-[1142px] min-h-full mt-[64px] mx-auto bg-white rounded-3xl shadow-[0_1px_10px_rgb(0,0,0,0.2)]">
-        <h1>Tambah Hotel</h1>
-      </div> */}
     </div>
   );
 };

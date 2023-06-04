@@ -7,7 +7,6 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import LaporanPenjualan from "../pages/laporan-penjualan/LaporanPenjualan";
 import DaftarPengguna from "../pages/daftar-pengguna/DaftarPengguna";
 import DaftarPromo from "../pages/daftar-promo/DaftarPromo";
-import DaftarCarousel from "../pages/daftar-carousel/DaftarCarousel";
 import DaftarBerita from "../pages/daftar-berita/DaftarBerita";
 import PesananKA from "../pages/pesanan-ka/PesananKA";
 import PesananHotel from "../pages/pesanan-hotel/PesananHotel";
@@ -26,6 +25,8 @@ import DetailPesananKa from "../pages/pesanan-ka/detail-pesananKa/DetailPesananK
 import TambahKamar from "../pages/daftar-hotel/tambah-hotel/TambahKamar";
 import TambahTawaran from "../pages/daftar-hotel/tambah-hotel/TambahTawaran";
 import DetailPesananHotel from "../pages/pesanan-hotel/detail-pesananHotel/DetailPesananHotel";
+import DaftarStasiun from "../pages/daftar-stasiun/DaftarStasiun";
+import TambahStasiun from "../pages/daftar-stasiun/tambah-stasiun/TambahStasiun";
 
 export const routeLogin = { path: "/", element: Auth };
 
@@ -53,7 +54,8 @@ export const routes = [
   { path: "/tambah-pengguna", element: TambahPengguna },
   { path: "/edit-pengguna", element: EditPengguna },
   { path: "/daftar-promo", element: DaftarPromo },
-  { path: "/daftar-carousel", element: DaftarCarousel },
+  { path: "/daftar-stasiun", element: DaftarStasiun },
+  { path: "/daftar-stasiun/tambah-stasiun", element: TambahStasiun },
   { path: "/daftar-berita", element: DaftarBerita },
   { path: "/detail-pesanan-hotel", element: DetailPesananHotel },
 
