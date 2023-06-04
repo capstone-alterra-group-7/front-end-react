@@ -20,7 +20,7 @@ const DaftarKA = () => {
   const [changePage, setChangePage] = useState(1);
 
   const { data: daftarKa, isLoading } = useSWR(
-    baseUrl(`/public/train?page=${changePage}`),
+    baseUrl(`/public/train?page=${changePage}&limit=20`),
     fetcher
   );
 
