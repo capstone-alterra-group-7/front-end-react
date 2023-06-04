@@ -53,19 +53,15 @@ export const routes = [
   { path: "/detail-pengguna", element: DetailPengguna },
   { path: "/tambah-pengguna", element: TambahPengguna },
   { path: "/edit-pengguna", element: EditPengguna },
-  { path: "/daftar-promo", element: DaftarPromo },
   { path: "/daftar-stasiun", element: DaftarStasiun },
   { path: "/daftar-stasiun/tambah-stasiun", element: TambahStasiun },
-  { path: "/daftar-berita", element: DaftarBerita },
   { path: "/detail-pesanan-hotel", element: DetailPesananHotel },
 
   // ** Transaksi
   { path: "/pesanan-ka", element: PesananKA },
   { path: "/detail-pesananKa", element: DetailPesananKa },
   { path: "/pesanan-hotel", element: PesananHotel },
-  { path: "/refund", element: Refund },
 
   // ** Laporan Penjualan
   { path: "/laporan-penjualan", element: LaporanPenjualan },
-  { path: "/auth", element: Auth },
 ];
