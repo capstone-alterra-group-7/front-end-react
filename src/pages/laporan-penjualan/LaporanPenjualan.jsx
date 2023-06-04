@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 // ** Import Component
 import Header from "../../components/laporan-penjualan/Header";
 import assets from "../../assets/assets";
+import TopStasiunSection from "../../components/laporan-penjualan/TopStasiunSection";
+import TopHotelSection from "../../components/laporan-penjualan/TopHotelSection";
 
 const LaporanPenjualan = () => {
+  const [month, setMonth] = useState("Jan 2023");
   return (
     <div className=" bg-white pt-3 space-y-6">
-      <Header />
+      <Header month={month} setMonth={setMonth} />
 
       <div className="bg-[#EBEDF1] p-8">
         <div className="grid grid-cols-3 gap-[18.5px]">
@@ -60,45 +63,15 @@ const LaporanPenjualan = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl p-4 h-[500px] mt-6">
-          <h1 className="font-bold text-xl">Statistik Penjualan Mei 2023</h1>
+        <div className="bg-white rounded-2xl p-6 h-[500px] mt-6">
+          <h1 className="font-bold text-xl mb-6">Statistik Penjualan {month}</h1>
+
+          <img src={assets.imageGraphPenjualan} alt="" className="h-96" />
         </div>
 
-        <div className="bg-white rounded-2xl p-4 mt-6">
-          <h1 className="font-bold text-xl">Top 10 Hotel Mei 2023</h1>
-        </div>
+        <TopHotelSection month={month} />
 
-        <div className="bg-white rounded-2xl p-4 mt-6">
-          <h1 className="font-bold text-xl mb-4">Top 10 Stasiun Mei 2023</h1>
-          <div className="rounded-xl  border border-[#D2D7E0]">
-            <table className="w-full text-left">
-              <thead>
-                <tr>
-                  <th scope="col" className="px-6 py-[20px]">
-                    No
-                  </th>
-                  <th scope="col" className="px-6 py-[20px]">
-                    Nama Stasiun
-                  </th>
-                  <th scope="col" className="px-6 py-[20px] text-center">
-                    Jumlah Pesanan
-                  </th>
-                  <th scope="col" className="px-6 py-[20px] text-center">
-                    Total Pendapatan
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-t border-[#D2D7E0]">
-                  <td className="px-6 py-[20px]">1.</td>
-                  <td className="px-6 py-[20px]">Gambir(GMBR)</td>
-                  <td className="px-6 py-[20px] text-center">1.500</td>
-                  <td className="px-6 py-[20px] text-center">Pendapatan</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <TopStasiunSection month={month} />
       </div>
     </div>
   );

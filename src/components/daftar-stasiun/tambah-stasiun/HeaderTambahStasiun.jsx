@@ -17,7 +17,7 @@ const HeaderTambahStasiun = ({ setModal, validate, validateBtnBack }) => {
   };
 
   return (
-    <div>
+    <div className="">
       <div className="space-y-6 bg-white pt-7 pb-4 px-8">
         <h1 className="text-[34px] font-[700] text-[#262627]">Tambah Stasiun</h1>
 
