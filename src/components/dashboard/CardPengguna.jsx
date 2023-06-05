@@ -7,7 +7,7 @@ const CardPengguna = () => {
 
     return (
         <div className="ps-[32px] pt-[32px] pb-[24px]">
-            <div className="rounded-[16px] bg-[#FFFFFF] px-[32px] flex border-2 border-[#E1E4EA] ">
+            <div className="rounded-[16px] bg-[#FFFFFF] px-[23px] flex border-2 border-[#E1E4EA] ">
                 <div className="flex justify-between">
                     <div className=" text-left ">
                         <div className="flex mt-[24px] ">

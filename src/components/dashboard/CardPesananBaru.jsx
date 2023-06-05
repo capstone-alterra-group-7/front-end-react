@@ -44,11 +44,11 @@ const CardPesananBaru = () => {
                                                     <h1 className="font-semibold mb-1">Putri Deli</h1>
                                                     <h1 className="text-sm">16 Apr 2023 07:21 WIB</h1>
                                                 </td>
-                                                <td className="px-6 py-[8px] text-center font-medium">
-                                                    <div className={`py-[6px] font-semibold px-6 rounded-[24px] ${idx % 2 == 0 ? "bg-[#FFF1E5] text-[#FF7300]" : "bg-[#E5F2FF] text-[#0080FF]"}`}>{idx % 2 == 0 ? "Hotel" : "Kereta"}</div>
+                                                <td className=" py-[8px]  font-medium">
+                                                    <div className={`py-[6px] text-center font-semibold px-6 rounded-[24px] ${idx % 2 == 0 ? "bg-[#FFF1E5] text-[#FF7300]" : "bg-[#E5F2FF] text-[#0080FF]"}`}>{idx % 2 == 0 ? "Hotel" : "Kereta"}</div>
                                                 </td>
                                                 <td className="px-2 py-[8px] text-center font-[500]">123456789</td>
-                                                <td className="px-3 py-[8px] rounded-br-xl text-center font-[500]">Rp 12.000.000</td>
+                                                <td className="px-1 py-[8px] rounded-br-xl text-center font-[500] 2xl:text-base text-sm">Rp 12.000.000</td>
                                             </tr>
                                         );
                                     })}
