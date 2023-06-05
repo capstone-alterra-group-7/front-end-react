@@ -15,7 +15,6 @@ import { addIdKa } from "../../../redux/daftar-ka/daftarKaSlices";
 // ** Import Other
 import { useLocation, useNavigate } from "react-router-dom";
 import { idGenerator } from "generate-custom-id";
-import { useSWRConfig } from "swr";
 import { baseUrl } from "../../../services/base";
 import axios from "axios";
 import useSWR from "swr";
@@ -54,6 +53,8 @@ const TambahKa = () => {
         (gerbong) => gerbong.train.train_id === dataEdit.train_id
       );
 
+  console.log(gerbongKa);
+
   const dataEditGerbong = findGerbong?.map((gerbong) => ({
     class: gerbong.train.class,
     name: gerbong.name,
@@ -73,8 +74,6 @@ const TambahKa = () => {
   const [nav, setNav] = useState("informasi");
   const [modal, setModal] = useState(false);
   const [modalGerbong, setModalGerbong] = useState(false);
-
-  const { mutate } = useSWRConfig();
 
   const handleOnChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -118,8 +117,6 @@ const TambahKa = () => {
 
         dispatch(addIdKa(train_id));
 
-        mutate("/admin/train");
-
         setNav("gerbong");
 
         setModal(false);
@@ -145,8 +142,6 @@ const TambahKa = () => {
       status: input.status,
     })
       .then(() => {
-        mutate("/admin/train");
-
         navigate("/daftar-ka");
 
         setNav("gerbong");
@@ -165,9 +160,7 @@ const TambahKa = () => {
     setLoading(true);
 
     fetcherTambahKa(baseUrl("/admin/train-carriage"), dataGerbong)
-      .then((res) => {
-        mutate("/admin/train-carriage");
-
+      .then(() => {
         setModal(false);
 
         setLoading(false);

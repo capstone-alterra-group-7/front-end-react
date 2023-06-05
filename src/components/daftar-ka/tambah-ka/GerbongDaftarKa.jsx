@@ -21,8 +21,6 @@ const GerbongDaftarKa = (props) => {
     price: gerbong.train.price,
   }));
 
-  console.log(manimpulateDataEdit);
-
   const findEkonomi = manimpulateDataEdit?.find(
     (gerbong) => gerbong.class === "Ekonomi"
   );
