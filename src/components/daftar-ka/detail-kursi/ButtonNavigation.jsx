@@ -2,22 +2,17 @@
 import assets from "../../../assets/assets";
 
 const ButtonNavigation = (props) => {
-  const { sebelumnya, selanjutnya, dummyData, dummyData2, setDummy } = props;
-
-  const handleSelanjutnya = () => {
-    setDummy({ title: "Gerbong 2", dummyData: dummyData2 });
-  };
-
-  const handleSebelumnya = () => {
-    setDummy({ title: "Gerbong 1", dummyData });
-  };
+  const { disable, setPage, sebelumnya, selanjutnya } = props;
 
   return (
     <button
-      onClick={
-        (sebelumnya && handleSebelumnya) || (selanjutnya && handleSelanjutnya)
+      disabled={disable}
+      onClick={() =>
+        sebelumnya ? setPage((prev) => prev - 1) : setPage((prev) => prev + 1)
       }
-      className={`flex items-center ${selanjutnya && "flex-row-reverse"} ${
+      className={`flex items-center disabled:cursor-not-allowed ${
+        selanjutnya && "flex-row-reverse"
+      } ${
         sebelumnya ? "ring-gray-200" : "ring-[#D2D7E0]"
       } gap-3 bg-[##F9FAFB] ring-1  py-2 rounded-xl px-6`}
     >

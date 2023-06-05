@@ -16,31 +16,29 @@ const Dashboard = () => {
   // ** Redux State
   const isLogin = useSelector((state) => state.tokenAuth.isLogin);
 
-  if (isLogin) {
-    return <SuccessLogin />;
-  }
-
   return (
-    <div className="relative">
-      <div className=" bg-white px-[32px] pt-[18px] pb-6 pr-8 py-[16px] flex justify-between">
-        <h1 className="text-[32px] font-bold ">Dashboard</h1>
+    <>
+      {isLogin && <SuccessLogin />}
+      <div className="relative">
+        <div className=" bg-white px-[32px] pt-[18px] pb-6 pr-8 py-[16px] flex justify-between">
+          <h1 className="text-[32px] font-bold ">Dashboard</h1>
+        </div>
+
+        <div className="grid grid-cols-4 gap-6">
+          <CardPengguna />
+          <CardHotel />
+          <CardKeretaApi />
+          <CardPesanan />
+        </div>
+
+        <div className="grid grid-cols-6">
+          <CardPesananBaru />
+
+          <CardPenggunaBaru />
+        </div>
       </div>
-
-      <div className="grid grid-cols-4 gap-6">
-        <CardPengguna />
-        <CardHotel />
-        <CardKeretaApi />
-        <CardPesanan />
-      </div>
-
-      <div className="grid grid-cols-6">
-        <CardPesananBaru />
-
-        <CardPenggunaBaru />
-      </div>
-    </div>
-  )
-}
-
+    </>
+  );
+};
 
 export default Dashboard;

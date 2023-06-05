@@ -12,7 +12,7 @@ const SuccessLogin = () => {
   };
 
   return (
-    <div className="absolute left-0 right-0 bottom-0 top-0 bg-slate-600/30 flex items-center ">
+    <div className="fixed z-20 left-0 right-0 bottom-0 top-0 bg-slate-600/30 flex items-center ">
       <div
         className={`relative bg-white ${
           isLogin ? "mt-0" : " mt-[80rem]"

@@ -68,7 +68,11 @@ const DetailKA = () => {
         <NavDetailka nav={nav} setNav={setNav} isEdit={true} />
       </div>
 
-      {nav === "informasi" ? <Informasi data={data} /> : <DetailKursi />}
+      {nav === "informasi" ? (
+        <Informasi data={data} />
+      ) : (
+        <DetailKursi data={data} />
+      )}
 
       {modal && (
         <ModalDaftarKa
