@@ -91,6 +91,11 @@ import iconFileExport from "./laporan-penjualan/fileExport.svg";
 import imageGraphPenjualan from "./laporan-penjualan/graphPenjualan.svg";
 import iconCalendar from "./laporan-penjualan/calendarMonth.svg";
 
+// ** Import For Dashboard
+import iconPengguna from "./dashboard/iconPengguna.svg";
+import iconKereta from "./dashboard/iconKereta.svg";
+import iconPesanan from "./dashboard/iconPesanan.svg";
+
 export default {
   iconNav,
   logoKai,
@@ -173,4 +178,8 @@ export default {
   iconFileExport,
   imageGraphPenjualan,
   iconCalendar,
+
+  iconPengguna,
+  iconKereta,
+  iconPesanan,
 };
