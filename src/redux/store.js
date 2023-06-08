@@ -15,7 +15,7 @@ export const store = configureStore({
     daftarPengguna: daftarPenggunaSlices,
     pesananKa: pesananKaSlices,
     tokenAuth: tokenSlices,
-    daftarPenggunaSlices: daftarPenggunaSlices,
-    daftarTiketSlices: daftarTiketSlices,
+    daftarPengguna: daftarPenggunaSlices,
+    daftarTiket: daftarTiketSlices,
   },
 });
