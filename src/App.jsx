@@ -31,7 +31,7 @@ const App = () => {
     <Routes>
       <Route path={routeLogin.path} element={<routeLogin.element />} />
 
-      <Route element={<PrivateRoute />}>
+      {/* <Route element={<PrivateRoute />}> */}
         <Route element={<LayoutDashboard />}>
           {routes.map((route) => (
             <Route
@@ -41,7 +41,7 @@ const App = () => {
             />
           ))}
         </Route>
-      </Route>
+      {/* </Route> */}
     </Routes>
   );
 };

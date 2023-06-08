@@ -39,16 +39,16 @@ const DataPengguna = ({ data,index }) => {
                     className="whitespace-nowrap px-6 py-4 flex items-center text-[15px]"
                     >
                                         
-                    <img src={assets.profile} alt="" />
+                    <img src={data.profile_picture_url} alt="photoprofile" className='max-w-[44px]' />
 
                     <div className="felx ms-3 ]">
-                        <p className="font-[600]">{data.nama}</p>
+                        <p className="font-[600]">{data.full_name}</p>
                         <p className="font-[400]">{data.email}</p>
                     </div>
 
                 </td>
-                <td className="whitespace-nowrap px-6 py-4">{data.noTelp}</td>
-                <td className="whitespace-nowrap px-6 py-4 text-center">{data.tanggalDaftar || currentDate}</td>
+                <td className="whitespace-nowrap px-6 py-4">{data.phone_number}</td>
+                <td className="whitespace-nowrap px-6 py-4 text-center">{data.created_at || currentDate}</td>
                 <td className="whitespace-nowrap px-6 py-4 text-center">{data.umurAkun || umur}</td>
                 <td className="whitespace-nowrap py-4 items-center">
                     <p className={` ${
