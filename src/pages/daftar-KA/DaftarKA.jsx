@@ -11,17 +11,21 @@ import TableDaftarKa from "../../components/daftar-ka/TableDaftarKa";
 import useSWR from "swr";
 import { baseUrl } from "../../services/base";
 import axios from "axios";
+import Pagination from "./Pagination";
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const DaftarKA = () => {
+  // ** Local State
+  const [modal, setModal] = useState(false);
+  const [changePage, setChangePage] = useState(1);
+
   const { data: daftarKa, isLoading } = useSWR(
-    baseUrl("/public/train"),
+    baseUrl(`/public/train?page=${changePage}&limit=20`),
     fetcher
   );
 
-  // ** Local State
-  const [modal, setModal] = useState(false);
+  const infoPaginate = daftarKa?.meta;
 
   const navigate = useNavigate("");
 
@@ -55,12 +59,20 @@ const DaftarKA = () => {
         {daftarKa?.data.map((ka, index) => (
           <TableDaftarKa key={ka.train_id} data={ka} index={index} />
         ))}
+
+        <Pagination
+          changePage={changePage}
+          setChangePage={setChangePage}
+          isLoading={isLoading}
+          entries={daftarKa?.data.length}
+          infoPaginate={infoPaginate}
+        />
       </div>
 
       {modal && (
         <ModalDaftarKa
-          title="Ingin Menambahkan Data KA?"
-          description=" This blog post has been published. Team members will be able to edit this post and republish changes."
+          title="Tambahkan Data Kereta Api?"
+          description="Anda akan menambahkan data kereta api baru. Apakah Anda yakin ingin melanjutkan?"
           bgButton="bg-[#0080FF]"
           titleButton="Iya, Tambahkan"
           setModal={setModal}

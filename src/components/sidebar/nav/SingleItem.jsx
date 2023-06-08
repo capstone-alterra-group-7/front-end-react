@@ -15,7 +15,7 @@ const SingleItem = ({ data }) => {
       <Link
         to={data.link}
         onClick={() => dispatch(addActive(data.link))}
-        className={`flex gap-3 px-4 ${
+        className={`flex gap-3 px-3 ${
           isActive === data.link
             ? "bg-[#F5F6F8] py-3 rounded-lg duration-500 "
             : "duration-500"

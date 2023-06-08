@@ -1,8 +1,19 @@
-import React from "react";
+// ** Import Components
 import CardAuth from "../../components/auth/CardAuth";
+
+// ** Import Assets
 import assets from "../../assets/assets";
 
+// ** Import Other
+import { Navigate } from "react-router-dom";
+
 const Auth = () => {
+  const token = sessionStorage.getItem("token");
+
+  if (token) {
+    return <Navigate to="/dashboard" />;
+  }
+
   const style = {
     backgroundImage: `url(${assets.backgroundLogin})`,
     backgroundRepeat: "no-repeat",

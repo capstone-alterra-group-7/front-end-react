@@ -12,7 +12,6 @@ import NavDetailka from "../../../components/daftar-ka/NavDetailka";
 // ** Import Other
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useSWRConfig } from "swr";
 import { baseUrl } from "../../../services/base";
 import Swal from "sweetalert2";
 
@@ -24,8 +23,6 @@ const DetailKA = () => {
   const [modal, setModal] = useState(false);
   const [modalEdit, setModalEdit] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const { mutate } = useSWRConfig();
 
   const {
     state: { data },
@@ -39,8 +36,6 @@ const DetailKA = () => {
     fetcher(baseUrl(`/admin/train/${data.train_id}`))
       .then((res) => {
         Swal.fire("Success", `${res.message}`, "success");
-
-        mutate("/admin/train");
 
         setLoading(false);
 
@@ -70,10 +65,14 @@ const DetailKA = () => {
           </div>
         </div>
 
-        <NavDetailka nav={nav} setNav={setNav} />
+        <NavDetailka nav={nav} setNav={setNav} isEdit={true} />
       </div>
 
-      {nav === "informasi" ? <Informasi data={data} /> : <DetailKursi />}
+      {nav === "informasi" ? (
+        <Informasi data={data} />
+      ) : (
+        <DetailKursi data={data} />
+      )}
 
       {modal && (
         <ModalDaftarKa

@@ -28,6 +28,7 @@ const FormTambahKa = (props) => {
             <h1 className="text-[20px] font-[600] text-[#262627]">
               Keaktifan Kereta Api
             </h1>
+
             <input
               defaultChecked={edit && dataEdit.status === "available"}
               onChange={(e) =>

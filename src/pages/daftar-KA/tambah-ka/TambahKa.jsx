@@ -15,15 +15,17 @@ import { addIdKa } from "../../../redux/daftar-ka/daftarKaSlices";
 // ** Import Other
 import { useLocation, useNavigate } from "react-router-dom";
 import { idGenerator } from "generate-custom-id";
-import { useSWRConfig } from "swr";
 import { baseUrl } from "../../../services/base";
 import axios from "axios";
+import useSWR from "swr";
 
 const fetcherTambahKa = (url, payload) =>
   axios.post(url, payload).then((res) => res.data);
 
 const fetcherEditKa = (url, payload) =>
   axios.put(url, payload).then((res) => res.data);
+
+const fetcherGerbongKa = (url) => axios.get(url).then((res) => res.data);
 
 const TambahKa = () => {
   const { state } = useLocation();
@@ -40,6 +42,26 @@ const TambahKa = () => {
     status: state?.status,
   };
 
+  const { data: gerbongKa, isLoading } = useSWR(
+    baseUrl("/public/train-carriage?limit=9999"),
+    fetcherGerbongKa
+  );
+
+  const findGerbong = isLoading
+    ? null
+    : gerbongKa.data.filter(
+        (gerbong) => gerbong.train.train_id === dataEdit.train_id
+      );
+
+  console.log(gerbongKa);
+
+  const dataEditGerbong = findGerbong?.map((gerbong) => ({
+    class: gerbong.train.class,
+    name: gerbong.name,
+    price: gerbong.train.price,
+    train_id: gerbong.train.train_id,
+  }));
+
   // ** Local State
   const [input, setInput] = useState({
     status: state ? dataEdit.status : "unavailable",
@@ -53,15 +75,19 @@ const TambahKa = () => {
   const [modal, setModal] = useState(false);
   const [modalGerbong, setModalGerbong] = useState(false);
 
-  const { mutate } = useSWRConfig();
-
   const handleOnChangeInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const validate = input.name === "" || input.rute.length === 0;
+  const findNoneJadwal = input.rute.filter((r) => r.arrive_time === "");
 
-  const validateGerbong = dataGerbong.length === 0;
+  const validate =
+    input.name === "" || input.rute.length === 0 || findNoneJadwal.length >= 1;
+
+  const findNoneNameGerbong = dataGerbong.filter((g) => g.name === "");
+
+  const validateGerbong =
+    dataGerbong?.length === 0 || findNoneNameGerbong.length >= 1;
 
   const navigate = useNavigate();
 
@@ -91,8 +117,6 @@ const TambahKa = () => {
 
         dispatch(addIdKa(train_id));
 
-        mutate("/admin/train");
-
         setNav("gerbong");
 
         setModal(false);
@@ -118,15 +142,13 @@ const TambahKa = () => {
       status: input.status,
     })
       .then(() => {
-        mutate("/admin/train");
+        navigate("/daftar-ka");
 
-        // setNav("gerbong");
+        setNav("gerbong");
 
         setModal(false);
 
         setLoading(false);
-
-        navigate("/daftar-ka");
       })
       .catch((err) => {
         setLoading(false);
@@ -138,11 +160,7 @@ const TambahKa = () => {
     setLoading(true);
 
     fetcherTambahKa(baseUrl("/admin/train-carriage"), dataGerbong)
-      .then((res) => {
-        console.log(res);
-
-        mutate("/admin/train-carriage");
-
+      .then(() => {
         setModal(false);
 
         setLoading(false);
@@ -158,14 +176,21 @@ const TambahKa = () => {
   return (
     <div className="absolute left-0 right-0 bg-[#F5F6F8] pb-20">
       <HeaderTambahKa
-        validate={nav === "informasi" ? validate : validateGerbong}
+        validate={
+          state === null
+            ? nav === "informasi"
+              ? validate
+              : validateGerbong
+            : validate
+        }
         setModal={setModal}
         setModalGerbong={setModalGerbong}
         nav={nav}
+        isEdit={state}
       />
 
       <div className="w-[1142px] min-h-full mt-[64px] mx-auto bg-white rounded-3xl shadow-[0_1px_10px_rgb(0,0,0,0.2)]">
-        <NavDetailka nav={nav} setNav={setNav} />
+        <NavDetailka nav={nav} setNav={setNav} isEdit={state} />
 
         {nav === "informasi" ? (
           <FormTambahKa
@@ -176,7 +201,13 @@ const TambahKa = () => {
             handleOnChangeInput={handleOnChangeInput}
           />
         ) : (
-          <GerbongDaftarKa datas={dataGerbong} setDatas={setDataGerbong} />
+          <GerbongDaftarKa
+            loading={isLoading}
+            edit={state}
+            dataEdit={state === null ? null : findGerbong}
+            datas={state === null ? dataGerbong : dataEditGerbong}
+            setDatas={setDataGerbong}
+          />
         )}
       </div>
 

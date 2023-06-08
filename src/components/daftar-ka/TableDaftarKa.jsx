@@ -13,7 +13,7 @@ const TableDaftarKa = ({ data, index }) => {
     <div
       onClick={handleNavigate}
       className={`flex items-center justify-between ${
-        index % 2 === 0 ? "bg-[#F5F6F8]" : "bg-[#EBEDF1]"
+        index % 2 === 0 ? "bg-[#F5F6F8]" : "bg-[#FFFFFF]"
       } py-5 px-10 cursor-pointer`}
     >
       <h1 className="font-[400] text-[#262627] w-[15rem]">{data.name}</h1>

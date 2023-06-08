@@ -8,7 +8,7 @@ const Bar = ({ setModal }) => {
         <input
           type="text"
           placeholder="Search"
-          className="border w-full border-[#D2D7E0] py-2 px-11  rounded-lg focus:outline-none text-[20px] placeholder:text-[#96989C] placeholder:font-[400]"
+          className="border w-full border-[#D2D7E0] py-2 px-11  rounded-lg focus:outline-blue-400 text-[20px] placeholder:text-[#96989C] placeholder:font-[400]"
         />
 
         <img
@@ -19,7 +19,7 @@ const Bar = ({ setModal }) => {
       </div>
 
       <div className="relative">
-        <select className="appearance-none  w-full px-4 py-[9.5px]  rounded-lg bg-[#F9FAFB] border border-[#D2D7E0] text-[#262627] font-[400] text-[18px] focus:outline-none">
+        <select className="appearance-none  w-full px-4 py-[9.5px]  rounded-lg bg-[#F9FAFB] border border-[#D2D7E0] text-[#262627] font-[400] text-[18px] focus:outline-blue">
           <option value="">Urutkan</option>
           <option value="2">2</option>
         </select>

@@ -6,52 +6,54 @@ import ButtonNavigation from "./ButtonNavigation";
 import KursiAvailable from "./KursiAvailable";
 import KursiInformation from "./KursiInformation";
 
-export const DetailKursi = () => {
-  const [dummy, setDummy] = useState({ title: "Gerbong 1", dummyData });
+// ** Import Other
+import axios from "axios";
+import useSWR from "swr";
+import { baseUrl } from "../../../services/base";
+import KelasEkonomi from "../tambah-ka/KelasEkonomi";
+import KelasBisnis from "../tambah-ka/KelasBisnis";
+import KelasEksekutif from "../tambah-ka/KelasEksekutif";
+
+const fetcher = (url) => axios.get(url).then((res) => res.data);
+
+export const DetailKursi = ({ data }) => {
+  const { data: detailGerbong, isLoading } = useSWR(
+    baseUrl("/public/train-carriage?limit=9999"),
+    fetcher
+  );
+
+  // ** Local State
+  const [page, setPage] = useState(0);
+
+  const findGerbong = detailGerbong?.data?.filter(
+    (gerbong) => gerbong.train.train_id === data.train_id
+  );
+
+  const pickGerbong = isLoading ? [] : findGerbong[page];
+
+  console.log(pickGerbong);
 
   return (
-    <div className="px-14 space-y-20">
+    <div className="px-14 space-y-20 pb-10">
       <div className="flex justify-between items-center">
-        <ButtonNavigation
-          sebelumnya
-          dummyData={dummyData}
-          dummyData2={dummyData2}
-          setDummy={setDummy}
-        />
+        <ButtonNavigation disable={page === 0} setPage={setPage} sebelumnya />
 
-        <h1 className="text-[#262627] text-[20px]">{dummy.title}</h1>
+        <h1 className="text-[#262627] text-[20px] font-[600]">
+          {isLoading ? "..." : pickGerbong?.name}
+        </h1>
 
         <ButtonNavigation
+          disable={page === findGerbong?.length - 1}
           selanjutnya
-          dummyData={dummyData}
-          dummyData2={dummyData2}
-          setDummy={setDummy}
+          setPage={setPage}
         />
       </div>
 
-      <div className="space-y-14 xl:px-5 2xl:px-14">
-        <div className="space-y-11">
-          <div className="space-y-4">
-            <KursiAvailable space datas={dummy.dummyData} title="E" />
-            <KursiAvailable space datas={dummy.dummyData} title="D" />
-          </div>
+      {isLoading ? <p className="text-center">Loading...</p> : null}
 
-          <div className="space-y-4">
-            <KursiAvailable datas={dummy.dummyData} no title="C" />
-            <KursiAvailable datas={dummy.dummyData} title="B" />
-            <KursiAvailable datas={dummy.dummyData} title="A" />
-          </div>
-        </div>
-
-        <div className="space-y-4 pb-12">
-          <h5 className="text-[12px] text-[#262627] font-[700]">Keterangan</h5>
-
-          <div className="flex items-center gap-7">
-            <KursiInformation title="Kosong" />
-            <KursiInformation title="Terisi" filled />
-          </div>
-        </div>
-      </div>
+      {pickGerbong?.train?.class === "Ekonomi" && <KelasEkonomi />}
+      {pickGerbong?.train?.class === "Bisnis" && <KelasBisnis />}
+      {pickGerbong?.train?.class === "Eksekutif" && <KelasEksekutif />}
     </div>
   );
 };
