@@ -1,8 +1,36 @@
-//** Import Layouts
-import LayoutAuth from "../../layouts/LayoutAuth";
+// ** Import Components
+import CardAuth from "../../components/auth/CardAuth";
+
+// ** Import Assets
+import assets from "../../assets/assets";
+
+// ** Import Other
+import { Navigate } from "react-router-dom";
 
 const Auth = () => {
-  return <h1>Auth</h1>;
+  const token = sessionStorage.getItem("token");
+
+  if (token) {
+    return <Navigate to="/dashboard" />;
+  }
+
+  const style = {
+    backgroundImage: `url(${assets.backgroundLogin})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    position: "absolute",
+    height: "100%",
+    width: "100%",
+  };
+  return (
+    <>
+      {/* Hero Section */}
+      <div className="h-screen">
+        <div style={style} className="brightness-50"></div>
+        <CardAuth />
+      </div>
+    </>
+  );
 };
 
 export default Auth;

@@ -13,17 +13,17 @@ const ManyItems = (props) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="space-y-5">
-      <h5 className="text-[#96989C] text-[14px] font-[500]">{title}</h5>
+    <div className="space-y-7">
+      <h5 className="text-[#262627] text-[16px] font-[500] px-3">{title}</h5>
 
       <div className="space-y-9">
         {datas.map((data, index) => (
           <Link
             to={data.link ?? "/"}
             key={index}
-            className={`flex gap-3 px-4 ${
+            className={`flex gap-3 px-3 ${
               isActive === data.link
-                ? "bg-[#F5F6F8] py-3 rounded-lg duration-500 "
+                ? "bg-[#E5F2FF] py-3 rounded-lg duration-500 "
                 : "duration-500"
             }`}
             onClick={() => dispatch(addActive(data.link))}
