@@ -9,7 +9,7 @@ export default function DetailPesananKa() {
    const { state: { data }, } = useLocation();
 
   return (
-    <div>
+    <div className='bg-[#F5F6F8] fixed overflow-y-auto left-0 right-0 h-full'>
       <BarDetailPesananKa/>
 
         <div className="text-[#262627]">

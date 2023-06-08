@@ -19,7 +19,7 @@ export default function TablePengguna() {
         Navigate('/detail-pengguna')
     }
   return (
-    <div className="flex flex-col bg-white">
+    <div className="m-[32px] rounded-3xl flex flex-col bg-white shadow-md">
         <div className="overflow-x-auto">
             <div className="inline-block min-w-full py-2">
                 <div className="overflow-hidden">

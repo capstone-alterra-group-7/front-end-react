@@ -10,6 +10,7 @@ export const dashboard = {
 export const databases = [
   { icon: assets.iconNav, name: "Stasiun", link: "/daftar-stasiun" },
   { icon: assets.iconNav, name: "Kereta Api", link: "/daftar-ka" },
+  { icon: assets.iconNav, name: "Tiket Kereta Api", link: "/daftar-tiket" },
   { icon: assets.iconNav, name: "Hotel", link: "/daftar-hotel" },
   { icon: assets.iconNav, name: "Pengguna", link: "/daftar-pengguna" },
 ];

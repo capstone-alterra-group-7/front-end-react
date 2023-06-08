@@ -5,6 +5,7 @@ import daftarHotelSlices from "./daftar-hotel/daftarHotelSlices";
 import daftarPenggunaSlices from "./daftar-pengguna/daftarPenggunaSlices";
 import pesananKaSlices from "./pesanan-ka/pesananKaSlices";
 import tokenSlices from "./auth/tokenSlices";
+import daftarTiketSlices from "./daftar-tiket/daftarTiketSlices";
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,7 @@ export const store = configureStore({
     daftarPengguna: daftarPenggunaSlices,
     pesananKa: pesananKaSlices,
     tokenAuth: tokenSlices,
+    daftarPenggunaSlices: daftarTiketSlices,
+    daftarTiketSlices: daftarTiketSlices,
   },
 });

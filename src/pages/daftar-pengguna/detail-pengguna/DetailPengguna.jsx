@@ -29,7 +29,7 @@ export default function DetailPengguna() {
   }
 
   return (
-    <div className="relative">
+    <div className=" fixed overflow-y-auto left-0 right-0 h-full">
         <div className="bg-white px-7 pt-3 pb-6 space-y-6">
 
           <h1 className="text-[32px] font-bold">Detail Pengguna</h1>

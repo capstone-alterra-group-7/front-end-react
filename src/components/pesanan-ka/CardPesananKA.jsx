@@ -18,7 +18,7 @@ export default function CardPesananKA({ data }) {
     })
   }
   return (
-    <div className='bg-white rounded-xl m-[32px]'>
+    <div className='bg-white rounded-xl m-[32px] shadow-md border border-[#D2D7E0]'>
       <div 
         className="grid grid-cols-4 p-[24px] cursor-pointer"
         onClick={handleClick}>
@@ -26,7 +26,7 @@ export default function CardPesananKA({ data }) {
 
             <img src={assets.logoKAI} alt="logoKAI" />
             <p className='font-[700] text-[16px] pt-4'>{data.train_name}</p>
-            <p className='font-[400]'>{data.class}</p>
+            <p className='font-[400] text-[14px]'>{data.class}</p>
             <p className='text-[#717275] text-[14px] pt-4'>{data.time}</p>
 
         </div>
@@ -36,7 +36,7 @@ export default function CardPesananKA({ data }) {
             <p className='text-[#0080FF] font-[600]'>{data.order_code}</p>
             <p className='text-[#262627] font-[700] mt-4'>{data.person_name}</p>
             <p className='text-[#717275] text-[14px] font-[400] mt-2'>{data.email}</p>
-            <p className='text-[#717275] text-[14px] font-[400]'>{data.phone}</p>
+            <p className='text-[#717275] text-[14px] font-[400] mt-2'>{data.phone}</p>
 
         </div>
 
@@ -69,15 +69,15 @@ export default function CardPesananKA({ data }) {
 
         <div className="flex flex-col justify-between ms-8">
 
-            <div className="items-center">
+            <div className="justify-end text-end">
 
-                <button className='px-[36px] py-[8px] bg-[#0080FF] rounded-2xl text-white font-[600]'>
+                <button className='px-[36px] py-[8px] bg-[#CCE5FF] rounded-2xl text-[#0066CC] border border-[#0066CC] font-[600] '>
                    {data.status}
                 </button>
 
             </div>
 
-            <div className="mt-4">
+            <div className="mt-[20px]">
     
                 <p className='text-[#262627] font-[400] '>Total Harga</p>
                 <p className='text-[32px] font-[700] text-[#0080FF]'>Rp {data.price}</p>
