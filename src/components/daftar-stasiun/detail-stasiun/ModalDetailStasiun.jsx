@@ -179,7 +179,7 @@ const ModalDetailStasiun = (props) => {
               <input
                 type="text"
                 disabled={isDelete}
-                className="px-3 py-[0.625rem] w-full rounded-lg cursor-not-allowed"
+                className="px-3 py-[0.625rem] w-full rounded-lg disable:cursor-not-allowed"
                 placeholder="Masukan Nama Stasiun"
                 value={input.origin}
                 onChange={(e) => {
