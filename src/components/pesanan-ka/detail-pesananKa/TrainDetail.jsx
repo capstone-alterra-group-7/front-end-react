@@ -17,11 +17,13 @@ export default function TrainDetail({ data }) {
 
         <div className="">
 
-            <button className='px-[36px] py-[8px] text-end bg-[#0080FF] rounded-2xl text-white font-[600]'>
-                {data.status}
-            </button>
+            <div className="justify-end text-end">
+                <button className='px-[36px] py-[8px] bg-[#CCE5FF] rounded-2xl text-[#0066CC] border border-[#0066CC] font-[600]'>
+                    {data.status}
+                </button>
+            </div>
 
-            <div className="flex pt-5">
+            <div className="flex pt-[56px]">
 
                 <div className="flex flex-col mr-4 pt-1">
                     <h1 className="mb-20 text-sm font-semibold">

@@ -33,27 +33,27 @@ const DataPengguna = ({ data,index }) => {
         <tr 
             onClick={handleClick}
             className={` ${
-                index % 2 === 0 ? "bg-[#F5F6F8]" : "bg-[#EBEDF1]"
+                index % 2 === 0 ? "bg-[#F9FAFB]" : "bg-[#FFFFFF]"
                 } px-[2rem] py-[1.125rem] cursor-pointer`}>
                 <td 
                     className="whitespace-nowrap px-6 py-4 flex items-center text-[15px]"
                     >
                                         
-                    <img src={assets.profile} alt="" />
+                    <img src={data.profile_picture_url} alt="photoprofile" className='max-w-[44px]' />
 
                     <div className="felx ms-3 ]">
-                        <p className="font-[600]">{data.nama}</p>
+                        <p className="font-[600]">{data.full_name}</p>
                         <p className="font-[400]">{data.email}</p>
                     </div>
 
                 </td>
-                <td className="whitespace-nowrap px-6 py-4">{data.noTelp}</td>
-                <td className="whitespace-nowrap px-6 py-4 text-center">{data.tanggalDaftar || currentDate}</td>
+                <td className="whitespace-nowrap px-6 py-4">{data.phone_number}</td>
+                <td className="whitespace-nowrap px-6 py-4 text-center">{data.created_at || currentDate}</td>
                 <td className="whitespace-nowrap px-6 py-4 text-center">{data.umurAkun || umur}</td>
                 <td className="whitespace-nowrap py-4 items-center">
                     <p className={` ${
-                        data.statusAkun === "Aktif" ? "bg-[#4CDB24]" : "bg-[#DB2D24]"
-                        } py-[7px] -mr-[6px] w-[180px] text-center rounded-xl text-white text-[15px] font-[600]`}>
+                        data.statusAkun === "Aktif" ? "bg-[#DBF8D3] border border-[#45C521] text-[#45C521]" : "bg-[#F8D5D3] border border-[#C52920] text-[#C52920]"
+                        } py-[7px] -mr-[6px] me-2 w-[160px] text-center rounded-xl text-[15px] font-[600]`}>
                         {data.statusAkun}
                     </p>
                 </td>

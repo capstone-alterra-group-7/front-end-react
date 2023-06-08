@@ -28,7 +28,7 @@ export default function BarPesananKA() {
       <div className="grid grid-cols-5 gap-3 px-[32px] py-[16px]">
 
         <div className="flex items-center">
-            <p className='text-[14px] me-2'>Dari</p>
+            <p className='text-[14px] me-2 text-[#262627] font-[600]'>Dari</p>
 
             <input 
                 type="date" 
@@ -38,7 +38,7 @@ export default function BarPesananKA() {
         </div>
 
         <div className="flex items-center ms-1">
-            <p className='text-[14px] me-2'>Hingga</p>
+            <p className='text-[14px] me-2 text-[#262627] font-[600]'>Hingga</p>
 
             <input 
                 type="date" 

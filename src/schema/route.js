@@ -27,6 +27,8 @@ import TambahTawaran from "../pages/daftar-hotel/tambah-hotel/TambahTawaran";
 import DetailPesananHotel from "../pages/pesanan-hotel/detail-pesananHotel/DetailPesananHotel";
 import DaftarStasiun from "../pages/daftar-stasiun/DaftarStasiun";
 import TambahStasiun from "../pages/daftar-stasiun/tambah-stasiun/TambahStasiun";
+import DaftarTiket from "../pages/daftar-tiket/DaftarTiket";
+import DetailTiket from "../pages/daftar-tiket/detail-tiket/DetailTiket";
 
 export const routeLogin = { path: "/", element: Auth };
 
@@ -56,6 +58,8 @@ export const routes = [
   { path: "/daftar-stasiun", element: DaftarStasiun },
   { path: "/daftar-stasiun/tambah-stasiun", element: TambahStasiun },
   { path: "/detail-pesanan-hotel", element: DetailPesananHotel },
+  { path: "/daftar-tiket", element: DaftarTiket },
+  { path: "/detail-tiket", element: DetailTiket },
 
   // ** Transaksi
   { path: "/pesanan-ka", element: PesananKA },

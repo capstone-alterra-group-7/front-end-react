@@ -96,6 +96,12 @@ import iconPengguna from "./dashboard/iconPengguna.svg";
 import iconKereta from "./dashboard/iconKereta.svg";
 import iconPesanan from "./dashboard/iconPesanan.svg";
 
+// ** Import Daftar Tiket
+import kursiKosong from './daftar-tiket/kursiKosong.svg'
+import kursi from './daftar-tiket/kursi.svg'
+import kursiTerisi from './daftar-tiket/kursiTerisi.svg'
+import calender from './daftar-tiket/calender.svg'
+
 export default {
   iconNav,
   logoKai,
@@ -182,4 +188,9 @@ export default {
   iconPengguna,
   iconKereta,
   iconPesanan,
+
+  kursiKosong,
+  kursi,
+  kursiTerisi,
+  calender,
 };

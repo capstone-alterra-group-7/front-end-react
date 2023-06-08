@@ -1,25 +1,32 @@
 // ** Import Others
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { baseUrl } from "../../services/base";
+import useSWR from "swr"
 
 // ** Import Assets
 import assets from "../../assets/assets";
 
 // ** Import Components
 import Pagination from "./Pagination";
-import { useSelector } from "react-redux";
 import DataPengguna from "./DataPengguna";
+
+const fetcher = (url) => axios.get(url).then((res) => res.data)
 
 export default function TablePengguna() {
 
-    const daftarPengguna = useSelector((state) => state.daftarPengguna)
-
+    const { data: daftarPengguna, isLoading } = useSWR(
+        baseUrl(`/admin/user`),
+        fetcher
+      )
+    
     const Navigate = useNavigate()
 
     const handleClick = () => {
         Navigate('/detail-pengguna')
     }
   return (
-    <div className="flex flex-col bg-white">
+    <div className="my-7 mx-3 rounded-3xl flex flex-col bg-white shadow-md">
         <div className="overflow-x-auto">
             <div className="inline-block min-w-full py-2">
                 <div className="overflow-hidden">
@@ -52,8 +59,9 @@ export default function TablePengguna() {
                             </tr>
 
                         </thead>
+                            {isLoading && <p className="text-center mt-6">loading....</p> }
 
-                            {daftarPengguna.map((pengguna, index) => (
+                            {daftarPengguna?.data.map((pengguna, index) => (
                                 <DataPengguna data={pengguna} index={index} />
                             ))}
                         

@@ -10,9 +10,15 @@ import { useNavigate, useLocation } from "react-router-dom";
 // ** Import Redux
 import { useDispatch } from "react-redux";
 import { hapusPengguna } from "../../../redux/daftar-pengguna/daftarPenggunaSlices";
+import axios from "axios";
+import { baseUrl } from "../../../services/base";
+import Swal from "sweetalert2";
+
+const fetcher = (url) => axios.delete(url).then((res) => res.data)
 
 export default function DetailPengguna() {
   const [modal, setModal]= useState(false)
+  const [loading, setLoading] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -22,14 +28,27 @@ export default function DetailPengguna() {
     state: { data },
   } = useLocation();
 
-  const handleDelete = () => {
-    dispatch(hapusPengguna(data.id))
+  const handleDelete = async () => {
+    setLoading(true)
 
-    Navigate("/daftar-pengguna")
+    fetcher(baseUrl(`/user/delete-photo-profile/${data.id}`))
+      .then((res) => {
+        Swal.fire("Success", `${res.message}`, "success")
+
+        setLoading(false)
+
+        Navigate("/daftar-pengguna")
+      })
+      .catch((err) => {
+        setLoading(false)
+
+        console.log(err);
+      })
+
   }
 
   return (
-    <div className="relative">
+    <div className=" fixed overflow-y-auto left-0 right-0 h-full">
         <div className="bg-white px-7 pt-3 pb-6 space-y-6">
 
           <h1 className="text-[32px] font-bold">Detail Pengguna</h1>

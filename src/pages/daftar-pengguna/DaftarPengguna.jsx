@@ -10,8 +10,10 @@ import TablePengguna from "../../components/daftar-pengguna/TablePengguna";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const DaftarPengguna = () => {
   const [modal, setModal] = useState(false);
+
 
   const navigate = useNavigate();
 
