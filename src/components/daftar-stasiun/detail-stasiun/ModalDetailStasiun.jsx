@@ -12,6 +12,7 @@ import ModalConfirm from "../ModalConfirm.jsx";
 import axios from "axios";
 import { baseUrl } from "../../../services/base";
 import Swal from "sweetalert2";
+import { customAlert } from "../../../helpers/customAlert";
 
 const fetcherDelete = (url) => axios.delete(url).then((res) => res.data);
 
@@ -21,6 +22,8 @@ const fetcherEdit = (url, payload) =>
 const ModalDetailStasiun = (props) => {
   const { data, setModalDetail, mutate } = props;
 
+  console.log(data);
+
   const [input, setInput] = useState(data);
 
   const [modalDelete, setModalDelete] = useState(false);
@@ -28,30 +31,24 @@ const ModalDetailStasiun = (props) => {
   const [modalBack, setModalBack] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [clicked, setClicked] = useState({ stasiun_aktif: data.is_active });
-  const description = {
-    aktif: "Stasiun Masih Aktif",
-    nonAktif: "Stasiun Tidak Aktif",
-  };
-
   // validate between two object is equal
   const validateEdit = JSON.stringify(data) === JSON.stringify(input);
 
-  useEffect(() => {
-    setInput((prev) => {
-      return { ...prev, is_active: clicked.stasiun_aktif };
-    });
-  }, [clicked]);
+  const isDelete = data.deleted_at !== "";
 
   // DELETE DATA
   const handleDelete = () => {
     setLoading(true);
 
     fetcherDelete(baseUrl(`/admin/station/${input.station_id}`))
-      .then(() => {
+      .then((res) => {
         mutate("/public/station");
 
-        Swal.fire("Success", "Stasiun Telah Terhapus", "success");
+        customAlert(
+          "https://gcdnb.pbrd.co/images/UsggKXgrW4ny.png?o=1",
+          "Data Dihapus",
+          `Data stasiun ${input.name} telah berhasil dihapus dari sistem.`
+        );
 
         setLoading(false);
 
@@ -71,10 +68,18 @@ const ModalDetailStasiun = (props) => {
       name: input.name,
       origin: input.origin,
     })
-      .then(() => {
+      .then((res) => {
+        const {
+          data: { name },
+        } = res;
+
         mutate("/public/station");
 
-        Swal.fire("Success", "Stasiun Telah Tersimpan", "success");
+        customAlert(
+          "https://gcdnb.pbrd.co/images/k8Jd9tS7Ufog.png?o=1",
+          "Perubahan Tersimpan",
+          `Perubahan pada data stasiun ${name} telah berhasil disimpan.`
+        );
 
         setLoading(false);
 
@@ -100,34 +105,47 @@ const ModalDetailStasiun = (props) => {
             </h5>
           </button>
 
-          <div className="flex gap-4">
-            <button
-              className="text-[18px] font-[500] text-[#FFFFFF] py-[10px] px-6 border border-[#D2D7E0] rounded-lg bg-[#DB2D24] flex items-center gap-2"
-              onClick={() => setModalDelete(true)}
-            >
-              <h1 className="font-[500]">Hapus Stasiun</h1>
-              <img src={assets.iconDelete} alt="" />
-            </button>
-            <button
-              disabled={validateEdit}
-              onClick={() => setModalEdit(true)}
-              className="px-8 py-[13.5px] font-bold text-white disabled:bg-[#B3D9FF] bg-[#0080FF] flex gap-3 items-center rounded-lg disabled:cursor-not-allowed"
-            >
-              <h1 className="mt-[1.2px]">Simpan Perubahan</h1>
-              <img src={assets.iconSaveHotel} alt="button" />
-            </button>
+          {data.deleted_at === "" && (
+            <div className="flex gap-4">
+              <button
+                className="text-[18px] font-[500] text-[#FFFFFF] py-[10px] px-6 border border-[#D2D7E0] rounded-lg bg-[#DB2D24] flex items-center gap-2"
+                onClick={() => setModalDelete(true)}
+              >
+                <h1 className="font-[500]">Hapus Stasiun</h1>
+                <img src={assets.iconDelete} alt="" />
+              </button>
+              <button
+                disabled={validateEdit}
+                onClick={() => setModalEdit(true)}
+                className="px-8 py-[13.5px] font-bold text-white disabled:bg-[#B3D9FF] bg-[#0080FF] flex gap-3 items-center rounded-lg disabled:cursor-not-allowed"
+              >
+                <h1 className="mt-[1.2px]">Simpan Perubahan</h1>
+                <img src={assets.iconSaveHotel} alt="button" />
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div className="mb-5 w-full">
+          <label htmlFor="kodeStasiun" className="text-sm font-bold">
+            Nama Stasiun
+          </label>
+          <div className={`flex mt-2 h-11  rounded-lg border border-[#D2D7E0]`}>
+            <input
+              type="text"
+              disabled={isDelete}
+              className="px-3 py-[0.625rem] w-full rounded-lg disabled:cursor-not-allowed"
+              placeholder="Masukan Kode Stasiun"
+              value={input.name}
+              onChange={(e) => {
+                setInput((prev) => {
+                  return { ...prev, name: e.target.value };
+                });
+              }}
+            />
           </div>
         </div>
 
-        <Policy
-          clicked={clicked}
-          setClicked={setClicked}
-          title={"Keaktifan Stasiun"}
-          name={"stasiun_aktif"}
-          desc={
-            clicked.stasiun_aktif ? description.aktif : description.nonAktif
-          }
-        />
         <div className="mt-8 flex gap-6">
           <div className="mb-12 w-1/3">
             <label htmlFor="kodeStasiun" className="text-sm font-bold">
@@ -138,7 +156,8 @@ const ModalDetailStasiun = (props) => {
             >
               <input
                 type="text"
-                className="px-3 py-[0.625rem] w-full rounded-lg"
+                disabled={isDelete}
+                className="px-3 py-[0.625rem] w-full rounded-lg disabled:cursor-not-allowed"
                 placeholder="Masukan Kode Stasiun"
                 value={input.initial}
                 onChange={(e) => {
@@ -152,19 +171,20 @@ const ModalDetailStasiun = (props) => {
 
           <div className="mb-12 w-2/3">
             <label htmlFor="kodeStasiun" className="text-sm font-bold">
-              Nama Stasiun
+              Domisili
             </label>
             <div
               className={`flex mt-2 h-11  rounded-lg border border-[#D2D7E0]`}
             >
               <input
                 type="text"
-                className="px-3 py-[0.625rem] w-full rounded-lg"
+                disabled={isDelete}
+                className="px-3 py-[0.625rem] w-full rounded-lg cursor-not-allowed"
                 placeholder="Masukan Nama Stasiun"
-                value={input.name}
+                value={input.origin}
                 onChange={(e) => {
                   setInput((prev) => {
-                    return { ...prev, name: e.target.value };
+                    return { ...prev, origin: e.target.value };
                   });
                 }}
               />

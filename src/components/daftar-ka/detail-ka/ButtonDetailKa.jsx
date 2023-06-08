@@ -8,7 +8,7 @@ const ButtonDetailKa = ({ setModal, setModalEdit }) => {
         onClick={() => setModalEdit(true)}
         className=" px-9 py-[9.5px] font-[500] text-[#4B4C4E] border border-[#D2D7E0] bg-[#F9FAFB] flex items-center rounded-lg"
       >
-        <span className="me-2 text-[18px]">Edit</span>
+        <span className="me-2 text-[18px]">Ubah KA</span>
         <img src={assets.iconEditDaftarKa} alt="edit" />
       </button>
 

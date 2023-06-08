@@ -8,10 +8,6 @@ const HeaderTambahStasiun = ({ setModal, validate, validateBtnBack }) => {
   const [modalBack, setModalBack] = useState(false);
   const navigate = useNavigate();
 
-  const handleBack = () => {
-    validateBtnBack ? navigate("/daftar-stasiun") : setModalBack(true);
-  };
-
   const handleBackModal = () => {
     navigate("/daftar-stasiun");
   };
@@ -19,10 +15,15 @@ const HeaderTambahStasiun = ({ setModal, validate, validateBtnBack }) => {
   return (
     <div className="">
       <div className="space-y-6 bg-white pt-7 pb-4 px-8">
-        <h1 className="text-[34px] font-[700] text-[#262627]">Tambah Stasiun</h1>
+        <h1 className="text-[34px] font-[700] text-[#262627]">
+          Tambah Stasiun
+        </h1>
 
         <div className="flex items-center justify-between">
-          <button onClick={handleBack} className="flex items-center gap-2 ml-2">
+          <button
+            onClick={() => setModalBack(true)}
+            className="flex items-center gap-2 ml-2"
+          >
             <img src={assets.iconKembaliDaftarKa} alt="back" />
 
             <h5 className="text-[#0080FF] text-[16px] mt-[1px]">Kembali</h5>
@@ -43,7 +44,7 @@ const HeaderTambahStasiun = ({ setModal, validate, validateBtnBack }) => {
         <ModalConfirm
           setModal={setModalBack}
           handle={handleBackModal}
-          title="Kembali Ke Daftar Stasiun?"
+          title="Batal Menambahkan Data Stasiun"
           desc="Anda akan membatalkan penambahan data stasiun. Apakah Anda yakin ingin melanjutkan?"
           bg="bg-[#DB2D24]"
           cancel="Tutup"

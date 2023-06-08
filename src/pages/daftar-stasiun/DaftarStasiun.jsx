@@ -12,6 +12,7 @@ import Pagination from "../daftar-KA/Pagination";
 import useSWR from "swr";
 import { baseUrl } from "../../services/base";
 import axios from "axios";
+import ModalFilter from "../daftar-KA/ModalFilter";
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
@@ -20,14 +21,23 @@ const DaftarStasiun = () => {
   const [modal, setModal] = useState(false);
   const [modalDetail, setModalDetail] = useState({ is_show: false, data: {} });
   const [changePage, setChangePage] = useState(1);
+  const [searchVal, setSearchVal] = useState("");
+  const [urutkan, setUrutkan] = useState("");
 
   const {
     data: dataStations,
     isLoading,
     mutate,
-  } = useSWR(baseUrl(`/public/station?page=${changePage}&limit=20`), fetcher);
+  } = useSWR(
+    baseUrl(
+      `/admin/station?page=${changePage}&limit=20&search=${searchVal}&sort_by=${urutkan}`
+    ),
+    fetcher
+  );
 
   const infoPaginate = dataStations?.meta;
+
+  console.log(dataStations?.data);
 
   const navigate = useNavigate("");
 
@@ -36,62 +46,72 @@ const DaftarStasiun = () => {
   };
 
   return (
-    <div className="relative h-full bg-white">
+    <div className="relative h-ful">
       <div className="bg-white pl-3 pr-7 pt-3 pb-6 space-y-6">
         <h1 className="text-[34px] font-bold">Daftar Stasiun</h1>
 
-        <Header setModal={setModal} />
+        <Header
+          setSearchVal={setSearchVal}
+          setModal={setModal}
+          urutkan={urutkan}
+          setUrutkan={setUrutkan}
+        />
       </div>
 
-      <div className="left-0">
-        <table className="w-full  text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-[16px] font-[600] text-[#262627] border-b pb-5 px-5 mb-1">
-            <tr>
-              <th scope="col" className="px-5 py-3">
-                Nama Stasiun
-              </th>
-              <th scope="col" className="px-6 py-3 text-center">
-                Kode Stasiun
-              </th>
-              <th scope="col" className="px-6 py-3 text-center">
-                Nomor Stasiun
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {dataStations?.data?.map((data, i) => {
-              return (
-                <RowDaftarStasiun
-                  data={data}
-                  index={i}
-                  setModalDetail={setModalDetail}
-                  key={i}
-                />
-              );
-            })}
-          </tbody>
-        </table>
+      <div className="px-8 py-9">
+        <div className="bg-white rounded-t-3xl shadow-[0_1px_3px_rgb(0,0,0,0.2)]">
+          <table className="w-full text-left">
+            <thead className="text-[16px]  font-[600] text-[#262627] border-b-2 ">
+              <tr>
+                <th scope="col" className="px-11 py-7">
+                  Nama Stasiun
+                </th>
+                <th scope="col" className="px-6 py-3 text-center">
+                  Nomor Stasiun
+                </th>
+                <th scope="col" className="px-6 py-3 text-center">
+                  Domisili
+                </th>
+                <th scope="col" className="px-6 py-3 text-center">
+                  Kode Stasiun
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {dataStations?.data?.map((data, i) => {
+                return (
+                  <RowDaftarStasiun
+                    data={data}
+                    index={i}
+                    setModalDetail={setModalDetail}
+                    key={i}
+                  />
+                );
+              })}
+            </tbody>
+          </table>
 
-        <Pagination
-          changePage={changePage}
-          setChangePage={setChangePage}
-          isLoading={isLoading}
-          entries={dataStations?.data?.length}
-          infoPaginate={infoPaginate}
-        />
+          <Pagination
+            changePage={changePage}
+            setChangePage={setChangePage}
+            isLoading={isLoading}
+            entries={dataStations?.data?.length}
+            infoPaginate={infoPaginate}
+          />
+        </div>
       </div>
 
       {modal && (
         <ModalConfirm
           setModal={setModal}
           handle={handleAdd}
-          title={"Ingin Menambahkan Data Stasiun?"}
+          title={"Tambahkan Data Stasiun"}
           desc={
-            "Apakah stasiun tersebut dipastikan belum tercantum dalam database kami?"
+            "Anda akan menambahkan data stasiun baru. Apakah Anda yakin ingin melanjutkan?"
           }
           bg={"bg-[#0080FF]"}
           cancel={"Batal"}
-          confirm={"Tambahkan Stasiun"}
+          confirm={"Tambahkan"}
         />
       )}
 

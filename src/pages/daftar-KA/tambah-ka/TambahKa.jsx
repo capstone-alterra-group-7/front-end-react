@@ -7,6 +7,7 @@ import ModalDaftarKa from "../../../components/daftar-ka/ModalDaftarKa";
 import NavDetailka from "../../../components/daftar-ka/NavDetailka";
 import FormTambahKa from "../../../components/daftar-ka/tambah-ka/FormTambahKa";
 import GerbongDaftarKa from "../../../components/daftar-ka/tambah-ka/GerbongDaftarKa";
+import ModalConfirm from "../../../components/daftar-stasiun/ModalConfirm";
 
 // ** Import Redux
 import { useDispatch } from "react-redux";
@@ -18,6 +19,7 @@ import { idGenerator } from "generate-custom-id";
 import { baseUrl } from "../../../services/base";
 import axios from "axios";
 import useSWR from "swr";
+import { customAlert } from "../../../helpers/customAlert";
 
 const fetcherTambahKa = (url, payload) =>
   axios.post(url, payload).then((res) => res.data);
@@ -49,11 +51,9 @@ const TambahKa = () => {
 
   const findGerbong = isLoading
     ? null
-    : gerbongKa.data.filter(
+    : gerbongKa?.data?.filter(
         (gerbong) => gerbong.train.train_id === dataEdit.train_id
       );
-
-  console.log(gerbongKa);
 
   const dataEditGerbong = findGerbong?.map((gerbong) => ({
     class: gerbong.train.class,
@@ -141,8 +141,18 @@ const TambahKa = () => {
       })),
       status: input.status,
     })
-      .then(() => {
+      .then((res) => {
+        const {
+          data: { name },
+        } = res;
+
         navigate("/daftar-ka");
+
+        customAlert(
+          "https://gcdnb.pbrd.co/images/k8Jd9tS7Ufog.png?o=1",
+          "Perubahan Tersimpan",
+          `Perubahan pada data kereta api ${name} telah berhasil disimpan.`
+        );
 
         setNav("gerbong");
 
@@ -162,6 +172,12 @@ const TambahKa = () => {
     fetcherTambahKa(baseUrl("/admin/train-carriage"), dataGerbong)
       .then(() => {
         setModal(false);
+
+        customAlert(
+          "https://gcdnb.pbrd.co/images/2R7PmnlXkvSE.png?o=1",
+          "Data Ditambahkan",
+          `Data kereta api ${input.name} telah berhasil ditambahkan ke dalam sistem.`
+        );
 
         setLoading(false);
 
@@ -189,10 +205,14 @@ const TambahKa = () => {
         isEdit={state}
       />
 
-      <div className="w-[1142px] min-h-full mt-[64px] mx-auto bg-white rounded-3xl shadow-[0_1px_10px_rgb(0,0,0,0.2)]">
-        <NavDetailka nav={nav} setNav={setNav} isEdit={state} />
+      {nav === "informasi" ? (
+        <div
+          className={
+            "w-[1142px] min-h-full mt-[64px] mx-auto bg-white rounded-3xl border-2"
+          }
+        >
+          <NavDetailka nav={nav} setNav={setNav} isEdit={state} />
 
-        {nav === "informasi" ? (
           <FormTambahKa
             input={input}
             edit={state}
@@ -200,40 +220,65 @@ const TambahKa = () => {
             setInput={setInput}
             handleOnChangeInput={handleOnChangeInput}
           />
-        ) : (
+        </div>
+      ) : (
+        <div
+          className={
+            "w-[1142px] min-h-full mt-[64px] mx-auto  rounded-3xl shadow-"
+          }
+        >
           <GerbongDaftarKa
             loading={isLoading}
+            nav={nav}
+            setNav={setNav}
             edit={state}
             dataEdit={state === null ? null : findGerbong}
             datas={state === null ? dataGerbong : dataEditGerbong}
             setDatas={setDataGerbong}
           />
-        )}
-      </div>
-
-      {modal && (
-        <ModalDaftarKa
-          title="Ingin Menyimpan?"
-          description=" This blog post has been published. Team members will be able to edit this post and republish changes."
-          bgButton="bg-[#0080FF]"
-          titleButton="Iya, Simpan"
-          setModal={setModal}
-          handle={
-            state === null ? handleTambahInformasiKa : handleEditInformasiKa
-          }
-          loading={loading}
-        />
+        </div>
       )}
 
+      {state === null
+        ? modal && (
+            <ModalConfirm
+              setModal={setModal}
+              handle={
+                state === null ? handleTambahInformasiKa : handleEditInformasiKa
+              }
+              loading={loading}
+              title="Lanjutkan Mengisi Data Gerbong?"
+              desc="Anda akan menyimpan data saat ini untuk melanjutkan mengisi data gerbong. Apakah Anda yakin ingin melanjutkan?"
+              bg="bg-[#0080FF]"
+              cancel="Batal"
+              confirm="Simpan Perubahan"
+            />
+          )
+        : modal && (
+            <ModalConfirm
+              setModal={setModal}
+              handle={handleEditInformasiKa}
+              loading={loading}
+              title="Simpan Perubahan Data Kereta Api"
+              desc="Anda akan menyimpan perubahan pada data kereta api. Apakah Anda yakin ingin melanjutkan?"
+              bg="bg-[#0080FF]"
+              cancel="Batal"
+              confirm="Simpan Perubahan"
+            />
+          )}
+
       {modalGerbong && (
-        <ModalDaftarKa
-          title="Ingin Menyimpan?"
-          description=" This blog post has been published. Team members will be able to edit this post and republish changes."
-          bgButton="bg-[#0080FF]"
-          titleButton="Iya, Simpan"
+        <ModalConfirm
           setModal={setModalGerbong}
           handle={handleTambahGerbong}
           loading={loading}
+          title={"Simpan Data Kereta Api"}
+          desc={
+            "Anda akan menyimpan data kereta api baru. Apakah Anda yakin ingin melanjutkan?"
+          }
+          bg={"bg-[#0080FF]"}
+          cancel={"Batal"}
+          confirm={"Simpan"}
         />
       )}
     </div>

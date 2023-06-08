@@ -13,7 +13,8 @@ import NavDetailka from "../../../components/daftar-ka/NavDetailka";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { baseUrl } from "../../../services/base";
-import Swal from "sweetalert2";
+import { customAlert } from "../../../helpers/customAlert";
+import ModalConfirm from "../../../components/daftar-stasiun/ModalConfirm";
 
 const fetcher = (url) => axios.delete(url).then((res) => res.data);
 
@@ -34,8 +35,12 @@ const DetailKA = () => {
     setLoading(true);
 
     fetcher(baseUrl(`/admin/train/${data.train_id}`))
-      .then((res) => {
-        Swal.fire("Success", `${res.message}`, "success");
+      .then(() => {
+        customAlert(
+          "https://gcdnb.pbrd.co/images/UsggKXgrW4ny.png?o=1",
+          "Data Dihapus",
+          `Data kereta api ${data.name} telah berhasil dihapus dari sistem.`
+        );
 
         setLoading(false);
 
@@ -61,7 +66,9 @@ const DetailKA = () => {
           <div className="pt-7 flex justify-between items-center">
             <BackDetailKa />
 
-            <ButtonDetailKa setModal={setModal} setModalEdit={setModalEdit} />
+            {data.deleted_at === "" && (
+              <ButtonDetailKa setModal={setModal} setModalEdit={setModalEdit} />
+            )}
           </div>
         </div>
 
@@ -75,26 +82,31 @@ const DetailKA = () => {
       )}
 
       {modal && (
-        <ModalDaftarKa
-          title="Ingin Menghapus Data KA?"
-          description=" This blog post has been published. Team members will be able to edit this post and republish changes."
-          bgButton="bg-[#DB2D24]"
-          titleButton="Iya, Hapus"
+        <ModalConfirm
           setModal={setModal}
           loading={loading}
           handle={handleDeleteKa}
+          title={"Menghapus Data Kereta Api"}
+          desc={
+            "Anda akan menghapus data kereta api ini. Apakah Anda yakin ingin melanjutkan? Tindakan ini tidak dapat diurungkan."
+          }
+          bg={"bg-[#DB2D24]"}
+          cancel={"Batal"}
+          confirm={"Hapus"}
         />
       )}
 
       {modalEdit && (
-        <ModalDaftarKa
-          title="Ingin Mengedit Data KA?"
-          description=" This blog post has been published. Team members will be able to edit this post and republish changes."
-          bgButton="bg-[#0080FF]"
-          titleButton="Iya, Edit"
+        <ModalConfirm
           setModal={setModalEdit}
-          loading={loading}
           handle={handleEditKa}
+          title={"Ubah Data Kereta Api"}
+          desc={
+            "Anda akan mengubah data kereta api ini. Apakah Anda yakin ingin melanjutkan?"
+          }
+          bg={"bg-[#0080FF]"}
+          cancel={"Batal"}
+          confirm={"Ubah"}
         />
       )}
     </div>

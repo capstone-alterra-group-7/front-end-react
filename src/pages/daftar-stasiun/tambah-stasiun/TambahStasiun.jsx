@@ -11,6 +11,7 @@ import axios from "axios";
 import { baseUrl } from "../../../services/base";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { customAlert } from "../../../helpers/customAlert";
 
 const fetcher = (url, payload) =>
   axios.post(url, payload).then((res) => res.data);
@@ -19,23 +20,12 @@ const TambahStasiun = () => {
   const navigate = useNavigate();
 
   // ** Local State
-  const [clicked, setClicked] = useState({ stasiun_aktif: false });
-  const description = {
-    aktif: "Stasiun Masih Aktif",
-    nonAktif: "Stasiun Tidak Aktif",
-  };
   const [input, setInput] = useState({
-    is_active: clicked.stasiun_aktif,
     initial: "",
     name: "",
+    region: "",
   });
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setInput((prev) => {
-      return { ...prev, is_active: clicked.stasiun_aktif };
-    });
-  }, [clicked]);
 
   const handleTambahStasiun = () => {
     setLoading(true);
@@ -43,10 +33,18 @@ const TambahStasiun = () => {
     fetcher(baseUrl("/admin/station"), {
       name: input.name,
       initial: input.initial,
-      origin: "xxx",
+      origin: input.region,
     })
-      .then(() => {
-        Swal.fire("Success", "Stasiun Telah Ditambahkan", "success");
+      .then((res) => {
+        const {
+          data: { name },
+        } = res;
+
+        customAlert(
+          "https://gcdnb.pbrd.co/images/2R7PmnlXkvSE.png?o=1",
+          "Data Ditambahkan",
+          `Data stasiun ${name} berhasil ditambahkan ke dalam sistem.`
+        );
 
         setLoading(false);
 
@@ -55,30 +53,37 @@ const TambahStasiun = () => {
       .catch((err) => console.log(err));
   };
 
-  const validate = input.code === "" || input.station_name === "";
-  const validateBtnBack = input.code === "" && input.station_name === "";
+  const validate =
+    input.initial === "" || input.name === "" || input.region === "";
 
   const [modal, setModal] = useState(false);
 
   return (
-    <div className="bg-[#FFFFFF] absolute  left-0 right-0 h-full overflow-y-hidden">
-      <HeaderTambahStasiun
-        setModal={setModal}
-        validate={validate}
-        validateBtnBack={validateBtnBack}
-      />
+    <div className="bg-[#FFFFFF] absolute  left-0 right-0 h-full ">
+      <HeaderTambahStasiun setModal={setModal} validate={validate} />
 
-      <div className="bg-[#EBEDF1] px-36 py-12 h-full overflow-y-hidden">
-        <div className="p-8 bg-white rounded-[2rem] mb-7 h-[20rem]">
-          <Policy
-            clicked={clicked}
-            setClicked={setClicked}
-            title={"Keaktifan Stasiun"}
-            name={"stasiun_aktif"}
-            desc={
-              clicked.stasiun_aktif ? description.aktif : description.nonAktif
-            }
-          />
+      <div className="bg-[#EBEDF1] px-36 py-12 h-full  overflow-y-hidden">
+        <div className="p-8 bg-white  shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-[2rem] mb-7 h-[32rem]">
+          <div className="mb-12 w-full">
+            <label htmlFor="kodeStasiun" className="text-sm font-bold">
+              Nama Stasiun
+            </label>
+
+            <div
+              className={`flex mt-2 h-11  rounded-lg border border-[#D2D7E0]`}
+            >
+              <input
+                type="text"
+                className="px-3 py-[0.625rem] w-full rounded-lg focus:outline-none"
+                placeholder="Masukan Nama Stasiun"
+                onChange={(e) => {
+                  setInput((prev) => {
+                    return { ...prev, name: e.target.value };
+                  });
+                }}
+              />
+            </div>
+          </div>
 
           <div className="mt-8 flex gap-6">
             <div className="mb-12 w-1/3">
@@ -90,7 +95,7 @@ const TambahStasiun = () => {
               >
                 <input
                   type="text"
-                  className="px-3 py-[0.625rem] w-full rounded-lg"
+                  className="px-3 py-[0.625rem] w-full rounded-lg focus:outline-none"
                   placeholder="Masukan Kode Stasiun"
                   onChange={(e) => {
                     setInput((prev) => {
@@ -103,18 +108,18 @@ const TambahStasiun = () => {
 
             <div className="mb-12 w-2/3">
               <label htmlFor="kodeStasiun" className="text-sm font-bold">
-                Nama Stasiun
+                Domisili
               </label>
               <div
                 className={`flex mt-2 h-11  rounded-lg border border-[#D2D7E0]`}
               >
                 <input
                   type="text"
-                  className="px-3 py-[0.625rem] w-full rounded-lg"
-                  placeholder="Masukan Nama Stasiun"
+                  className="px-3 py-[0.625rem] w-full rounded-lg focus:outline-none"
+                  placeholder="Masukan Region Stasiun"
                   onChange={(e) => {
                     setInput((prev) => {
-                      return { ...prev, name: e.target.value };
+                      return { ...prev, region: e.target.value };
                     });
                   }}
                 />
