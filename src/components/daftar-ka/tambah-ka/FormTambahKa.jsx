@@ -119,17 +119,20 @@ const FormTambahKa = (props) => {
               key={data.name}
               className="border border-[#E1E4EA] rounded-2xl bg-white p-5 flex justify-between"
             >
-              <div className="space-y-5">
-                <h5 className="text-[#262627] text-[20px] font-[500]">
+              <div className="">
+                <h5 className="text-[#262627] text-[14px] font-[600]">
                   Stasiun
                 </h5>
-                <h5 className="text-[#262627] text-[20px] font-[400]">
+                <h5 className="text-[#262627] text-[20px] font-[600]">
                   {data.name}
                 </h5>
               </div>
 
-              <div id="waktu-tiba" className="space-y-2">
-                <h5 className="text-[#262627] text-[20px] font-[500]">
+              <div
+                id="waktu-tiba"
+                className="space-y-2 flex justify-center items-center gap-3"
+              >
+                <h5 className="text-[#262627] mt-2 text-[14px] font-[600]">
                   Jam Tiba
                 </h5>
 
@@ -137,6 +140,7 @@ const FormTambahKa = (props) => {
                   type="time"
                   name="arrive_time"
                   value={data.arrive_time}
+                  placeholder="12.00am"
                   onChange={(e) =>
                     setInput({
                       ...input,
@@ -149,7 +153,7 @@ const FormTambahKa = (props) => {
                       }),
                     })
                   }
-                  className="px-4 py-2 bg-[#F9FAFB] border border-[#D2D7E0] w-[13rem] rounded-lg focus:outline-none"
+                  className="px-4 py-2 bg-[#F9FAFB] border border-[#D2D7E0] w-[17rem] rounded-lg focus:outline-none"
                 />
               </div>
             </div>

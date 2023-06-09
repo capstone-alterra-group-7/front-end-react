@@ -5,6 +5,8 @@ import ListNumber from "./ListNumber";
 import assets from "../../../assets/assets";
 
 const Informasi = ({ data }) => {
+  console.log(data);
+
   return (
     <div className="py-2 space-y-7">
       <div className="flex justify-between items-start px-7">
@@ -19,11 +21,15 @@ const Informasi = ({ data }) => {
         </div>
 
         <button
-          className={`rounded-xl py-2 px-20 text-[16px] font-bold text-white ${
-            data.status === "available" ? "bg-[#4CDB24]" : "bg-[#DB2D24]"
+          className={`rounded-xl py-2 px-20 text-[16px] font-bold ${
+            data.deleted_at === "" && data.status === "available"
+              ? "bg-[#DBF8D3] ring-1 ring-[#45C521] text-[#45C521]"
+              : "bg-[#F8D5D3] ring-1 ring-[#C52920] text-[#C52920]"
           } `}
         >
-          {data.status === "available" ? "Aktif" : "Non Aktif"}
+          {data.deleted_at === "" && data.status === "available"
+            ? "Aktif"
+            : "Non Aktif"}
         </button>
       </div>
 

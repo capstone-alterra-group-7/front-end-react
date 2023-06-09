@@ -16,9 +16,10 @@ const ModalRuteTambahKa = (props) => {
 
   // ** Local State
   const [selectStation, setSelectStation] = useState([]);
+  const [search, setSearch] = useState("");
 
   const { data: station, isLoading } = useSWR(
-    baseUrl("/public/station"),
+    baseUrl(`/admin/station?filter=active&search=${search}`),
     fetcher
   );
 
@@ -50,6 +51,7 @@ const ModalRuteTambahKa = (props) => {
           <div className="relative">
             <input
               type="text"
+              onChange={(e) => setSearch(e.target.value)}
               placeholder="Cari Rute Perjalan"
               className="border border-[#D2D7E0] bg-[#F9FAFB] w-full py-2 rounded-lg px-11 placeholder:text-[#96989C] text-[20px] focus:outline-none"
             />
@@ -66,7 +68,7 @@ const ModalRuteTambahKa = (props) => {
             {station?.data.map((station, i) => (
               <div key={i} className="flex gap-3">
                 <input
-                  value={station.name}
+                  value={`${station.name} (${station.initial})`}
                   defaultChecked={station.check}
                   onChange={(e) => handleChecked(e, station.station_id)}
                   type="checkbox"

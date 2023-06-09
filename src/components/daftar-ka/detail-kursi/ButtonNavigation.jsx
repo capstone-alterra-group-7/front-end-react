@@ -10,11 +10,11 @@ const ButtonNavigation = (props) => {
       onClick={() =>
         sebelumnya ? setPage((prev) => prev - 1) : setPage((prev) => prev + 1)
       }
-      className={`flex items-center disabled:cursor-not-allowed ${
+      className={`flex items-center disabled:cursor-not-allowed  ${
         selanjutnya && "flex-row-reverse"
       } ${
         sebelumnya ? "ring-gray-200" : "ring-[#D2D7E0]"
-      } gap-3 bg-[##F9FAFB] ring-1  py-2 rounded-xl px-6`}
+      } gap-3 bg-[##F9FAFB] ring-1  py-2 rounded-xl px-6 `}
     >
       <img
         src={

@@ -9,7 +9,7 @@ const FormTambahPengguna = (props) => {
     const {onChangePengguna, input, setInput} = props
 
   return (
-    <div className="grid gap-6 mb-6 text-[#262627] bg-white p-10">
+    <div className="grid gap-6 pb-[100px] text-[#262627] bg-white p-10">
         <div className="space-y-5">
             <div className="flex items-center gap-5">
                 <h1 className="text-[20px] font-[600] text-[#262627]">
@@ -54,9 +54,10 @@ const FormTambahPengguna = (props) => {
                 value={input.password}/>
 
             <InputPassword
-                name={'confirmPassword'}
-                id={'confirmPassword'}
+                name={'confirm_password'}
+                id={'confirm_password'}
                 label={'Konfirmasi Password'}
+                value={input.confirm_password}
                 onChange={onChangePengguna}/>
            
         </div>
@@ -65,30 +66,30 @@ const FormTambahPengguna = (props) => {
             <h1 className='text-[20px] font-semibold pb-5'>Detail Pengguna</h1>
 
             <InputPengguna
-                name={'nama'}
-                id={'nama'}
+                name={'full_name'}
+                id={'full_name'}
                 type={'text'}
                 label={'Nama Pengguna'}
                 onChange={onChangePengguna}
-                value={input.nama}
+                value={input.full_name}
             />
 
             <InputPengguna
-                name={'tanggalLahir'}
-                id={'tanggalLahir'}
+                name={'birth_date'}
+                id={'birth_date'}
                 type={'date'}
                 label={'Tanggal Lahir'}
                 onChange={onChangePengguna}
-                value={input.tanggalLahir}
+                value={input.birth_date}
             />
 
             <InputPengguna
-                name={'noTelp'}
-                id={'noTelp'}
+                name={'phone_number'}
+                id={'phone_number'}
                 type={'text'}
                 label={'Nomor Handphone'}
                 onChange={onChangePengguna}
-                value={input.noTelp}
+                value={input.phone_number}
             />
            
         </div>
