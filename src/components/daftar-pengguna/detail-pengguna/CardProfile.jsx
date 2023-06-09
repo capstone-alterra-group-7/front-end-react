@@ -26,9 +26,9 @@ export default function CardProfile({ data }) {
     <div className="bg-white flex flex-col flex-wrap">
       <div className="flex flex-col items-center justify-center pt-[40px]">
 
-        <img src={assets.profiledetail} alt="profileimage" />
+        <img src={data.profile_picture_url} alt="profileimage" className="max-w-[128px]" />
 
-        <h1 className="text-[24px] mt-[24px] mb-10">{data.nama}</h1>
+        <h1 className="text-[24px] mt-[24px] mb-10">{data.full_name}</h1>
 
       </div>
 
@@ -41,35 +41,15 @@ export default function CardProfile({ data }) {
             <th className='text-left font-semibold pt-4'>
                 <tr>ID Akun</tr>
                 <tr>Email</tr>
-                <tr>Password</tr>
                 <tr>Tanggal Mendaftar</tr>
                 <tr>Umur Akun</tr>
                 <tr>Status Akun</tr>
             </th>
 
             <th className='text-left font-normal ps-7 pt-4'>
-                <tr>67890</tr>
+                <tr>{data.id}</tr>
                 <tr>{data.email}</tr>
-                <tr className="flex">
-                  <p className="">
-                    
-                    {isPasswordVisible ? (
-                      data.password
-                      ) : (
-                       "*************"
-                      )}
-                    </p>
-                  <button 
-                    className="ms-2"
-                    onClick={togglePasswordVisibility}>
-                    {isPasswordVisible ? (
-                      <img src={assets.visiblePassword} alt="visiblepassword" />
-                      ) : (
-                        <img src={assets.notVisiblePassword} alt="notvisiblepassword" />
-                      )}
-                  </button>
-                </tr>
-                <tr>{data.tanggalDaftar || currentDate}</tr>
+                <tr>{data.created_at || currentDate}</tr>
                 <tr>{data.umurAkun}</tr>
                 <tr>{data.statusAkun}</tr>
             </th>      
@@ -90,9 +70,9 @@ export default function CardProfile({ data }) {
             </th>
 
             <th className='text-left font-normal ps-7 pt-4'>
-                <tr>{data.tanggalLahir}</tr>
-                <tr>{data.umurPengguna || umur}</tr>
-                <tr>{data.noTelp}</tr>
+                <tr>{data.full_name}</tr>
+                <tr>{data.umurPengguna || umur || "23 Tahun"}</tr>
+                <tr>{data.phone_number}</tr>
             </th>
                     
         </table>

@@ -8,7 +8,7 @@ const NavDetailka = (props) => {
   };
 
   return (
-    <div className="navbar pt-4 pb-8">
+    <div className="navbar pt-4 pb-8 bg-white rounded-t-3xl">
       <div className="grid grid-cols-2 border-b border-[#D2D7E0]">
         <div className="w-full space-y-4">
           <button
