@@ -3,7 +3,7 @@ import assets from "../../assets/assets";
 
 
 
-const CardPesanan = () => {
+const CardPesanan = ({ dataORDER }) => {
 
     return (
         <div className="pe-[32px] pt-[32px] pb-[24px]">
@@ -17,12 +17,12 @@ const CardPesanan = () => {
                             </h1>
                         </div>
                         <div className="flex items-end mt-[24px] ">
-                            <h1 className=" font-bold text-[32px] mb-2 leading-[40px] mr-2">125129</h1>
+                            <h1 className=" font-bold text-[32px] mb-2 leading-[40px] mr-2">{dataORDER.data.count_order.total_order}</h1>
                             <h1 className="font-[500] text-[16px] mb-2 leading-[24px] ">Pesanan</h1>
                         </div>
 
                         <div className="flex items-end mb-[20px]">
-                            <h1 className="text-[#717275] font-[500] text-[14px] mb-2 leading-[20px] mr-2">1268</h1>
+                            <h1 className="text-[#717275] font-[500] text-[14px] mb-2 leading-[20px] mr-2">{dataORDER.data.count_order.total_order_today}</h1>
                             <h1 className="text-[#717275] font-[500] text-[14px] mb-2 leading-[20px] ">Bertambah hari ini</h1>
                         </div>
                     </div>

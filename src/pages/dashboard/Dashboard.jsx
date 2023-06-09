@@ -6,7 +6,28 @@ import CardPesanan from "../../components/dashboard/CardPesanan";
 import CardPenggunaBaru from "../../components/dashboard/CardPenggunaBaru";
 import CardPesananBaru from "../../components/dashboard/CardPesananBaru";
 
+// ** Import Axios
+import axios from "axios";
+import useSWR from "swr";
+import { baseUrl } from "../../services/base";
+
+const fetcher = (url) => axios.get(url).then((res) => res.data);
+
+
 const Dashboard = () => {
+
+  const {
+    data: dataDashboard,
+    isLoading,
+  } = useSWR(
+    baseUrl(
+      `/admin/dashboard`
+    ),
+    fetcher
+  );
+
+  console.log(dataDashboard)
+
   return (
     <div className="relative">
       <div className=" bg-white px-[32px] pt-[18px] pb-6 pr-8 py-[16px] flex justify-between">
@@ -14,16 +35,15 @@ const Dashboard = () => {
       </div>
 
       <div className="grid grid-cols-4 gap-6">
-        <CardPengguna />
+        <CardPengguna data={dataDashboard} />
         <CardHotel />
-        <CardKeretaApi />
-        <CardPesanan />
+        <CardKeretaApi dataKAI={dataDashboard} />
+        <CardPesanan dataORDER={dataDashboard} />
       </div>
 
       <div className="grid grid-cols-6">
-        <CardPesananBaru />
-
-        <CardPenggunaBaru />
+        <CardPesananBaru dataPesananBaru={dataDashboard} />
+        <CardPenggunaBaru dataPenggunaBaru={dataDashboard} />
       </div>
     </div>
   );
