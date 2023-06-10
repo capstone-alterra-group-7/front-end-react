@@ -37,8 +37,6 @@ const DaftarStasiun = () => {
 
   const infoPaginate = dataStations?.meta;
 
-  console.log(dataStations?.data);
-
   const navigate = useNavigate("");
 
   const handleAdd = () => {

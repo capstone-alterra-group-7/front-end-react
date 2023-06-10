@@ -22,8 +22,6 @@ const fetcherEdit = (url, payload) =>
 const ModalDetailStasiun = (props) => {
   const { data, setModalDetail, mutate } = props;
 
-  console.log(data);
-
   const [input, setInput] = useState(data);
 
   const [modalDelete, setModalDelete] = useState(false);
@@ -34,8 +32,9 @@ const ModalDetailStasiun = (props) => {
   // validate between two object is equal
   const validateEdit = JSON.stringify(data) === JSON.stringify(input);
 
-  const isDelete = data.deleted_at !== "";
+  const isDelete = data?.deleted_at !== "";
 
+  console.log(isDelete);
   // DELETE DATA
   const handleDelete = () => {
     setLoading(true);
@@ -179,7 +178,7 @@ const ModalDetailStasiun = (props) => {
               <input
                 type="text"
                 disabled={isDelete}
-                className="px-3 py-[0.625rem] w-full rounded-lg disable:cursor-not-allowed"
+                className="px-3 py-[0.625rem] w-full rounded-lg disabled:cursor-not-allowed"
                 placeholder="Masukan Nama Stasiun"
                 value={input.origin}
                 onChange={(e) => {

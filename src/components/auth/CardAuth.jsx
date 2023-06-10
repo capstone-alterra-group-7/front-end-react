@@ -43,7 +43,7 @@ const CardAuth = () => {
       customAlert(
         "https://gcdnb.pbrd.co/images/xpaqpNMtbgz8.png?o=1",
         "Selamat Datang Admin!",
-        "Perubahan pada data keretea telah berhasil disimpan."
+        "Selamat datang di panel administrasi. Anda sekarang memiliki akses penuh untuk mengelola sistem."
       );
 
       setLoading(false);
