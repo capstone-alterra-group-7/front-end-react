@@ -5,8 +5,6 @@ import ListNumber from "./ListNumber";
 import assets from "../../../assets/assets";
 
 const Informasi = ({ data }) => {
-  console.log(data);
-
   return (
     <div className="py-2 space-y-7">
       <div className="flex justify-between items-start px-7">
@@ -41,7 +39,7 @@ const Informasi = ({ data }) => {
         </h2>
 
         <div className="pb-9 space-y-2">
-          {data.route.map((rut, i) => (
+          {data?.route?.map((rut, i) => (
             <ListNumber key={i} label={i + 1} data={rut} />
           ))}
         </div>
