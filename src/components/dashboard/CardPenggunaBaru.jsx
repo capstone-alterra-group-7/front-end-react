@@ -19,10 +19,14 @@ const CardPenggunaBaru = ({ dataPenggunaBaru }) => {
                   <h1 className="font-bold">{data.full_name}</h1>
 
                   <div className="flex justify-between items-center">
-                    <h1>{data.id}</h1>
+                    <h1>{i + 1}</h1>
 
                     <h1 className="font-medium text-sm">
-                      {new Date(data.created_at).toLocaleTimeString("en-US")}
+                      {new Date(data.created_at).toLocaleTimeString("id", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}{" "}
+                      WIB
                     </h1>
                   </div>
                 </div>
