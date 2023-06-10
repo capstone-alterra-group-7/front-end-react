@@ -65,7 +65,8 @@ const ModalRuteTambahKa = (props) => {
 
           <div className="space-y-5 fixed h-[21rem] w-full overflow-y-auto">
             {isLoading && <p>Loading...</p>}
-            {station?.data.map((station, i) => (
+            {station?.data === null && <p>Data Kereta Tidak Ditemukan</p>}
+            {station?.data?.map((station, i) => (
               <div key={i} className="flex gap-3">
                 <input
                   value={`${station.name} (${station.initial})`}
