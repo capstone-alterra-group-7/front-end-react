@@ -3,7 +3,7 @@ import assets from "../../assets/assets";
 
 
 
-const CardPesananBaru = () => {
+const CardPesananBaru = ({ dataPesananBaru }) => {
 
     return (
         <div className="px-[32px] pb-[24px] col-span-4">
@@ -36,26 +36,32 @@ const CardPesananBaru = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {[...Array(10)].map((data, idx) => {
-                                        return (
-                                            <tr className={`border-t border-[#D2D7E0] ${idx % 2 == 0 ? "bg-[#F9FAFB]" : "bg-white"}`}>
-                                                <td className="px-7 py-[8px] rounded-bl-xl">{idx + 1}.</td>
-                                                <td className="px-6 py-[8px] flex flex-col">
-                                                    <h1 className="font-semibold mb-1">Putri Deli</h1>
-                                                    <h1 className="text-sm">16 Apr 2023 07:21 WIB</h1>
-                                                </td>
-                                                <td className=" py-[8px]  font-medium">
-                                                    <div className={`py-[6px] text-center font-semibold px-6 rounded-[24px] ${idx % 2 == 0 ? "bg-[#FFF1E5] text-[#FF7300]" : "bg-[#E5F2FF] text-[#0080FF]"}`}>{idx % 2 == 0 ? "Hotel" : "Kereta"}</div>
-                                                </td>
-                                                <td className="px-2 py-[8px] text-center font-[500]">123456789</td>
-                                                <td className="px-1 py-[8px] rounded-br-xl text-center font-[500] 2xl:text-base text-sm">Rp 12.000.000</td>
-                                            </tr>
-                                        );
-                                    })}
+                                    {dataPesananBaru?.data?.new_order ? (
+                                        [...Array(10)].map((data, idx) => {
+                                            return (
+                                                <tr className={`border-t border-[#D2D7E0] ${idx % 2 == 0 ? "bg-[#F9FAFB]" : "bg-white"}`}>
+                                                    <td className="px-7 py-[8px] rounded-bl-xl">{idx + 1}.</td>
+                                                    <td className="px-6 py-[8px] flex flex-col">
+                                                        <h1 className="font-semibold mb-1">Putri Deli</h1>
+                                                        <h1 className="text-sm">16 Apr 2023 07:21 WIB</h1>
+                                                    </td>
+                                                    <td className=" py-[8px]  font-medium">
+                                                        <div className={`py-[6px] text-center font-semibold px-6 rounded-[24px] ${idx % 2 == 0 ? "bg-[#FFF1E5] text-[#FF7300]" : "bg-[#E5F2FF] text-[#0080FF]"}`}>{idx % 2 == 0 ? "Hotel" : "Kereta"}</div>
+                                                    </td>
+                                                    <td className="px-2 py-[8px] text-center font-[500]">123456789</td>
+                                                    <td className="px-1 py-[8px] rounded-br-xl text-center font-[500] 2xl:text-base text-sm">Rp 12.000.000</td>
+                                                </tr>
+                                            );
+                                        }
+                                        )
+                                    ) : ""}
+
                                 </tbody>
                             </table>
                         </div>
-
+                        {dataPesananBaru?.data?.new_order ? "" : (
+                            <h1 className="text-bold text-gray-600 text-[26px] text-center mt-6">No Data</h1>
+                        )}
                     </div>
                 </div>
             </div>
