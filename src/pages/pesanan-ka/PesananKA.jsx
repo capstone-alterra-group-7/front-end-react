@@ -1,15 +1,11 @@
 // ** Import Components
 import axios from "axios";
-import BarPesananKA from "../../components/pesanan-ka/BarPesananKA";
 import CardPesananKA from "../../components/pesanan-ka/CardPesananKA";
-
-import { useSelector } from "react-redux";
 
 // ** Import Other
 import useSWR from "swr";
 import { baseUrl } from "../../services/base";
 import { useState } from "react";
-import BarDaftarTiket from "../../components/daftar-tiket/BarDaftarTiket";
 import BarPesananKa from "../../components/pesanan-ka/BarPesananKA";
 import Pagination from "../daftar-KA/Pagination";
 import ModalFilterTicket from "../daftar-tiket/ModalFilterTicket";
@@ -17,8 +13,6 @@ import ModalFilterTicket from "../daftar-tiket/ModalFilterTicket";
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const PesananKA = () => {
-  const pesananKa = useSelector((state) => state.pesananKa);
-
   const [changePage, setChangePage] = useState(1);
   const [searchVal, setSearchVal] = useState("");
   const [startDate, setStartDate] = useState("");
