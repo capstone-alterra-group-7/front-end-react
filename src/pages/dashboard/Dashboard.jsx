@@ -13,20 +13,11 @@ import { baseUrl } from "../../services/base";
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
-
 const Dashboard = () => {
-
-  const {
-    data: dataDashboard,
-    isLoading,
-  } = useSWR(
-    baseUrl(
-      `/admin/dashboard`
-    ),
+  const { data: dataDashboard, isLoading } = useSWR(
+    baseUrl(`/admin/dashboard`),
     fetcher
   );
-
-  console.log(dataDashboard)
 
   return (
     <div className="relative">

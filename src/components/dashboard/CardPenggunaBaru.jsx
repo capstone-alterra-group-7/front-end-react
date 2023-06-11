@@ -1,3 +1,4 @@
+import React from "react";
 import "./StyleCardPenggunaBaru.css";
 
 const CardPenggunaBaru = ({ dataPenggunaBaru }) => {
@@ -8,18 +9,18 @@ const CardPenggunaBaru = ({ dataPenggunaBaru }) => {
       <div className="border border-[#D2D7E0] rounded-xl">
         {dataPenggunaBaru?.data?.new_user.map((data, i) => {
           return (
-            <>
-              <div className="flex px-6 py-3" key={i}>
+            <React.Fragment key={data.id}>
+              <div className="flex px-6 py-3">
                 <img
                   src={data.profile_picture}
                   alt=""
-                  className="w-12 h-12 mr-3"
+                  className="w-12 h-12 mr-3 rounded-3xl"
                 />
                 <div className="flex flex-col w-full">
                   <h1 className="font-bold">{data.full_name}</h1>
 
                   <div className="flex justify-between items-center">
-                    <h1>{i + 1}</h1>
+                    <h1>0000{i + 1}</h1>
 
                     <h1 className="font-medium text-sm">
                       {new Date(data.created_at).toLocaleTimeString("id", {
@@ -32,7 +33,7 @@ const CardPenggunaBaru = ({ dataPenggunaBaru }) => {
                 </div>
               </div>
               <hr />
-            </>
+            </React.Fragment>
           );
         })}
       </div>
