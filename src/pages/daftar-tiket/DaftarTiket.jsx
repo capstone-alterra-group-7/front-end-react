@@ -11,7 +11,6 @@ import axios from "axios";
 import { baseUrl } from "../../services/base";
 import useSWR from "swr";
 import ModalFilterTicket from "./ModalFilterTicket";
-import BarPesananKa from "../../components/pesanan-ka/BarPesananKA";
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
@@ -38,7 +37,7 @@ const DaftarTiket = () => {
 
   return (
     <div className="relative h-full">
-      <BarPesananKa
+      <BarDaftarTiket
         setSearchVal={setSearchVal}
         setStartDate={setStartDate}
         setEndDate={setEndDate}
