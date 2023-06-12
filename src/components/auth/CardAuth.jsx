@@ -38,23 +38,25 @@ const CardAuth = () => {
 
       const { data } = res;
 
-      // Swal.fire("Success", `${data.message}`, "success");
-
-      customAlert(
-        "https://gcdnb.pbrd.co/images/xpaqpNMtbgz8.png?o=1",
-        "Selamat Datang Admin!",
-        "Selamat datang di panel administrasi. Anda sekarang memiliki akses penuh untuk mengelola sistem."
-      );
-
       setLoading(false);
 
-      dispatch(addToken(data.data.token));
+      if (data.data.role === "admin") {
+        customAlert(
+          "https://gcdnb.pbrd.co/images/xpaqpNMtbgz8.png?o=1",
+          "Selamat Datang Admin!",
+          "Selamat datang di panel administrasi. Anda sekarang memiliki akses penuh untuk mengelola sistem."
+        );
 
-      dispatch(addActive("/dashboard"));
+        dispatch(addToken(data.data.token));
 
-      navigate("/dashboard");
+        dispatch(addActive("/dashboard"));
 
-      sessionStorage.setItem("token", data.data.token);
+        navigate("/dashboard");
+
+        sessionStorage.setItem("token", data.data.token);
+      } else {
+        Swal.fire(`Failed to login`, `Email or password is wrong`, "error");
+      }
     } catch (error) {
       const {
         response: { data },
