@@ -34,7 +34,6 @@ const ModalDetailStasiun = (props) => {
 
   const isDelete = data?.deleted_at !== "";
 
-  console.log(isDelete);
   // DELETE DATA
   const handleDelete = () => {
     setLoading(true);
@@ -104,25 +103,23 @@ const ModalDetailStasiun = (props) => {
             </h5>
           </button>
 
-          {data.deleted_at === "" && (
-            <div className="flex gap-4">
-              <button
-                className="text-[18px] font-[500] text-[#FFFFFF] py-[10px] px-6 border border-[#D2D7E0] rounded-lg bg-[#DB2D24] flex items-center gap-2"
-                onClick={() => setModalDelete(true)}
-              >
-                <h1 className="font-[500]">Hapus Stasiun</h1>
-                <img src={assets.iconDelete} alt="" />
-              </button>
-              <button
-                disabled={validateEdit}
-                onClick={() => setModalEdit(true)}
-                className="px-8 py-[13.5px] font-bold text-white disabled:bg-[#B3D9FF] bg-[#0080FF] flex gap-3 items-center rounded-lg disabled:cursor-not-allowed"
-              >
-                <h1 className="mt-[1.2px]">Simpan Perubahan</h1>
-                <img src={assets.iconSaveHotel} alt="button" />
-              </button>
-            </div>
-          )}
+          <div className="flex gap-4">
+            <button
+              className="text-[18px] font-[500] text-[#FFFFFF] py-[10px] px-6 border border-[#D2D7E0] rounded-lg bg-[#DB2D24] flex items-center gap-2"
+              onClick={() => setModalDelete(true)}
+            >
+              <h1 className="font-[500]">Hapus Stasiun</h1>
+              <img src={assets.iconDelete} alt="" />
+            </button>
+            <button
+              disabled={validateEdit}
+              onClick={() => setModalEdit(true)}
+              className="px-8 py-[13.5px] font-bold text-white disabled:bg-[#B3D9FF] bg-[#0080FF] flex gap-3 items-center rounded-lg disabled:cursor-not-allowed"
+            >
+              <h1 className="mt-[1.2px]">Simpan Perubahan</h1>
+              <img src={assets.iconSaveHotel} alt="button" />
+            </button>
+          </div>
         </div>
 
         <div className="mb-5 w-full">
@@ -132,7 +129,6 @@ const ModalDetailStasiun = (props) => {
           <div className={`flex mt-2 h-11  rounded-lg border border-[#D2D7E0]`}>
             <input
               type="text"
-              disabled={isDelete}
               className="px-3 py-[0.625rem] w-full rounded-lg disabled:cursor-not-allowed"
               placeholder="Masukan Kode Stasiun"
               value={input.name}
@@ -155,7 +151,6 @@ const ModalDetailStasiun = (props) => {
             >
               <input
                 type="text"
-                disabled={isDelete}
                 className="px-3 py-[0.625rem] w-full rounded-lg disabled:cursor-not-allowed"
                 placeholder="Masukan Kode Stasiun"
                 value={input.initial}
@@ -177,7 +172,6 @@ const ModalDetailStasiun = (props) => {
             >
               <input
                 type="text"
-                disabled={isDelete}
                 className="px-3 py-[0.625rem] w-full rounded-lg disabled:cursor-not-allowed"
                 placeholder="Masukan Nama Stasiun"
                 value={input.origin}
