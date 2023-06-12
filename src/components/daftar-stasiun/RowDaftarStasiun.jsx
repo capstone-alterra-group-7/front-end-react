@@ -15,7 +15,7 @@ const RowDaftarStasiun = ({ data, index, setModalDetail }) => {
     >
       <th
         scope="row"
-        className="px-11 py-4 w-[345px] font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        className="px-11 py-4 w-[345px] font-medium text-gray-900 whitespace-nowrap"
       >
         {data.name}
       </th>
