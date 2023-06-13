@@ -2,6 +2,14 @@
 import assets from "../../../assets/assets";
 
 export default function TrainDetail({ data }) {
+  const findKursiAvailable = data.gerbong.map((gerbong) => {
+    return gerbong.seat.filter((seat) => seat.available === true);
+  });
+
+  const totalKursi = findKursiAvailable.map((kursi) => kursi.length);
+
+  console.log(totalKursi);
+
   return (
     <div className="bg-white flex justify-between p-[32px]">
       <div className="flex flex-col justify-between">
@@ -24,7 +32,9 @@ export default function TrainDetail({ data }) {
               currency: "IDR",
             }).format(data.train.train_price)}
           </p>
-          <p className="text-[#262627] text-[20px] font-[400]">Sisa 64 Kursi</p>
+          <p className="text-[#262627] text-[20px] font-[400]">
+            Sisa {totalKursi.reduce((acc, curr) => acc + curr)} Kursi
+          </p>
         </div>
       </div>
 
