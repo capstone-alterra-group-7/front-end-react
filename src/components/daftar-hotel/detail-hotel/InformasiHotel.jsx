@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import assets from "../../../assets/assets";
 import SectionInformation from "./SectionInformation";
 import SectionKebijakan from "./SectionKebijakan";
-import MapComponent from "./MapComponent";
+// import MapComponent from "./MapComponent";
 import ImageHotelSection from "./ImageHotelSection";
 
 const InformasiHotel = ({ data }) => {
