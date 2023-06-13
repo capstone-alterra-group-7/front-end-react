@@ -4,10 +4,10 @@ import React, { useState } from "react";
 // Import Components
 import HeaderHotel from "../../components/daftar-hotel/Header";
 import CardContainerHotel from "../../components/daftar-hotel/CardContainerHotel";
+import ModalDaftarHotel from "../../components/daftar-hotel/ModalDaftarHotel";
 
 // ** import Other
 import { useNavigate } from "react-router-dom";
-import ModalDaftarHotel from "../../components/daftar-hotel/ModalDaftarHotel";
 
 const DaftarHotel = () => {
   const [modal, setModal] = useState(false);
