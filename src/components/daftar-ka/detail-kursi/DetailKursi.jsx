@@ -29,9 +29,8 @@ export const DetailKursi = ({ data }) => {
     (gerbong) => gerbong.train.train_id === data.train_id
   );
 
-  const pickGerbong = isLoading ? [] : findGerbong[page];
-
-  console.log(pickGerbong);
+  const pickGerbong =
+    findGerbong === null ? [] : isLoading ? [] : findGerbong[page];
 
   return (
     <div className="px-14 space-y-20 pb-10">
@@ -93,33 +92,3 @@ export const DetailKursi = ({ data }) => {
     </div>
   );
 };
-
-const dummyData = [
-  { dummy: false },
-  { dummy: true },
-  { dummy: false },
-  { dummy: false },
-  { dummy: false },
-  { dummy: false },
-  { dummy: true },
-  { dummy: false },
-  { dummy: true },
-  { dummy: false },
-  { dummy: false },
-  { dummy: false },
-];
-
-const dummyData2 = [
-  { dummy: false },
-  { dummy: false },
-  { dummy: false },
-  { dummy: false },
-  { dummy: false },
-  { dummy: true },
-  { dummy: false },
-  { dummy: false },
-  { dummy: true },
-  { dummy: false },
-  { dummy: false },
-  { dummy: false },
-];
