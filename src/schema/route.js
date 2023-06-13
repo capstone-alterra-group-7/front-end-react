@@ -41,7 +41,7 @@ export const routes = [
   { path: "/daftar-ka/tambah-ka", element: TambahKa },
   { path: "/detail-ka", element: DetailKA },
   { path: "/daftar-hotel", element: DaftarHotel },
-  { path: "/detail-hotel", element: DetailHotel },
+  { path: "/detail-hotel/:id", element: DetailHotel },
   { path: "/daftar-hotel/tambah-hotel", element: TambahHotel },
   { path: "/daftar-hotel/tambah-hotel/tambah-alamat", element: TambahAlamat },
   { path: "/daftar-hotel/tambah-hotel/tambah-kamar", element: TambahKamar },

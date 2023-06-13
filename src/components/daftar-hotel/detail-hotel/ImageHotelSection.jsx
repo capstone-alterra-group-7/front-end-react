@@ -3,9 +3,9 @@ import React from "react";
 // ** import assets
 import assets from "../../../assets/assets";
 
-const ImageSection = () => {
+const ImageHotelSection = () => {
   return (
-    <div className="h-[22rem] mr-8">
+    <div className="h-[22rem] mr-8 cursor-pointer">
       <img src={assets.imageHotel} alt="" className="w-96" />
       <div className="mt-4 flex gap-2">
         <img src={assets.imageHotel} alt="" className="w-[3.75rem]" />
@@ -16,4 +16,4 @@ const ImageSection = () => {
   );
 };
 
-export default ImageSection;
+export default ImageHotelSection;
