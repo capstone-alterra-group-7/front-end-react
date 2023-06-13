@@ -9,7 +9,14 @@ const ButtonDetailHotel = ({ title, setModal }) => {
         <img src={assets.iconEditDaftarKa} alt="edit" />
       </button>
 
-      <button onClick={() => setModal(true)} className="px-7 font-[500] bg-[#DB2D24] flex items-center gap-2 rounded-lg">
+      <button
+        className="px-7 font-[500] bg-[#DB2D24] flex items-center gap-2 rounded-lg"
+        onClick={() => {
+          setModal((prev) => {
+            return { ...prev, delete: true };
+          });
+        }}
+      >
         <span className="ms-2 text-[18px] text-white ">Hapus {title}</span>
 
         <img src={assets.iconDeleteDaftarKa} alt="delete" />

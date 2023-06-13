@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 
 // ** Import Other
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import useSWR from "swr";
 
 // ** Import Components
 import BackButtonHotel from "../../../components/daftar-hotel/detail-hotel/BackButtonHotel";
@@ -10,11 +12,21 @@ import NavDetailHotel from "../../../components/daftar-hotel/detail-hotel/NavDet
 import InformasiHotel from "../../../components/daftar-hotel/detail-hotel/InformasiHotel";
 import DaftarKamar from "../../../components/daftar-hotel/detail-hotel/daftar-kamar/DaftarKamar";
 import Ulasan from "../../../components/daftar-hotel/detail-hotel/ulasan/Ulasan";
+import { baseUrl } from "../../../services/base";
+
+const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const DetailHotel = () => {
-  const {
-    state: { data },
-  } = useLocation();
+  // const {
+  //   state: { data },
+  // } = useLocation();
+  const { id } = useParams();
+  // const {
+  //   state: { id },
+  // } = useLocation();
+
+  // console.log(data);
+  const { data: dataHotelById, isLoading, mutate } = useSWR(baseUrl(`/public/hotel/${id}`), fetcher);
 
   // ** Local State
   const [nav, setNav] = useState("informasi");
@@ -35,7 +47,7 @@ const DetailHotel = () => {
         <NavDetailHotel nav={nav} setNav={setNav} />
       </div>
 
-      {nav === "informasi" ? <InformasiHotel data={data} /> : nav === "daftarKamar" ? <DaftarKamar /> : <Ulasan data={data} />}
+      {nav === "informasi" ? <InformasiHotel data={dataHotelById?.data} /> : nav === "daftarKamar" ? <DaftarKamar data={dataHotelById?.data?.hotel_room} /> : <Ulasan data={dataHotelById?.data} />}
     </div>
   );
 };
