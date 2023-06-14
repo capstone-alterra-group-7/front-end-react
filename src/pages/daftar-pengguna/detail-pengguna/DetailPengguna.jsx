@@ -8,9 +8,9 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export default function DetailPengguna() {
-  const [modal, setModal]= useState(false)
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+  const [modal, setModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const {
     state: { data },
@@ -18,16 +18,15 @@ export default function DetailPengguna() {
 
   return (
     <div className=" fixed overflow-y-auto left-0 right-0 h-full">
-        <div className="bg-white px-7 pt-3 pb-6 space-y-6">
+      <div className="bg-white px-7 pt-3 pb-6 space-y-6">
+        <h1 className="text-[32px] font-bold">Detail Pengguna</h1>
 
-          <h1 className="text-[32px] font-bold">Detail Pengguna</h1>
-            
-          <SecondBar setModal={setModal} data={data}/>
-        </div>
-        
-        <CardProfile data={data}/>
+        <SecondBar setModal={setModal} data={data} />
+      </div>
 
-        {modal &&
+      <CardProfile data={data} />
+
+      {modal && (
         <ModalDaftarPengguna
           title="Hapus Data Pengguna?"
           description=" This blog post has been published. Team members will be able to edit this post and republish changes."
@@ -35,8 +34,8 @@ export default function DetailPengguna() {
           titleButton="Iya, Hapus"
           setModal={setModal}
           handle={handleDelete}
-          />
-        }
+        />
+      )}
     </div>
-  )
+  );
 }
