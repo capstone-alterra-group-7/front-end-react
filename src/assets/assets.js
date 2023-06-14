@@ -25,6 +25,15 @@ import iconAddKamar from "./daftar-hotel/tambah-hotel/iconAddKamar.svg";
 import iconSaveHotel from "./daftar-hotel/tambah-hotel/contentSave.svg";
 import imageNoData from "./daftar-hotel/noData.svg";
 import iconRuler from "./daftar-hotel/detail-hotel/ruler.svg";
+import iconParking from "./daftar-hotel/detail-hotel/parkIcon.svg";
+import iconRestoran from "./daftar-hotel/detail-hotel/restoran.svg";
+import iconAC from "./daftar-hotel/detail-hotel/iconAC.svg";
+import iconOther from "./daftar-hotel/detail-hotel/other.svg";
+import iconRoomService from "./daftar-hotel/detail-hotel/roomService.svg";
+import iconSwimPool from "./daftar-hotel/detail-hotel/pool.svg";
+import iconDining from "./daftar-hotel/detail-hotel/foodDine.svg";
+import iconBath from "./daftar-hotel/detail-hotel/bath.svg";
+import iconATM from "./daftar-hotel/detail-hotel/atm.svg";
 
 // ** Import Daftar Ka
 import iconLeftDetailKursi from "./daftar-ka/kursi/left.svg";
@@ -146,6 +155,15 @@ export default {
   iconSaveHotel,
   imageNoData,
   iconRuler,
+  iconParking,
+  iconRestoran,
+  iconAC,
+  iconOther,
+  iconRoomService,
+  iconSwimPool,
+  iconDining,
+  iconBath,
+  iconATM,
 
   iconHapusDaftarKa,
   iconJamDaftarKa,
