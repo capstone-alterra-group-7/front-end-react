@@ -13,11 +13,11 @@ const CardContainerHotel = () => {
   const daftarHotel = useSelector((state) => state.daftarHotel);
   const { data: dataHotel, isLoading, mutate } = useSWR(baseUrl(`/public/hotel`), fetcher);
 
-  // console.log(dataHotel);
+  // console.log("Data List Hotel", dataHotel);
 
   return (
     <div className="py-8 px-7">
-      {dataHotel?.data.map((data, idx) => {
+      {dataHotel?.data?.map((data, idx) => {
         return <CardHotel data={data} key={idx} />;
       })}
     </div>

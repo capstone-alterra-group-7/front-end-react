@@ -1,4 +1,5 @@
 // ** Import Assets
+import { rupiah } from "../../helpers/libs";
 import assets from "./../../assets/assets";
 
 // ** Import Other
@@ -9,21 +10,6 @@ const CardHotel = ({ data }) => {
 
   const handleNavigate = () => {
     navigate(`/detail-hotel/${data?.hotel_id}`);
-    // navigate("/detail-hotel/${data.id}", {
-    //   state: {
-    //     data:{data.id},
-    //   },
-    // });
-  };
-
-  const rupiah = (number) => {
-    if (!number) return "Rp 0";
-    else
-      return new Intl.NumberFormat("id-ID", {
-        style: "currency",
-        maximumSignificantDigits: 4,
-        currency: "IDR",
-      }).format(number);
   };
 
   return (
@@ -62,7 +48,7 @@ const CardHotel = ({ data }) => {
             </div>
 
             <div className="mt-28">
-              <h1 className="text-[2.5rem] text-end font-bold font-sans text-[#0080FF]">{rupiah(data?.price)}</h1>
+              <h1 className="text-[2.5rem] text-end font-bold font-sans text-[#0080FF]">{rupiah(data?.hotel_room_start)}</h1>
               <h1 className="text-end text-[#96989C] text-xl font-semibold">/ kamar / malam</h1>
               <h1 className="text-end text-[#FF7300] text-lg">Termasuk Pajak</h1>
             </div>
