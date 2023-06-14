@@ -17,11 +17,11 @@ const FormTambahPengguna = (props) => {
             </h1>
 
             <input
-              defaultChecked={edit && dataEdit.is_active === "true"}
+              defaultChecked={edit && dataEdit.is_active === true}
               onChange={(e) =>
                 setInput({
                   ...input,
-                  is_active: e.target.checked ? "true" : "false",
+                  is_active: e.target.checked ? true : false,
                 })
               }
               value={input.is_active}
@@ -35,7 +35,7 @@ const FormTambahPengguna = (props) => {
 
           <p className="text-[16px] text-slate-900/50 font-[400]">
             Pengguna{" "}
-            {input.is_active === "true" ? "Aktif" : "Tidak Aktif"}
+            {input.is_active === true ? "Aktif" : "Tidak Aktif"}
           </p>
         </div>
 

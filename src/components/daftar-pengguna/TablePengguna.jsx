@@ -64,7 +64,35 @@ export default function TablePengguna() {
                             {daftarPengguna?.data.map((pengguna, index) => (
                                 <DataPengguna data={pengguna} index={index} />
                             ))}
-                        
+                            {daftarPengguna?.data === null && (
+                                <div>
+                                <img
+                                    src="https://gcdnb.pbrd.co/images/YQ1ngF8DVrY9.png?o=1"
+                                    alt="not-found"
+                                    className="mx-auto"
+                                />
+
+                                <p className="text-[24px] font-[700] text-[#262627] mx-auto text-center w-[30rem] pb-9">
+                                    Ups! Tidak ada hasil yang sesuai. Silakan coba dengan kata kunci
+                                    lain.
+                                </p>
+                                </div>
+                            )}
+                            
+                            {daftarPengguna?.data === undefined && (
+                                <div>
+                                <img
+                                    src="https://gcdnb.pbrd.co/images/YQ1ngF8DVrY9.png?o=1"
+                                    alt="not-found"
+                                    className="mx-auto"
+                                />
+
+                                <p className="text-[24px] font-[700] text-[#262627] mx-auto text-center w-[30rem] pb-9">
+                                    Ups! Tidak ada hasil yang sesuai. Silakan coba dengan kata kunci
+                                    lain.
+                                </p>
+                                </div>
+                            )}
                     </table>
                 </div>
             </div>

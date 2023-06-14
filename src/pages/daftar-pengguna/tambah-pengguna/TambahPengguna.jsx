@@ -14,6 +14,8 @@ import { customAlert } from '../../../helpers/customAlert'
 const fetcherAdd = (url, payload) =>
   axios.post(url, payload).then((res) => res.data);
 
+
+
 const TambahPengguna = () => {
     const { state } = useLocation()
   
@@ -22,6 +24,7 @@ const TambahPengguna = () => {
     const [loading, setLoading] = useState(false)
 
     const dataEdit = {
+      id: state?.id,
       email: state?.email,
       password: state?.password,
       confirm_password: state?.confirm_password,

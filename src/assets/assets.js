@@ -55,6 +55,7 @@ import visiblePassword from "./daftar-pengguna/visiblepassword.svg";
 import notVisiblePassword from "./daftar-pengguna/notvisiblepassword.svg";
 import Prev from "./daftar-pengguna/Prev.svg";
 import Next from "./daftar-pengguna/Next.svg";
+import sort from './daftar-pengguna/sort.svg'
 
 // ** Import Pesanan KA
 import search from "./pesanan-ka/search.svg";
@@ -197,4 +198,5 @@ export default {
   kursi,
   kursiTerisi,
   calender,
+  sort,
 };
