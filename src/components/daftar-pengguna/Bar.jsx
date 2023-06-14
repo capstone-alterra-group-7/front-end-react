@@ -7,7 +7,7 @@ export default function Bar({setModal}) {
         <div className="relative col-span-3">
         <input
             type="text"
-            placeholder="Search"
+            placeholder="Cari data pengguna"
             className="border w-full border-[#D2D7E0] py-2 px-11  rounded-lg focus:outline-none text-[16px] placeholder:text-[#96989C] placeholder:font-[400]"
         />
 

@@ -6,20 +6,30 @@ import ModalBack from "../../../components/daftar-pengguna/ModalBack";
 
 // ** Import Others
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { tambahPengguna } from "../../../redux/daftar-pengguna/daftarPenggunaSlices";
+import { useLocation, useNavigate } from "react-router-dom";
 import { baseUrl } from "../../../services/base";
 import axios from "axios";
-import Swal from "sweetalert2";
+import { customAlert } from '../../../helpers/customAlert'
 
-const fetcherTambahPengguna = (url, payload) => axios.post(url, payload).then((res) => res.data)
+const fetcherAdd = (url, payload) =>
+  axios.post(url, payload).then((res) => res.data);
 
 const TambahPengguna = () => {
+    const { state } = useLocation()
   
     const [modal, setModal] = useState(false);
     const [modalBack, setModalBack] = useState(false);
     const [loading, setLoading] = useState(false)
+
+    const dataEdit = {
+      email: state?.email,
+      password: state?.password,
+      confirm_password: state?.confirm_password,
+      full_name: state?.full_name,
+      phone_number: state?.phone_number,
+      birth_date: state?.birth_date,
+      is_active: state?.is_active
+    }
 
     const [input, setInput] = useState({
       email: "",
@@ -28,6 +38,8 @@ const TambahPengguna = () => {
       full_name: "",
       phone_number: "",
       birth_date: "",
+      role: "user",
+      is_active: "",
     })
 
     const onChangePengguna = (e) => {
@@ -40,28 +52,44 @@ const TambahPengguna = () => {
       input.confirm_password === "" ||
       input.full_name === "" || 
       input.phone_number === "" || 
-      input.birth_date === "" 
+      input.birth_date === "" ||
+      input.is_active == "" 
     
     const navigate = useNavigate()
 
-    const handleAdd = () => {
+    console.log(input);
+
+    const handleAdd = async (e) => {
+      e.preventDefault()
       setLoading(true)
 
-      fetcherTambahPengguna(baseUrl("/admin/user/register"), {
+      fetcherAdd(baseUrl("/admin/user/register"), {
         email: input.email,
         password: input.password,
         confirm_password: input.confirm_password,
         full_name: input.full_name,
         phone_number: input.phone_number,
+        is_active: input.is_active,
+        role: "user",
       })
-      .then(() => {
-        Swal.fire("Success", "Data Telah Ditambahkan", "success");
+      .then((res) => {
+        const {
+          data: { full_name },
+        } = res;
+
+        customAlert(
+          "https://gcdnb.pbrd.co/images/2R7PmnlXkvSE.png?o=1",
+          "Data Ditambahkan",
+          `Data Pengguna ${full_name} berhasil ditambahkan ke dalam sistem.`
+        );
 
         setLoading(false);
 
         navigate("/daftar-pengguna");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+          setLoading(false);
+          console.log(err) });
     }
 
     const handleBack = () => {
@@ -81,7 +109,10 @@ const TambahPengguna = () => {
         </div>
         <FormTambahPengguna
           input={input}
-          onChangePengguna={onChangePengguna}/>
+          onChangePengguna={onChangePengguna}
+          edit={state}
+          setInput={setInput}
+          dataEdit={dataEdit}/>
 
         {modal && (
             <ModalDaftarPengguna

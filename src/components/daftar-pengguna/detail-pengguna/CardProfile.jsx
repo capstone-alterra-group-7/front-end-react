@@ -3,24 +3,9 @@ import assets from "../../../assets/assets";
 
 // ** Import Other
 import { useState } from "react";
+import moment from "moment";
 
 export default function CardProfile({ data }) {
-
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-
-    function togglePasswordVisibility() {
-        setIsPasswordVisible((prevState) => !prevState);
-    }
-
-    const date = new Date();
-
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-   
-    const currentDate = `${day}-${month}-${year}`;
-
-    const umur = currentDate - data.umurPengguna
 
   return (
     <div className="bg-white flex flex-col flex-wrap">
@@ -49,9 +34,23 @@ export default function CardProfile({ data }) {
             <th className='text-left font-normal ps-7 pt-4'>
                 <tr>{data.id}</tr>
                 <tr>{data.email}</tr>
-                <tr>{data.created_at || currentDate}</tr>
-                <tr>{data.umurAkun}</tr>
-                <tr>{data.statusAkun}</tr>
+                <tr>
+                {moment(data.created_at).format("D MMM YYYY")}{" "}
+                          <span className="ml-2">
+                            {new Date(data.created_at).toLocaleTimeString(
+                              "id",
+                              {
+                                hour: "2-digit",
+                                minute: "2-digit",
+                              }
+                            )}{" "} </span> WIB
+                </tr>
+                <tr>{data.umurAkun || "null"}</tr>
+                <tr>
+                    {data.deleted_at === "" && data.is_active === "true"
+                      ? "Aktif"
+                      : "Non Aktif"}
+                </tr>
             </th>      
         </table>
       </div>
@@ -70,8 +69,8 @@ export default function CardProfile({ data }) {
             </th>
 
             <th className='text-left font-normal ps-7 pt-4'>
-                <tr>{data.full_name}</tr>
-                <tr>{data.umurPengguna || umur || "23 Tahun"}</tr>
+                <tr>{data.birth_date || "null"}</tr>
+                <tr>23 Tahun</tr>
                 <tr>{data.phone_number}</tr>
             </th>
                     
