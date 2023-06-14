@@ -35,8 +35,6 @@ const Sidebar = () => {
         <ManyItems title="Master Data" datas={databases} />
 
         <ManyItems title="Transaksi" datas={transactions} />
-
-        <ManyItems title="Laporan" datas={laporan} />
       </div>
 
       <button onClick={handleLogout} className="flex gap-3 px-4  mt-36 pb-5">
