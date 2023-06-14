@@ -4,10 +4,11 @@ import { Link, useNavigate } from "react-router-dom"
 // ** Import Assests
 import assets from "../../../assets/assets"
 
-export default function SecondBar({ setModal }) {
+export default function SecondBar(props) {
+    const { setModal, data } = props
     const Navigate = useNavigate("")
     const handleClick = () => {
-        Navigate('/edit-pengguna')
+        Navigate('/edit-pengguna', { state: data })
     }
   return (
     <div className="flex justify-between items-center">

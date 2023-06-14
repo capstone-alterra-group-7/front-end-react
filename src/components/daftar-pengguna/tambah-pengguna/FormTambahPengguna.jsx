@@ -91,7 +91,7 @@ const FormTambahPengguna = (props) => {
         <InputPengguna
           name={"phone_number"}
           id={"phone_number"}
-          type={"text"}
+          type={"number"}
           label={"Nomor Handphone"}
           onChange={onChangePengguna}
           value={input.phone_number}

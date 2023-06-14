@@ -7,13 +7,6 @@ import ModalDaftarPengguna from "../../../components/daftar-pengguna/ModalDaftar
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-// ** Import Redux
-import { useDispatch } from "react-redux";
-import { hapusPengguna } from "../../../redux/daftar-pengguna/daftarPenggunaSlices";
-import axios from "axios";
-import { baseUrl } from "../../../services/base";
-import Swal from "sweetalert2";
-
 export default function DetailPengguna() {
   const [modal, setModal]= useState(false)
   const [loading, setLoading] = useState(false)
@@ -29,7 +22,7 @@ export default function DetailPengguna() {
 
           <h1 className="text-[32px] font-bold">Detail Pengguna</h1>
             
-          <SecondBar setModal={setModal}/>
+          <SecondBar setModal={setModal} data={data}/>
         </div>
         
         <CardProfile data={data}/>

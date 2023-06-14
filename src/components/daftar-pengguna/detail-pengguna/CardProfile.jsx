@@ -47,7 +47,7 @@ export default function CardProfile({ data }) {
                 </tr>
                 <tr>{data.umurAkun || "null"}</tr>
                 <tr>
-                    {data.deleted_at === "" && data.is_active === true
+                    {data.deleted_at === "" 
                       ? "Aktif"
                       : "Non Aktif"}
                 </tr>
