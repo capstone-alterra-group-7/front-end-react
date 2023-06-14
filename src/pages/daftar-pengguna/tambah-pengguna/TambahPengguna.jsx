@@ -51,7 +51,8 @@ const TambahPengguna = () => {
     input.confirm_password === "" ||
     input.full_name === "" ||
     input.phone_number === "" ||
-    input.birth_date === "";
+    input.birth_date === "" ||
+    input.password !== input.confirm_password;
 
   const navigate = useNavigate();
 
