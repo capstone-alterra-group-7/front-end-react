@@ -15,7 +15,7 @@ const ModalConfirmHotel = (props) => {
             className="py-[10px] border text-[#4B4C4E] border-[#D2D7E0] rounded-lg text-lg disabled:cursor-not-allowed"
             onClick={() => {
               setModal((prev) => {
-                return { ...prev, [name]: !prev.name };
+                return { ...prev, [name]: false };
               });
             }}
           >

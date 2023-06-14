@@ -5,10 +5,30 @@ import TiketEkonomi from "../TiketEkonomi";
 import TiketBisnis from "../TiketBisnis";
 import TiketEksekutif from "../TiketEksekutif";
 
+// ** Import Other
+import axios from "axios";
+import useSWR from "swr";
+import { baseUrl } from "../../../services/base";
+import moment from "moment";
+
+const fetcher = (url) => axios.get(url).then((res) => res.data);
+
 export default function Gerbong({ data }) {
+  const findIdTrain = data.train.train_id;
+
+  const findDate = moment(data.date).format("YYYY-MM-D");
+
   const [page, setPage] = useState(0);
 
-  const pickGerbong = data.gerbong[page];
+  const { data: daftarGerbong, isLoading } = useSWR(
+    baseUrl(
+      `/public/train-carriage?limit=9999&date=${findDate}&train_id=${findIdTrain}`
+    ),
+    fetcher
+  );
+
+  const pickGerbong =
+    daftarGerbong === null ? [] : isLoading ? [] : daftarGerbong.data[page];
 
   return (
     <div className="mt-2 bg-white">
@@ -34,7 +54,7 @@ export default function Gerbong({ data }) {
         </button>
 
         <h1 className="text-[#262627] text-[20px] font-[600]">
-          {pickGerbong.name}
+          {isLoading ? "Loading..." : pickGerbong.name}
         </h1>
 
         <button
@@ -61,15 +81,15 @@ export default function Gerbong({ data }) {
       </div>
 
       <div className="flex justify-center py-[70px]">
-        {pickGerbong.train.class === "Ekonomi" && (
+        {pickGerbong?.train?.class === "Ekonomi" && (
           <TiketEkonomi data={pickGerbong.seat} />
         )}
 
-        {pickGerbong.train.class === "Bisnis" && (
+        {pickGerbong?.train?.class === "Bisnis" && (
           <TiketBisnis data={pickGerbong.seat} />
         )}
 
-        {pickGerbong.train.class === "Eksekutif" && (
+        {pickGerbong?.train?.class === "Eksekutif" && (
           <TiketEksekutif data={pickGerbong.seat} />
         )}
       </div>

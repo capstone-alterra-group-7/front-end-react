@@ -3,23 +3,13 @@ import React from 'react'
 
 // ** Import Others
 import { useNavigate } from 'react-router-dom'
+import moment from 'moment'
 
 // ** Import Components
 import assets from '../../assets/assets'
 
 const DataPengguna = ({ data,index }) => {
     const Navigate = useNavigate()
-
-    const date = new Date();
-
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-   
-    const currentDate = `${day}-${month}-${year}`;
-
-    const umur = currentDate - data.tanggalLahir 
-
     const handleClick = () => {
         Navigate("/detail-pengguna",{
             state: {
@@ -48,13 +38,29 @@ const DataPengguna = ({ data,index }) => {
 
                 </td>
                 <td className="whitespace-nowrap px-6 py-4">{data.phone_number}</td>
-                <td className="whitespace-nowrap px-6 py-4 text-center">{data.created_at || currentDate}</td>
-                <td className="whitespace-nowrap px-6 py-4 text-center">{data.umurAkun || umur}</td>
+                <td className="whitespace-nowrap px-6 py-4 text-center">
+                    {moment(data.created_at).format("D MMM YYYY")}{" "}
+                          <span className="ml-2">
+                            {new Date(data.created_at).toLocaleTimeString(
+                              "id",
+                              {
+                                hour: "2-digit",
+                                minute: "2-digit",
+                              }
+                            )}{" "}
+                            </span> WIB
+                </td>
+                <td className="whitespace-nowrap px-6 py-4 text-center">{data.umurAkun}</td>
                 <td className="whitespace-nowrap py-4 items-center">
                     <p className={` ${
-                        data.statusAkun === "Aktif" ? "bg-[#DBF8D3] border border-[#45C521] text-[#45C521]" : "bg-[#F8D5D3] border border-[#C52920] text-[#C52920]"
-                        } py-[7px] -mr-[6px] me-2 w-[160px] text-center rounded-xl text-[15px] font-[600]`}>
-                        {data.statusAkun}
+                        data.deleted_at === "" && data.is_active === "true"
+                        ? "bg-[#DBF8D3] ring-1 ring-[#45C521] text-[#45C521]"
+                        : "bg-[#F8D5D3] ring-1 ring-[#C52920] text-[#C52920]"
+                    } py-[7px]  w-[190px] text-center rounded-xl text-[16px] font-[600]`}
+                  >
+                    {data.deleted_at === "" && data.is_active === "true"
+                      ? "Aktif"
+                      : "Non Aktif"}
                     </p>
                 </td>
             </tr>
