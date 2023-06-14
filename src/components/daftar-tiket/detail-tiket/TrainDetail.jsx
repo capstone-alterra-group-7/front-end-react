@@ -8,8 +8,6 @@ export default function TrainDetail({ data }) {
 
   const totalKursi = findKursiAvailable.map((kursi) => kursi.length);
 
-  console.log(totalKursi);
-
   return (
     <div className="bg-white flex justify-between p-[32px]">
       <div className="flex flex-col justify-between">
