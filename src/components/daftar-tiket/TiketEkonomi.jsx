@@ -27,7 +27,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[84].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[84].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="272"
@@ -35,7 +35,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[62].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[62].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="352"
@@ -43,7 +43,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[85].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[85].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="352"
@@ -51,7 +51,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[63].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[63].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="432"
@@ -59,7 +59,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[86].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[86].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="432"
@@ -67,7 +67,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[64].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[64].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="512"
@@ -75,7 +75,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[87].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[87].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="512"
@@ -83,7 +83,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[65].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[65].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="592"
@@ -91,7 +91,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[88].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[88].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="592"
@@ -99,7 +99,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[66].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[66].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="672"
@@ -107,7 +107,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[89].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[89].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="672"
@@ -115,7 +115,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[67].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[67].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="752"
@@ -123,7 +123,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[90].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[90].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="752"
@@ -131,7 +131,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[68].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[68].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="832"
@@ -139,7 +139,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[91].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[91].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="832"
@@ -147,7 +147,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[69].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[69].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="912"
@@ -155,7 +155,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[92].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[92].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="912"
@@ -163,7 +163,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[70].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[70].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="992"
@@ -171,7 +171,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[93].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[93].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="992"
@@ -179,7 +179,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[71].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[71].available === true ? "#E1E4EA" : "#0080FF"}
         />
         \
         <>
@@ -250,7 +250,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[22].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[22].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="112"
@@ -258,7 +258,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[0].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[0].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="192"
@@ -266,7 +266,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[23].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[23].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="192"
@@ -274,7 +274,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[1].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[1].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="272"
@@ -282,7 +282,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[24].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[24].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="272"
@@ -290,7 +290,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[2].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[2].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="352"
@@ -298,7 +298,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[44].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[44].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="352"
@@ -306,7 +306,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[25].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[25].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="352"
@@ -314,7 +314,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[3].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[3].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="432"
@@ -322,7 +322,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[45].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[45].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="432"
@@ -330,7 +330,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[26].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[26].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="432"
@@ -338,7 +338,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[4].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[4].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="512"
@@ -346,7 +346,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[46].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[46].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="512"
@@ -354,7 +354,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[27].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[27].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="512"
@@ -362,7 +362,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[5].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[5].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="592"
@@ -370,7 +370,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[47].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[47].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="592"
@@ -378,7 +378,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[28].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[28].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="592"
@@ -386,7 +386,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[6].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[6].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="672"
@@ -394,7 +394,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[48].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[48].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="672"
@@ -402,7 +402,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[29].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[29].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="672"
@@ -410,7 +410,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[7].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[7].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="752"
@@ -418,7 +418,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[49].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[49].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="752"
@@ -426,7 +426,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[30].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[30].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="752"
@@ -434,7 +434,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[8].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[8].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="832"
@@ -442,7 +442,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[50].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[50].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="832"
@@ -450,7 +450,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[31].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[31].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="832"
@@ -458,7 +458,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[9].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[9].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="912"
@@ -466,7 +466,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[51].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[51].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="912"
@@ -474,7 +474,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[32].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[32].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="912"
@@ -482,7 +482,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[10].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[10].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="992"
@@ -490,7 +490,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[52].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[52].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="992"
@@ -498,7 +498,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[33].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[33].available === true ? "#E1E4EA" : "#0080FF"}
         />
         <rect
           x="992"
@@ -506,7 +506,7 @@ const TiketEkonomi = ({ data }) => {
           width="64"
           height="64"
           rx="16"
-          fill={data[11].available === true ? "#CCE5FF" : "#0080FF"}
+          fill={data[11].available === true ? "#E1E4EA" : "#0080FF"}
         />
       </svg>
 
@@ -535,7 +535,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[94].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[94].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="112"
@@ -543,7 +543,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[72].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[72].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="192"
@@ -551,7 +551,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[95].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[95].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="192"
@@ -559,7 +559,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[73].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[73].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="272"
@@ -567,7 +567,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[96].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[96].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="272"
@@ -575,7 +575,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[74].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[74].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="352"
@@ -583,7 +583,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[97].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[97].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="352"
@@ -591,7 +591,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[75].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[75].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="432"
@@ -599,7 +599,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[98].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[98].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="432"
@@ -607,7 +607,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[76].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[76].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="512"
@@ -615,7 +615,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[99].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[99].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="512"
@@ -623,7 +623,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[77].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[77].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="592"
@@ -631,7 +631,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[100].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[100].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="592"
@@ -639,7 +639,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[78].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[78].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="672"
@@ -647,7 +647,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[101].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[101].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="672"
@@ -655,7 +655,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[79].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[79].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="752"
@@ -663,7 +663,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[102].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[102].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="752"
@@ -671,7 +671,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[80].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[80].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="832"
@@ -679,7 +679,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[103].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[103].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="832"
@@ -687,7 +687,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[81].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[81].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="912"
@@ -695,7 +695,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[104].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[104].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="912"
@@ -703,7 +703,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[82].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[82].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="992"
@@ -711,7 +711,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[105].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[105].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <rect
               x="992"
@@ -719,7 +719,7 @@ const TiketEkonomi = ({ data }) => {
               width="64"
               height="64"
               rx="16"
-              fill={data[83].available === true ? "#CCE5FF" : "#0080FF"}
+              fill={data[83].available === true ? "#E1E4EA" : "#0080FF"}
             />
             <path
               d="M140.801 240H137.784V231.738C137.784 231.51 137.787 231.23 137.794 230.898C137.8 230.56 137.81 230.215 137.823 229.863C137.836 229.505 137.849 229.183 137.862 228.896C137.79 228.981 137.644 229.128 137.422 229.336C137.208 229.538 137.006 229.72 136.817 229.883L135.176 231.201L133.721 229.385L138.321 225.723H140.801V240ZM154.24 228.916C154.24 229.574 154.103 230.143 153.829 230.625C153.556 231.107 153.185 231.501 152.716 231.807C152.254 232.113 151.733 232.337 151.154 232.48V232.539C152.3 232.682 153.169 233.034 153.761 233.594C154.36 234.154 154.66 234.902 154.66 235.84C154.66 236.673 154.454 237.419 154.044 238.076C153.641 238.734 153.016 239.251 152.169 239.629C151.323 240.007 150.232 240.195 148.898 240.195C148.11 240.195 147.374 240.13 146.691 240C146.014 239.876 145.376 239.684 144.777 239.424V236.855C145.389 237.168 146.03 237.406 146.701 237.568C147.371 237.725 147.996 237.803 148.576 237.803C149.656 237.803 150.411 237.617 150.841 237.246C151.277 236.868 151.495 236.341 151.495 235.664C151.495 235.267 151.395 234.932 151.193 234.658C150.991 234.385 150.639 234.176 150.138 234.033C149.643 233.89 148.95 233.818 148.058 233.818H146.974V231.504H148.077C148.956 231.504 149.624 231.423 150.079 231.26C150.542 231.09 150.854 230.863 151.017 230.576C151.186 230.283 151.271 229.951 151.271 229.58C151.271 229.072 151.115 228.675 150.802 228.389C150.49 228.102 149.969 227.959 149.24 227.959C148.784 227.959 148.367 228.018 147.99 228.135C147.619 228.245 147.283 228.382 146.984 228.545C146.684 228.701 146.421 228.854 146.193 229.004L144.796 226.924C145.356 226.52 146.01 226.185 146.759 225.918C147.514 225.651 148.413 225.518 149.454 225.518C150.926 225.518 152.091 225.814 152.951 226.406C153.81 226.999 154.24 227.835 154.24 228.916Z"
@@ -789,7 +789,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[53].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[53].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="112"
@@ -797,7 +797,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[34].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[34].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="112"
@@ -805,7 +805,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[12].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[12].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="192"
@@ -813,7 +813,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[54].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[54].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="192"
@@ -821,7 +821,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[35].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[35].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="192"
@@ -829,7 +829,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[13].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[13].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="272"
@@ -837,7 +837,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[55].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[55].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="272"
@@ -845,7 +845,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[36].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[36].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="272"
@@ -853,7 +853,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[14].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[14].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="352"
@@ -861,7 +861,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[56].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[56].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="352"
@@ -869,7 +869,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[37].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[37].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="352"
@@ -877,7 +877,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[15].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[15].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="432"
@@ -885,7 +885,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[57].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[57].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="432"
@@ -893,7 +893,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[38].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[38].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="432"
@@ -901,7 +901,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[16].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[16].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="512"
@@ -909,7 +909,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[58].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[58].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="512"
@@ -917,7 +917,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[39].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[39].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="512"
@@ -925,7 +925,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[17].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[17].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="592"
@@ -933,7 +933,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[59].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[59].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="592"
@@ -941,7 +941,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[40].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[40].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="592"
@@ -949,7 +949,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[18].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[18].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="672"
@@ -957,7 +957,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[60].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[60].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="672"
@@ -965,7 +965,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[41].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[41].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="672"
@@ -973,7 +973,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[19].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[19].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="752"
@@ -981,7 +981,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[61].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[61].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="752"
@@ -989,7 +989,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[42].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[42].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="752"
@@ -997,7 +997,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[20].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[20].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="832"
@@ -1005,7 +1005,7 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[43].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[43].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <rect
             x="832"
@@ -1013,13 +1013,13 @@ const TiketEkonomi = ({ data }) => {
             width="64"
             height="64"
             rx="16"
-            fill={data[21].available === true ? "#CCE5FF" : "#0080FF"}
+            fill={data[21].available === true ? "#E1E4EA" : "#0080FF"}
           />
           <path
             d="M40.3133 574H38.2508L36.0067 570.391L35.2391 570.941V574H33.4227V565.434H35.2391V569.354C35.3602 569.186 35.4793 569.018 35.5965 568.85C35.7137 568.682 35.8328 568.514 35.9539 568.346L38.2742 565.434H40.2899L37.3016 569.225L40.3133 574ZM44 567.326C44.6054 567.326 45.1269 567.443 45.5644 567.678C46.0019 567.908 46.3398 568.244 46.5781 568.686C46.8164 569.127 46.9355 569.666 46.9355 570.303V571.17H42.7109C42.7304 571.674 42.8808 572.07 43.1621 572.359C43.4472 572.645 43.8418 572.787 44.3457 572.787C44.7636 572.787 45.1465 572.744 45.4941 572.658C45.8418 572.572 46.1992 572.443 46.5664 572.271V573.654C46.2422 573.814 45.9023 573.932 45.5468 574.006C45.1953 574.08 44.7675 574.117 44.2636 574.117C43.6074 574.117 43.0254 573.996 42.5175 573.754C42.0136 573.512 41.6172 573.143 41.3281 572.646C41.0429 572.15 40.9004 571.525 40.9004 570.771C40.9004 570.006 41.0293 569.369 41.2871 568.861C41.5488 568.35 41.9121 567.967 42.3769 567.713C42.8418 567.455 43.3828 567.326 44 567.326ZM44.0117 568.598C43.664 568.598 43.375 568.709 43.1445 568.932C42.9179 569.154 42.7871 569.504 42.7519 569.98H45.2597C45.2558 569.715 45.207 569.479 45.1133 569.271C45.0234 569.064 44.8867 568.9 44.7031 568.779C44.5234 568.658 44.2929 568.598 44.0117 568.598ZM51.1964 572.693C51.3917 572.693 51.5812 572.674 51.7648 572.635C51.9523 572.596 52.1378 572.547 52.3214 572.488V573.818C52.13 573.904 51.8917 573.975 51.6066 574.029C51.3253 574.088 51.0167 574.117 50.6808 574.117C50.2902 574.117 49.9386 574.055 49.6261 573.93C49.3175 573.801 49.0734 573.58 48.8937 573.268C48.7179 572.951 48.63 572.512 48.63 571.949V568.791H47.7745V568.035L48.7589 567.438L49.2745 566.055H50.4171V567.449H52.2511V568.791H50.4171V571.949C50.4171 572.199 50.4874 572.387 50.628 572.512C50.7726 572.633 50.962 572.693 51.1964 572.693ZM56.4007 567.326C57.0061 567.326 57.5276 567.443 57.9651 567.678C58.4026 567.908 58.7405 568.244 58.9788 568.686C59.2171 569.127 59.3362 569.666 59.3362 570.303V571.17H55.1116C55.1311 571.674 55.2815 572.07 55.5628 572.359C55.8479 572.645 56.2425 572.787 56.7464 572.787C57.1643 572.787 57.5471 572.744 57.8948 572.658C58.2425 572.572 58.5999 572.443 58.9671 572.271V573.654C58.6428 573.814 58.303 573.932 57.9475 574.006C57.596 574.08 57.1682 574.117 56.6643 574.117C56.0081 574.117 55.426 573.996 54.9182 573.754C54.4143 573.512 54.0178 573.143 53.7288 572.646C53.4436 572.15 53.301 571.525 53.301 570.771C53.301 570.006 53.43 569.369 53.6878 568.861C53.9495 568.35 54.3128 567.967 54.7776 567.713C55.2425 567.455 55.7835 567.326 56.4007 567.326ZM56.4124 568.598C56.0647 568.598 55.7757 568.709 55.5452 568.932C55.3186 569.154 55.1878 569.504 55.1526 569.98H57.6604C57.6565 569.715 57.6077 569.479 57.5139 569.271C57.4241 569.064 57.2874 568.9 57.1038 568.779C56.9241 568.658 56.6936 568.598 56.4124 568.598ZM64.4936 567.326C64.5834 567.326 64.6869 567.332 64.8041 567.344C64.9252 567.352 65.0229 567.363 65.0971 567.379L64.9623 569.055C64.9037 569.035 64.8197 569.021 64.7104 569.014C64.6049 569.002 64.5131 568.996 64.435 568.996C64.2045 568.996 63.9799 569.025 63.7612 569.084C63.5463 569.143 63.353 569.238 63.1811 569.371C63.0092 569.5 62.8725 569.672 62.7709 569.887C62.6733 570.098 62.6244 570.357 62.6244 570.666V574H60.8373V567.449H62.1908L62.4545 568.551H62.5424C62.6713 568.328 62.8315 568.125 63.0229 567.941C63.2182 567.754 63.4389 567.605 63.685 567.496C63.935 567.383 64.2045 567.326 64.4936 567.326ZM69.0181 567.314C69.897 567.314 70.5709 567.506 71.0396 567.889C71.5084 568.271 71.7428 568.854 71.7428 569.635V574H70.4947L70.149 573.109H70.1021C69.9146 573.344 69.7232 573.535 69.5279 573.684C69.3326 573.832 69.108 573.941 68.8541 574.012C68.6002 574.082 68.2916 574.117 67.9283 574.117C67.5416 574.117 67.1939 574.043 66.8853 573.895C66.5806 573.746 66.3404 573.52 66.1646 573.215C65.9888 572.906 65.901 572.516 65.901 572.043C65.901 571.348 66.1451 570.836 66.6334 570.508C67.1217 570.176 67.8541 569.992 68.8306 569.957L69.9674 569.922V569.635C69.9674 569.291 69.8775 569.039 69.6978 568.879C69.5181 568.719 69.2681 568.639 68.9478 568.639C68.6314 568.639 68.3209 568.684 68.0162 568.773C67.7115 568.863 67.4068 568.977 67.1021 569.113L66.5103 567.906C66.858 567.723 67.2467 567.578 67.6763 567.473C68.1099 567.367 68.5572 567.314 69.0181 567.314ZM69.9674 570.965L69.276 570.988C68.6978 571.004 68.2955 571.107 68.0689 571.299C67.8463 571.49 67.7349 571.742 67.7349 572.055C67.7349 572.328 67.815 572.523 67.9752 572.641C68.1353 572.754 68.3443 572.811 68.6021 572.811C68.9849 572.811 69.3072 572.697 69.5689 572.471C69.8345 572.244 69.9674 571.922 69.9674 571.504V570.965ZM77.3572 567.326C78.0564 567.326 78.6189 567.518 79.0447 567.9C79.4704 568.279 79.6833 568.889 79.6833 569.729V574H77.8962V570.174C77.8962 569.705 77.8103 569.352 77.6384 569.113C77.4704 568.875 77.2048 568.756 76.8415 568.756C76.2947 568.756 75.9216 568.941 75.7224 569.312C75.5232 569.684 75.4236 570.219 75.4236 570.918V574H73.6365V567.449H75.0017L75.2419 568.287H75.3415C75.4822 568.061 75.656 567.877 75.863 567.736C76.074 567.596 76.3064 567.492 76.5603 567.426C76.8181 567.359 77.0837 567.326 77.3572 567.326ZM83.4872 576.883C82.5731 576.883 81.8739 576.723 81.3895 576.402C80.9091 576.086 80.6688 575.641 80.6688 575.066C80.6688 574.672 80.7919 574.342 81.038 574.076C81.2841 573.811 81.6454 573.621 82.122 573.508C81.9384 573.43 81.7782 573.303 81.6415 573.127C81.5048 572.947 81.4364 572.758 81.4364 572.559C81.4364 572.309 81.5087 572.102 81.6532 571.938C81.7977 571.77 82.0067 571.605 82.2802 571.445C81.9364 571.297 81.663 571.059 81.4598 570.73C81.2606 570.402 81.161 570.016 81.161 569.57C81.161 569.094 81.2645 568.689 81.4716 568.357C81.6825 568.021 81.9872 567.766 82.3856 567.59C82.788 567.414 83.2762 567.326 83.8505 567.326C83.9716 567.326 84.1122 567.334 84.2723 567.35C84.4325 567.365 84.579 567.383 84.7118 567.402C84.8485 567.422 84.9403 567.438 84.9872 567.449H87.2723V568.357L86.247 568.621C86.3407 568.766 86.411 568.92 86.4579 569.084C86.5048 569.248 86.5282 569.422 86.5282 569.605C86.5282 570.309 86.2821 570.857 85.7899 571.252C85.3016 571.643 84.622 571.838 83.7509 571.838C83.5438 571.826 83.3485 571.811 83.1649 571.791C83.0751 571.861 83.0067 571.936 82.9598 572.014C82.913 572.092 82.8895 572.174 82.8895 572.26C82.8895 572.346 82.9247 572.418 82.995 572.477C83.0692 572.531 83.1786 572.574 83.3231 572.605C83.4716 572.633 83.6552 572.646 83.8739 572.646H84.9872C85.7059 572.646 86.2528 572.801 86.6278 573.109C87.0067 573.418 87.1962 573.871 87.1962 574.469C87.1962 575.234 86.8759 575.828 86.2352 576.25C85.5985 576.672 84.6825 576.883 83.4872 576.883ZM83.5634 575.717C83.9891 575.717 84.3544 575.676 84.6591 575.594C84.9677 575.516 85.204 575.402 85.368 575.254C85.5321 575.109 85.6141 574.936 85.6141 574.732C85.6141 574.568 85.5653 574.438 85.4677 574.34C85.3739 574.246 85.2294 574.18 85.0341 574.141C84.8427 574.102 84.5966 574.082 84.2958 574.082H83.37C83.1512 574.082 82.954 574.117 82.7782 574.188C82.6063 574.258 82.4696 574.355 82.368 574.48C82.2665 574.609 82.2157 574.758 82.2157 574.926C82.2157 575.172 82.3329 575.365 82.5673 575.506C82.8055 575.646 83.1376 575.717 83.5634 575.717ZM83.8505 570.748C84.1864 570.748 84.4325 570.645 84.5887 570.438C84.745 570.23 84.8231 569.949 84.8231 569.594C84.8231 569.199 84.7411 568.904 84.577 568.709C84.4169 568.51 84.1747 568.41 83.8505 568.41C83.5223 568.41 83.2762 568.51 83.1122 568.709C82.9481 568.904 82.8661 569.199 82.8661 569.594C82.8661 569.949 82.9462 570.23 83.1063 570.438C83.2704 570.645 83.5184 570.748 83.8505 570.748ZM91.0879 567.314C91.9668 567.314 92.6407 567.506 93.1094 567.889C93.5782 568.271 93.8125 568.854 93.8125 569.635V574H92.5645L92.2188 573.109H92.1719C91.9844 573.344 91.793 573.535 91.5977 573.684C91.4024 573.832 91.1778 573.941 90.9239 574.012C90.67 574.082 90.3614 574.117 89.9981 574.117C89.6114 574.117 89.2637 574.043 88.9551 573.895C88.6504 573.746 88.4102 573.52 88.2344 573.215C88.0586 572.906 87.9707 572.516 87.9707 572.043C87.9707 571.348 88.2149 570.836 88.7032 570.508C89.1914 570.176 89.9239 569.992 90.9004 569.957L92.0371 569.922V569.635C92.0371 569.291 91.9473 569.039 91.7676 568.879C91.5879 568.719 91.3379 568.639 91.0176 568.639C90.7012 568.639 90.3907 568.684 90.086 568.773C89.7813 568.863 89.4766 568.977 89.1719 569.113L88.5801 567.906C88.9278 567.723 89.3164 567.578 89.7461 567.473C90.1797 567.367 90.627 567.314 91.0879 567.314ZM92.0371 570.965L91.3457 570.988C90.7676 571.004 90.3653 571.107 90.1387 571.299C89.916 571.49 89.8047 571.742 89.8047 572.055C89.8047 572.328 89.8848 572.523 90.045 572.641C90.2051 572.754 90.4141 572.811 90.6719 572.811C91.0547 572.811 91.377 572.697 91.6387 572.471C91.9043 572.244 92.0371 571.922 92.0371 571.504V570.965ZM99.4269 567.326C100.126 567.326 100.689 567.518 101.114 567.9C101.54 568.279 101.753 568.889 101.753 569.729V574H99.966V570.174C99.966 569.705 99.8801 569.352 99.7082 569.113C99.5402 568.875 99.2746 568.756 98.9113 568.756C98.3644 568.756 97.9914 568.941 97.7922 569.312C97.593 569.684 97.4933 570.219 97.4933 570.918V574H95.7062V567.449H97.0715L97.3117 568.287H97.4113C97.5519 568.061 97.7258 567.877 97.9328 567.736C98.1437 567.596 98.3762 567.492 98.6301 567.426C98.8879 567.359 99.1535 567.326 99.4269 567.326Z"
             fill="#262627"
           />
-          <rect x="32" y="594" width="32" height="32" rx="8" fill="#CCE5FF" />
+          <rect x="32" y="594" width="32" height="32" rx="8" fill="#E1E4EA" />
           <path
             d="M82.2172 616H80.0609L76.5062 610.812L75.3812 611.727V616H73.5062V604.578H75.3812V610.039C75.6104 609.758 75.8422 609.477 76.0766 609.195C76.3109 608.914 76.5453 608.633 76.7797 608.352L79.9984 604.578H82.1156L77.85 609.578L82.2172 616ZM91.2737 611.656C91.2737 612.375 91.18 613.013 90.9925 613.57C90.805 614.128 90.5316 614.599 90.1722 614.984C89.8128 615.365 89.3805 615.656 88.8753 615.859C88.3701 616.057 87.7998 616.156 87.1644 616.156C86.5706 616.156 86.0264 616.057 85.5316 615.859C85.0368 615.656 84.6071 615.365 84.2425 614.984C83.8831 614.599 83.6045 614.128 83.4066 613.57C83.2086 613.013 83.1097 612.375 83.1097 611.656C83.1097 610.703 83.2737 609.896 83.6019 609.234C83.9352 608.568 84.4092 608.06 85.0237 607.711C85.6383 607.362 86.3701 607.188 87.2191 607.188C88.0159 607.188 88.7191 607.362 89.3284 607.711C89.9378 608.06 90.4144 608.568 90.7581 609.234C91.1019 609.901 91.2737 610.708 91.2737 611.656ZM85.0003 611.656C85.0003 612.286 85.0758 612.826 85.2269 613.273C85.3831 613.721 85.6227 614.065 85.9456 614.305C86.2685 614.539 86.6852 614.656 87.1956 614.656C87.706 614.656 88.1227 614.539 88.4456 614.305C88.7685 614.065 89.0055 613.721 89.1566 613.273C89.3076 612.826 89.3831 612.286 89.3831 611.656C89.3831 611.026 89.3076 610.492 89.1566 610.055C89.0055 609.612 88.7685 609.276 88.4456 609.047C88.1227 608.812 87.7034 608.695 87.1878 608.695C86.4274 608.695 85.8727 608.951 85.5237 609.461C85.1748 609.971 85.0003 610.703 85.0003 611.656ZM99.2756 613.531C99.2756 614.099 99.1376 614.578 98.8616 614.969C98.5855 615.359 98.1819 615.656 97.6506 615.859C97.1246 616.057 96.4787 616.156 95.7131 616.156C95.109 616.156 94.5881 616.112 94.1506 616.023C93.7183 615.94 93.3095 615.81 92.9241 615.633V614.047C93.3355 614.24 93.7965 614.406 94.3069 614.547C94.8225 614.688 95.3095 614.758 95.7678 614.758C96.372 614.758 96.8069 614.664 97.0725 614.477C97.3381 614.284 97.4709 614.029 97.4709 613.711C97.4709 613.523 97.4162 613.357 97.3069 613.211C97.2027 613.06 97.0048 612.906 96.7131 612.75C96.4267 612.589 96.0048 612.396 95.4475 612.172C94.9006 611.953 94.4397 611.734 94.0647 611.516C93.6897 611.297 93.4058 611.034 93.2131 610.727C93.0204 610.414 92.9241 610.016 92.9241 609.531C92.9241 608.766 93.2261 608.185 93.8303 607.789C94.4397 607.388 95.2444 607.188 96.2444 607.188C96.7756 607.188 97.2756 607.242 97.7444 607.352C98.2183 607.456 98.6819 607.609 99.135 607.812L98.5569 609.195C98.1662 609.023 97.773 608.883 97.3772 608.773C96.9866 608.659 96.5881 608.602 96.1819 608.602C95.7079 608.602 95.3459 608.674 95.0959 608.82C94.8511 608.966 94.7287 609.174 94.7287 609.445C94.7287 609.648 94.7886 609.82 94.9084 609.961C95.0282 610.102 95.234 610.242 95.5256 610.383C95.8225 610.523 96.234 610.698 96.76 610.906C97.2756 611.104 97.7209 611.312 98.0959 611.531C98.4761 611.745 98.7678 612.008 98.9709 612.32C99.1741 612.633 99.2756 613.036 99.2756 613.531ZM108.996 611.656C108.996 612.375 108.902 613.013 108.715 613.57C108.527 614.128 108.254 614.599 107.895 614.984C107.535 615.365 107.103 615.656 106.598 615.859C106.093 616.057 105.522 616.156 104.887 616.156C104.293 616.156 103.749 616.057 103.254 615.859C102.759 615.656 102.33 615.365 101.965 614.984C101.606 614.599 101.327 614.128 101.129 613.57C100.931 613.013 100.832 612.375 100.832 611.656C100.832 610.703 100.996 609.896 101.324 609.234C101.658 608.568 102.132 608.06 102.746 607.711C103.361 607.362 104.093 607.188 104.942 607.188C105.738 607.188 106.442 607.362 107.051 607.711C107.66 608.06 108.137 608.568 108.481 609.234C108.824 609.901 108.996 610.708 108.996 611.656ZM102.723 611.656C102.723 612.286 102.798 612.826 102.949 613.273C103.106 613.721 103.345 614.065 103.668 614.305C103.991 614.539 104.408 614.656 104.918 614.656C105.429 614.656 105.845 614.539 106.168 614.305C106.491 614.065 106.728 613.721 106.879 613.273C107.03 612.826 107.106 612.286 107.106 611.656C107.106 611.026 107.03 610.492 106.879 610.055C106.728 609.612 106.491 609.276 106.168 609.047C105.845 608.812 105.426 608.695 104.91 608.695C104.15 608.695 103.595 608.951 103.246 609.461C102.897 609.971 102.723 610.703 102.723 611.656ZM115.693 607.188C116.667 607.188 117.425 607.44 117.967 607.945C118.514 608.445 118.787 609.25 118.787 610.359V616H116.951V610.703C116.951 610.031 116.813 609.529 116.537 609.195C116.261 608.857 115.834 608.688 115.256 608.688C114.417 608.688 113.834 608.945 113.506 609.461C113.183 609.977 113.022 610.724 113.022 611.703V616H111.186V607.352H112.615L112.873 608.523H112.975C113.162 608.221 113.394 607.974 113.67 607.781C113.951 607.583 114.264 607.435 114.607 607.336C114.956 607.237 115.318 607.188 115.693 607.188ZM123.906 619.844C122.734 619.844 121.836 619.633 121.211 619.211C120.586 618.789 120.273 618.198 120.273 617.438C120.273 616.906 120.44 616.456 120.773 616.086C121.107 615.721 121.583 615.469 122.203 615.328C121.969 615.224 121.766 615.062 121.594 614.844C121.427 614.62 121.344 614.372 121.344 614.102C121.344 613.779 121.435 613.503 121.617 613.273C121.799 613.044 122.073 612.823 122.438 612.609C121.984 612.417 121.62 612.104 121.344 611.672C121.073 611.234 120.938 610.721 120.938 610.133C120.938 609.508 121.07 608.977 121.336 608.539C121.602 608.096 121.99 607.76 122.5 607.531C123.01 607.297 123.628 607.18 124.352 607.18C124.508 607.18 124.677 607.19 124.859 607.211C125.047 607.227 125.219 607.247 125.375 607.273C125.536 607.294 125.659 607.318 125.742 607.344H128.734V608.367L127.266 608.641C127.406 608.839 127.518 609.065 127.602 609.32C127.685 609.57 127.727 609.844 127.727 610.141C127.727 611.036 127.417 611.742 126.797 612.258C126.182 612.768 125.333 613.023 124.25 613.023C123.99 613.013 123.737 612.992 123.492 612.961C123.305 613.076 123.161 613.203 123.062 613.344C122.964 613.479 122.914 613.633 122.914 613.805C122.914 613.945 122.964 614.06 123.062 614.148C123.161 614.232 123.307 614.294 123.5 614.336C123.698 614.378 123.938 614.398 124.219 614.398H125.711C126.659 614.398 127.383 614.599 127.883 615C128.383 615.401 128.633 615.99 128.633 616.766C128.633 617.75 128.227 618.508 127.414 619.039C126.602 619.576 125.432 619.844 123.906 619.844ZM123.977 618.555C124.617 618.555 125.156 618.492 125.594 618.367C126.031 618.242 126.362 618.062 126.586 617.828C126.81 617.599 126.922 617.326 126.922 617.008C126.922 616.727 126.852 616.51 126.711 616.359C126.57 616.208 126.359 616.104 126.078 616.047C125.797 615.99 125.448 615.961 125.031 615.961H123.672C123.333 615.961 123.034 616.013 122.773 616.117C122.513 616.227 122.31 616.383 122.164 616.586C122.023 616.789 121.953 617.034 121.953 617.32C121.953 617.716 122.128 618.021 122.477 618.234C122.831 618.448 123.331 618.555 123.977 618.555ZM124.336 611.82C124.872 611.82 125.271 611.674 125.531 611.383C125.792 611.086 125.922 610.669 125.922 610.133C125.922 609.549 125.786 609.112 125.516 608.82C125.25 608.529 124.854 608.383 124.328 608.383C123.812 608.383 123.419 608.531 123.148 608.828C122.883 609.125 122.75 609.565 122.75 610.148C122.75 610.674 122.883 611.086 123.148 611.383C123.419 611.674 123.815 611.82 124.336 611.82Z"
             fill="#262627"

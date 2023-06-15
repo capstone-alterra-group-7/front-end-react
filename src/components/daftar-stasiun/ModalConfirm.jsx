@@ -1,7 +1,16 @@
-import React from "react";
+// ** Import Redux
+import { useDispatch } from "react-redux";
+import { isLogout } from "../../redux/auth/tokenSlices";
 
 const ModalConfirm = (props) => {
   const { setModal, handle, title, desc, bg, cancel, confirm, loading } = props;
+
+  const dispatch = useDispatch();
+
+  const handleCancel = () => {
+    setModal(false);
+    dispatch(isLogout(false));
+  };
 
   return (
     <div className="fixed z-50 duration-500 -top-6 right-0 left-0 bottom-0 flex justify-center items-center bg-gray-700/50">
@@ -13,9 +22,7 @@ const ModalConfirm = (props) => {
           <button
             disabled={loading}
             className="py-[10px] border text-[#4B4C4E] border-[#D2D7E0] rounded-lg text-lg disabled:cursor-not-allowed"
-            onClick={() => {
-              setModal(false);
-            }}
+            onClick={handleCancel}
           >
             {cancel}
           </button>

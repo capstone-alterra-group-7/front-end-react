@@ -1,5 +1,24 @@
 // ** Import For Sidebar
 import iconNav from "./sidebar/icon-nav.svg";
+import logoTrip from "./sidebar/logo-trip.svg";
+import iconStasiun from "./sidebar/icon-stasiun.svg";
+import iconKeretaSide from "./sidebar/icon-kereta.svg";
+import iconTiket from "./sidebar/icon-tiket.svg";
+import iconHotel from "./sidebar/icon-hotel.svg";
+import iconPenggunaSide from "./sidebar/icon-pengguna.svg";
+import iconPesananKa from "./sidebar/icon-pesanan-ka.svg";
+import iconPesananHotel from "./sidebar/icon-pesanan-hotel.svg";
+import iconLogout from "./sidebar/icon-logout.svg";
+
+import dashboardActive from "./sidebar/active/dashboard-active.svg";
+import stasiunActive from "./sidebar/active/stasiun-active.svg";
+import keretaActive from "./sidebar/active/kereta-active.svg";
+import tiketActive from "./sidebar/active/tiket-active.svg";
+import hotelActive from "./sidebar/active/hotel-active.svg";
+import penggunaActive from "./sidebar/active/pengguna-active.svg";
+import pesananHotelActive from "./sidebar/active/pesanan-hotel-active.svg";
+import pesananKaActive from "./sidebar/active/pesanan-ka-active.svg";
+
 import logoKai from "./daftar-ka/logoKai.svg";
 import stepper from "./daftar-ka/stepper.svg";
 
@@ -64,7 +83,7 @@ import visiblePassword from "./daftar-pengguna/visiblepassword.svg";
 import notVisiblePassword from "./daftar-pengguna/notvisiblepassword.svg";
 import Prev from "./daftar-pengguna/Prev.svg";
 import Next from "./daftar-pengguna/Next.svg";
-import sort from './daftar-pengguna/sort.svg'
+import sort from "./daftar-pengguna/sort.svg";
 
 // ** Import Pesanan KA
 import search from "./pesanan-ka/search.svg";
@@ -116,6 +135,24 @@ import calender from "./daftar-tiket/calender.svg";
 
 export default {
   iconNav,
+  iconStasiun,
+  iconKeretaSide,
+  iconTiket,
+  iconHotel,
+  iconPenggunaSide,
+  iconPesananKa,
+  iconPesananHotel,
+  iconLogout,
+
+  dashboardActive,
+  stasiunActive,
+  keretaActive,
+  tiketActive,
+  hotelActive,
+  penggunaActive,
+  pesananHotelActive,
+  pesananKaActive,
+
   logoKai,
   stepper,
   iconLeftDetailKursi,
@@ -217,4 +254,6 @@ export default {
   kursiTerisi,
   calender,
   sort,
+
+  logoTrip,
 };
