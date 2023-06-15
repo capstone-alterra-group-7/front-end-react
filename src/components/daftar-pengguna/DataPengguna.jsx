@@ -53,12 +53,12 @@ const DataPengguna = ({ data,index }) => {
                 <td className="whitespace-nowrap px-6 py-4 text-center">{data.umurAkun}</td>
                 <td className="whitespace-nowrap py-4 items-center">
                     <p className={` ${
-                        data.deleted_at === "" && data.is_active === "true"
+                        data.deleted_at === "" 
                         ? "bg-[#DBF8D3] ring-1 ring-[#45C521] text-[#45C521]"
                         : "bg-[#F8D5D3] ring-1 ring-[#C52920] text-[#C52920]"
                     } py-[7px]  w-[190px] text-center rounded-xl text-[16px] font-[600]`}
                   >
-                    {data.deleted_at === "" && data.is_active === "true"
+                    {data.deleted_at === "" 
                       ? "Aktif"
                       : "Non Aktif"}
                     </p>

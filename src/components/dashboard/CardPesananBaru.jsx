@@ -1,7 +1,6 @@
 import moment from "moment";
 
 const CardPesananBaru = ({ dataPesananBaru }) => {
-  console.log(dataPesananBaru);
   return (
     <div className="px-[32px] pb-[24px] col-span-4">
       <div className="pb-[24px] rounded-[16px] bg-[#FFFFFF] px-[32px] flex border-2 border-[#E1E4EA] ">

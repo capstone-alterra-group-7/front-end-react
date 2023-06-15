@@ -95,7 +95,6 @@ const DaftarTiket = () => {
         changePage={changePage}
         setChangePage={setChangePage}
         isLoading={isLoading}
-        entries={daftarTicket?.data?.length}
         infoPaginate={infoPaginate}
       />
 
