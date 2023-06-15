@@ -25,7 +25,7 @@ const DetailHotel = () => {
   const navigate = useNavigate();
 
   const { data: dataHotelById, isLoading, mutate } = useSWR(baseUrl(`/public/hotel/${id}`), fetcherGet);
-  console.log("data hotel detail", dataHotelById);
+  // console.log("data hotel detail", dataHotelById);
 
   // ** Local State
   const [nav, setNav] = useState("informasi");
