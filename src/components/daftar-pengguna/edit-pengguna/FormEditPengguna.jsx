@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import InputEditPengguna from "./InputEditPengguna";
 import InputPassword from "./InputPassword";
 
-export default function FormEditPengguna({ setInput, edit, input, data }) {
+export default function FormEditPengguna({ setInput, edit, input, onChangePengguna }) {
   return (
     <div className="grid gap-6 mb-6  bg-white p-10">
       <div className="space-y-4">
@@ -41,35 +41,45 @@ export default function FormEditPengguna({ setInput, edit, input, data }) {
           value={input.email}
           type={"email"}
           label={"Email"}
+          onChange={onChangePengguna}
         />
 
-        <InputPassword name={"password"} label={"Password"} />
+        <InputPassword 
+          name={"password"} 
+          label={"Password"}
+          onChange={onChangePengguna} />
 
-        <InputPassword name={"confirmPassword"} label={"Konfirmasi Password"} />
+        <InputPassword 
+          name={"confirm_password"} 
+          label={"Konfirmasi Password"} 
+          onChange={onChangePengguna}/>
       </div>
 
       <div className="detail-pengguna">
         <h1 className="text-[20px] font-semibold pb-5">Detail Pengguna</h1>
 
         <InputEditPengguna
-          name={"name"}
+          name={"full_name"}
           value={input.full_name}
           type={"text"}
           label={"Nama Pengguna"}
+          onChange={onChangePengguna}
         />
 
         <InputEditPengguna
-          name={"birthDate"}
+          name={"birth_date"}
           value={input.birth_date}
           type={"date"}
           label={"Tanggal Lahir"}
+          onChange={onChangePengguna}
         />
 
         <InputEditPengguna
-          name={"phoneNumber"}
+          name={"phone_number"}
           value={input.phone_number}
           type={"number"}
           label={"Nomor Handphone"}
+          onChange={onChangePengguna}
         />
       </div>
     </div>
