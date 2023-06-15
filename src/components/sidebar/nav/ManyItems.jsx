@@ -16,19 +16,22 @@ const ManyItems = (props) => {
     <div className="space-y-7">
       <h5 className="text-[#262627] text-[16px] font-[500] px-3">{title}</h5>
 
-      <div className="space-y-9">
+      <div className="space-y-8">
         {datas.map((data, index) => (
           <Link
             to={data.link ?? "/"}
             key={index}
-            className={`flex gap-3 px-3 ${
+            className={`flex gap-3 items-center px-3 ${
               isActive === data.link
                 ? "bg-[#E5F2FF] py-3 rounded-lg duration-500 "
                 : "duration-500"
             }`}
             onClick={() => dispatch(addActive(data.link))}
           >
-            <img src={data.icon} alt="icon" />
+            <img
+              src={isActive === data.link ? data.active : data.icon}
+              alt="icon"
+            />
 
             <h1
               className={`text-[16px] ${

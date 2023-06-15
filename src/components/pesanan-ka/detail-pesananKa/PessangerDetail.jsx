@@ -1,3 +1,4 @@
+import React from "react";
 import assets from "../../../assets/assets";
 
 export default function PessangerDetail({ data }) {
@@ -55,8 +56,8 @@ export default function PessangerDetail({ data }) {
         <div className="border border-[#D2D7E0] rounded-lg p-[16px]">
           <div className="leading-8">
             {data.traveler_detail.map((user, index) => (
-              <>
-                <div key={index} className="flex justify-between">
+              <React.Fragment key={index}>
+                <div className="flex justify-between">
                   <div className="">
                     <p className="font-[700]">
                       {index + 1}. {user.full_name}
@@ -76,17 +77,16 @@ export default function PessangerDetail({ data }) {
                     </div>
                   </div>
 
-                  <div className="flex flex-col justify-between">
-                    <p className="bg-[#E5F2FF] text-[#0080FF] font-[600] text-[14px] py-[6px] px-[12px] rounded-xl">
-                      {data.quantity_adult >= 1 && "Dewasa"}
-                      {data.quantity_infant >= 1 && "Anak"}
-                    </p>
+                  <div className="flex flex-col justify-between items-center">
+                    <div className="bg-[#E5F2FF] py-[6px] px-[12px] rounded-xl text-[#0080FF] font-[600] text-[14px] ">
+                      {user.id_card_number >= 1 ? "Dewasa" : "Anak"}
+                    </div>
                     <p className="font-[600] text-[14px] text-[#717275]">
                       {data.train.class} / {data.train.train_seat}
                     </p>
                   </div>
                 </div>
-              </>
+              </React.Fragment>
             ))}
           </div>
         </div>

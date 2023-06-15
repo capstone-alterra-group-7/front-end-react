@@ -80,7 +80,6 @@ const PesananKA = () => {
         changePage={changePage}
         setChangePage={setChangePage}
         isLoading={isLoading}
-        entries={daftarPesanan?.data?.length}
         infoPaginate={infoPaginate}
       />
 
