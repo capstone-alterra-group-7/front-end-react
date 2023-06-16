@@ -4,27 +4,65 @@ import CardProfile from "../../../components/daftar-pengguna/detail-pengguna/Car
 import ModalDaftarPengguna from "../../../components/daftar-pengguna/ModalDaftarPengguna";
 
 // ** Import Others
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import useSWR from "swr";
+import axios from "axios";
+import { baseUrl } from "../../../services/base";
+import { customAlert } from "../../../helpers/customAlert";
+
+const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function DetailPengguna() {
   const [modal, setModal] = useState(false);
+  const [isDelete, setIsDelete] = useState(null);
   const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const {
     state: { data },
   } = useLocation();
 
+  const {
+    data: detailPengguna,
+    mutate,
+    isLoading,
+  } = useSWR(
+    baseUrl(
+      `/admin/user/detail?id=${data.id}&isDeleted=${
+        isDelete || (data.deleted_at !== "" && true)
+      }`
+    ),
+    fetcher
+  );
+
+  const handleDelete = () => {
+    setIsDelete(true);
+    mutate().then(() => {
+      navigate("/daftar-pengguna");
+
+      customAlert(
+        "https://gcdnb.pbrd.co/images/UsggKXgrW4ny.png?o=1",
+        "Data Dihapus",
+        `Data pengguna ${data.full_name} telah berhasil dihapus dari sistem.`
+      );
+    });
+  };
+
   return (
     <div className=" fixed overflow-y-auto left-0 right-0 h-full">
       <div className="bg-white px-7 pt-3 pb-6 space-y-6">
         <h1 className="text-[32px] font-bold">Detail Pengguna</h1>
 
-        <SecondBar setModal={setModal} data={data} />
+        {isLoading ? null : <SecondBar setModal={setModal} data={data} />}
       </div>
 
-      <CardProfile data={data} />
+      <CardProfile
+        data={data}
+        isDelete={isDelete}
+        detailPengguna={detailPengguna}
+      />
 
       {modal && (
         <ModalDaftarPengguna

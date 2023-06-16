@@ -15,7 +15,7 @@ const CardHotel = ({ data }) => {
   return (
     <div onClick={handleNavigate}>
       <div className="h-72 rounded-[32px] bg-[#FFFFFF] p-4 mx-auto mb-[1.5rem] flex border-2 border-[#E1E4EA] cursor-pointer">
-        <img src={assets.imageHotel} alt="" className="rounded-3xl w-72 h-auto mr-8" />
+        <img src={data?.hotel_image[0]?.image_url} alt="" className="rounded-3xl w-72 h-auto mr-8" />
         <div className="w-full flex justify-between">
           <div>
             <h1 className="text-[#0080FF] font-semibold text-xl mb-1">#{data?.hotel_id}</h1>
