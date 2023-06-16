@@ -34,7 +34,7 @@ const FormTambahPengguna = (props) => {
         </div>
 
         <p className="text-[16px] text-slate-900/50 font-[400]">
-          Pengguna {input.is_active === "true" ? "Aktif" : "Tidak Aktif"}
+          Pengguna {input.is_active === true ? "Aktif" : "Tidak Aktif"}
         </p>
       </div>
 

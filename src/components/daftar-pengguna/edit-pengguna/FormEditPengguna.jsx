@@ -3,7 +3,12 @@ import { useLocation } from "react-router-dom";
 import InputEditPengguna from "./InputEditPengguna";
 import InputPassword from "./InputPassword";
 
-export default function FormEditPengguna({ setInput, edit, input, onChangePengguna }) {
+export default function FormEditPengguna({
+  setInput,
+  input,
+  onChangePengguna,
+  data,
+}) {
   return (
     <div className="grid gap-6 mb-6  bg-white p-10">
       <div className="space-y-4">
@@ -13,11 +18,11 @@ export default function FormEditPengguna({ setInput, edit, input, onChangePenggu
           </h1>
 
           <input
-            defaultChecked={edit && input.is_active === "true"}
+            defaultChecked={data.deleted_at === ""}
             onChange={(e) =>
               setInput({
                 ...input,
-                is_active: e.target.checked ? true : false,
+                is_active: e.target.checked ? false : true,
               })
             }
             value={input.is_active}
@@ -30,7 +35,7 @@ export default function FormEditPengguna({ setInput, edit, input, onChangePenggu
         </div>
 
         <p className="text-[16px] text-slate-900/50 font-[400]">
-          Pengguna {input.is_active === true ? "Aktif" : "Tidak Aktif"}
+          Pengguna {!input.is_active === true ? "Aktif" : "Tidak Aktif"}
         </p>
       </div>
       <div className="informasi-akun">
@@ -44,15 +49,17 @@ export default function FormEditPengguna({ setInput, edit, input, onChangePenggu
           onChange={onChangePengguna}
         />
 
-        <InputPassword 
-          name={"password"} 
+        <InputPassword
+          name={"password"}
           label={"Password"}
-          onChange={onChangePengguna} />
+          onChange={onChangePengguna}
+        />
 
-        <InputPassword 
-          name={"confirm_password"} 
-          label={"Konfirmasi Password"} 
-          onChange={onChangePengguna}/>
+        <InputPassword
+          name={"confirm_password"}
+          label={"Konfirmasi Password"}
+          onChange={onChangePengguna}
+        />
       </div>
 
       <div className="detail-pengguna">
