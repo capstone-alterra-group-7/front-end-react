@@ -29,7 +29,11 @@ export default function DetailPengguna() {
     mutate,
     isLoading,
   } = useSWR(
-    baseUrl(`/admin/user/detail?id=${data.id}&isDeleted=${isDelete}`),
+    baseUrl(
+      `/admin/user/detail?id=${data.id}&isDeleted=${
+        isDelete || (data.deleted_at !== "" && true)
+      }`
+    ),
     fetcher
   );
 
