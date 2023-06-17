@@ -15,12 +15,8 @@ const PesananHotel = () => {
 
   return (
     <div className="relative">
-      <div className=" bg-white h-[152px] px-[32px] pt-[18px] pb-6 pr-8 flex justify-between">
-        <h1 className="text-[32px] font-bold ">Daftar Pesanan Hotel</h1>
+      <div>
         <HeaderPesananHotel setModal={setModal} />
-      </div>
-      <div className="absolute top-[100px] bottom-[31.33px]">
-        <BackDetailHotel />
       </div>
       <CardContainerPesananHotel />
       <div className="w-[calc(100%_-_18rem)] fixed bottom-0 z-30">
