@@ -25,8 +25,6 @@ const PesananHotel = () => {
 
   const infoPaginate = daftarHotel?.meta;
 
-  console.log(infoPaginate);
-
   return (
     <div className="relative">
       <div>
