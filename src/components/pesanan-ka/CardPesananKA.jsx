@@ -87,7 +87,21 @@ export default function CardPesananKA({ data }) {
 
         <div className="flex flex-col justify-between ms-8">
           <div className="justify-end text-end">
-            <button className="px-[36px] py-[8px] bg-[#CCE5FF] rounded-2xl text-[#0066CC] border border-[#0066CC] font-[600] ">
+            <button
+              className={`px-[36px] py-[8px] bg-[#CCE5FF] rounded-2xl text-[#0066CC] border border-[#0066CC] font-[600] ${
+                data.status === "unpaid" &&
+                "bg-[#FFF3CC] text-[#E6B000] border-[#E6B000]"
+              }  ${
+                (data.status === "refund" &&
+                  "bg-[#F8D5D3] text-[#C52920] border-[#C52920]") ||
+                (data.status === "canceled" &&
+                  "bg-[#F8D5D3] text-[#C52920] border-[#C52920]")
+              } ${
+                data.status === "paid" &&
+                "bg-[#DBF8D3] text-[#45C521] border-[#45C521]"
+              }
+              `}
+            >
               {data.status}
             </button>
           </div>

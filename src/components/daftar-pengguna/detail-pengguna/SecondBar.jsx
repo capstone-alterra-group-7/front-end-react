@@ -12,13 +12,13 @@ export default function SecondBar(props) {
   };
   return (
     <div className="flex justify-between items-center">
-      <Link
-        to="/daftar-pengguna"
-        className="text-[#0080FF] flex gap-2 items-center text-[16px] ml-[5px]"
+      <div
+        onClick={() => Navigate(-1)}
+        className="text-[#0080FF] flex gap-2 items-center text-[16px] ml-[5px] cursor-pointer"
       >
         <img src={assets.iconBackDaftarKa} alt="back" />
         Kembali
-      </Link>
+      </div>
 
       <div className="flex gap-3">
         <button
