@@ -1,8 +1,19 @@
+// ** Import React
 import React from "react";
+
+// ** Import Assets
 import assets from "../../../assets/assets";
+import { useNavigate } from "react-router-dom";
 
 export default function PessangerDetail({ data }) {
-  console.log(data);
+  const navigate = useNavigate();
+
+  const handleNavigatePengguna = () => {
+    navigate("/detail-pengguna", {
+      state: { data: { id: data.user.user_id } },
+    });
+  };
+
   return (
     <div>
       <div className="mt-2 bg-white px-[32px] py-[16px] text-[#262627]">
@@ -23,7 +34,10 @@ export default function PessangerDetail({ data }) {
             <p>{data.traveler_detail[0]?.id_card_number}</p>
           </div>
 
-          <button className="bg-[#0080FF] text-white font-[600] text-[14px] w-[107px] h-[32px] rounded-lg ms-[32px]">
+          <button
+            onClick={handleNavigatePengguna}
+            className="bg-[#0080FF] text-white font-[600] text-[14px] w-[107px] h-[32px] rounded-lg ms-[32px]"
+          >
             Lihat Akun
           </button>
         </div>
