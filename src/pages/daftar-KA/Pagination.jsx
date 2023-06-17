@@ -50,7 +50,7 @@ const Pagination = (props) => {
       </div>
 
       <button
-        disabled={infoPaginate?.next_page === null || isLoading}
+        disabled={isLoading || changePage >= total}
         className="disabled:cursor-not-allowed border border-[#D2D7E0] bg-[#F9FAFB] text-[#262627] py-2 px-8 rounded-lg flex items-center gap-2 disabled:bg-[#FDFDFE] disabled:border-gray-200 disabled:text-gray-300 font-600"
         onClick={() => setChangePage((prev) => prev + 1)}
       >
@@ -64,11 +64,7 @@ const Pagination = (props) => {
         >
           <path
             d="M7.00004 13.6668L5.81254 12.5002L10.4792 7.8335H0.333374V6.16683H10.4792L5.81254 1.50016L7.00004 0.333496L13.6667 7.00016L7.00004 13.6668Z"
-            fill={`${
-              infoPaginate?.next_page === null || isLoading
-                ? "#D6DADF"
-                : "#262627"
-            }`}
+            fill={`${changePage >= total || isLoading ? "#D6DADF" : "#262627"}`}
           />
         </svg>
       </button>
