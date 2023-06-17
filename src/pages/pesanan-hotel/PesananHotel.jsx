@@ -7,69 +7,37 @@ import BackDetailHotel from "../../components/pesanan-hotel/detail-pesananHotel/
 import CardContainerPesananHotel from "../../components/pesanan-hotel/CardContainerPesananHotel";
 
 // ** Import Assets
-import assets from "../../assets/assets";
-import { Link } from "react-router-dom";
+import { baseUrl } from "../../services/base";
+import axios from "axios";
+import useSWR from "swr";
+import Pagination from "../daftar-KA/Pagination";
+
+const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const PesananHotel = () => {
   const [modal, setModal] = useState(false);
+  const [changePage, setChangePage] = useState(1);
+
+  const { data: daftarHotel, isLoading } = useSWR(
+    baseUrl(`/admin/order/hotel?page=${changePage}`),
+    fetcher
+  );
+
+  const infoPaginate = daftarHotel?.meta;
 
   return (
     <div className="relative">
-      <div className=" bg-white h-[152px] px-[32px] pt-[18px] pb-6 pr-8 flex justify-between">
-        <h1 className="text-[32px] font-bold ">Daftar Pesanan Hotel</h1>
+      <div>
         <HeaderPesananHotel setModal={setModal} />
       </div>
-      <div className="absolute top-[100px] bottom-[31.33px]">
-        <BackDetailHotel />
-      </div>
-      <CardContainerPesananHotel />
-      <div className="w-[calc(100%_-_18rem)] fixed bottom-0 z-30">
-        <div className=" bg-white h-[76px] pr-8 flex justify-between py-[16px]">
-          <button
-            onClick={() => setModal(true)}
-            className="bg-[#F9FAFB] pl-[10px] pr-[10px] pt-[24px] pb-[20px] w-[140px] ml-[32px] text-black rounded-lg flex items-center justify-center gap-2 border-[1px] border-[#D2D7E0]"
-          >
-            <img src={assets.iconPrevious} alt="" />
-            <h1 className=" text-[18px] font-[500] ml-[8px]">Previous</h1>
-          </button>
-          <div>
-            <button className="rounded-[8px] bg-[#F5F6F8] w-[40px] h-[40px] text-[#0066CC]">
-              1
-            </button>
+      <CardContainerPesananHotel daftarHotel={daftarHotel} />
 
-            <button className="rounded-[8px] w-[40px] h-[40px]">
-              2
-            </button>
-
-            <button className="rounded-[8px] w-[40px] h-[40px]">
-              3
-            </button>
-
-            <button className="rounded-[8px] w-[40px] h-[40px]">
-              ...
-            </button>
-
-            <button className="rounded-[8px] w-[40px] h-[40px]">
-              8
-            </button>
-
-            <button className="rounded-[8px] w-[40px] h-[40px]">
-              9
-            </button>
-
-            <button className="rounded-[8px] w-[40px] h-[40px]">
-              10
-            </button>
-          </div>
-          <button
-            onClick={() => setModal(true)}
-            className="bg-[#F9FAFB] pl-[10px] pr-[8px] pt-[24px] pb-[20px] w-[140px] ml-[24px] text-black rounded-lg flex items-center justify-center space-x-[8px] border-[1px] border-[#D2D7E0]"
-          >
-            <h1 className=" text-[18px] font-[500] mr-[8px]">Next</h1>
-            <img src={assets.iconNext} alt="" />
-          </button>
-        </div>
-      </div>
+      <Pagination
+        changePage={changePage}
+        setChangePage={setChangePage}
+        isLoading={isLoading}
+        infoPaginate={infoPaginate}
+      />
     </div>
   );
 };
