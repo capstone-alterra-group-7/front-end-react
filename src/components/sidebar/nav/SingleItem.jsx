@@ -21,7 +21,10 @@ const SingleItem = ({ data }) => {
             : "duration-500"
         }`}
       >
-        <img src={data.icon} alt="icon" />
+        <img
+          src={isActive === data.link ? data.active : data.icon}
+          alt="icon"
+        />
 
         <h1
           className={`text-[16px] ${

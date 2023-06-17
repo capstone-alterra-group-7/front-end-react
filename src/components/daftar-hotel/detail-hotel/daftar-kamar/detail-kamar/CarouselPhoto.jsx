@@ -11,7 +11,7 @@ const CarouselPhoto = () => {
   }, []);
 
   return (
-    <div id="carouselExampleControls" className="relative w-11/12 left-1/2 -translate-x-1/2" data-te-carousel-init data-te-carousel-slide>
+    <div id="carouselExampleControls" className="relative left-1/2 -translate-x-1/2" data-te-carousel-init data-te-carousel-slide>
       <div className="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
         <div className=" relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none" data-te-carousel-item data-te-carousel-active>
           <img src={assets.imageKamar} className="rounded-2xl block w-full " alt="Wild Landscape" />

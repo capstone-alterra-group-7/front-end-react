@@ -1,5 +1,7 @@
 const Pagination = (props) => {
-  const { changePage, setChangePage, isLoading, entries, infoPaginate } = props;
+  const { changePage, setChangePage, isLoading, infoPaginate } = props;
+
+  const total = Math.ceil(infoPaginate?.total / 20);
 
   return (
     <div className=" flex items-center justify-between px-7 w-full py-5 bg-white ">
@@ -23,11 +25,29 @@ const Pagination = (props) => {
         Previous
       </button>
 
-      <p className="text-slate-800 mr-5">
-        {isLoading
-          ? "..."
-          : `Page ${infoPaginate?.current_page} - ${entries} Entries`}
-      </p>
+      <div className="text-slate-800 mr-5">
+        {isLoading ? (
+          "..."
+        ) : (
+          <div className="flex gap-1 items-center">
+            {Array(total)
+              .fill(0)
+              .map((_, index) => (
+                <div
+                  key={index}
+                  onClick={() => setChangePage(index + 1)}
+                  className={`${
+                    changePage === index + 1
+                      ? "bg-[#F5F6F8] text-[#0066CC]"
+                      : "text-gray-400"
+                  }  px-[14px] py-[6px] rounded-[8px] cursor-pointer`}
+                >
+                  {index + 1}
+                </div>
+              ))}
+          </div>
+        )}
+      </div>
 
       <button
         disabled={infoPaginate?.next_page === null || isLoading}

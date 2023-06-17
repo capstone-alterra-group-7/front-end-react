@@ -44,8 +44,8 @@ const DaftarStasiun = () => {
   };
 
   return (
-    <div className="relative h-ful">
-      <div className="bg-white pl-3 pr-7 pt-3 pb-6 space-y-6">
+    <div className="relative h-full">
+      <div className="bg-white px-8 pr-7 pt-3 pb-6 space-y-6">
         <h1 className="text-[34px] font-bold">Daftar Stasiun</h1>
 
         <Header
@@ -93,7 +93,6 @@ const DaftarStasiun = () => {
             changePage={changePage}
             setChangePage={setChangePage}
             isLoading={isLoading}
-            entries={dataStations?.data?.length}
             infoPaginate={infoPaginate}
           />
         </div>

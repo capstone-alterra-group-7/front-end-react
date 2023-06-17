@@ -1,18 +1,12 @@
 import React from "react";
 
-const SectionFasilitasKamar = () => {
+const SectionFasilitasKamar = ({ dataFacilities }) => {
   return (
-    <div className="p-6 duration-500">
+    <div className="py-5 px-7 duration-500">
       <ul className="list-disc grid grid-flow-col grid-cols-3 grid-rows-6 gap-2">
-        <li>AC</li>
-        <li>Brankas</li>
-        <li>Kulkas</li>
-        <li>Lemari</li>
-        <li>Meja Tulis</li>
-        <li>Lemari</li>
-        <li>Meja Tulis</li>
-        <li>Lemari</li>
-        <li>Meja Tulis</li>
+        {dataFacilities?.map((facility, idx) => (
+          <li key={idx}>{facility?.name}</li>
+        ))}
       </ul>
     </div>
   );

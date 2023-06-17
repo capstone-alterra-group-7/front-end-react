@@ -32,7 +32,7 @@ const Dashboard = () => {
         <CardPesanan dataORDER={dataDashboard} />
       </div>
 
-      <div className="grid grid-cols-6">
+      <div className="grid grid-cols-6 items-start">
         <CardPesananBaru dataPesananBaru={dataDashboard} />
         <CardPenggunaBaru dataPenggunaBaru={dataDashboard} />
       </div>

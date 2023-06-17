@@ -5,14 +5,26 @@ import React, { useState } from "react";
 import HeaderHotel from "../../components/daftar-hotel/Header";
 import CardContainerHotel from "../../components/daftar-hotel/CardContainerHotel";
 
-// ** import Other
+// ** import others
+import axios from "axios";
+import useSWR from "swr";
 import { useNavigate } from "react-router-dom";
-import ModalDaftarHotel from "../../components/daftar-hotel/ModalDaftarHotel";
+import ModalConfirmHotel from "../../components/daftar-hotel/ModalConfirmHotel";
+import Pagination from "../daftar-KA/Pagination";
+import { baseUrl } from "../../services/base";
+
+const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const DaftarHotel = () => {
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState({ tambah: false });
+  const [changePage, setChangePage] = useState(1);
 
-  const navigate = useNavigate("");
+  const navigate = useNavigate();
+
+  const { data: dataHotel, isLoading } = useSWR(baseUrl(`/public/hotel?page=${changePage}&limit=20`), fetcher);
+  const infoPaginate = dataHotel?.meta;
+
+  console.log("Data List Hotel", dataHotel);
 
   const handleAdd = () => {
     navigate("/daftar-hotel/tambah-hotel");
@@ -25,14 +37,18 @@ const DaftarHotel = () => {
         <HeaderHotel setModal={setModal} />
       </div>
 
-      <CardContainerHotel />
+      <CardContainerHotel dataHotel={dataHotel} />
 
-      {modal && (
-        <ModalDaftarHotel
-          title="Ingin Menambahkan Data Hotel?"
-          description=" This blog post has been published. Team members will be able to edit this post and republish changes."
-          bgButton="bg-[#0080FF]"
-          titleButton="Iya, Tambahkan"
+      <Pagination changePage={changePage} setChangePage={setChangePage} isLoading={isLoading} entries={dataHotel?.data?.length} infoPaginate={infoPaginate} />
+
+      {modal.tambah && (
+        <ModalConfirmHotel
+          title="Tambahkan Data Hotel"
+          desc="Anda akan menambahkan data hotel baru. Apakah Anda yakin ingin melanjutkan?"
+          bg="bg-[#0080FF]"
+          confirm="Tambahkan"
+          cancel="Batal"
+          name="tambah"
           setModal={setModal}
           handle={handleAdd}
         />

@@ -1,5 +1,24 @@
 // ** Import For Sidebar
 import iconNav from "./sidebar/icon-nav.svg";
+import logoTrip from "./sidebar/logo-trip.svg";
+import iconStasiun from "./sidebar/icon-stasiun.svg";
+import iconKeretaSide from "./sidebar/icon-kereta.svg";
+import iconTiket from "./sidebar/icon-tiket.svg";
+import iconHotel from "./sidebar/icon-hotel.svg";
+import iconPenggunaSide from "./sidebar/icon-pengguna.svg";
+import iconPesananKa from "./sidebar/icon-pesanan-ka.svg";
+import iconPesananHotel from "./sidebar/icon-pesanan-hotel.svg";
+import iconLogout from "./sidebar/icon-logout.svg";
+
+import dashboardActive from "./sidebar/active/dashboard-active.svg";
+import stasiunActive from "./sidebar/active/stasiun-active.svg";
+import keretaActive from "./sidebar/active/kereta-active.svg";
+import tiketActive from "./sidebar/active/tiket-active.svg";
+import hotelActive from "./sidebar/active/hotel-active.svg";
+import penggunaActive from "./sidebar/active/pengguna-active.svg";
+import pesananHotelActive from "./sidebar/active/pesanan-hotel-active.svg";
+import pesananKaActive from "./sidebar/active/pesanan-ka-active.svg";
+
 import logoKai from "./daftar-ka/logoKai.svg";
 import stepper from "./daftar-ka/stepper.svg";
 
@@ -23,6 +42,17 @@ import iconClose from "./daftar-hotel/tambah-hotel/closeButton.svg";
 import iconImageAdd from "./daftar-hotel/tambah-hotel/imageAdd.svg";
 import iconAddKamar from "./daftar-hotel/tambah-hotel/iconAddKamar.svg";
 import iconSaveHotel from "./daftar-hotel/tambah-hotel/contentSave.svg";
+import imageNoData from "./daftar-hotel/noData.svg";
+import iconRuler from "./daftar-hotel/detail-hotel/ruler.svg";
+import iconParking from "./daftar-hotel/detail-hotel/parkIcon.svg";
+import iconRestoran from "./daftar-hotel/detail-hotel/restoran.svg";
+import iconAC from "./daftar-hotel/detail-hotel/iconAC.svg";
+import iconOther from "./daftar-hotel/detail-hotel/other.svg";
+import iconRoomService from "./daftar-hotel/detail-hotel/roomService.svg";
+import iconSwimPool from "./daftar-hotel/detail-hotel/pool.svg";
+import iconDining from "./daftar-hotel/detail-hotel/foodDine.svg";
+import iconBath from "./daftar-hotel/detail-hotel/bath.svg";
+import iconATM from "./daftar-hotel/detail-hotel/atm.svg";
 
 // ** Import Daftar Ka
 import iconLeftDetailKursi from "./daftar-ka/kursi/left.svg";
@@ -53,6 +83,7 @@ import visiblePassword from "./daftar-pengguna/visiblepassword.svg";
 import notVisiblePassword from "./daftar-pengguna/notvisiblepassword.svg";
 import Prev from "./daftar-pengguna/Prev.svg";
 import Next from "./daftar-pengguna/Next.svg";
+import sort from "./daftar-pengguna/sort.svg";
 
 // ** Import Pesanan KA
 import search from "./pesanan-ka/search.svg";
@@ -97,13 +128,31 @@ import iconKereta from "./dashboard/iconKereta.svg";
 import iconPesanan from "./dashboard/iconPesanan.svg";
 
 // ** Import Daftar Tiket
-import kursiKosong from './daftar-tiket/kursiKosong.svg'
-import kursi from './daftar-tiket/kursi.svg'
-import kursiTerisi from './daftar-tiket/kursiTerisi.svg'
-import calender from './daftar-tiket/calender.svg'
+import kursiKosong from "./daftar-tiket/kursiKosong.svg";
+import kursi from "./daftar-tiket/kursi.svg";
+import kursiTerisi from "./daftar-tiket/kursiTerisi.svg";
+import calender from "./daftar-tiket/calender.svg";
 
 export default {
   iconNav,
+  iconStasiun,
+  iconKeretaSide,
+  iconTiket,
+  iconHotel,
+  iconPenggunaSide,
+  iconPesananKa,
+  iconPesananHotel,
+  iconLogout,
+
+  dashboardActive,
+  stasiunActive,
+  keretaActive,
+  tiketActive,
+  hotelActive,
+  penggunaActive,
+  pesananHotelActive,
+  pesananKaActive,
+
   logoKai,
   stepper,
   iconLeftDetailKursi,
@@ -141,6 +190,17 @@ export default {
   imageHotel,
   iconAddKamar,
   iconSaveHotel,
+  imageNoData,
+  iconRuler,
+  iconParking,
+  iconRestoran,
+  iconAC,
+  iconOther,
+  iconRoomService,
+  iconSwimPool,
+  iconDining,
+  iconBath,
+  iconATM,
 
   iconHapusDaftarKa,
   iconJamDaftarKa,
@@ -193,4 +253,7 @@ export default {
   kursi,
   kursiTerisi,
   calender,
+  sort,
+
+  logoTrip,
 };

@@ -31,7 +31,17 @@ const DaftarTiket = () => {
     fetcher
   );
 
-  console.log(daftarTicket);
+  const { data: daftarGerbong } = useSWR(
+    baseUrl(`/public/train-carriage?limit=9999`),
+    fetcher
+  );
+
+  const manimpulateData = daftarTicket?.data?.map((data) => ({
+    ...data,
+    gerbong: daftarGerbong?.data?.filter(
+      (gerbong) => gerbong.train.train_id === data.train.train_id
+    ),
+  }));
 
   const infoPaginate = daftarTicket?.meta;
 
@@ -47,7 +57,7 @@ const DaftarTiket = () => {
       />
 
       {isLoading && <p className="text-center py-6">Loading...</p>}
-      {daftarTicket?.data?.map((ticket, index) => (
+      {manimpulateData?.map((ticket, index) => (
         <CardDaftarTiket key={index} data={ticket} />
       ))}
 
@@ -85,7 +95,6 @@ const DaftarTiket = () => {
         changePage={changePage}
         setChangePage={setChangePage}
         isLoading={isLoading}
-        entries={daftarTicket?.data?.length}
         infoPaginate={infoPaginate}
       />
 

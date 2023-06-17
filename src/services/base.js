@@ -1,3 +1,3 @@
 export const baseUrl = (url) => {
-  return `https://capstone.hanifz.com/api/v1${url}`;
+  return `https://api.tripease.my.id/api/v1${url}`;
 };
