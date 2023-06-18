@@ -3,18 +3,18 @@ import React from "react";
 // ** Import assets
 import assets from "../../../../assets/assets";
 
-const AddFasilitasKamar = ({ fasilitas, setFasilitas }) => {
+const AddFasilitasKamar = ({ fasilitas, setFasilitas, setDataKamar }) => {
   const handleAddFasilitas = (e) => {
     if (fasilitas.length < 1) {
       setFasilitas((prev) => {
-        return [...prev, { id: 0, facility: "" }];
+        return [...prev, { id: 0, name: "" }];
       });
       return;
     }
 
     setFasilitas((prev) => {
       // Find max id then +1
-      return [...prev, { id: fasilitas.slice(-1)[0].id + 1, facility: "" }];
+      return [...prev, { id: fasilitas.slice(-1)[0].id + 1, name: "" }];
     });
   };
 
@@ -27,7 +27,7 @@ const AddFasilitasKamar = ({ fasilitas, setFasilitas }) => {
   const handleUpdateFasilitas = (e, i) => {
     const newState = fasilitas.map((obj) => {
       if (obj.id === i) {
-        return { ...obj, facility: e.target.value };
+        return { ...obj, name: e.target.value };
       }
 
       // 👇️ otherwise return the object as is
@@ -37,17 +37,17 @@ const AddFasilitasKamar = ({ fasilitas, setFasilitas }) => {
     setFasilitas(newState);
   };
   return (
-    <div className="mb-16">
+    <div className="">
       <h1 className="text-xl font-semibold mb-4">Fasilitas Kamar</h1>
       {fasilitas?.map((data, i) => {
         return (
           <div className="relative h-11 mb-4 " key={i}>
             <input
               type="text"
-              placeholder="tambah fasilitas"
+              placeholder="Tambah fasilitas (ex: wifi, ac, etc)"
               className="h-11 w-full px-[0.875rem] py-[0.625rem] rounded-lg border border-[#D2D7E0] bg-[#F9FAFB] focus:outline-blue-500"
               onChange={(e) => handleUpdateFasilitas(e, i)}
-              value={data.facility}
+              value={data.name}
             />
             <img src={assets.iconClose} alt="" className="absolute right-2 top-[10px] cursor-pointer" onClick={(e) => handleDeleteFasilitas(e, data)} />
           </div>
