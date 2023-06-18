@@ -12,7 +12,9 @@ import { useNavigate } from "react-router-dom";
 const TambahHotel = () => {
   const navigate = useNavigate();
   const [nav, setNav] = useState("informasi");
-  const [modalBack, setModalBack] = useState({ back: false, add: false });
+  const [modal, setModal] = useState({ back: false, add: false });
+  // state for add kamar
+  const [addingRoom, setAddingRoom] = useState(false);
 
   // input data
   const [dataInput, setDataInput] = useState({
@@ -42,6 +44,13 @@ const TambahHotel = () => {
       },
     ],
   });
+  // Data daftar kamar
+  const [dataRooms, setDataRooms] = useState([]);
+
+  const validate = dataRooms?.length < 1;
+
+  console.log("data Rooms : ", dataRooms);
+
   const handleOnChangeInput = (e) => {
     setDataInput({ ...dataInput, [e.target.name]: e.target.value });
   };
@@ -49,20 +58,29 @@ const TambahHotel = () => {
   // console.log(dataInput);
 
   return (
-    <div className="bg-[#FFFFFF] fixed overflow-y-auto left-0 right-0 h-full">
-      <HeaderTambahHotel setModalBack={setModalBack} />
+    <div className={`bg-[#FFFFFF] fixed left-0 right-0 h-full ${addingRoom ? "overflow-y-hidden" : "overflow-y-auto"}`}>
+      <HeaderTambahHotel setModal={setModal} validate={validate} />
 
       <NavTambahHotel nav={nav} setNav={setNav} />
 
       {nav === "informasi" ? (
-        <InformasiTambahHotel dataInput={dataInput} setDataInput={setDataInput} handleOnChangeInput={handleOnChangeInput} />
+        <InformasiTambahHotel
+          dataInput={dataInput}
+          setDataInput={setDataInput}
+          handleOnChangeInput={handleOnChangeInput}
+        />
       ) : nav === "kebijakanHotel" ? (
         <KebijakanKamar dataInput={dataInput} setDataInput={setDataInput} />
       ) : (
-        <DaftarTambahKamar />
+        <DaftarTambahKamar
+          dataRooms={dataRooms}
+          setDataRooms={setDataRooms}
+          addingRoom={addingRoom}
+          setAddingRoom={setAddingRoom}
+        />
       )}
 
-      {modalBack.back && (
+      {modal.back && (
         <ModalConfirmHotel
           title="Batal Menambahkan Data Hotel"
           desc="Anda akan membatalkan penambahan data hotel .Apakah Anda yakin ingin melanjutkan?"
@@ -70,11 +88,11 @@ const TambahHotel = () => {
           cancel="Tutup"
           confirm="Batalkan"
           name="back"
-          setModal={setModalBack}
+          setModal={setModal}
           handle={() => navigate("/daftar-hotel")}
         />
       )}
-      {modalBack.add && (
+      {modal.add && (
         <ModalConfirmHotel
           title="Simpan Data Hotel"
           desc="Anda akan menyimpan data hotel baru. Apakah Anda yakin ingin melanjutkan?"
@@ -82,7 +100,7 @@ const TambahHotel = () => {
           cancel="Batal"
           confirm="Simpan"
           name="add"
-          setModal={setModalBack}
+          setModal={setModal}
           handle={() => navigate("/daftar-hotel/tambah-hotel")}
         />
       )}
