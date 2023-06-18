@@ -12,6 +12,7 @@ import ModalFilterPesananHotel from "../../components/pesanan-hotel/ModalFilterP
 import { baseUrl } from "../../services/base";
 import axios from "axios";
 import useSWR from "swr";
+import BarPesananHotel from "../../components/pesanan-hotel/barPesananHotel";
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
@@ -42,7 +43,7 @@ const PesananHotel = () => {
 
   return (
     <div className="relative">
-      <BarPesananKa
+      <BarPesananHotel
         setSearchVal={setSearchVal}
         setStartDate={setStartDate}
         setEndDate={setEndDate}
