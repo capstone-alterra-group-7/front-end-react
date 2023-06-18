@@ -34,7 +34,8 @@ const DaftarPengguna = () => {
           setUrutkan={setUrutkan} />
       </div>
       <TablePengguna
-        urutkan={urutkan}/>
+        urutkan={urutkan}
+        search={search}/>
 
       {modal && (
         <ModalDaftarPengguna
