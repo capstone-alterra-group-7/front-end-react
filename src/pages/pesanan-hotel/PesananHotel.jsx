@@ -27,7 +27,11 @@ const PesananHotel = () => {
   const [filterClass, setFilterClass] = useState("");
   const [saveFilterClass, setSaveFilterClass] = useState("");
 
-  const { data: daftarHotel, isLoading } = useSWR(
+  const {
+    data: daftarHotel,
+    isLoading,
+    error,
+  } = useSWR(
     baseUrl(
       `/admin/order/hotel?page=${changePage}&limit=20&search=${searchVal}&date_start=${startDate}&date_end=${endDate}&order_by=${urutkan}&filter=${saveFilter}&rating_class=${saveFilterClass}`
     ),
@@ -79,12 +83,14 @@ const PesananHotel = () => {
         </div>
       )}
 
-      <Pagination
-        changePage={changePage}
-        setChangePage={setChangePage}
-        isLoading={isLoading}
-        infoPaginate={infoPaginate}
-      />
+      {!error && (
+        <Pagination
+          changePage={changePage}
+          setChangePage={setChangePage}
+          isLoading={isLoading}
+          infoPaginate={infoPaginate}
+        />
+      )}
 
       {showFilter && (
         <ModalFilterPesananHotel
