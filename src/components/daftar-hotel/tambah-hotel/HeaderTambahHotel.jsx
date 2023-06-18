@@ -5,7 +5,7 @@ import assets from "../../../assets/assets";
 import { Link } from "react-router-dom";
 
 const HeaderTambahHotel = (props) => {
-  const { validate, setModal, setModalBack } = props;
+  const { validate, setModal } = props;
 
   return (
     <div className="space-y-6 bg-white pt-7 pb-4 px-8">
@@ -15,7 +15,7 @@ const HeaderTambahHotel = (props) => {
         <div
           className="flex items-center gap-2 ml-2"
           onClick={() =>
-            setModalBack((prev) => {
+            setModal((prev) => {
               return { ...prev, back: true };
             })
           }
@@ -26,9 +26,9 @@ const HeaderTambahHotel = (props) => {
         </div>
 
         <button
-          //   disabled={validate}
+          disabled={validate}
           onClick={() =>
-            setModalBack((prev) => {
+            setModal((prev) => {
               return { ...prev, add: true };
             })
           }

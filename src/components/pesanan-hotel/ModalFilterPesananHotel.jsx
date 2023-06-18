@@ -1,11 +1,20 @@
 import React from "react";
+import assets from "../../assets/assets";
 
-const ModalFilterTicket = (props) => {
-  const { filter, setFilter, setShowFilter, setSaveFilter } = props;
+const ModalFilterPesananHotel = (props) => {
+  const {
+    filter,
+    setFilter,
+    setShowFilter,
+    setSaveFilter,
+    filterClass,
+    setFilterClass,
+    setSaveFilterClass,
+  } = props;
 
   return (
     <div className="fixed left-0 right-0 top-0 bottom-0 flex justify-center items-center bg-gray-700/50">
-      <div className="w-[800px]  h-[400px] rounded-2xl bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-5">
+      <div className="w-[800px]  h-[530px] rounded-2xl bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-5">
         <h1 className="font-[600] text-[24px] text-[#262627]">Filter</h1>
 
         <div className="flex justify-between items-center mt-5">
@@ -31,14 +40,18 @@ const ModalFilterTicket = (props) => {
 
           <div className="flex items-center gap-8">
             <h5
-              onClick={() => setFilter("")}
+              onClick={() => [setFilter(""), setFilterClass("")]}
               className="text-[#0080FF] font-[600] text-[16px] cursor-pointer"
             >
               Reset Filter
             </h5>
 
             <button
-              onClick={() => [setSaveFilter(filter), setShowFilter(false)]}
+              onClick={() => [
+                setSaveFilter(filter),
+                setSaveFilterClass(filterClass),
+                setShowFilter(false),
+              ]}
               className="py-2 px-3 bg-[#0080FF] rounded-md text-white"
             >
               Terapkan Fiter
@@ -50,7 +63,7 @@ const ModalFilterTicket = (props) => {
           <h1 className="text-[#262627] font-[600] text-[16px]">
             Status Pesanan
           </h1>
-          <div className="flex items-start gap-6">
+          <div className="flex items-start gap-16">
             <div className="flex flex-col gap-4 ml-2 mt-4">
               <div className="flex gap-3 items-center">
                 <input
@@ -126,9 +139,99 @@ const ModalFilterTicket = (props) => {
             </div>
           </div>
         </div>
+
+        <div className="mt-9">
+          <h1 className="text-[#262627] font-[600] text-[16px]">
+            Bintang Hotel
+          </h1>
+
+          <div className="flex items-start gap-12">
+            <div className="flex flex-col gap-4 ml-2 mt-4">
+              <div className="flex gap-3 items-center">
+                <input
+                  type="checkbox"
+                  value="1"
+                  onChange={(e) => setFilterClass(e.target.value)}
+                  checked={filterClass === "1"}
+                  name="filterClass"
+                />
+
+                <img src={assets.iconStarRating} alt="" />
+              </div>
+
+              <div className="flex gap-3 items-center">
+                <input
+                  type="checkbox"
+                  value="2"
+                  name="filterClass"
+                  onChange={(e) => setFilterClass(e.target.value)}
+                  checked={filterClass === "2"}
+                />
+
+                <div className="flex">
+                  <img src={assets.iconStarRating} alt="" />
+                  <img src={assets.iconStarRating} alt="" />
+                </div>
+              </div>
+
+              <div className="flex gap-3 items-center">
+                <input
+                  type="checkbox"
+                  value="3"
+                  name="filterClass"
+                  onChange={(e) => setFilterClass(e.target.value)}
+                  checked={filterClass === "3"}
+                />
+
+                <div className="flex">
+                  <img src={assets.iconStarRating} alt="" />
+                  <img src={assets.iconStarRating} alt="" />
+                  <img src={assets.iconStarRating} alt="" />
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-4 ml-2 mt-4">
+              <div className="flex gap-3 items-center">
+                <input
+                  type="checkbox"
+                  value="4"
+                  name="filterClass"
+                  onChange={(e) => setFilterClass(e.target.value)}
+                  checked={filterClass === "4"}
+                />
+
+                <div className="flex">
+                  <img src={assets.iconStarRating} alt="" />
+                  <img src={assets.iconStarRating} alt="" />
+                  <img src={assets.iconStarRating} alt="" />
+                  <img src={assets.iconStarRating} alt="" />
+                </div>
+              </div>
+
+              <div className="flex gap-3 items-center">
+                <input
+                  type="checkbox"
+                  value="5"
+                  name="filterClass"
+                  onChange={(e) => setFilterClass(e.target.value)}
+                  checked={filterClass === "5"}
+                />
+
+                <div className="flex">
+                  <img src={assets.iconStarRating} alt="" />
+                  <img src={assets.iconStarRating} alt="" />
+                  <img src={assets.iconStarRating} alt="" />
+                  <img src={assets.iconStarRating} alt="" />
+                  <img src={assets.iconStarRating} alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default ModalFilterTicket;
+export default ModalFilterPesananHotel;
