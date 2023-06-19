@@ -13,7 +13,7 @@ const HeaderTambahHotel = (props) => {
 
       <div className="flex items-center justify-between">
         <div
-          className="flex items-center gap-2 ml-2"
+          className="flex items-center gap-2 ml-2 cursor-pointer"
           onClick={() =>
             setModal((prev) => {
               return { ...prev, back: true };

@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const InformasiTambahHotel = (props) => {
   const { dataInput, setDataInput, handleOnChangeInput } = props;
-  console.log(dataInput);
+  // console.log(dataInput);
 
   // console.log("ini Data fasilitas dari InformasiTambahHotel", dataInput?.hotel_facilities);
   const [fasilitas, setFasilitas] = useState(dataInput?.hotel_facilities);

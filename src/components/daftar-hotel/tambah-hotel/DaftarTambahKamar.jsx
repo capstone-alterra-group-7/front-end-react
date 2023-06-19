@@ -6,9 +6,7 @@ import CardTambahKamar from "./daftar-kamar/CardTambahKamar";
 
 // ** Import Other
 import assets from "../../../assets/assets";
-import { Link, useNavigate } from "react-router-dom";
 import TambahKamar from "../../../pages/daftar-hotel/tambah-hotel/TambahKamar";
-import ModalConfirmHotel from "../ModalConfirmHotel";
 
 const DaftarTambahKamar = (props) => {
   const { dataRooms, setDataRooms, addingRoom, setAddingRoom } = props;
@@ -39,7 +37,7 @@ const DaftarTambahKamar = (props) => {
           </button>
         </div>
       </div>
-      {addingRoom && <TambahKamar setAddingRoom={setAddingRoom} setDataRooms={setDataRooms} />}
+      {addingRoom && <TambahKamar setAddingRoom={setAddingRoom} setDataRooms={setDataRooms} name={"add"} />}
     </>
   );
 };

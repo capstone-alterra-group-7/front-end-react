@@ -7,7 +7,7 @@ import ModalImageKamar from "./ModalImageKamar";
 
 // ** Import Other
 import { useNavigate } from "react-router-dom";
-import { rupiah } from "../../../../helpers/libs";
+import { chooseIconFacility, rupiah } from "../../../../helpers/libs";
 import assets from "../../../../assets/assets";
 
 const CardKamarHotel = ({ data }) => {
@@ -24,7 +24,7 @@ const CardKamarHotel = ({ data }) => {
       <div className="mb-6">
         <div className="flex">
           {/* <img src={assets.imageHotel} alt="" className="w-96 h-[356px]" /> */}
-          <ImageKamarHotel setModal={setModalDetailImage} />
+          <ImageKamarHotel setModal={setModalDetailImage} dataImage={data?.hotel_room_image} />
           <div className="ms-8 w-full">
             <h1 className="text-[32px] font-bold mb-1">{data?.name}</h1>
             <h1 className="text-[#0080FF] text-xl font-semibold">#{data?.hotel_room_id}</h1>
@@ -54,17 +54,17 @@ const CardKamarHotel = ({ data }) => {
       </div>
 
       <div className="grid grid-cols-2 mt-5 mb-1 gap-6 w-1/4">
-        {data?.hotel_room_facility.map((data, idx) => {
+        {data?.hotel_room_facility?.map((data, idx) => {
           return (
             <div className="flex" key={idx}>
-              <img src={assets.iconSpoonFork} alt="" />
+              <img src={chooseIconFacility(data?.name)} alt="" />
               <h1 className="font-medium ms-3">{data?.name}</h1>
             </div>
           );
         })}
       </div>
 
-      {modalDetailImage && <ModalImageKamar setModal={setModalDetailImage} />}
+      {modalDetailImage && <ModalImageKamar setModal={setModalDetailImage} dataImage={data?.hotel_room_image} />}
     </div>
   );
 };

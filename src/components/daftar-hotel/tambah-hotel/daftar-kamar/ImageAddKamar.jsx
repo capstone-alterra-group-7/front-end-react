@@ -47,7 +47,7 @@ const ImageAddKamar = ({ imageUrl, setImageUrl, setDataKamar }) => {
           type="file"
           name="image"
           id="imageInput"
-          accept="image/*"
+          accept="image/png, image/gif, image/jpeg"
           className="absolute w-full h-full opacity-0 cursor-pointer"
           placeholder="Input Image"
           onChange={handleImageChange}
