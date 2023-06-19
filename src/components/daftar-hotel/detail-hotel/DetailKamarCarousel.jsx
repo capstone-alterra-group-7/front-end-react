@@ -29,7 +29,7 @@ const DetailKamarCarousel = ({ imgUrl, indexImg, setIndexImg, name }) => {
           alt=""
           className={`2xl:h-96 xl:h-[19rem] ${
             name === "detail-main" && name ? "w-full" : "w-[30rem]"
-          } h-96 object-cover`}
+          } h-96 object-contain`}
         />
       </div>
 
