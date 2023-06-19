@@ -28,6 +28,7 @@ export default function TrainDetail({ data }) {
             {new Intl.NumberFormat("id-ID", {
               style: "currency",
               currency: "IDR",
+              maximumSignificantDigits: 4,
             }).format(data.train.train_price)}
           </p>
           <p className="text-[#262627] text-[20px] font-[400]">
