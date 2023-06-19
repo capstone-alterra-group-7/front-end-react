@@ -3,6 +3,8 @@ const Pagination = (props) => {
 
   const total = Math.ceil(infoPaginate?.total / 20);
 
+  console.log(total);
+
   return (
     <div className=" flex items-center justify-between px-7 w-full py-5 bg-white ">
       <button
@@ -30,9 +32,9 @@ const Pagination = (props) => {
           "..."
         ) : (
           <div className="flex gap-1 items-center">
-            {Array(total)
-              .fill(0)
-              .map((_, index) => (
+            {Array(total == NaN && 0)
+              ?.fill(0)
+              ?.map((_, index) => (
                 <div
                   key={index}
                   onClick={() => setChangePage(index + 1)}
