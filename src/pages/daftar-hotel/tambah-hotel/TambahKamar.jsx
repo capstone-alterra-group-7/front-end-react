@@ -6,7 +6,7 @@ import assets from "../../../assets/assets";
 import FormAddKamar from "./FormAddKamar";
 import ModalConfirmAddKamar from "../../../components/daftar-hotel/tambah-hotel/daftar-kamar/ModalConfirmAddKamar";
 
-const TambahKamar = ({ setAddingRoom, setDataRooms }) => {
+const TambahKamar = ({ setAddingRoom, setDataRooms, name }) => {
   const [modal, setModal] = useState({ back: false, add: false });
   // state for clicked kebijakan kamar
   const [clicked, setClicked] = useState({ diskon: false, sarapan: false, wifi: false, merokok: false, refund: false });
@@ -28,6 +28,10 @@ const TambahKamar = ({ setAddingRoom, setDataRooms }) => {
 
   const handleAddKamar = () => {
     setDataRooms((prev) => [...prev, dataKamar]);
+    setAddingRoom(false);
+  };
+
+  const handleEditKamar = () => {
     setAddingRoom(false);
   };
 
@@ -71,8 +75,10 @@ const TambahKamar = ({ setAddingRoom, setDataRooms }) => {
 
         {modal.back && (
           <ModalConfirmAddKamar
-            title="Batal Menambahkan Data Kamar"
-            desc="Anda akan membatalkan penambahan data kamar .Apakah Anda yakin ingin melanjutkan?"
+            title={name === "add" ? "Batal Menambahkan Data Kamar" : "Batal Mengubah Data Kamar"}
+            desc={`Anda akan membatalkan ${
+              name === "add" ? "penambahan" : "perubahan"
+            } data kamar .Apakah Anda yakin ingin melanjutkan?`}
             bg="bg-[#DB2D24]"
             cancel="Tutup"
             confirm="Batalkan"
@@ -83,13 +89,15 @@ const TambahKamar = ({ setAddingRoom, setDataRooms }) => {
 
         {modal.add && (
           <ModalConfirmAddKamar
-            title="Simpan Data Kamar"
-            desc="Anda akan menyimpan data kamar baru. Apakah Anda yakin ingin melanjutkan?"
+            title={name === "add" ? "Simpan Data Kamar" : "Simpan Perubahan Data Kamar"}
+            desc={`Anda akan menyimpan ${
+              name === "add" ? "data kamar baru" : "perubahan pada data kamar"
+            } . Apakah Anda yakin ingin melanjutkan?`}
             bg="bg-[#0080FF]"
             cancel="Batal"
             confirm="Simpan"
             handleCancel={() => setModal((prev) => ({ ...prev, add: false }))}
-            handleConfirm={handleAddKamar}
+            handleConfirm={name === "add" ? handleAddKamar : handleEditKamar}
           />
         )}
       </div>

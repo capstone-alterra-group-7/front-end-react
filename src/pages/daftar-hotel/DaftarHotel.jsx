@@ -21,10 +21,8 @@ const DaftarHotel = () => {
 
   const navigate = useNavigate();
 
-  const { data: dataHotel, isLoading } = useSWR(baseUrl(`/public/hotel?page=${changePage}&limit=20`), fetcher);
+  const { data: dataHotel, isLoading, error } = useSWR(baseUrl(`/public/hotel?page=${changePage}&limit=20`), fetcher);
   const infoPaginate = dataHotel?.meta;
-
-  console.log("Data List Hotel", dataHotel);
 
   const handleAdd = () => {
     navigate("/daftar-hotel/tambah-hotel");
@@ -39,7 +37,15 @@ const DaftarHotel = () => {
 
       <CardContainerHotel dataHotel={dataHotel} />
 
-      <Pagination changePage={changePage} setChangePage={setChangePage} isLoading={isLoading} entries={dataHotel?.data?.length} infoPaginate={infoPaginate} />
+      {!error && (
+        <Pagination
+          changePage={changePage}
+          setChangePage={setChangePage}
+          isLoading={isLoading}
+          entries={dataHotel?.data?.length}
+          infoPaginate={infoPaginate}
+        />
+      )}
 
       {modal.tambah && (
         <ModalConfirmHotel

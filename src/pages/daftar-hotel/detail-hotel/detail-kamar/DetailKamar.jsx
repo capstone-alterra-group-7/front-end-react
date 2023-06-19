@@ -7,13 +7,13 @@ import useSWR from "swr";
 // ** Import Component
 import BackButtonHotel from "../../../../components/daftar-hotel/detail-hotel/BackButtonHotel";
 import ButtonDetailHotel from "../../../../components/daftar-hotel/detail-hotel/ButtonDetailHotel";
-import CarouselPhoto from "../../../../components/daftar-hotel/detail-hotel/daftar-kamar/detail-kamar/CarouselPhoto";
 import SectionDescriptionKamar from "../../../../components/daftar-hotel/detail-hotel/daftar-kamar/detail-kamar/SectionDescriptionKamar";
 import SectionFasilitasKamar from "../../../../components/daftar-hotel/detail-hotel/daftar-kamar/detail-kamar/SectionFasilitasKamar";
 import ModalAvailableKamar from "../../../../components/daftar-hotel/detail-hotel/daftar-kamar/detail-kamar/ModalAvailableKamar";
 import ModalConfirmHotel from "../../../../components/daftar-hotel/ModalConfirmHotel";
 import { baseUrl } from "../../../../services/base";
 import { customAlert } from "../../../../helpers/customAlert";
+import DetailKamarCarousel from "../../../../components/daftar-hotel/detail-hotel/DetailKamarCarousel";
 
 const fetcherGet = (url) => axios.get(url).then((res) => res.data);
 const fetcherDelete = (url) => axios.delete(url).then((res) => res.data);
@@ -23,7 +23,9 @@ const DetailKamar = () => {
   const navigate = useNavigate();
 
   const { data: dataKamarById, isLoading, mutate } = useSWR(baseUrl(`/public/hotel-room/${id}`), fetcherGet);
+  console.log("data kamar by id", dataKamarById);
 
+  const [indexImg, setIndexImg] = useState(0);
   const [isHidden, setIsHidden] = useState({ desc: false, fasilitas: false });
   const [modalButtonDetail, setModalButtonDetail] = useState({ edit: false, delete: false });
   const [showModal, setShowModal] = useState(false);
@@ -40,7 +42,11 @@ const DetailKamar = () => {
 
     fetcherDelete(baseUrl(`/admin/hotel-room/${id}`))
       .then(() => {
-        customAlert("https://gcdnb.pbrd.co/images/UsggKXgrW4ny.png?o=1", "Data Dihapus", `Data kamar hotel ${dataKamarById.data.name} telah berhasil dihapus dari sistem.`);
+        customAlert(
+          "https://gcdnb.pbrd.co/images/UsggKXgrW4ny.png?o=1",
+          "Data Dihapus",
+          `Data kamar hotel ${dataKamarById.data.name} telah berhasil dihapus dari sistem.`
+        );
 
         setLoading(false);
 
@@ -89,11 +95,27 @@ const DetailKamar = () => {
           </div>
 
           <div className="p-6">
-            <CarouselPhoto width={"w-10/12"} />
-            <div className="mt-8 flex w-11/12 left-1/2 -translate-x-1/2 relative">
-              <img src={assets.imageKamar2} alt="" className="mr-4 w-32 h-32" />
-              <img src={assets.imageKamar2} alt="" className="mr-4 w-32 h-32" />
-              <img src={assets.imageKamar2} alt="" className="mr-4 w-32 h-32" />
+            <DetailKamarCarousel
+              imgUrl={dataKamarById?.data?.hotel_room_image}
+              indexImg={indexImg}
+              setIndexImg={setIndexImg}
+              name="detail-main"
+            />
+            <div
+              className={`flex flex-wrap ${
+                dataKamarById?.data?.hotel_room_image?.length <= 4 ? "justify-center" : ""
+              } w-full gap-5 overflow-y-scroll 2xl:h-40 xl:h-36 h-28 xl:mt-4 scrollBar px-2`}
+            >
+              {dataKamarById?.data?.hotel_room_image.map((url, idx) => (
+                <img
+                  src={url.image_url}
+                  alt=""
+                  className={`2xl:w-40 xl:w-36 w-28 rounded-3xl cursor-pointer duration-100 object-cover ${
+                    indexImg === idx ? "border-4 border-[#0080FF]" : null
+                  }`}
+                  onClick={() => setIndexImg(idx)}
+                />
+              ))}
             </div>
 
             <div className="mt-12">
@@ -109,7 +131,10 @@ const DetailKamar = () => {
                 <h1>
                   Total Kamar : <span className="font-semibold">{dataKamarById?.data?.quantity_of_room} Kamar</span>
                 </h1>
-                <button className="ms-4 h-11 py-3 px-6 bg-[#0080FF] hover:bg-opacity-80 text-white rounded-lg" onClick={handleShowModal}>
+                <button
+                  className="ms-4 h-11 py-3 px-6 bg-[#0080FF] hover:bg-opacity-80 text-white rounded-lg"
+                  onClick={handleShowModal}
+                >
                   Lihat Ketersediaan Kamar
                 </button>
                 {showModal ? <ModalAvailableKamar setShowModal={setShowModal} /> : null}
@@ -125,7 +150,11 @@ const DetailKamar = () => {
                   }
                 >
                   <h1 className="ms-4 font-semibold">Deskripsi Kamar</h1>
-                  <img src={assets.iconUrutkanDaftarKa} alt="" className={`h-5 w-4 duration-300 ${isHidden.desc ? "" : "rotate-180"}`} />
+                  <img
+                    src={assets.iconUrutkanDaftarKa}
+                    alt=""
+                    className={`h-5 w-4 duration-300 ${isHidden.desc ? "" : "rotate-180"}`}
+                  />
                 </div>
                 {isHidden.desc ? null : <SectionDescriptionKamar dataDesc={dataKamarById?.data?.description} />}
               </div>
@@ -140,9 +169,15 @@ const DetailKamar = () => {
                   }
                 >
                   <h1 className="ms-4 font-semibold">Fasilitas Kamar</h1>
-                  <img src={assets.iconUrutkanDaftarKa} alt="" className={`h-5 w-4 duration-300 ${isHidden.fasilitas ? "" : "rotate-180"}`} />
+                  <img
+                    src={assets.iconUrutkanDaftarKa}
+                    alt=""
+                    className={`h-5 w-4 duration-300 ${isHidden.fasilitas ? "" : "rotate-180"}`}
+                  />
                 </div>
-                {isHidden.fasilitas ? null : <SectionFasilitasKamar dataFacilities={dataKamarById?.data?.hotel_room_facility} />}
+                {isHidden.fasilitas ? null : (
+                  <SectionFasilitasKamar dataFacilities={dataKamarById?.data?.hotel_room_facility} />
+                )}
               </div>
             </div>
           </div>

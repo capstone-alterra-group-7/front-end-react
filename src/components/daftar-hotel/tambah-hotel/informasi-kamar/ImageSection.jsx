@@ -35,13 +35,26 @@ const ImageSection = ({ imageUrl, setImageUrl, setDataInput }) => {
       {imageUrl?.map((img, i) => {
         return (
           <div className="relative" key={i}>
-            <img src={URL.createObjectURL(img.imageFile)} alt="" className="w-32 h-32" key={i} />
-            <img src={assets.iconClose} alt="" className="bg-white absolute top-1 right-1 rounded-full font-extrabold cursor-pointer" onClick={() => handleDeleteImage(img.id)} />
+            <img src={URL.createObjectURL(img.imageFile)} alt="" className="w-32 h-32 object-cover" key={i} />
+            <img
+              src={assets.iconClose}
+              alt=""
+              className="bg-white absolute top-1 right-1 rounded-full font-extrabold cursor-pointer"
+              onClick={() => handleDeleteImage(img.id)}
+            />
           </div>
         );
       })}
       <div className="relative w-32 h-32 cursor-pointer bg-[#D2D7E0] rounded-2xl flex justify-center">
-        <input type="file" name="image" id="imageInput" className="absolute w-full h-full opacity-0 cursor-pointer" accept="image/*" placeholder="Input Image" onChange={handleImageChange} />
+        <input
+          type="file"
+          name="image"
+          id="imageInput"
+          className="absolute w-full h-full opacity-0 cursor-pointer"
+          accept="image/png, image/gif, image/jpeg"
+          placeholder="Input Image"
+          onChange={handleImageChange}
+        />
         <img src={assets.iconImageAdd} alt="" className="w-16" />
       </div>
     </div>
