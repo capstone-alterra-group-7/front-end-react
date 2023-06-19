@@ -14,6 +14,8 @@ export default function PessangerDetail({ data, user }) {
     });
   };
 
+  console.log(data);
+
   return (
     <div>
       <div className="mt-2 bg-white px-[32px] py-[16px] text-[#262627]">
@@ -30,8 +32,8 @@ export default function PessangerDetail({ data, user }) {
           />
 
           <div className="flex flex-col ps-4">
-            <p className="font-[700]">{data.name_order}</p>
-            <p>{data.traveler_detail[0]?.id_card_number}</p>
+            <p className="font-[700]">{data.user.full_name}</p>
+            <p>{data.user.user_id}</p>
           </div>
 
           <button
