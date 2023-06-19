@@ -74,7 +74,7 @@ const CardPesananBaru = ({ dataPesananBaru }) => {
                       <td className=" py-[8px]  font-medium">
                         <div
                           className={`py-[6px] text-center font-semibold px-6 rounded-[24px] ${
-                            idx % 2 == 0
+                            data.type === "Hotel"
                               ? "bg-[#FFF1E5] text-[#FF7300]"
                               : "bg-[#E5F2FF] text-[#0080FF]"
                           }`}
@@ -89,6 +89,7 @@ const CardPesananBaru = ({ dataPesananBaru }) => {
                         {new Intl.NumberFormat("id-ID", {
                           style: "currency",
                           currency: "IDR",
+                          maximumSignificantDigits: 4,
                         }).format(data.price)}
                       </td>
                     </tr>
