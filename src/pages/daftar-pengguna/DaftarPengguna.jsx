@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 const DaftarPengguna = () => {
   const [modal, setModal] = useState(false);
   const [search, setSearch] = useState("")
+  const [urutkan, setUrutkan] = useState("");
   const navigate = useNavigate();
 
   const handleAdd = () => {
@@ -28,9 +29,13 @@ const DaftarPengguna = () => {
 
         <Bar 
           setModal={setModal}
-          setSearch={setSearch} />
+          setSearch={setSearch}
+          urutkan={urutkan}
+          setUrutkan={setUrutkan} />
       </div>
-      <TablePengguna/>
+      <TablePengguna
+        urutkan={urutkan}
+        search={search}/>
 
       {modal && (
         <ModalDaftarPengguna

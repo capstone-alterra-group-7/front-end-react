@@ -5,14 +5,16 @@ import React from "react";
 import assets from "../../../assets/assets";
 import { useNavigate } from "react-router-dom";
 
-export default function PessangerDetail({ data }) {
+export default function PessangerDetail({ data, user }) {
   const navigate = useNavigate();
 
   const handleNavigatePengguna = () => {
     navigate("/detail-pengguna", {
-      state: { data: { id: data.user.user_id } },
+      state: { data: { id: user.id, deleted_at: user.deleted_at } },
     });
   };
+
+  console.log(data);
 
   return (
     <div>
@@ -30,8 +32,8 @@ export default function PessangerDetail({ data }) {
           />
 
           <div className="flex flex-col ps-4">
-            <p className="font-[700]">{data.name_order}</p>
-            <p>{data.traveler_detail[0]?.id_card_number}</p>
+            <p className="font-[700]">{data.user.full_name}</p>
+            <p>{data.user.user_id}</p>
           </div>
 
           <button
