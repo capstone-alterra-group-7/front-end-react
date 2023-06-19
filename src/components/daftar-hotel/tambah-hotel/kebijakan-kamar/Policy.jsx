@@ -8,7 +8,9 @@ const Policy = (props) => {
       <div className="flex mb-3">
         <h1 className="font-[600] text-xl mr-4">{title}</h1>
         <div
-          className={`relative p-1 w-[3.25rem] rounded-[2rem] cursor-pointer transition-all ease-in-out duration-300 flex items-center ${clicked[name] ? "bg-[#0080FF]" : "bg-[#D2D7E0]"}`}
+          className={`relative p-1 w-[3.25rem] rounded-[2rem] cursor-pointer transition-all ease-in-out duration-300 flex items-center ${
+            clicked[name] ? "bg-[#0080FF]" : "bg-[#D2D7E0]"
+          }`}
           onClick={() => {
             setClicked((prev) => {
               return { ...prev, [name]: !prev[name] };
@@ -16,7 +18,7 @@ const Policy = (props) => {
 
             if ((name === "is_check_in_check_out" || name === "is_breakfast") && !clicked?.name) {
               setClicked((prev) => {
-                return { ...prev, [name1]: "", [name2]: "" };
+                return { ...prev, [name1]: "-", [name2]: "-" };
               });
             }
             if (name === "is_policy_minimum_age" && !clicked?.name) {

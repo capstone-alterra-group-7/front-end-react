@@ -22,7 +22,7 @@ const InformasiHotel = ({ data }) => {
   return (
     <div className="bg-[#EBEDF1] text-[#262627]">
       <div className="h-[26rem] bg-white px-8 py-6 flex">
-        <ImageHotelSection />
+        <ImageHotelSection dataImage={data?.hotel_image} />
 
         <div className="w-full">
           <div className="flex justify-between mb-2">
@@ -65,14 +65,16 @@ const InformasiHotel = ({ data }) => {
         <div className="pt-5 grid grid-cols-8 gap-y-3 ps-10">
           {data?.hotel_facilities.length < 1
             ? "No Facilities"
-            : data?.hotel_facilities.slice(0, isHidden.fasilitas ? 8 : data?.hotel_facilities.length).map((facility, i) => {
-                return (
-                  <div className="w-24 flex flex-col items-center" key={i}>
-                    <img src={chooseIconFacility(facility?.name)} alt="iconwifi" className="w-10 mb-1" />
-                    <h1 className="text-center">{facility?.name}</h1>
-                  </div>
-                );
-              })}
+            : data?.hotel_facilities
+                .slice(0, isHidden.fasilitas ? 8 : data?.hotel_facilities.length)
+                .map((facility, i) => {
+                  return (
+                    <div className="w-24 flex flex-col items-center" key={i}>
+                      <img src={chooseIconFacility(facility?.name)} alt="iconwifi" className="w-10 mb-1" />
+                      <h1 className="text-center">{facility?.name}</h1>
+                    </div>
+                  );
+                })}
         </div>
 
         <div
@@ -83,8 +85,14 @@ const InformasiHotel = ({ data }) => {
             })
           }
         >
-          <h1 className="text-[#0080FF] font-medium mr-2">{isHidden.fasilitas ? "Lihat Semua Fasilitas Hotel" : "Hide"}</h1>
-          <img src={assets.iconDownArrow} alt="arrow" className={`${isHidden.fasilitas ? "" : "rotate-180 duration-200"}`} />
+          <h1 className="text-[#0080FF] font-medium mr-2">
+            {isHidden.fasilitas ? "Lihat Semua Fasilitas Hotel" : "Hide"}
+          </h1>
+          <img
+            src={assets.iconDownArrow}
+            alt="arrow"
+            className={`${isHidden.fasilitas ? "" : "rotate-180 duration-200"}`}
+          />
         </div>
       </div>
 
@@ -99,7 +107,11 @@ const InformasiHotel = ({ data }) => {
             }
           >
             <h1 className="ms-4 font-semibold">Deskripsi Hotel</h1>
-            <img src={assets.iconUrutkanDaftarKa} alt="" className={`h-5 w-4 duration-300 ${isHidden.desc ? "rotate-180" : ""}`} />
+            <img
+              src={assets.iconUrutkanDaftarKa}
+              alt=""
+              className={`h-5 w-4 duration-300 ${isHidden.desc ? "rotate-180" : ""}`}
+            />
           </div>
           {isHidden.desc ? null : <div className="p-4 duration-500">{data?.description}</div>}
         </div>
@@ -114,7 +126,11 @@ const InformasiHotel = ({ data }) => {
             }
           >
             <h1 className="ms-4 font-semibold">Informasi Hotel</h1>
-            <img src={assets.iconUrutkanDaftarKa} alt="" className={`h-5 w-4 duration-300 ${isHidden.informasi ? "rotate-180" : ""}`} />
+            <img
+              src={assets.iconUrutkanDaftarKa}
+              alt=""
+              className={`h-5 w-4 duration-300 ${isHidden.informasi ? "rotate-180" : ""}`}
+            />
           </div>
           {isHidden.informasi ? null : <SectionInformation data={data} />}
         </div>
@@ -129,7 +145,11 @@ const InformasiHotel = ({ data }) => {
             }
           >
             <h1 className="ms-4 font-semibold">Kebijakan Hotel</h1>
-            <img src={assets.iconUrutkanDaftarKa} alt="" className={`h-5 w-4 duration-300 ${isHidden.kebijakan ? "rotate-180" : ""}`} />
+            <img
+              src={assets.iconUrutkanDaftarKa}
+              alt=""
+              className={`h-5 w-4 duration-300 ${isHidden.kebijakan ? "rotate-180" : ""}`}
+            />
           </div>
           {isHidden.kebijakan ? null : <SectionKebijakan data={data?.hotel_policy} />}
         </div>

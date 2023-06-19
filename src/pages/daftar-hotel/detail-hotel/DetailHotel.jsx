@@ -25,7 +25,6 @@ const DetailHotel = () => {
   const navigate = useNavigate();
 
   const { data: dataHotelById, isLoading, mutate } = useSWR(baseUrl(`/public/hotel/${id}`), fetcherGet);
-  // console.log("data hotel detail", dataHotelById);
 
   // ** Local State
   const [nav, setNav] = useState("informasi");
@@ -38,7 +37,11 @@ const DetailHotel = () => {
 
     fetcherDelete(baseUrl(`/admin/hotel/${id}`))
       .then(() => {
-        customAlert("https://gcdnb.pbrd.co/images/UsggKXgrW4ny.png?o=1", "Data Dihapus", `Data hotel ${dataHotelById.data.name} telah berhasil dihapus dari sistem.`);
+        customAlert(
+          "https://gcdnb.pbrd.co/images/UsggKXgrW4ny.png?o=1",
+          "Data Dihapus",
+          `Data hotel ${dataHotelById.data.name} telah berhasil dihapus dari sistem.`
+        );
 
         setLoading(false);
 
@@ -89,7 +92,13 @@ const DetailHotel = () => {
             />
           )}
 
-          {nav === "informasi" ? <InformasiHotel data={dataHotelById?.data} /> : nav === "daftarKamar" ? <DaftarKamar data={dataHotelById?.data?.hotel_room} /> : <Ulasan data={dataHotelById?.data} />}
+          {nav === "informasi" ? (
+            <InformasiHotel data={dataHotelById?.data} />
+          ) : nav === "daftarKamar" ? (
+            <DaftarKamar data={dataHotelById?.data?.hotel_room} />
+          ) : (
+            <Ulasan data={dataHotelById?.data} />
+          )}
         </div>
       )}
     </>

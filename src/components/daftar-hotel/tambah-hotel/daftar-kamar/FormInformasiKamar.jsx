@@ -35,7 +35,7 @@ const FormInformasiKamar = (props) => {
             <input
               type="number"
               className="px-3 py-[0.625rem] w-full rounded-lg"
-              placeholder="cth:34.000"
+              placeholder="cth:15"
               value={dataKamar?.size_of_room}
               onChange={(e) => {
                 setDataKamar((prev) => ({ ...prev, size_of_room: e.target.value }));

@@ -7,17 +7,16 @@ const SectionAddFasilitas = ({ fasilitas, setFasilitas, setDataInput }) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    // Append Data to Main State
+    setDataInput((prev) => {
+      return { ...prev, hotel_facilities: fasilitas };
+    });
     if (fasilitas.length < 1) {
       return;
     }
     if (fasilitas?.slice(-1)[0].name !== "") {
       setError(false);
     }
-
-    // Append Data to Main State
-    setDataInput((prev) => {
-      return { ...prev, hotel_facilities: fasilitas };
-    });
   }, [fasilitas]);
 
   const handleAddFasilitas = (e) => {
@@ -71,7 +70,12 @@ const SectionAddFasilitas = ({ fasilitas, setFasilitas, setDataInput }) => {
               onChange={(e) => handleUpdateFasilitas(e, i)}
               value={data.name}
             />
-            <img src={assets.iconClose} alt="" className="absolute right-2 top-[10px] cursor-pointer" onClick={(e) => handleDeleteFasilitas(e, data)} />
+            <img
+              src={assets.iconClose}
+              alt=""
+              className="absolute right-2 top-[10px] cursor-pointer"
+              onClick={(e) => handleDeleteFasilitas(e, data)}
+            />
           </div>
         );
       })}

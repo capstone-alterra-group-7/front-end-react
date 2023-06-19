@@ -4,7 +4,14 @@ import assets from "../../../assets/assets";
 const ButtonDetailHotel = ({ title, setModal, validate }) => {
   return (
     <div className="flex gap-3">
-      <button className=" px-7 py-[9.5px] font-[500] text-[#4B4C4E] border border-[#D2D7E0] bg-[#F9FAFB] flex items-center rounded-lg">
+      <button
+        className=" px-7 py-[9.5px] font-[500] text-[#4B4C4E] border border-[#D2D7E0] bg-[#F9FAFB] flex items-center rounded-lg"
+        onClick={() => {
+          setModal((prev) => {
+            return { ...prev, edit: true };
+          });
+        }}
+      >
         <span className="me-2 text-[18px]">Edit {title}</span>
         <img src={assets.iconEditDaftarKa} alt="edit" />
       </button>

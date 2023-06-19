@@ -103,8 +103,10 @@ const FormPenawaranKamar = (props) => {
               }`}
               onClick={(e) => {
                 setClicked((prev) => ({ ...prev, discount: !prev.discount }));
-                if (clicked.discount === false) {
-                  setDataKamar((prev) => ({ ...prev, discount: 0 }));
+                if (clicked.discount) {
+                  setDataKamar((prev) => {
+                    return { ...prev, discount: 0 };
+                  });
                 }
               }}
             >

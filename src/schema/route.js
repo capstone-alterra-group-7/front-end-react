@@ -14,7 +14,6 @@ import Refund from "../pages/refund/Refund";
 import TambahKa from "../pages/daftar-KA/tambah-ka/TambahKa";
 import DetailKA from "../pages/daftar-KA/detail-ka/DetailKA";
 import DetailHotel from "../pages/daftar-hotel/detail-hotel/DetailHotel";
-import DetailPenawaran from "../pages/daftar-hotel/detail-hotel/detail-penawaran/DetailPenawaran";
 import DetailKamar from "../pages/daftar-hotel/detail-hotel/detail-kamar/DetailKamar";
 import TambahHotel from "../pages/daftar-hotel/tambah-hotel/TambahHotel";
 import DetailPengguna from "../pages/daftar-pengguna/detail-pengguna/DetailPengguna";
@@ -22,7 +21,6 @@ import TambahPengguna from "../pages/daftar-pengguna/tambah-pengguna/TambahPengg
 import EditPengguna from "../pages/daftar-pengguna/edit-pengguna/EditPengguna";
 import DetailPesananKa from "../pages/pesanan-ka/detail-pesananKa/DetailPesananKa";
 import TambahKamar from "../pages/daftar-hotel/tambah-hotel/TambahKamar";
-import TambahTawaran from "../pages/daftar-hotel/tambah-hotel/TambahTawaran";
 import DetailPesananHotel from "../pages/pesanan-hotel/detail-pesananHotel/DetailPesananHotel";
 import DaftarStasiun from "../pages/daftar-stasiun/DaftarStasiun";
 import TambahStasiun from "../pages/daftar-stasiun/tambah-stasiun/TambahStasiun";
@@ -43,11 +41,6 @@ export const routes = [
   { path: "/detail-hotel/:id", element: DetailHotel },
   { path: "/daftar-hotel/tambah-hotel", element: TambahHotel },
   { path: "/daftar-hotel/tambah-hotel/tambah-kamar", element: TambahKamar },
-  {
-    path: "/daftar-hotel/tambah-hotel/tambah-kamar/tambah-penawaran",
-    element: TambahTawaran,
-  },
-  { path: "/detail-hotel/penawaran", element: DetailPenawaran },
   { path: "/detail-hotel/detail-kamar/:id", element: DetailKamar },
   { path: "/daftar-pengguna", element: DaftarPengguna },
   { path: "/detail-pengguna", element: DetailPengguna },

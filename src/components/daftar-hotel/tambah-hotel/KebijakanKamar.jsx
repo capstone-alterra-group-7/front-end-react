@@ -5,7 +5,6 @@ import Policy from "./kebijakan-kamar/Policy";
 
 const KebijakanHotel = ({ dataInput, setDataInput }) => {
   const [clicked, setClicked] = useState(dataInput?.hotel_policy[0]);
-  console.log(clicked);
 
   useEffect(() => {
     setDataInput((prev) => {
@@ -21,7 +20,14 @@ const KebijakanHotel = ({ dataInput, setDataInput }) => {
 
       <div>
         {/* Kebijakan Waktu Check in/out */}
-        <Policy clicked={clicked} setClicked={setClicked} title={"Waktu Check-in/Check-out"} desc={"Waktu Check-in/Check-out"} name={"is_check_in_check_out"} nameVal={"time_check_in time_check_out"}>
+        <Policy
+          clicked={clicked}
+          setClicked={setClicked}
+          title={"Waktu Check-in/Check-out"}
+          desc={"Waktu Check-in/Check-out"}
+          name={"is_check_in_check_out"}
+          nameVal={"time_check_in time_check_out"}
+        >
           <div className="flex gap-4 mb-12">
             <div className="w-1/4">
               <label htmlFor="waktuMulai" className={`text-sm ${clicked?.is_check_in_check_out ? null : "opacity-50"}`}>
@@ -65,7 +71,13 @@ const KebijakanHotel = ({ dataInput, setDataInput }) => {
         </Policy>
 
         {/* Kebijakan Pembatalan */}
-        <Policy clicked={clicked} setClicked={setClicked} title={"Kebijakan Pembatalan"} desc={"Tidak ada biaya pembatalan 48 jam sebelum tanggal check-in"} name={"is_policy_canceled"}>
+        <Policy
+          clicked={clicked}
+          setClicked={setClicked}
+          title={"Kebijakan Pembatalan"}
+          desc={"Tidak ada biaya pembatalan 48 jam sebelum tanggal check-in"}
+          name={"is_policy_canceled"}
+        >
           <div className="mb-12"></div>
         </Policy>
 
@@ -82,7 +94,11 @@ const KebijakanHotel = ({ dataInput, setDataInput }) => {
             <label htmlFor="usia" className={`text-sm ${clicked.is_policy_minimum_age ? null : "opacity-50"}`}>
               Batas Usia
             </label>
-            <div className={`flex mt-2 h-11 w-1/5 rounded-lg border border-[#D2D7E0] ${clicked.is_policy_minimum_age ? null : "opacity-50"}`}>
+            <div
+              className={`flex mt-2 h-11 w-1/5 rounded-lg border border-[#D2D7E0] ${
+                clicked.is_policy_minimum_age ? null : "opacity-50"
+              }`}
+            >
               <input
                 type="number"
                 value={clicked?.policy_minimum_age}
@@ -106,7 +122,9 @@ const KebijakanHotel = ({ dataInput, setDataInput }) => {
           clicked={clicked}
           setClicked={setClicked}
           title={"Check-in Lebih Awal"}
-          desc={"Pemesan diperbolehkan check-in lebih awal. Pemesan dapat menghubungi akomodasi jika ingin check-in lebih awal. Pemesan akan dikenakan biaya tambahan"}
+          desc={
+            "Pemesan diperbolehkan check-in lebih awal. Pemesan dapat menghubungi akomodasi jika ingin check-in lebih awal. Pemesan akan dikenakan biaya tambahan"
+          }
           name={"is_check_in_early"}
         >
           <div className="mb-12"></div>
@@ -117,7 +135,9 @@ const KebijakanHotel = ({ dataInput, setDataInput }) => {
           clicked={clicked}
           setClicked={setClicked}
           title={"Check-out Telat"}
-          desc={"Pemesan diperbolehkan check-out telat. Pemesan dapat menghubungi akomodasi jika ingin check-out telat. Pemesan akan dikenakan biaya tambahan"}
+          desc={
+            "Pemesan diperbolehkan check-out telat. Pemesan dapat menghubungi akomodasi jika ingin check-out telat. Pemesan akan dikenakan biaya tambahan"
+          }
           name={"is_check_out_overdue"}
         >
           <div className="mb-12"></div>
@@ -175,12 +195,24 @@ const KebijakanHotel = ({ dataInput, setDataInput }) => {
         </Policy>
 
         {/* Kebijakan Merokok */}
-        <Policy clicked={clicked} setClicked={setClicked} title={"Merokok"} desc={"Merokok di akomodasi diperbolehkan"} name={"is_smoking"}>
+        <Policy
+          clicked={clicked}
+          setClicked={setClicked}
+          title={"Merokok"}
+          desc={"Merokok di akomodasi diperbolehkan"}
+          name={"is_smoking"}
+        >
           <div className="mb-12"></div>
         </Policy>
 
         {/* Kebijakan Membawa Pet */}
-        <Policy clicked={clicked} setClicked={setClicked} title={"Hewan Peliharaan"} desc={"Hewan peliharaan diperbolehkan berada di akomodasi"} name={"is_pet"}></Policy>
+        <Policy
+          clicked={clicked}
+          setClicked={setClicked}
+          title={"Hewan Peliharaan"}
+          desc={"Hewan peliharaan diperbolehkan berada di akomodasi"}
+          name={"is_pet"}
+        ></Policy>
       </div>
     </div>
   );
