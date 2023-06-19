@@ -5,12 +5,12 @@ import React from "react";
 import assets from "../../../assets/assets";
 import { useNavigate } from "react-router-dom";
 
-export default function PessangerDetail({ data }) {
+export default function PessangerDetail({ data, user }) {
   const navigate = useNavigate();
 
   const handleNavigatePengguna = () => {
     navigate("/detail-pengguna", {
-      state: { data: { id: data.user.user_id } },
+      state: { data: { id: user.id, deleted_at: user.deleted_at } },
     });
   };
 
