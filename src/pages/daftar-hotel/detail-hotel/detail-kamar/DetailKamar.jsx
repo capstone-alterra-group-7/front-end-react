@@ -22,12 +22,19 @@ const DetailKamar = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data: dataKamarById, isLoading, mutate } = useSWR(baseUrl(`/public/hotel-room/${id}`), fetcherGet);
+  const {
+    data: dataKamarById,
+    isLoading,
+    mutate,
+  } = useSWR(baseUrl(`/public/hotel-room/${id}`), fetcherGet);
   console.log("data kamar by id", dataKamarById);
 
   const [indexImg, setIndexImg] = useState(0);
   const [isHidden, setIsHidden] = useState({ desc: false, fasilitas: false });
-  const [modalButtonDetail, setModalButtonDetail] = useState({ edit: false, delete: false });
+  const [modalButtonDetail, setModalButtonDetail] = useState({
+    edit: false,
+    delete: false,
+  });
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -64,9 +71,15 @@ const DetailKamar = () => {
       {typeof dataKamarById === "undefined" ? (
         <div className="w-full flex flex-col items-center relative">
           <img src={assets.imageNoData} alt="" className="" />
-          <h1 className="font-bold text-2xl absolute bottom-2">Ups! Data kamar yang dicari tidak ditemukan</h1>
-          <Link to={"/daftar-hotel"} className="mt-2 text-[#0080FF] font-semibold absolute -bottom-6 flex">
-            <img src={assets.iconDownArrow} alt="" className="rotate-90" /> Kembali
+          <h1 className="font-bold text-2xl absolute bottom-2">
+            Ups! Data kamar yang dicari tidak ditemukan
+          </h1>
+          <Link
+            to={"/daftar-hotel"}
+            className="mt-2 text-[#0080FF] font-semibold absolute -bottom-6 flex"
+          >
+            <img src={assets.iconDownArrow} alt="" className="rotate-90" />{" "}
+            Kembali
           </Link>
         </div>
       ) : (
@@ -75,8 +88,13 @@ const DetailKamar = () => {
             <h1 className=" text-[32px] font-bold">Detail Kamar</h1>
 
             <div className="pt-7 flex justify-between items-center">
-              <BackButtonHotel url={`/detail-hotel/${dataKamarById?.data?.hotel_id}`} />
-              <ButtonDetailHotel title={"Kamar"} setModal={setModalButtonDetail} />
+              <BackButtonHotel
+                url={`/detail-hotel/${dataKamarById?.data?.hotel_id}`}
+              />
+              <ButtonDetailHotel
+                title={"Kamar"}
+                setModal={setModalButtonDetail}
+              />
             </div>
             {/* Modal Confirm */}
             {modalButtonDetail.delete && (
@@ -103,10 +121,12 @@ const DetailKamar = () => {
             />
             <div
               className={`flex flex-wrap ${
-                dataKamarById?.data?.hotel_room_image?.length <= 4 ? "justify-center" : ""
+                dataKamarById?.data?.hotel_room_image?.length <= 4
+                  ? "justify-center"
+                  : ""
               } w-full gap-5 overflow-y-scroll 2xl:h-40 xl:h-36 h-28 xl:mt-4 scrollBar px-2`}
             >
-              {dataKamarById?.data?.hotel_room_image.map((url, idx) => (
+              {dataKamarById?.data?.hotel_room_image?.map((url, idx) => (
                 <img
                   src={url.image_url}
                   alt=""
@@ -119,7 +139,9 @@ const DetailKamar = () => {
             </div>
 
             <div className="mt-12">
-              <h1 className="font-bold text-3xl mb-4">{dataKamarById?.data?.name}</h1>
+              <h1 className="font-bold text-3xl mb-4">
+                {dataKamarById?.data?.name}
+              </h1>
               <div className="flex">
                 <img src={assets.iconRuler} alt="" className="mr-2" />
                 <h1 className="font-semibold">
@@ -129,7 +151,10 @@ const DetailKamar = () => {
 
               <div className="mt-5 mb-8 flex items-center relative">
                 <h1>
-                  Total Kamar : <span className="font-semibold">{dataKamarById?.data?.quantity_of_room} Kamar</span>
+                  Total Kamar :{" "}
+                  <span className="font-semibold">
+                    {dataKamarById?.data?.quantity_of_room} Kamar
+                  </span>
                 </h1>
                 <button
                   className="ms-4 h-11 py-3 px-6 bg-[#0080FF] hover:bg-opacity-80 text-white rounded-lg"
@@ -137,7 +162,9 @@ const DetailKamar = () => {
                 >
                   Lihat Ketersediaan Kamar
                 </button>
-                {showModal ? <ModalAvailableKamar setShowModal={setShowModal} /> : null}
+                {showModal ? (
+                  <ModalAvailableKamar setShowModal={setShowModal} />
+                ) : null}
               </div>
 
               <div className="border-2 border-[#E1E4EA] rounded-lg pt-2 mb-8">
@@ -153,10 +180,16 @@ const DetailKamar = () => {
                   <img
                     src={assets.iconUrutkanDaftarKa}
                     alt=""
-                    className={`h-5 w-4 duration-300 ${isHidden.desc ? "" : "rotate-180"}`}
+                    className={`h-5 w-4 duration-300 ${
+                      isHidden.desc ? "" : "rotate-180"
+                    }`}
                   />
                 </div>
-                {isHidden.desc ? null : <SectionDescriptionKamar dataDesc={dataKamarById?.data?.description} />}
+                {isHidden.desc ? null : (
+                  <SectionDescriptionKamar
+                    dataDesc={dataKamarById?.data?.description}
+                  />
+                )}
               </div>
 
               <div className="border-2 border-[#E1E4EA] rounded-lg pt-2">
@@ -172,11 +205,15 @@ const DetailKamar = () => {
                   <img
                     src={assets.iconUrutkanDaftarKa}
                     alt=""
-                    className={`h-5 w-4 duration-300 ${isHidden.fasilitas ? "" : "rotate-180"}`}
+                    className={`h-5 w-4 duration-300 ${
+                      isHidden.fasilitas ? "" : "rotate-180"
+                    }`}
                   />
                 </div>
                 {isHidden.fasilitas ? null : (
-                  <SectionFasilitasKamar dataFacilities={dataKamarById?.data?.hotel_room_facility} />
+                  <SectionFasilitasKamar
+                    dataFacilities={dataKamarById?.data?.hotel_room_facility}
+                  />
                 )}
               </div>
             </div>

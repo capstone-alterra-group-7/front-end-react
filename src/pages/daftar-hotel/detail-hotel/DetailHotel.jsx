@@ -38,6 +38,8 @@ const DetailHotel = () => {
   });
   const [loading, setLoading] = useState(false);
 
+  console.log(dataHotelById);
+
   // Function delete hotel by id
   const handleDeleteHotel = () => {
     setLoading(true);
