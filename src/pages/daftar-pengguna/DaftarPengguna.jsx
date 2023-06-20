@@ -9,12 +9,16 @@ import TablePengguna from "../../components/daftar-pengguna/TablePengguna";
 // ** Import Others
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ModalFilter from "./ModalFilter";
 
 
 const DaftarPengguna = () => {
   const [modal, setModal] = useState(false);
   const [search, setSearch] = useState("")
   const [urutkan, setUrutkan] = useState("");
+  const [filter, setFilter] = useState("");
+  const [showFilter, setShowFilter] = useState(false);
+  const [saveFilter, setSaveFilter] = useState("");
   const navigate = useNavigate();
 
   const handleAdd = () => {
@@ -31,7 +35,9 @@ const DaftarPengguna = () => {
           setModal={setModal}
           setSearch={setSearch}
           urutkan={urutkan}
-          setUrutkan={setUrutkan} />
+          setUrutkan={setUrutkan}
+          setShowFilter={setShowFilter}
+          saveFilter={saveFilter} />
       </div>
       <TablePengguna
         urutkan={urutkan}
@@ -40,14 +46,22 @@ const DaftarPengguna = () => {
       {modal && (
         <ModalDaftarPengguna
           title="Ingin Menambahkan Pengguna Baru?"
-          description=" This blog post has been published. Team members will be able to edit this post and republish changes."
+          description="Anda akan menambahkan data pengguna baru. Apakah Anda yakin ingin melanjutkan?"
           bgButton="bg-[#0080FF]"
-          titleButton="Iya, Tambahkan Pengguna"
+          titleButton="Tambahkan Pengguna"
           setModal={setModal}
           handle={handleAdd}
         />
       )}
 
+      {showFilter && (
+        <ModalFilter
+          filter={filter}
+          setFilter={setFilter}
+          setShowFilter={setShowFilter}
+          setSaveFilter={setSaveFilter}
+        />
+      )}    
     </div>
   )
 };

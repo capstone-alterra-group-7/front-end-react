@@ -28,15 +28,6 @@ export default function SecondBar(props) {
           <span className="me-2 text-[16px]">Edit</span>
           <img src={assets.iconEditDaftarKa} alt="edit" />
         </button>
-
-        <button
-          className="px-8 font-[500] bg-[#DB2D24] flex items-center gap-2 rounded-lg"
-          onClick={() => setModal(true)}
-        >
-          <span className="ms-2 text-[16px] text-white ">Hapus Pengguna</span>
-
-          <img src={assets.iconDeleteDaftarKa} alt="delete" />
-        </button>
       </div>
     </div>
   );

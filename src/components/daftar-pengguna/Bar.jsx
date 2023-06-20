@@ -88,17 +88,16 @@ export default function Bar(props) {
           ) : null}
         </div>
 
-        <div className="relative">
-        <select className="appearance-none w-full px-4 text-left py-[9.5px] rounded-lg bg-[#F9FAFB] border border-[#D2D7E0] text-[#262627] font-[500] text-[16px] focus:outline-none">
-            <option value="">Filter</option>
-            <option value="2">2</option>
-        </select>
+        <div onClick={() => setShowFilter(true)} className="relative">
+          <button className="w-full px-12 text-left py-2 rounded-lg bg-[#F9FAFB] border border-[#D2D7E0] text-[#262627] font-[500] text-[18px] focus:outline-none cursor-pointer">
+            <p className="-ml-5">Filter</p>
+          </button>
 
-        <img
+          <img
             src={assets.iconFilterDaftarKa}
             className="absolute top-[15px] right-5"
             alt="urutkan"
-        />
+          />
         </div>
         
         <button
