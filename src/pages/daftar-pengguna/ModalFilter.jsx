@@ -57,7 +57,7 @@ const ModalFilter = (props) => {
                 type="radio"
                 value="active"
                 onChange={(e) => setFilter(e.target.value)}
-                checked={filter === "true"}
+                checked={filter === "active"}
                 name="filter"
               />
 
@@ -72,7 +72,7 @@ const ModalFilter = (props) => {
                 value="inactive"
                 name="filter"
                 onChange={(e) => setFilter(e.target.value)}
-                checked={filter === "false"}
+                checked={filter === "inactive"}
               />
 
               <label className="text-[#262627] font-[400] text-[16px]">

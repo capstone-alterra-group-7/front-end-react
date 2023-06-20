@@ -41,7 +41,8 @@ const DaftarPengguna = () => {
       </div>
       <TablePengguna
         urutkan={urutkan}
-        search={search}/>
+        search={search}
+        saveFilter={saveFilter}/>
 
       {modal && (
         <ModalDaftarPengguna

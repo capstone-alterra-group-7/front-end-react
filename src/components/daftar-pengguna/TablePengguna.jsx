@@ -13,10 +13,10 @@ import DataPengguna from "./DataPengguna";
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
-export default function TablePengguna({urutkan, search}) {
+export default function TablePengguna({urutkan, search, saveFilter}) {
   const {
     data: daftarPengguna, isLoading,
-  } = useSWR(baseUrl(`/admin/user?sort_by=${urutkan}&search=${search}`), fetcher);
+  } = useSWR(baseUrl(`/admin/user?sort_by=${urutkan}&search=${search}&filter=${saveFilter}`), fetcher);
 
   return (
     <div className="my-7 mx-3 rounded-3xl flex flex-col bg-white shadow-md">
