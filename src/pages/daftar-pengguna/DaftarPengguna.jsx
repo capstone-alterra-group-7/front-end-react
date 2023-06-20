@@ -10,6 +10,7 @@ import TablePengguna from "../../components/daftar-pengguna/TablePengguna";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ModalFilter from "./ModalFilter";
+import Pagination from "./Pagination";
 
 
 const DaftarPengguna = () => {
@@ -19,6 +20,7 @@ const DaftarPengguna = () => {
   const [filter, setFilter] = useState("");
   const [showFilter, setShowFilter] = useState(false);
   const [saveFilter, setSaveFilter] = useState("");
+  const [changePage, setChangePage] = useState(1);
   const navigate = useNavigate();
 
   const handleAdd = () => {
