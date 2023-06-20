@@ -24,11 +24,18 @@ const DetailHotel = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data: dataHotelById, isLoading, mutate } = useSWR(baseUrl(`/public/hotel/${id}`), fetcherGet);
+  const {
+    data: dataHotelById,
+    isLoading,
+    mutate,
+  } = useSWR(baseUrl(`/public/hotel/${id}`), fetcherGet);
 
   // ** Local State
   const [nav, setNav] = useState("informasi");
-  const [modalButtonDetail, setModalButtonDetail] = useState({ edit: false, delete: false });
+  const [modalButtonDetail, setModalButtonDetail] = useState({
+    edit: false,
+    delete: false,
+  });
   const [loading, setLoading] = useState(false);
 
   // Function delete hotel by id
@@ -59,9 +66,15 @@ const DetailHotel = () => {
       {typeof dataHotelById === "undefined" ? (
         <div className="w-full flex flex-col items-center relative">
           <img src={assets.imageNoData} alt="" className="" />
-          <h1 className="font-bold text-2xl absolute bottom-2">Ups! Data hotel yang dicari tidak ditemukan</h1>
-          <Link to={"/daftar-hotel"} className="mt-2 text-[#0080FF] font-semibold absolute -bottom-6 flex">
-            <img src={assets.iconDownArrow} alt="" className="rotate-90" /> Kembali
+          <h1 className="font-bold text-2xl absolute bottom-2">
+            Ups! Data hotel yang dicari tidak ditemukan
+          </h1>
+          <Link
+            to={"/daftar-hotel"}
+            className="mt-2 text-[#0080FF] font-semibold absolute -bottom-6 flex"
+          >
+            <img src={assets.iconDownArrow} alt="" className="rotate-90" />{" "}
+            Kembali
           </Link>
         </div>
       ) : (
@@ -71,8 +84,11 @@ const DetailHotel = () => {
               <h1 className=" text-[34px] font-bold">Detail Hotel</h1>
 
               <div className="pt-7 flex justify-between items-center">
-                <BackButtonHotel url={"/daftar-hotel"} />
-                <ButtonDetailHotel title={"Hotel"} setModal={setModalButtonDetail} />
+                <BackButtonHotel url={-1} />
+                <ButtonDetailHotel
+                  title={"Hotel"}
+                  setModal={setModalButtonDetail}
+                />
               </div>
             </div>
 
