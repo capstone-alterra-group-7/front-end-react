@@ -26,7 +26,10 @@ const DetailKamar = () => {
 
   const [indexImg, setIndexImg] = useState(0);
   const [isHidden, setIsHidden] = useState({ desc: false, fasilitas: false });
-  const [modalButtonDetail, setModalButtonDetail] = useState({ edit: false, delete: false });
+  const [modalButtonDetail, setModalButtonDetail] = useState({
+    edit: false,
+    delete: false,
+  });
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -79,7 +82,7 @@ const DetailKamar = () => {
             <h1 className=" text-[32px] font-bold">Detail Kamar</h1>
 
             <div className="pt-7 flex justify-between items-center">
-              <BackButtonHotel url={`/detail-hotel/${dataKamarById?.data?.hotel_id}`} />
+              <BackButtonHotel url={-1} />
               <ButtonDetailHotel title={"Kamar"} setModal={setModalButtonDetail} />
             </div>
           </div>
@@ -121,10 +124,7 @@ const DetailKamar = () => {
                 <h1>
                   Total Kamar : <span className="font-semibold">{dataKamarById?.data?.quantity_of_room} Kamar</span>
                 </h1>
-                <button
-                  className="ms-4 h-11 py-3 px-6 bg-[#0080FF] hover:bg-opacity-80 text-white rounded-lg"
-                  onClick={handleShowModal}
-                >
+                <button className="ms-4 h-11 py-3 px-6 bg-[#0080FF] hover:bg-opacity-80 text-white rounded-lg" onClick={handleShowModal}>
                   Lihat Ketersediaan Kamar
                 </button>
                 {showModal ? <ModalAvailableKamar setShowModal={setShowModal} /> : null}
@@ -140,11 +140,7 @@ const DetailKamar = () => {
                   }
                 >
                   <h1 className="ms-4 font-semibold">Deskripsi Kamar</h1>
-                  <img
-                    src={assets.iconUrutkanDaftarKa}
-                    alt=""
-                    className={`h-5 w-4 duration-300 ${isHidden.desc ? "" : "rotate-180"}`}
-                  />
+                  <img src={assets.iconUrutkanDaftarKa} alt="" className={`h-5 w-4 duration-300 ${isHidden.desc ? "" : "rotate-180"}`} />
                 </div>
                 {isHidden.desc ? null : <SectionDescriptionKamar dataDesc={dataKamarById?.data?.description} />}
               </div>
@@ -165,9 +161,7 @@ const DetailKamar = () => {
                     className={`h-5 w-4 duration-300 ${isHidden.fasilitas ? "" : "rotate-180"}`}
                   />
                 </div>
-                {isHidden.fasilitas ? null : (
-                  <SectionFasilitasKamar dataFacilities={dataKamarById?.data?.hotel_room_facility} />
-                )}
+                {isHidden.fasilitas ? null : <SectionFasilitasKamar dataFacilities={dataKamarById?.data?.hotel_room_facility} />}
               </div>
             </div>
           </div>

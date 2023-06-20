@@ -15,7 +15,7 @@ export default function BarPesananKa(props) {
 
   return (
     <div className="bg-white text-[#262627]">
-      <div className="grid grid-cols-3 gap-3 px-[32px] py-[16px]">
+      <div className=" px-[32px] py-[16px]">
         <div className="title">
           <h1 className="text-[32px] font-[700]">Pesanan Kereta Api</h1>
         </div>

@@ -29,8 +29,13 @@ const DetailHotel = () => {
 
   // ** Local State
   const [nav, setNav] = useState("informasi");
-  const [modalButtonDetail, setModalButtonDetail] = useState({ edit: false, delete: false });
+  const [modalButtonDetail, setModalButtonDetail] = useState({
+    edit: false,
+    delete: false,
+  });
   const [loading, setLoading] = useState(false);
+
+  console.log(dataHotelById);
 
   // Function delete hotel by id
   const handleDeleteHotel = () => {
@@ -77,7 +82,7 @@ const DetailHotel = () => {
               <h1 className=" text-[34px] font-bold">Detail Hotel</h1>
 
               <div className="pt-7 flex justify-between items-center">
-                <BackButtonHotel url={"/daftar-hotel"} />
+                <BackButtonHotel url={-1} />
                 <ButtonDetailHotel title={"Hotel"} setModal={setModalButtonDetail} />
               </div>
             </div>

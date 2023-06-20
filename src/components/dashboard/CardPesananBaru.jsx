@@ -55,7 +55,8 @@ const CardPesananBaru = ({ dataPesananBaru }) => {
                       </td>
                       <td className="px-6 py-[8px] flex flex-col">
                         <h1 className="font-semibold mb-1">
-                          {data.order_name}
+                          {data.order_name.substring(0, 19)}
+                          {data.order_name.length >= 19 && "..."}
                         </h1>
                         <h1 className="text-sm">
                           {moment(data.created_at).format("D MMM YYYY")}{" "}

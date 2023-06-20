@@ -37,19 +37,6 @@ export default function DetailPengguna() {
     fetcher
   );
 
-  const handleDelete = () => {
-    setIsDelete(true);
-    mutate().then(() => {
-      navigate("/daftar-pengguna");
-
-      customAlert(
-        "https://gcdnb.pbrd.co/images/UsggKXgrW4ny.png?o=1",
-        "Data Dihapus",
-        `Data pengguna ${data.full_name} telah berhasil dihapus dari sistem.`
-      );
-    });
-  };
-
   return (
     <div className=" fixed overflow-y-auto left-0 right-0 h-full">
       <div className="bg-white px-7 pt-3 pb-6 space-y-6">

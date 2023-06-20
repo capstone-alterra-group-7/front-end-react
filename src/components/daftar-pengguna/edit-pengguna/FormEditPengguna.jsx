@@ -48,18 +48,7 @@ export default function FormEditPengguna({
           label={"Email"}
           onChange={onChangePengguna}
         />
-
-        <InputPassword
-          name={"password"}
-          label={"Password"}
-          onChange={onChangePengguna}
-        />
-
-        <InputPassword
-          name={"confirm_password"}
-          label={"Konfirmasi Password"}
-          onChange={onChangePengguna}
-        />
+        
       </div>
 
       <div className="detail-pengguna">

@@ -16,7 +16,6 @@ const fetcherAdd = (url, payload) =>
 
 const TambahPengguna = () => {
   const { state } = useLocation();
-
   const [modal, setModal] = useState(false);
   const [modalBack, setModalBack] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -52,8 +51,9 @@ const TambahPengguna = () => {
     input.full_name === "" ||
     input.phone_number === "" ||
     input.birth_date === "" ||
-    input.password !== input.confirm_password;
-
+    input.password !== input.confirm_password ||
+    input.password.length < 8
+  
   const navigate = useNavigate();
 
   const handleAdd = () => {

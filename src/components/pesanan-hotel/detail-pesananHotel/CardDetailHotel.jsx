@@ -1,8 +1,11 @@
 import React from "react";
 import assets from "../../../assets/assets";
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 const CardDetailHotel = ({ data }) => {
+  const navigate = useNavigate();
+
   const rupiah = (number) => {
     if (!number) return "Rp 0";
     else
@@ -12,6 +15,8 @@ const CardDetailHotel = ({ data }) => {
         currency: "IDR",
       }).format(number);
   };
+
+  console.log(data);
   return (
     <div className="">
       <div className="h-[320px] bg-[#FFFFFF] flex my-[8px] cursor-pointer px-[32px] py-[32px]">
@@ -84,7 +89,7 @@ const CardDetailHotel = ({ data }) => {
             </div>
           </div>
           <button
-            onClick={() => setModal(true)}
+            onClick={() => navigate(`/detail-hotel/${data.hotel.hotel_id}`)}
             className="bg-[#0080FF] w-full absolute -bottom-[3.6rem] h-[44px] text-white rounded-[8px] flex items-center justify-center mb-[57px] "
           >
             <h1 className=" text-[16px] font-[700]">Lihat Hotel</h1>

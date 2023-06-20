@@ -1,6 +1,8 @@
 import React from "react";
 
 const DetailKamarCarousel = ({ imgUrl, indexImg, setIndexImg, name }) => {
+  console.log(imgUrl);
+
   return (
     <div className="text-white 2xl:h-96 xl:h-[19rem] h-72 flex justify-evenly w-full">
       {/* arrow left */}
@@ -14,10 +16,7 @@ const DetailKamarCarousel = ({ imgUrl, indexImg, setIndexImg, name }) => {
               fill={`${name === "detail-main" ? "black" : "currentColor"}`}
               d="M25 42c-9.4 0-17-7.6-17-17S15.6 8 25 8s17 7.6 17 17s-7.6 17-17 17zm0-32c-8.3 0-15 6.7-15 15s6.7 15 15 15s15-6.7 15-15s-6.7-15-15-15z"
             />
-            <path
-              fill={`${name === "detail-main" ? "black" : "currentColor"}`}
-              d="m24.7 34.7l-1.4-1.4l8.3-8.3l-8.3-8.3l1.4-1.4l9.7 9.7z"
-            />
+            <path fill={`${name === "detail-main" ? "black" : "currentColor"}`} d="m24.7 34.7l-1.4-1.4l8.3-8.3l-8.3-8.3l1.4-1.4l9.7 9.7z" />
             <path fill={`${name === "detail-main" ? "black" : "currentColor"}`} d="M16 24h17v2H16z" />
           </g>
         </svg>
@@ -27,9 +26,7 @@ const DetailKamarCarousel = ({ imgUrl, indexImg, setIndexImg, name }) => {
         <img
           src={imgUrl === null ? "" : imgUrl[indexImg]?.image_url}
           alt=""
-          className={`2xl:h-96 xl:h-[19rem] ${
-            name === "detail-main" && name ? "w-full" : "w-[30rem]"
-          } h-96 object-contain`}
+          className={`2xl:h-96 xl:h-[19rem] ${name === "detail-main" && name ? "w-full" : "w-[30rem]"} h-96 object-contain`}
         />
       </div>
 
@@ -43,10 +40,7 @@ const DetailKamarCarousel = ({ imgUrl, indexImg, setIndexImg, name }) => {
             fill={`${name === "detail-main" ? "black" : "currentColor"}`}
             d="M25 42c-9.4 0-17-7.6-17-17S15.6 8 25 8s17 7.6 17 17s-7.6 17-17 17zm0-32c-8.3 0-15 6.7-15 15s6.7 15 15 15s15-6.7 15-15s-6.7-15-15-15z"
           />
-          <path
-            fill={`${name === "detail-main" ? "black" : "currentColor"}`}
-            d="m24.7 34.7l-1.4-1.4l8.3-8.3l-8.3-8.3l1.4-1.4l9.7 9.7z"
-          />
+          <path fill={`${name === "detail-main" ? "black" : "currentColor"}`} d="m24.7 34.7l-1.4-1.4l8.3-8.3l-8.3-8.3l1.4-1.4l9.7 9.7z" />
           <path fill={`${name === "detail-main" ? "black" : "currentColor"}`} d="M16 24h17v2H16z" />
         </svg>
       </button>
