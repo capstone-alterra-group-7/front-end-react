@@ -5,7 +5,7 @@ const DetailKamarCarousel = ({ imgUrl, indexImg, setIndexImg, name }) => {
     <div className="text-white 2xl:h-96 xl:h-[19rem] h-72 flex justify-evenly w-full">
       {/* arrow left */}
       <button
-        onClick={() => setIndexImg((prev) => (prev - 1 < 0 ? imgUrl.length - 1 : prev - 1))}
+        onClick={() => setIndexImg((prev) => (prev - 1 < 0 ? imgUrl?.length - 1 : prev - 1))}
         className="w-1/12 flex items-center justify-center"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
@@ -25,7 +25,7 @@ const DetailKamarCarousel = ({ imgUrl, indexImg, setIndexImg, name }) => {
 
       <div className="duration-300 w-[35rem] flex justify-center">
         <img
-          src={imgUrl[indexImg]?.image_url}
+          src={imgUrl === null ? "" : imgUrl[indexImg]?.image_url}
           alt=""
           className={`2xl:h-96 xl:h-[19rem] ${
             name === "detail-main" && name ? "w-full" : "w-[30rem]"
@@ -35,7 +35,7 @@ const DetailKamarCarousel = ({ imgUrl, indexImg, setIndexImg, name }) => {
 
       {/* arrow right */}
       <button
-        onClick={() => setIndexImg((prev) => (prev + 1 < imgUrl.length ? prev + 1 : 0))}
+        onClick={() => setIndexImg((prev) => (prev + 1 < imgUrl?.length ? prev + 1 : 0))}
         className="w-1/12 flex items-center justify-center"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">

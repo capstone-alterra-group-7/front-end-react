@@ -25,6 +25,7 @@ const DetailHotel = () => {
   const navigate = useNavigate();
 
   const { data: dataHotelById, isLoading, mutate } = useSWR(baseUrl(`/public/hotel/${id}`), fetcherGet);
+  // console.log("Data Hotel by id: ", dataHotelById);
 
   // ** Local State
   const [nav, setNav] = useState("informasi");
@@ -54,6 +55,11 @@ const DetailHotel = () => {
       });
   };
 
+  // Function edit button
+  const handleEditNavigate = () => {
+    navigate("/daftar-hotel/tambah-hotel", { state: dataHotelById });
+  };
+
   return (
     <>
       {typeof dataHotelById === "undefined" ? (
@@ -78,6 +84,15 @@ const DetailHotel = () => {
 
             <NavDetailHotel nav={nav} setNav={setNav} />
           </div>
+
+          {nav === "informasi" ? (
+            <InformasiHotel data={dataHotelById?.data} />
+          ) : nav === "daftarKamar" ? (
+            <DaftarKamar data={dataHotelById?.data?.hotel_room} />
+          ) : (
+            <Ulasan data={dataHotelById?.data} />
+          )}
+
           {modalButtonDetail.delete && (
             <ModalConfirmHotel
               title="Menghapus Data Hotel"
@@ -91,13 +106,18 @@ const DetailHotel = () => {
               handle={handleDeleteHotel}
             />
           )}
-
-          {nav === "informasi" ? (
-            <InformasiHotel data={dataHotelById?.data} />
-          ) : nav === "daftarKamar" ? (
-            <DaftarKamar data={dataHotelById?.data?.hotel_room} />
-          ) : (
-            <Ulasan data={dataHotelById?.data} />
+          {modalButtonDetail.edit && (
+            <ModalConfirmHotel
+              title="Ubah Data Hotel"
+              desc="Anda akan mengubah data hotel ini. Apakah Anda yakin ingin melanjutkan?"
+              bg="bg-[#0080FF]"
+              cancel="Batal"
+              confirm="Ubah"
+              name="edit"
+              loading={loading}
+              setModal={setModalButtonDetail}
+              handle={handleEditNavigate}
+            />
           )}
         </div>
       )}

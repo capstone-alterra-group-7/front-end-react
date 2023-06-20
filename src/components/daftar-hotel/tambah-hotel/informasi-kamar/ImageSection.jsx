@@ -35,7 +35,12 @@ const ImageSection = ({ imageUrl, setImageUrl, setDataInput }) => {
       {imageUrl?.map((img, i) => {
         return (
           <div className="relative" key={i}>
-            <img src={URL.createObjectURL(img.imageFile)} alt="" className="w-32 h-32 object-cover" key={i} />
+            <img
+              src={typeof img.imageFile === "string" ? img.imageFile : URL.createObjectURL(img.imageFile)}
+              alt=""
+              className="w-32 h-32 object-cover"
+              key={i}
+            />
             <img
               src={assets.iconClose}
               alt=""

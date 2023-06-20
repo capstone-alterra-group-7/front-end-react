@@ -42,7 +42,6 @@ const DaftarHotel = () => {
           changePage={changePage}
           setChangePage={setChangePage}
           isLoading={isLoading}
-          entries={dataHotel?.data?.length}
           infoPaginate={infoPaginate}
         />
       )}

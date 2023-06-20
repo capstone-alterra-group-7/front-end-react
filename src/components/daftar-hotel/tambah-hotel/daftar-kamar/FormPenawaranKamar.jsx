@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import { rupiah } from "../../../../helpers/libs";
 
 const FormPenawaranKamar = (props) => {
-  const { fasilitas, setFasilitas, setDataKamar, dataKamar, clicked, setClicked, breakfastVal, setBreakfastVal } =
-    props;
+  const { setDataKamar, dataKamar, clicked, setClicked } = props;
   // console.log(clicked);
 
   // console.log("fasilitas: ", fasilitas);
@@ -79,14 +78,22 @@ const FormPenawaranKamar = (props) => {
               className="w-full  border border-[#D2D7E0] rounded-lg px-2"
               value={`${dataKamar?.number_of_mattress} ${dataKamar?.mattress_size}`}
               onChange={(e) => {
-                let [number_of_mattress, mattress_size] = e.target.value.split(" ");
+                let [number_of_mattress, mattress_size] = [
+                  e.target.value.substring(0, e.target.value.indexOf(" ")),
+                  e.target.value.substring(e.target.value.indexOf(" ") + 1),
+                ];
                 setDataKamar((prev) => ({ ...prev, mattress_size }));
                 setDataKamar((prev) => ({ ...prev, number_of_mattress }));
               }}
             >
               <option value="" hidden></option>
-              <option value="1 King">1 King</option>
-              <option value="2 Twin">2 Twin</option>
+              <option value="1 King Bed">1 King Bed</option>
+              <option value="1 Queen Bed">1 Queen Bed</option>
+              <option value="1 Double Bed">1 Double Bed</option>
+              <option value="1 Single Bed">1 Single Bed</option>
+              <option value="2 Single Bed">2 Single Bed</option>
+              <option value="2 Single Bed">2 Single Bed</option>
+              <option value="3 Single Bed">3 Single Bed</option>
             </select>
           </div>
         </div>
@@ -123,7 +130,7 @@ const FormPenawaranKamar = (props) => {
               placeholder="cth:34.000"
               value={dataKamar?.discount}
               onChange={(e) => {
-                setDataKamar((prev) => ({ ...prev, discount: e.target.value }));
+                setDataKamar((prev) => ({ ...prev, discount: parseInt(e.target.value) }));
               }}
             />
           </div>

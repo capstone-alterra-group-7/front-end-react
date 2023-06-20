@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import assets from "../../../../assets/assets";
 import DetailKamarCarousel from "../DetailKamarCarousel";
 import "./ModalImageKamar.css";
 
@@ -24,14 +23,14 @@ const ModalImageKamar = ({ dataImage, setModal }) => {
 
         <div
           className={`flex flex-wrap ${
-            dataImage.length <= 4 ? "justify-center" : ""
+            dataImage?.length <= 4 ? "justify-center" : ""
           } w-4/5 gap-5 overflow-y-scroll 2xl:h-40 xl:h-36 h-28 xl:mt-4 scrollBar px-2`}
         >
-          {dataImage.map((url, idx) => (
+          {dataImage?.map((url, idx) => (
             <img
               src={url.image_url}
               alt=""
-              className={`2xl:w-40 xl:w-36 w-28 rounded-3xl cursor-pointer duration-100 ${
+              className={`2xl:w-40 xl:w-36 w-28 h-36 rounded-3xl cursor-pointer duration-100 object-cover ${
                 indexImg === idx ? "border-4 border-[#0080FF]" : null
               }`}
               onClick={() => setIndexImg(idx)}

@@ -22,8 +22,7 @@ const DetailKamar = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data: dataKamarById, isLoading, mutate } = useSWR(baseUrl(`/public/hotel-room/${id}`), fetcherGet);
-  console.log("data kamar by id", dataKamarById);
+  const { data: dataKamarById, isLoading } = useSWR(baseUrl(`/public/hotel-room/${id}`), fetcherGet);
 
   const [indexImg, setIndexImg] = useState(0);
   const [isHidden, setIsHidden] = useState({ desc: false, fasilitas: false });
@@ -59,6 +58,11 @@ const DetailKamar = () => {
       });
   };
 
+  // Function edit button
+  const handleEditNavigate = () => {
+    navigate("/daftar-hotel/tambah-hotel/tambah-kamar", { state: dataKamarById });
+  };
+
   return (
     <>
       {typeof dataKamarById === "undefined" ? (
@@ -78,20 +82,6 @@ const DetailKamar = () => {
               <BackButtonHotel url={`/detail-hotel/${dataKamarById?.data?.hotel_id}`} />
               <ButtonDetailHotel title={"Kamar"} setModal={setModalButtonDetail} />
             </div>
-            {/* Modal Confirm */}
-            {modalButtonDetail.delete && (
-              <ModalConfirmHotel
-                title="Menghapus Data Kamar"
-                desc="Anda akan menghapus data kamar ini. Apakah Anda yakin ingin melanjutkan? Tindakan ini tidak dapat diurungkan."
-                bg="bg-[#DB2D24]"
-                cancel="Batal"
-                confirm="Hapus"
-                name="delete"
-                loading={loading}
-                setModal={setModalButtonDetail}
-                handle={handleDeleteRoom}
-              />
-            )}
           </div>
 
           <div className="p-6">
@@ -106,9 +96,9 @@ const DetailKamar = () => {
                 dataKamarById?.data?.hotel_room_image?.length <= 4 ? "justify-center" : ""
               } w-full gap-5 overflow-y-scroll 2xl:h-40 xl:h-36 h-28 xl:mt-4 scrollBar px-2`}
             >
-              {dataKamarById?.data?.hotel_room_image.map((url, idx) => (
+              {dataKamarById?.data?.hotel_room_image?.map((url, idx) => (
                 <img
-                  src={url.image_url}
+                  src={url?.image_url}
                   alt=""
                   className={`2xl:w-40 xl:w-36 w-28 rounded-3xl cursor-pointer duration-100 object-cover ${
                     indexImg === idx ? "border-4 border-[#0080FF]" : null
@@ -181,6 +171,34 @@ const DetailKamar = () => {
               </div>
             </div>
           </div>
+
+          {/* Modal Confirm */}
+          {modalButtonDetail.delete && (
+            <ModalConfirmHotel
+              title="Menghapus Data Kamar"
+              desc="Anda akan menghapus data kamar ini. Apakah Anda yakin ingin melanjutkan? Tindakan ini tidak dapat diurungkan."
+              bg="bg-[#DB2D24]"
+              cancel="Batal"
+              confirm="Hapus"
+              name="delete"
+              loading={loading}
+              setModal={setModalButtonDetail}
+              handle={handleDeleteRoom}
+            />
+          )}
+          {modalButtonDetail.edit && (
+            <ModalConfirmHotel
+              title="Ubah Data Kamar"
+              desc="Anda akan mengubah data kamar ini. Apakah Anda yakin ingin melanjutkan?"
+              bg="bg-[#0080FF]"
+              cancel="Batal"
+              confirm="Ubah"
+              name="edit"
+              loading={loading}
+              setModal={setModalButtonDetail}
+              handle={handleEditNavigate}
+            />
+          )}
         </div>
       )}
     </>

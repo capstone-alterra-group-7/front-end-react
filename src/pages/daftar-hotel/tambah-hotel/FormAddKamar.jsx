@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-//** Import Others
-import assets from "../../../assets/assets";
-import { useNavigate } from "react-router-dom";
-
 //** Import Components
-import ImageAddKamar from "../../../components/daftar-hotel/tambah-hotel/daftar-kamar/ImageAddKamar";
-import AddFasilitasKamar from "../../../components/daftar-hotel/tambah-hotel/daftar-kamar/AddFasilitasKamar";
 import NavTambahKamar from "../../../components/daftar-hotel/tambah-hotel/daftar-kamar/NavTambahKamar";
 import FormInformasiKamar from "../../../components/daftar-hotel/tambah-hotel/daftar-kamar/FormInformasiKamar";
 import FormPenawaranKamar from "../../../components/daftar-hotel/tambah-hotel/daftar-kamar/FormPenawaranKamar";
@@ -14,13 +8,12 @@ import FormPenawaranKamar from "../../../components/daftar-hotel/tambah-hotel/da
 const FormAddKamar = (props) => {
   const { dataKamar, setDataKamar, clicked, setClicked } = props;
 
-  const [fasilitas, setFasilitas] = useState([]);
-  const [imageUrl, setImageUrl] = useState([]);
-  const [breakfastVal, setBreakfastVal] = useState("");
+  const [fasilitas, setFasilitas] = useState(dataKamar?.hotel_room_facility);
+  const [imageUrl, setImageUrl] = useState(dataKamar?.hotel_room_image);
   const [nav, setNav] = useState("informasi");
 
   useEffect(() => {
-    setDataKamar((prev) => ({ ...prev, hotel_room_facility: fasilitas }));
+    setDataKamar((prev) => ({ ...prev, hotel_room_facility: fasilitas?.filter((x) => x.name !== "") }));
   }, [fasilitas]);
 
   return (
@@ -28,18 +21,16 @@ const FormAddKamar = (props) => {
       <div className="bg-white rounded-[2rem]">
         <NavTambahKamar nav={nav} setNav={setNav} />
         {nav === "informasi" ? (
-          <FormInformasiKamar fasilitas={fasilitas} setFasilitas={setFasilitas} imageUrl={imageUrl} setImageUrl={setImageUrl} setDataKamar={setDataKamar} dataKamar={dataKamar} />
-        ) : (
-          <FormPenawaranKamar
+          <FormInformasiKamar
             fasilitas={fasilitas}
             setFasilitas={setFasilitas}
+            imageUrl={imageUrl}
+            setImageUrl={setImageUrl}
             setDataKamar={setDataKamar}
             dataKamar={dataKamar}
-            clicked={clicked}
-            setClicked={setClicked}
-            breakfastVal={breakfastVal}
-            setBreakfastVal={setBreakfastVal}
           />
+        ) : (
+          <FormPenawaranKamar setDataKamar={setDataKamar} dataKamar={dataKamar} clicked={clicked} setClicked={setClicked} />
         )}
       </div>
     </div>

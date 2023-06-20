@@ -53,10 +53,10 @@ const CardKamarHotel = ({ data }) => {
         <h1 className="text-[#FF7300] text-xl mb-6">Termasuk Pajak</h1>
       </div>
 
-      <div className="grid grid-cols-2 mt-5 mb-1 gap-6 w-1/4">
+      <div className="grid grid-cols-2 mt-5 mb-1 gap-6 w-1/3">
         {data?.hotel_room_facility?.map((data, idx) => {
           return (
-            <div className="flex" key={idx}>
+            <div className="flex h-5" key={idx}>
               <img src={chooseIconFacility(data?.name)} alt="" />
               <h1 className="font-medium ms-3">{data?.name}</h1>
             </div>
