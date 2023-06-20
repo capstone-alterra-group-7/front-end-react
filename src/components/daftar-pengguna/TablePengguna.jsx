@@ -8,16 +8,21 @@ import useSWR from "swr";
 import assets from "../../assets/assets";
 
 // ** Import Components
-import Pagination from "./Pagination";
 import DataPengguna from "./DataPengguna";
+import Pagination from "../../pages/daftar-pengguna/Pagination";
+import { useState } from "react";
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default function TablePengguna({urutkan, search, saveFilter}) {
+  const [changePage, setChangePage] = useState(1);
+  
   const {
     data: daftarPengguna, isLoading,
-  } = useSWR(baseUrl(`/admin/user?sort_by=${urutkan}&search=${search}&filter=${saveFilter}`), fetcher);
-
+  } = useSWR(baseUrl(`/admin/user?sort_by=${urutkan}&search=${search}&filter=${saveFilter}&page=${changePage}&limit=20&search`), fetcher);
+  
+  const infoPaginate = daftarPengguna?.meta;
+  
   return (
     <div className="my-7 mx-3 rounded-3xl flex flex-col bg-white shadow-md">
       <div className="overflow-x-auto">
@@ -53,6 +58,11 @@ export default function TablePengguna({urutkan, search, saveFilter}) {
                 <DataPengguna data={pengguna} key={index} />
               ))}
             </table>
+              <Pagination
+                changePage={changePage}
+                setChangePage={setChangePage}
+                isLoading={isLoading}
+                infoPaginate={infoPaginate}/>
 
             {daftarPengguna?.data === null && (
               <div>
