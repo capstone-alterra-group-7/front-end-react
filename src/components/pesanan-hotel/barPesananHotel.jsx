@@ -86,32 +86,60 @@ export default function BarPesananHotel(props) {
             </div>
 
             {showUrutkan ? (
-              <div className="absolute mt-2 -ml-1 bg-white w-[256px] h-[105px] p-5 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-2xl space-y-4">
+              <div className="absolute mt-2 -ml-1 bg-white w-[256px] h-[180px] p-5 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-2xl space-y-4">
                 <div className="flex gap-3 items-center">
                   <input
                     type="radio"
                     onChange={(e) => setUrutkan(e.target.value)}
-                    checked={urutkan === "asc"}
-                    value="asc"
+                    checked={urutkan === "latest"}
+                    value="latest"
                     name="urutkan"
                   />
 
                   <label className="text-[#262627] font-[400] text-[16px]">
-                    Ascending (A-Z)
+                    Latest
                   </label>
                 </div>
 
                 <div className="flex gap-3 items-center">
                   <input
                     onChange={(e) => setUrutkan(e.target.value)}
-                    checked={urutkan === "desc"}
+                    checked={urutkan === "oldest"}
                     type="radio"
-                    value="desc"
+                    value="oldest"
                     name="urutkan"
                   />
 
                   <label className="text-[#262627] font-[400] text-[16px]">
-                    Descending (Z-A)
+                    Oldest
+                  </label>
+                </div>
+
+                <div className="flex gap-3 items-center">
+                  <input
+                    onChange={(e) => setUrutkan(e.target.value)}
+                    checked={urutkan === "highest_price"}
+                    type="radio"
+                    value="highest_price"
+                    name="urutkan"
+                  />
+
+                  <label className="text-[#262627] font-[400] text-[16px]">
+                    Highest Price
+                  </label>
+                </div>
+
+                <div className="flex gap-3 items-center">
+                  <input
+                    onChange={(e) => setUrutkan(e.target.value)}
+                    checked={urutkan === "lowest_price"}
+                    type="radio"
+                    value="lowest_price"
+                    name="urutkan"
+                  />
+
+                  <label className="text-[#262627] font-[400] text-[16px]">
+                    Lowest Price
                   </label>
                 </div>
               </div>
