@@ -25,7 +25,6 @@ const DetailHotel = () => {
   const navigate = useNavigate();
 
   const { data: dataHotelById, isLoading, mutate } = useSWR(baseUrl(`/public/hotel/${id}`), fetcherGet);
-  // console.log("Data Hotel by id: ", dataHotelById);
 
   // ** Local State
   const [nav, setNav] = useState("informasi");
@@ -34,8 +33,6 @@ const DetailHotel = () => {
     delete: false,
   });
   const [loading, setLoading] = useState(false);
-
-  console.log(dataHotelById);
 
   // Function delete hotel by id
   const handleDeleteHotel = () => {
@@ -82,7 +79,7 @@ const DetailHotel = () => {
               <h1 className=" text-[34px] font-bold">Detail Hotel</h1>
 
               <div className="pt-7 flex justify-between items-center">
-                <BackButtonHotel url={-1} />
+                <BackButtonHotel url={"/daftar-hotel"} />
                 <ButtonDetailHotel title={"Hotel"} setModal={setModalButtonDetail} />
               </div>
             </div>
