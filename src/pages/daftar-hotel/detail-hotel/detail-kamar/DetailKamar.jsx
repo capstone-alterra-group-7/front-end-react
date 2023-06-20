@@ -88,9 +88,7 @@ const DetailKamar = () => {
             <h1 className=" text-[32px] font-bold">Detail Kamar</h1>
 
             <div className="pt-7 flex justify-between items-center">
-              <BackButtonHotel
-                url={`/detail-hotel/${dataKamarById?.data?.hotel_id}`}
-              />
+              <BackButtonHotel url={-1} />
               <ButtonDetailHotel
                 title={"Kamar"}
                 setModal={setModalButtonDetail}
