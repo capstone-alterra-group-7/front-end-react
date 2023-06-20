@@ -57,11 +57,6 @@ export default function TablePengguna({urutkan, search, saveFilter}) {
                 <DataPengguna data={pengguna} key={index} />
               ))}
             </table>
-              <Pagination
-                changePage={changePage}
-                setChangePage={setChangePage}
-                isLoading={isLoading}
-                infoPaginate={infoPaginate}/>
 
             {daftarPengguna?.data === null && (
               <div>
@@ -93,6 +88,11 @@ export default function TablePengguna({urutkan, search, saveFilter}) {
               </div>
             )}
           </div>
+            <Pagination
+              changePage={changePage}
+              setChangePage={setChangePage}
+              isLoading={isLoading}
+              infoPaginate={infoPaginate}/>
         </div>
       </div>
       {/* <Pagination/> */}
