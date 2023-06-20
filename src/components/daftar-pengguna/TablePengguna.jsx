@@ -22,9 +22,8 @@ export default function TablePengguna({urutkan, search, saveFilter}) {
   } = useSWR(baseUrl(`/admin/user?sort_by=${urutkan}&search=${search}&filter=${saveFilter}&page=${changePage}&limit=20&search`), fetcher);
   
   const infoPaginate = daftarPengguna?.meta;
-  
   return (
-    <div className="my-7 mx-3 rounded-3xl flex flex-col bg-white shadow-md">
+    <div className="my-7 mx-3  rounded-t-3xl flex flex-col bg-white shadow-md">
       <div className="overflow-x-auto">
         <div className="inline-block min-w-full py-2">
           <div className="overflow-hidden">
