@@ -18,7 +18,7 @@ import ModalFilterHotel from "../../components/daftar-hotel/ModalFilterHotel";
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const DaftarHotel = () => {
-  const [modal, setModal] = useState({ tambah: false });
+  const [modal, setModal] = useState(false);
   const [changePage, setChangePage] = useState(1);
   const [searchVal, setSearchVal] = useState("");
   const [urutkan, setUrutkan] = useState("");
@@ -35,6 +35,8 @@ const DaftarHotel = () => {
     mulai: "",
     sampai: "",
   });
+
+  console.log(modal);
 
   const navigate = useNavigate();
 
@@ -95,7 +97,7 @@ const DaftarHotel = () => {
         />
       )}
 
-      {modal.tambah && (
+      {modal && (
         <ModalConfirmHotel
           title="Tambahkan Data Hotel"
           desc="Anda akan menambahkan data hotel baru. Apakah Anda yakin ingin melanjutkan?"
