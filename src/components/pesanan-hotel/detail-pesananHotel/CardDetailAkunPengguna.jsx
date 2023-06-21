@@ -34,15 +34,9 @@ const CardDetailAkunPengguna = ({ data }) => {
         <div className="w-[44px] h-[44px] flex items-center absolute -ml-[0.3rem] mt-[47px] mb-[18px] whitespace-nowrap">
           <img src={data.user.profile_picture_url} alt="" />
 
-          <h1 className="text-[16px] font-[700]  flex leading-[24px] ml-[12px] -mt-[1.9rem]">
+          <h1 className="text-[16px] font-[700]  flex leading-[24px] ml-[12px]">
             {data.user.full_name}
           </h1>
-
-          <div>
-            <h2 className="text-[14px] font-[400] leading-[20px] text-[#262627] -ml-[6.5rem] mt-[2rem]">
-              {data.user.user_id}
-            </h2>
-          </div>
         </div>
         <button
           onClick={handleNavigate}
