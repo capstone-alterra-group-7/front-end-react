@@ -16,7 +16,6 @@ const CardDetailHotel = ({ data }) => {
       }).format(number);
   };
 
-  console.log(data);
   return (
     <div className="">
       <div className="h-[320px] bg-[#FFFFFF] flex my-[8px] cursor-pointer px-[32px] py-[32px]">
@@ -30,7 +29,7 @@ const CardDetailHotel = ({ data }) => {
           className="rounded-[16px] w-[256px] h-auto mr-8"
         />
         <div className="relative w-full flex justify-between">
-          <div className="relative text-left flex">
+          <div className="relative text-left w-full flex">
             <div className="w-[20.56px] h-[20.68px] absolute flex">
               {[...Array(5)].map((none, i) => {
                 if (i <= Math.floor(data.hotel.class || 5) - 1) {
@@ -46,7 +45,7 @@ const CardDetailHotel = ({ data }) => {
 
             <div className="flex items-center absolute -ml-[0.3rem] mt-[4.2rem] whitespace-nowrap">
               <img src={assets.iconGpsMarker} alt="" className="mr-2" />
-              <h1 className="text-[16px] font-medium flex text-[#262627]">
+              <h1 className="text-[16px] font-medium flex text-[#262627] ">
                 {data.hotel.address}
               </h1>
             </div>

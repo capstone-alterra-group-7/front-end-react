@@ -12,8 +12,8 @@ const CardPesanan = ({ data }) => {
         <div className="flex mto-5 gap-3">
           <img
             src={
-              data.hotel.hotel_room.hotel_room_image[0].image_url === "string"
-                ? assets.imagePesananHotel
+              data.hotel.hotel_room.hotel_room_image === null
+                ? ""
                 : data.hotel.hotel_room.hotel_room_image[0].image_url
             }
             alt=""
