@@ -1,41 +1,46 @@
-// ** Import Assets
+// ** Import React
 import { useState } from "react";
+
+// ** Import Assets
 import assets from "../../assets/assets";
 
-export default function Bar(props) {
-    
-    const { 
-        setModal, 
-        setSearch ,  
-        urutkan,
-        setUrutkan,
-        setShowFilter, } = props
+const BarHotel = (props) => {
+  const {
+    setModal,
+    setSearchVal,
+    urutkan,
+    setUrutkan,
+    setShowFilter,
+    saveFilter,
+  } = props;
 
-        const [showUrutan, setShowUrutan] = useState(false);        
+  // ** Local State
+  const [showUrutan, setShowUrutan] = useState(false);
 
   return (
-    <div className="grid grid-cols-7 gap-4">
-        <div className="relative col-span-3">
+    <div className="flex justify-between gap-7">
+      <form className="relative flex-1">
         <input
-            type="text"
-            placeholder="Cari data pengguna"
-            onChange={(e) => setSearch(e.target.value)}
-            className="border w-full border-[#D2D7E0] py-2 px-11  rounded-lg focus:outline-none text-[16px] placeholder:text-[#96989C] placeholder:font-[400]"
+          type="text"
+          placeholder="Cari data kereta api"
+          onChange={(e) => setSearchVal(e.target.value)}
+          className="border w-full border-[#D2D7E0] py-2 px-11  rounded-lg focus:outline-none text-[20px] placeholder:text-[#96989C] placeholder:font-[400]"
         />
 
         <img
-            src={assets.iconSearchDaftarKa}
-            alt="search"
-            className="absolute top-3 left-3"
+          src={assets.iconSearchDaftarKa}
+          alt="search"
+          className="absolute top-3 left-3"
         />
-        </div>
+      </form>
 
+      <div className="flex gap-7 w-[37rem]">
         <div className="relative">
           <div
             onClick={() => setShowUrutan((prev) => !prev)}
             className="relative"
           >
-            <button className="w-full px-12 py-2  rounded-lg bg-[#F9FAFB] border border-[#D2D7E0] text-[#262627] font-[400] text-[18px]  cursor-pointer">
+            <button className="w-full px-12 py-[9.5px]  rounded-lg bg-[#F9FAFB] border border-[#D2D7E0] text-[#262627] font-[400] text-[18px]  cursor-pointer">
               <p className="-ml-5">Sort</p>
             </button>
 
@@ -67,7 +72,7 @@ export default function Bar(props) {
                 />
 
                 <label className="text-[#262627] font-[400] text-[16px]">
-                  Ascending (A-Z)
+                  Lowest Price
                 </label>
               </div>
 
@@ -81,7 +86,7 @@ export default function Bar(props) {
                 />
 
                 <label className="text-[#262627] font-[400] text-[16px]">
-                  Descending (Z-A)
+                  Highest Price
                 </label>
               </div>
             </div>
@@ -89,7 +94,7 @@ export default function Bar(props) {
         </div>
 
         <div onClick={() => setShowFilter(true)} className="relative">
-          <button className="w-full px-12 text-left py-2 rounded-lg bg-[#F9FAFB] border border-[#D2D7E0] text-[#262627] font-[500] text-[18px] focus:outline-none cursor-pointer">
+          <button className="w-full px-12 text-left py-[9.5px] rounded-lg bg-[#F9FAFB] border border-[#D2D7E0] text-[#262627] font-[500] text-[18px] focus:outline-none cursor-pointer">
             <p className="-ml-5">Filter</p>
           </button>
 
@@ -99,14 +104,17 @@ export default function Bar(props) {
             alt="urutkan"
           />
         </div>
-        
+
         <button
-            onClick={() => setModal(true)}
-            className="bg-[#0080FF] w-[] px-5 py-2 text-white rounded-lg flex items-center justify-center gap-2 col-span-2"
+          onClick={() => setModal(true)}
+          className="bg-[#0080FF] px-5 w-full py-2 text-white rounded-lg flex items-center justify-center gap-2"
         >
-        <h1 className=" text-[16px] font-[500]">Tambah Pengguna</h1>
-        <img src={assets.iconTambahKaDaftarKa} alt="tambah" />
+          <h1 className=" text-[18px] font-[500]">Tambah Hotel</h1>
+          <img src={assets.iconTambahKaDaftarKa} alt="tambah" />
         </button>
+      </div>
     </div>
-  )
-}
+  );
+};
+
+export default BarHotel;

@@ -1,5 +1,5 @@
 // ** Import React
-import React from "react";
+import React, { useState } from "react";
 
 // ** Import Components
 import InputPengguna from "./InputPengguna";
@@ -7,6 +7,15 @@ import InputPassword from "../edit-pengguna/InputPassword";
 
 const FormTambahPengguna = (props) => {
   const { onChangePengguna, input, setInput, edit, dataEdit } = props;
+  const [error, setError] = useState("")
+
+  const validate = () => {
+    if (input.password.length <= 8) {
+      setError("Password must be at least 8 characters")
+    } else {
+      setError("")
+    }
+  }
 
   return (
     <div className="grid gap-6 pb-[100px] text-[#262627] bg-white p-10">
@@ -38,7 +47,9 @@ const FormTambahPengguna = (props) => {
         </p>
       </div>
 
-      <div className="informasi-akun">
+      <div 
+        onClick={validate}
+        className="informasi-akun">
         <h1 className="text-[20px] font-semibold pb-5">Informasi Akun</h1>
 
         <InputPengguna
@@ -56,7 +67,7 @@ const FormTambahPengguna = (props) => {
           label={"Password"}
           onChange={onChangePengguna}
           value={input.password}
-        />
+        /> <p className="mb-4 text-sm text-red-500">{error}</p>
 
         <InputPassword
           name={"confirm_password"}

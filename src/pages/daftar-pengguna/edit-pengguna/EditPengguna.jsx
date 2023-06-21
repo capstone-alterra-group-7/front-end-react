@@ -35,8 +35,6 @@ export default function EditPengguna() {
 
   const [input, setInput] = useState({
     email: state?.email,
-    password: "",
-    confirm_password: "",
     full_name: state?.full_name,
     phone_number: state?.phone_number,
     birth_date: state?.birth_date,
@@ -46,8 +44,6 @@ export default function EditPengguna() {
 
   const validateData =
     input.email === "" ||
-    input.password === "" ||
-    input.confirm_password === "" ||
     input.full_name === "" ||
     input.phone_number === "" ||
     input.birth_date === "" ||
@@ -58,11 +54,9 @@ export default function EditPengguna() {
 
     fetcherEdit(baseUrl(`/admin/user/update/${state.id}`), {
       birth_date: input.birth_date,
-      confirm_password: input.confirm_password,
       email: input.email,
       full_name: input.full_name,
       is_active: input.is_active,
-      password: input.password,
       phone_number: input.phone_number,
       role: "user",
     })

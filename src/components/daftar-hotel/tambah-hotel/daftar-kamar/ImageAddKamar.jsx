@@ -12,7 +12,7 @@ const ImageAddKamar = ({ imageUrl, setImageUrl, setDataKamar }) => {
     // console.log("HANDLE IMAGE CHANGE", e);
     if (e.target.files && e.target.files.length > 0) {
       // check if this is the first data image, add id 0. Id is for delete
-      if (imageUrl.length < 1) {
+      if (imageUrl?.length < 1) {
         setImageUrl((prev) => [...prev, { id: 0, imageFile: e.target.files[0] }]);
       } else {
         setImageUrl((prev) => [...prev, { id: imageUrl.slice(-1)[0].id + 1, imageFile: e.target.files[0] }]);
@@ -32,7 +32,18 @@ const ImageAddKamar = ({ imageUrl, setImageUrl, setDataKamar }) => {
       {imageUrl?.map((img, i) => {
         return (
           <div className="relative" key={i}>
-            <img src={URL.createObjectURL(img.imageFile)} alt="" className="w-32 h-32 object-cover" key={i} />
+            <img
+              src={
+                typeof img?.imageFile === "string"
+                  ? img?.imageFile
+                  : img.imageFile !== undefined
+                  ? URL.createObjectURL(img.imageFile)
+                  : ""
+              }
+              alt=""
+              className="w-32 h-32 object-cover"
+              key={i}
+            />
             <img
               src={assets.iconClose}
               alt=""
