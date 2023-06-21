@@ -66,9 +66,13 @@ const FormTambahKa = (props) => {
 
       <div className="flex flex-col space-y-6">
         {validateRute && (
-          <h1 className="text-[30px] font-[600] text-[#262627]">
-            Rute Perjalanan
-          </h1>
+          <div>
+            <h1 className="text-[30px] font-[600] text-[#262627]">
+              Rute Perjalanan
+            </h1>
+
+            <p className="text-sm text-slate-600">* Minimum 2 Rute</p>
+          </div>
         )}
 
         <div className="space-y-6">

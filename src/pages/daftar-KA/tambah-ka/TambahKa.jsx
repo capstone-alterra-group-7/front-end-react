@@ -82,7 +82,10 @@ const TambahKa = () => {
   const findNoneJadwal = input.rute.filter((r) => r.arrive_time === "");
 
   const validate =
-    input.name === "" || input.rute.length === 0 || findNoneJadwal.length >= 1;
+    input.name === "" ||
+    input.rute.length === 0 ||
+    findNoneJadwal.length >= 1 ||
+    input.rute.length <= 1;
 
   const findNoneNameGerbong = dataGerbong.filter((g) => g.name === "");
 
