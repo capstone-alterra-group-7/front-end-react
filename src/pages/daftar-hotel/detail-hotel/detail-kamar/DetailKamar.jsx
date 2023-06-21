@@ -22,12 +22,14 @@ const DetailKamar = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data: dataKamarById, isLoading, mutate } = useSWR(baseUrl(`/public/hotel-room/${id}`), fetcherGet);
-  console.log("data kamar by id", dataKamarById);
+  const { data: dataKamarById, isLoading } = useSWR(baseUrl(`/public/hotel-room/${id}`), fetcherGet);
 
   const [indexImg, setIndexImg] = useState(0);
   const [isHidden, setIsHidden] = useState({ desc: false, fasilitas: false });
-  const [modalButtonDetail, setModalButtonDetail] = useState({ edit: false, delete: false });
+  const [modalButtonDetail, setModalButtonDetail] = useState({
+    edit: false,
+    delete: false,
+  });
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -59,6 +61,11 @@ const DetailKamar = () => {
       });
   };
 
+  // Function edit button
+  const handleEditNavigate = () => {
+    navigate("/daftar-hotel/tambah-hotel/tambah-kamar", { state: dataKamarById });
+  };
+
   return (
     <>
       {typeof dataKamarById === "undefined" ? (
@@ -75,23 +82,9 @@ const DetailKamar = () => {
             <h1 className=" text-[32px] font-bold">Detail Kamar</h1>
 
             <div className="pt-7 flex justify-between items-center">
-              <BackButtonHotel url={`/detail-hotel/${dataKamarById?.data?.hotel_id}`} />
+              <BackButtonHotel url={-1} />
               <ButtonDetailHotel title={"Kamar"} setModal={setModalButtonDetail} />
             </div>
-            {/* Modal Confirm */}
-            {modalButtonDetail.delete && (
-              <ModalConfirmHotel
-                title="Menghapus Data Kamar"
-                desc="Anda akan menghapus data kamar ini. Apakah Anda yakin ingin melanjutkan? Tindakan ini tidak dapat diurungkan."
-                bg="bg-[#DB2D24]"
-                cancel="Batal"
-                confirm="Hapus"
-                name="delete"
-                loading={loading}
-                setModal={setModalButtonDetail}
-                handle={handleDeleteRoom}
-              />
-            )}
           </div>
 
           <div className="p-6">
@@ -106,9 +99,9 @@ const DetailKamar = () => {
                 dataKamarById?.data?.hotel_room_image?.length <= 4 ? "justify-center" : ""
               } w-full gap-5 overflow-y-scroll 2xl:h-40 xl:h-36 h-28 xl:mt-4 scrollBar px-2`}
             >
-              {dataKamarById?.data?.hotel_room_image.map((url, idx) => (
+              {dataKamarById?.data?.hotel_room_image?.map((url, idx) => (
                 <img
-                  src={url.image_url}
+                  src={url?.image_url}
                   alt=""
                   className={`2xl:w-40 xl:w-36 w-28 rounded-3xl cursor-pointer duration-100 object-cover ${
                     indexImg === idx ? "border-4 border-[#0080FF]" : null
@@ -131,10 +124,7 @@ const DetailKamar = () => {
                 <h1>
                   Total Kamar : <span className="font-semibold">{dataKamarById?.data?.quantity_of_room} Kamar</span>
                 </h1>
-                <button
-                  className="ms-4 h-11 py-3 px-6 bg-[#0080FF] hover:bg-opacity-80 text-white rounded-lg"
-                  onClick={handleShowModal}
-                >
+                <button className="ms-4 h-11 py-3 px-6 bg-[#0080FF] hover:bg-opacity-80 text-white rounded-lg" onClick={handleShowModal}>
                   Lihat Ketersediaan Kamar
                 </button>
                 {showModal ? <ModalAvailableKamar setShowModal={setShowModal} /> : null}
@@ -150,11 +140,7 @@ const DetailKamar = () => {
                   }
                 >
                   <h1 className="ms-4 font-semibold">Deskripsi Kamar</h1>
-                  <img
-                    src={assets.iconUrutkanDaftarKa}
-                    alt=""
-                    className={`h-5 w-4 duration-300 ${isHidden.desc ? "" : "rotate-180"}`}
-                  />
+                  <img src={assets.iconUrutkanDaftarKa} alt="" className={`h-5 w-4 duration-300 ${isHidden.desc ? "" : "rotate-180"}`} />
                 </div>
                 {isHidden.desc ? null : <SectionDescriptionKamar dataDesc={dataKamarById?.data?.description} />}
               </div>
@@ -175,12 +161,38 @@ const DetailKamar = () => {
                     className={`h-5 w-4 duration-300 ${isHidden.fasilitas ? "" : "rotate-180"}`}
                   />
                 </div>
-                {isHidden.fasilitas ? null : (
-                  <SectionFasilitasKamar dataFacilities={dataKamarById?.data?.hotel_room_facility} />
-                )}
+                {isHidden.fasilitas ? null : <SectionFasilitasKamar dataFacilities={dataKamarById?.data?.hotel_room_facility} />}
               </div>
             </div>
           </div>
+
+          {/* Modal Confirm */}
+          {modalButtonDetail.delete && (
+            <ModalConfirmHotel
+              title="Menghapus Data Kamar"
+              desc="Anda akan menghapus data kamar ini. Apakah Anda yakin ingin melanjutkan? Tindakan ini tidak dapat diurungkan."
+              bg="bg-[#DB2D24]"
+              cancel="Batal"
+              confirm="Hapus"
+              name="delete"
+              loading={loading}
+              setModal={setModalButtonDetail}
+              handle={handleDeleteRoom}
+            />
+          )}
+          {modalButtonDetail.edit && (
+            <ModalConfirmHotel
+              title="Ubah Data Kamar"
+              desc="Anda akan mengubah data kamar ini. Apakah Anda yakin ingin melanjutkan?"
+              bg="bg-[#0080FF]"
+              cancel="Batal"
+              confirm="Ubah"
+              name="edit"
+              loading={loading}
+              setModal={setModalButtonDetail}
+              handle={handleEditNavigate}
+            />
+          )}
         </div>
       )}
     </>

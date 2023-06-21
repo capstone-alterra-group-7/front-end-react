@@ -4,6 +4,7 @@ import ImageAddKamar from "./ImageAddKamar";
 
 const FormInformasiKamar = (props) => {
   const { fasilitas, setFasilitas, imageUrl, setImageUrl, dataKamar, setDataKamar } = props;
+
   return (
     <div className="p-8">
       <ImageAddKamar imageUrl={imageUrl} setImageUrl={setImageUrl} setDataKamar={setDataKamar} />
@@ -49,7 +50,7 @@ const FormInformasiKamar = (props) => {
             Jumlah Kamar
           </label>
           <input
-            type="text"
+            type="number"
             placeholder="cth: 12"
             className="h-11 py-3 px-4 rounded-lg bg-[#F9FAFB] border border-[#D2D7E0]"
             value={dataKamar?.quantity_of_room}

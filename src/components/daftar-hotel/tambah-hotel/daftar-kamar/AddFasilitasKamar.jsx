@@ -49,11 +49,19 @@ const AddFasilitasKamar = ({ fasilitas, setFasilitas, setDataKamar }) => {
               onChange={(e) => handleUpdateFasilitas(e, i)}
               value={data.name}
             />
-            <img src={assets.iconClose} alt="" className="absolute right-2 top-[10px] cursor-pointer" onClick={(e) => handleDeleteFasilitas(e, data)} />
+            <img
+              src={assets.iconClose}
+              alt=""
+              className="absolute right-2 top-[10px] cursor-pointer"
+              onClick={(e) => handleDeleteFasilitas(e, data)}
+            />
           </div>
         );
       })}
-      <button className="py-[0.625rem] rounded-lg text-white w-full font-semibold bg-[#0080FF]" onClick={handleAddFasilitas}>
+      <button
+        className="py-[0.625rem] rounded-lg text-white w-full font-semibold bg-[#0080FF]"
+        onClick={handleAddFasilitas}
+      >
         Tambahkan Fasilitas
       </button>
     </div>

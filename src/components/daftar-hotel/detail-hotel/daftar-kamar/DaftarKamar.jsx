@@ -4,7 +4,6 @@ import assets from "../../../../assets/assets";
 import CardKamarHotel from "./CardKamarHotel";
 
 const DaftarKamar = ({ data }) => {
-  console.log("Data Kamar: ", data);
   return (
     <div className="bg-[#EBEDF1] text-[#262627] px-8 pt-8 pb-4">
       {data !== null ? (

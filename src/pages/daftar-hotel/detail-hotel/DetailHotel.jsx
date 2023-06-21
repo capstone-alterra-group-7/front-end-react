@@ -24,11 +24,7 @@ const DetailHotel = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const {
-    data: dataHotelById,
-    isLoading,
-    mutate,
-  } = useSWR(baseUrl(`/public/hotel/${id}`), fetcherGet);
+  const { data: dataHotelById, isLoading, mutate } = useSWR(baseUrl(`/public/hotel/${id}`), fetcherGet);
 
   // ** Local State
   const [nav, setNav] = useState("informasi");
@@ -61,20 +57,19 @@ const DetailHotel = () => {
       });
   };
 
+  // Function edit button
+  const handleEditNavigate = () => {
+    navigate("/daftar-hotel/tambah-hotel", { state: dataHotelById });
+  };
+
   return (
     <>
       {typeof dataHotelById === "undefined" ? (
         <div className="w-full flex flex-col items-center relative">
           <img src={assets.imageNoData} alt="" className="" />
-          <h1 className="font-bold text-2xl absolute bottom-2">
-            Ups! Data hotel yang dicari tidak ditemukan
-          </h1>
-          <Link
-            to={"/daftar-hotel"}
-            className="mt-2 text-[#0080FF] font-semibold absolute -bottom-6 flex"
-          >
-            <img src={assets.iconDownArrow} alt="" className="rotate-90" />{" "}
-            Kembali
+          <h1 className="font-bold text-2xl absolute bottom-2">Ups! Data hotel yang dicari tidak ditemukan</h1>
+          <Link to={"/daftar-hotel"} className="mt-2 text-[#0080FF] font-semibold absolute -bottom-6 flex">
+            <img src={assets.iconDownArrow} alt="" className="rotate-90" /> Kembali
           </Link>
         </div>
       ) : (
@@ -84,16 +79,22 @@ const DetailHotel = () => {
               <h1 className=" text-[34px] font-bold">Detail Hotel</h1>
 
               <div className="pt-7 flex justify-between items-center">
-                <BackButtonHotel url={-1} />
-                <ButtonDetailHotel
-                  title={"Hotel"}
-                  setModal={setModalButtonDetail}
-                />
+                <BackButtonHotel url={"/daftar-hotel"} />
+                <ButtonDetailHotel title={"Hotel"} setModal={setModalButtonDetail} />
               </div>
             </div>
 
             <NavDetailHotel nav={nav} setNav={setNav} />
           </div>
+
+          {nav === "informasi" ? (
+            <InformasiHotel data={dataHotelById?.data} />
+          ) : nav === "daftarKamar" ? (
+            <DaftarKamar data={dataHotelById?.data?.hotel_room} />
+          ) : (
+            <Ulasan data={dataHotelById?.data} />
+          )}
+
           {modalButtonDetail.delete && (
             <ModalConfirmHotel
               title="Menghapus Data Hotel"
@@ -107,13 +108,18 @@ const DetailHotel = () => {
               handle={handleDeleteHotel}
             />
           )}
-
-          {nav === "informasi" ? (
-            <InformasiHotel data={dataHotelById?.data} />
-          ) : nav === "daftarKamar" ? (
-            <DaftarKamar data={dataHotelById?.data?.hotel_room} />
-          ) : (
-            <Ulasan data={dataHotelById?.data} />
+          {modalButtonDetail.edit && (
+            <ModalConfirmHotel
+              title="Ubah Data Hotel"
+              desc="Anda akan mengubah data hotel ini. Apakah Anda yakin ingin melanjutkan?"
+              bg="bg-[#0080FF]"
+              cancel="Batal"
+              confirm="Ubah"
+              name="edit"
+              loading={loading}
+              setModal={setModalButtonDetail}
+              handle={handleEditNavigate}
+            />
           )}
         </div>
       )}
