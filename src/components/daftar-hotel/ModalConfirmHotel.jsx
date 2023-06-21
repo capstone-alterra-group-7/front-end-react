@@ -1,7 +1,8 @@
 import React from "react";
 
 const ModalConfirmHotel = (props) => {
-  const { setModal, handle, title, desc, name, bg, cancel, confirm, loading } = props;
+  const { setModal, handle, title, desc, name, bg, cancel, confirm, loading } =
+    props;
 
   return (
     <div className="fixed z-50 duration-500 -top-6 right-0 left-0 bottom-0 flex justify-center items-center bg-gray-700/50">
@@ -13,15 +14,15 @@ const ModalConfirmHotel = (props) => {
           <button
             disabled={loading}
             className="py-[10px] border text-[#4B4C4E] border-[#D2D7E0] rounded-lg text-lg disabled:cursor-not-allowed"
-            onClick={() => {
-              setModal((prev) => {
-                return { ...prev, [name]: false };
-              });
-            }}
+            onClick={() => setModal(false)}
           >
             {cancel}
           </button>
-          <button disabled={loading} className={`py-[10px] border text-[#FFFFFF] rounded-lg text-lg ${bg} disabled:bg-gray-500 disabled:cursor-not-allowed`} onClick={handle}>
+          <button
+            disabled={loading}
+            className={`py-[10px] border text-[#FFFFFF] rounded-lg text-lg ${bg} disabled:bg-gray-500 disabled:cursor-not-allowed`}
+            onClick={handle}
+          >
             {loading ? "Loading..." : confirm}
           </button>
         </div>
