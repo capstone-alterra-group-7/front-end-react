@@ -27,7 +27,7 @@ const Dashboard = () => {
 
       <div className="grid grid-cols-4 gap-6">
         <CardPengguna data={dataDashboard} />
-        <CardHotel />
+        <CardHotel data={dataDashboard} />
         <CardKeretaApi dataKAI={dataDashboard} />
         <CardPesanan dataORDER={dataDashboard} />
       </div>
