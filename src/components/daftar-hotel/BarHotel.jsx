@@ -22,7 +22,7 @@ const BarHotel = (props) => {
       <form className="relative flex-1">
         <input
           type="text"
-          placeholder="Cari data kereta api"
+          placeholder="Cari data hotel"
           onChange={(e) => setSearchVal(e.target.value)}
           className="border w-full border-[#D2D7E0] py-2 px-11  rounded-lg focus:outline-none text-[20px] placeholder:text-[#96989C] placeholder:font-[400]"
         />
