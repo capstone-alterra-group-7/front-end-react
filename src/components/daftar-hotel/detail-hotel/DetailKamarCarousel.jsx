@@ -1,8 +1,6 @@
 import React from "react";
 
 const DetailKamarCarousel = ({ imgUrl, indexImg, setIndexImg, name }) => {
-  console.log(imgUrl);
-
   return (
     <div className="text-white 2xl:h-96 xl:h-[19rem] h-72 flex justify-evenly w-full">
       {/* arrow left */}

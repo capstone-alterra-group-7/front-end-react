@@ -1,9 +1,14 @@
 // ** Import Assets
+import axios from "axios";
 import { rupiah } from "../../helpers/libs";
 import assets from "./../../assets/assets";
+import useSWR from "swr";
 
 // ** Import Other
 import { Link, useNavigate } from "react-router-dom";
+import { baseUrl } from "../../services/base";
+
+const fetcherGet = (url) => axios.get(url).then((res) => res.data);
 
 const CardHotel = ({ data }) => {
   const navigate = useNavigate();
@@ -11,6 +16,8 @@ const CardHotel = ({ data }) => {
   const handleNavigate = () => {
     navigate(`/detail-hotel/${data?.hotel_id}`);
   };
+
+  const { data: dataRating, isLoading, mutate } = useSWR(baseUrl(`/public/hotel/${data.hotel_id}/rating?limit=1`), fetcherGet);
 
   return (
     <div onClick={handleNavigate}>
@@ -43,16 +50,14 @@ const CardHotel = ({ data }) => {
             <div className="flex items-center mt-2">
               <img src={assets.iconStarRating} alt="" className="mr-2" />
               <h1 className="text-[#262627]">
-                {data?.rating}/5 <span className="text-[#717275]">(500)</span>
+                {dataRating?.data?.rata_rata_rating}/5 <span className="text-[#717275]">({dataRating?.data?.total_rating})</span>
               </h1>
             </div>
           </div>
 
           <div className="col-span-2">
             <div className="mt-20">
-              <h1 className="text-[2rem] xl:text-[2.5rem] text-end font-bold font-sans text-[#0080FF]">
-                {rupiah(data?.hotel_room_start)}
-              </h1>
+              <h1 className="text-[2rem] xl:text-[2.5rem] text-end font-bold font-sans text-[#0080FF]">{rupiah(data?.hotel_room_start)}</h1>
               <h1 className="text-end text-[#96989C] text-xl font-semibold">/ kamar / malam</h1>
               <h1 className="text-end text-[#FF7300] text-lg">Termasuk Pajak</h1>
             </div>

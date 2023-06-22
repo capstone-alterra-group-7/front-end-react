@@ -12,8 +12,6 @@ const KebijakanHotel = ({ dataInput, setDataInput }) => {
     });
   }, [clicked]);
 
-  console.log("data input disini ", dataInput);
-
   return (
     <div className="p-8">
       <h1 className="font-bold text-2xl mb-8">Kebijakan Hotel</h1>
@@ -95,9 +93,7 @@ const KebijakanHotel = ({ dataInput, setDataInput }) => {
               Batas Usia
             </label>
             <div
-              className={`flex mt-2 h-11 w-1/5 rounded-lg border border-[#D2D7E0] ${
-                clicked.is_policy_minimum_age ? null : "opacity-50"
-              }`}
+              className={`flex mt-2 h-11 w-1/5 rounded-lg border border-[#D2D7E0] ${clicked.is_policy_minimum_age ? null : "opacity-50"}`}
             >
               <input
                 type="number"
@@ -195,13 +191,7 @@ const KebijakanHotel = ({ dataInput, setDataInput }) => {
         </Policy>
 
         {/* Kebijakan Merokok */}
-        <Policy
-          clicked={clicked}
-          setClicked={setClicked}
-          title={"Merokok"}
-          desc={"Merokok di akomodasi diperbolehkan"}
-          name={"is_smoking"}
-        >
+        <Policy clicked={clicked} setClicked={setClicked} title={"Merokok"} desc={"Merokok di akomodasi diperbolehkan"} name={"is_smoking"}>
           <div className="mb-12"></div>
         </Policy>
 

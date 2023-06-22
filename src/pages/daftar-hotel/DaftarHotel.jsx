@@ -81,17 +81,10 @@ const DaftarHotel = () => {
         <>
           <CardContainerHotel dataHotel={dataHotel} />
 
-          <div
-            className={`${infoPaginate?.total >= 200 ? "mt-32" : "mt-20"}`}
-          ></div>
+          <div className={`${infoPaginate?.total >= 200 ? "mt-32" : "mt-20"}`}></div>
 
           <div className="absolute bottom-0 w-full">
-            <Pagination
-              changePage={changePage}
-              setChangePage={setChangePage}
-              isLoading={isLoading}
-              infoPaginate={infoPaginate}
-            />
+            <Pagination changePage={changePage} setChangePage={setChangePage} isLoading={isLoading} infoPaginate={infoPaginate} />
           </div>
         </>
       )}

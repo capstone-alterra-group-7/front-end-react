@@ -1,11 +1,12 @@
 import React from "react";
 import CardUlasan from "./CardUlasan";
+import assets from "../../../../assets/assets";
 
-const CardContainerUlasan = () => {
+const CardContainerUlasan = ({ dataRating }) => {
   return (
     <div className="mt-8">
-      {[...Array(10)].map((data, i) => {
-        return <CardUlasan key={i} />;
+      {dataRating?.data?.ratings?.map((data, i) => {
+        return <CardUlasan key={i} data={data} />;
       })}
     </div>
   );
