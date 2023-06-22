@@ -2,17 +2,17 @@
 import React, { useState } from "react";
 
 // Import Components
-
 import CardContainerPesananHotel from "../../components/pesanan-hotel/CardContainerPesananHotel";
+import BarPesananHotel from "../../components/pesanan-hotel/barPesananHotel";
+import LoaderPages from "../../globals/LoaderPages";
+import NotFoundSearch from "../../globals/NotFoundSearch";
 import Pagination from "../daftar-KA/Pagination";
-import BarPesananKa from "../../components/pesanan-ka/BarPesananKA";
 import ModalFilterPesananHotel from "../../components/pesanan-hotel/ModalFilterPesananHotel";
 
 // ** Import Assets
 import { baseUrl } from "../../services/base";
 import axios from "axios";
 import useSWR from "swr";
-import BarPesananHotel from "../../components/pesanan-hotel/barPesananHotel";
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
@@ -41,8 +41,12 @@ const PesananHotel = () => {
 
   const infoPaginate = daftarHotel?.meta;
 
+  if (error) {
+    return <ErrorPages />;
+  }
+
   return (
-    <div className="relative">
+    <div className="relative h-full">
       <BarPesananHotel
         setSearchVal={setSearchVal}
         setStartDate={setStartDate}
@@ -52,46 +56,28 @@ const PesananHotel = () => {
         setShowFilter={setShowFilter}
       />
 
-      <CardContainerPesananHotel daftarHotel={daftarHotel} />
+      {daftarHotel?.data === null ? (
+        <NotFoundSearch />
+      ) : (
+        <>
+          <CardContainerPesananHotel daftarHotel={daftarHotel} />
 
-      {daftarHotel?.data === null && (
-        <div>
-          <img
-            src="https://gcdnb.pbrd.co/images/YQ1ngF8DVrY9.png?o=1"
-            alt="not-found"
-            className="mx-auto"
-          />
+          <div
+            className={`${infoPaginate?.total >= 200 ? "mt-32" : "mt-20"}`}
+          ></div>
 
-          <p className="text-[24px] font-[700] text-[#262627] mx-auto text-center w-[30rem] pb-9">
-            Ups! Tidak ada hasil yang sesuai. Silakan coba dengan kata kunci
-            lain.
-          </p>
-        </div>
+          <div className="absolute bottom-0 w-full">
+            <Pagination
+              changePage={changePage}
+              setChangePage={setChangePage}
+              isLoading={isLoading}
+              infoPaginate={infoPaginate}
+            />
+          </div>
+        </>
       )}
 
-      {daftarHotel === undefined && (
-        <div>
-          <img
-            src="https://gcdnb.pbrd.co/images/YQ1ngF8DVrY9.png?o=1"
-            alt="not-found"
-            className="mx-auto"
-          />
-
-          <p className="text-[24px] font-[700] text-[#262627] mx-auto text-center w-[30rem] pb-9">
-            Ups! Tidak ada hasil yang sesuai. Silakan coba dengan kata kunci
-            lain.
-          </p>
-        </div>
-      )}
-
-      {!error && (
-        <Pagination
-          changePage={changePage}
-          setChangePage={setChangePage}
-          isLoading={isLoading}
-          infoPaginate={infoPaginate}
-        />
-      )}
+      {isLoading && <LoaderPages />}
 
       {showFilter && (
         <ModalFilterPesananHotel

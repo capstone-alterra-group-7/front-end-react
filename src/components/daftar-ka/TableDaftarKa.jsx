@@ -9,13 +9,11 @@ const TableDaftarKa = ({ data, index }) => {
     navigate("/detail-ka", { state: { data } });
   };
 
-  console.log(data);
-
   return (
     <div
       onClick={handleNavigate}
-      className={`flex items-center justify-between  ${
-        index % 2 === 0 ? "bg-[#F5F6F8]" : "border-b"
+      className={`flex items-center justify-between border-b ${
+        index % 2 === 0 ? "bg-[#F5F6F8]" : ""
       } py-5 px-10 cursor-pointer`}
     >
       <h1 className="font-[400] text-[#262627] text-[16px] w-[15rem]">
