@@ -25,6 +25,7 @@ const DetailHotel = () => {
   const navigate = useNavigate();
 
   const { data: dataHotelById, isLoading, mutate } = useSWR(baseUrl(`/public/hotel/${id}`), fetcherGet);
+  const { data: dataRating } = useSWR(baseUrl(`/public/hotel/${dataHotelById?.data?.hotel_id}/rating?limit=1`), fetcherGet);
 
   // ** Local State
   const [nav, setNav] = useState("informasi");
@@ -88,7 +89,7 @@ const DetailHotel = () => {
           </div>
 
           {nav === "informasi" ? (
-            <InformasiHotel data={dataHotelById?.data} />
+            <InformasiHotel data={dataHotelById?.data} dataRating={dataRating} />
           ) : nav === "daftarKamar" ? (
             <DaftarKamar data={dataHotelById?.data?.hotel_room} />
           ) : (

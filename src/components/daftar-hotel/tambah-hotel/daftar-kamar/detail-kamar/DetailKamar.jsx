@@ -6,7 +6,6 @@ import SectionDescriptionKamar from "../../../detail-hotel/daftar-kamar/detail-k
 import SectionFasilitasKamar from "../../../detail-hotel/daftar-kamar/detail-kamar/SectionFasilitasKamar";
 
 const DetailKamar = ({ data, setShowDetail }) => {
-  console.log("data detail Kamar", data);
   const [imageIndex, setImageIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [isHidden, setIsHidden] = useState({ desc: false, fasilitas: false });
@@ -35,9 +34,7 @@ const DetailKamar = ({ data, setShowDetail }) => {
             <img
               src={URL.createObjectURL(data?.imageFile)}
               alt=""
-              className={`cursor-pointer mr-4 w-32 h-32 object-cover ${
-                imageIndex === idx ? "border-4 border-[#0080FF]" : null
-              }`}
+              className={`cursor-pointer mr-4 w-32 h-32 object-cover ${imageIndex === idx ? "border-4 border-[#0080FF]" : null}`}
               onClick={(e) => setImageIndex(idx)}
               key={idx}
             />
@@ -76,11 +73,7 @@ const DetailKamar = ({ data, setShowDetail }) => {
               }
             >
               <h1 className="ms-4 font-semibold">Deskripsi Kamar</h1>
-              <img
-                src={assets.iconUrutkanDaftarKa}
-                alt=""
-                className={`h-5 w-4 duration-300 ${isHidden.desc ? "" : "rotate-180"}`}
-              />
+              <img src={assets.iconUrutkanDaftarKa} alt="" className={`h-5 w-4 duration-300 ${isHidden.desc ? "" : "rotate-180"}`} />
             </div>
             {isHidden.desc ? null : <SectionDescriptionKamar dataDesc={data?.description} />}
           </div>
@@ -95,11 +88,7 @@ const DetailKamar = ({ data, setShowDetail }) => {
               }
             >
               <h1 className="ms-4 font-semibold">Fasilitas Kamar</h1>
-              <img
-                src={assets.iconUrutkanDaftarKa}
-                alt=""
-                className={`h-5 w-4 duration-300 ${isHidden.fasilitas ? "" : "rotate-180"}`}
-              />
+              <img src={assets.iconUrutkanDaftarKa} alt="" className={`h-5 w-4 duration-300 ${isHidden.fasilitas ? "" : "rotate-180"}`} />
             </div>
             {isHidden.fasilitas ? null : <SectionFasilitasKamar dataFacilities={data?.hotel_room_facility} />}
           </div>

@@ -36,8 +36,6 @@ const DaftarHotel = () => {
     sampai: "",
   });
 
-  console.log(modal);
-
   const navigate = useNavigate();
 
   const {
@@ -75,27 +73,15 @@ const DaftarHotel = () => {
 
       {dataHotel?.data === null && (
         <div>
-          <img
-            src="https://gcdnb.pbrd.co/images/YQ1ngF8DVrY9.png?o=1"
-            alt="not-found"
-            className="mx-auto"
-          />
+          <img src="https://gcdnb.pbrd.co/images/YQ1ngF8DVrY9.png?o=1" alt="not-found" className="mx-auto" />
 
           <p className="text-[24px] font-[700] text-[#262627] mx-auto text-center w-[30rem] pb-9">
-            Ups! Tidak ada hasil yang sesuai. Silakan coba dengan kata kunci
-            lain.
+            Ups! Tidak ada hasil yang sesuai. Silakan coba dengan kata kunci lain.
           </p>
         </div>
       )}
 
-      {!error && (
-        <Pagination
-          changePage={changePage}
-          setChangePage={setChangePage}
-          isLoading={isLoading}
-          infoPaginate={infoPaginate}
-        />
-      )}
+      {!error && <Pagination changePage={changePage} setChangePage={setChangePage} isLoading={isLoading} infoPaginate={infoPaginate} />}
 
       {modal && (
         <ModalConfirmHotel
