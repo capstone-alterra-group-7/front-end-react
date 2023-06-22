@@ -127,7 +127,7 @@ const DetailKamar = () => {
                 <button className="ms-4 h-11 py-3 px-6 bg-[#0080FF] hover:bg-opacity-80 text-white rounded-lg" onClick={handleShowModal}>
                   Lihat Ketersediaan Kamar
                 </button>
-                {showModal ? <ModalAvailableKamar setShowModal={setShowModal} /> : null}
+                {showModal ? <ModalAvailableKamar setShowModal={setShowModal} data={dataKamarById.data} /> : null}
               </div>
 
               <div className="border-2 border-[#E1E4EA] rounded-lg pt-2 mb-8">

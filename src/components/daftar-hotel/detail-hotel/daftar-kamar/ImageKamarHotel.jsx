@@ -1,8 +1,6 @@
 import React from "react";
 
 const ImageKamarHotel = ({ dataImage, setModal }) => {
-  console.log(dataImage);
-
   return (
     <div className="w-64 cursor-pointer">
       <img src={dataImage === null ? "" : dataImage[0]?.image_url} alt="" className="" onClick={() => setModal(true)} />

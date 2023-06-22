@@ -54,7 +54,7 @@ const CardKamarHotel = ({ data }) => {
       </div>
 
       <div className="grid grid-cols-2 mt-5 mb-1 gap-6 w-1/3">
-        {data?.hotel_room_facility?.map((data, idx) => {
+        {data?.hotel_room_facility?.slice(0, 5).map((data, idx) => {
           return (
             <div className="flex h-5" key={idx}>
               <img src={chooseIconFacility(data?.name)} alt="" />

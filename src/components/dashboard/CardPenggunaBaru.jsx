@@ -11,11 +11,7 @@ const CardPenggunaBaru = ({ dataPenggunaBaru }) => {
           return (
             <React.Fragment key={data.id}>
               <div className="flex px-6 py-3">
-                <img
-                  src={data.profile_picture}
-                  alt=""
-                  className="w-12 h-12 mr-3 rounded-3xl"
-                />
+                <img src={data.profile_picture} alt="" className="w-12 h-12 mr-3 rounded-3xl" />
                 <div className="flex flex-col w-full">
                   <h1 className="font-bold">{data.full_name}</h1>
 
