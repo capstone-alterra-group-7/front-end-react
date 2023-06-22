@@ -62,7 +62,7 @@ const PesananKA = () => {
           ))}
 
           <div
-            className={`${infoPaginate?.total >= 200 ? "mt-32" : "mt-20"}`}
+            className={`${infoPaginate?.total >= 200 ? "mt-36" : "mt-36"}`}
           ></div>
 
           <div className="absolute bottom-0 w-full">
