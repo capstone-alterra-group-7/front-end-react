@@ -6,7 +6,7 @@ const Pagination = (props) => {
   const total = Math.ceil(isLoading ? 0 : validate / 20);
 
   return (
-    <div className=" flex items-center justify-between px-7 w-full py-5 bg-white ">
+    <div className=" flex items-center relative justify-between px-7 w-full py-5 bg-white border-t">
       <button
         disabled={changePage === 1 || isLoading}
         className="disabled:cursor-not-allowed border border-[#D2D7E0] bg-[#F9FAFB] text-[#262627] py-2 px-5 rounded-lg flex items-center gap-2 disabled:bg-[#FDFDFE] disabled:border-gray-200 disabled:text-gray-300"
@@ -27,7 +27,11 @@ const Pagination = (props) => {
         Previous
       </button>
 
-      <div className="text-slate-800 mr-5">
+      <div
+        className={`text-slate-800 ${
+          total <= 10 && "flex justify-center"
+        }  overflow-x-auto  w-[35rem] mx-auto`}
+      >
         {isLoading ? (
           "..."
         ) : (

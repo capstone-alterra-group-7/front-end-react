@@ -7,12 +7,14 @@ import RowDaftarStasiun from "../../components/daftar-stasiun/RowDaftarStasiun";
 import ModalDetailStasiun from "../../components/daftar-stasiun/detail-stasiun/ModalDetailStasiun";
 import ModalConfirm from "../../components/daftar-stasiun/ModalConfirm";
 import Pagination from "../daftar-KA/Pagination";
+import LoaderPages from "../../globals/LoaderPages";
+import NotFoundSearch from "../../globals/NotFoundSearch";
+import ErrorPages from "../../globals/ErrorPages";
 
 // ** Import Other
 import useSWR from "swr";
 import { baseUrl } from "../../services/base";
 import axios from "axios";
-import ModalFilter from "../daftar-KA/ModalFilter";
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
@@ -27,6 +29,7 @@ const DaftarStasiun = () => {
   const {
     data: dataStations,
     isLoading,
+    error,
     mutate,
   } = useSWR(
     baseUrl(
@@ -37,11 +40,15 @@ const DaftarStasiun = () => {
 
   const infoPaginate = dataStations?.meta;
 
-  const navigate = useNavigate("");
+  const navigate = useNavigate();
 
   const handleAdd = () => {
     navigate("/daftar-stasiun/tambah-stasiun");
   };
+
+  if (error) {
+    return <ErrorPages />;
+  }
 
   return (
     <div className="relative h-full">
@@ -56,47 +63,53 @@ const DaftarStasiun = () => {
         />
       </div>
 
-      <div className="px-8 py-9">
-        <div className="bg-white rounded-t-3xl shadow-[0_1px_3px_rgb(0,0,0,0.2)]">
-          <table className="w-full text-left">
-            <thead className="text-[16px]  font-[600] text-[#262627] border-b-2 ">
-              <tr>
-                <th scope="col" className="px-11 py-7">
-                  Nama Stasiun
-                </th>
-                <th scope="col" className="px-6 py-3 text-center">
-                  Nomor Stasiun
-                </th>
-                <th scope="col" className="px-6 py-3 text-center">
-                  Domisili
-                </th>
-                <th scope="col" className="px-6 py-3 text-center">
-                  Kode Stasiun
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {dataStations?.data?.map((data, i) => {
-                return (
-                  <RowDaftarStasiun
-                    data={data}
-                    index={i}
-                    setModalDetail={setModalDetail}
-                    key={i}
-                  />
-                );
-              })}
-            </tbody>
-          </table>
+      {dataStations?.data === null ? (
+        <NotFoundSearch />
+      ) : (
+        <div className="px-8 py-9">
+          <div className="bg-white rounded-t-3xl shadow-[0_1px_3px_rgb(0,0,0,0.2)]">
+            <table className="w-full text-left">
+              <thead className="text-[16px]  font-[600] text-[#262627] border-b-2 ">
+                <tr>
+                  <th scope="col" className="px-11 py-7">
+                    Nama Stasiun
+                  </th>
+                  <th scope="col" className="px-6 py-3 text-center">
+                    Nomor Stasiun
+                  </th>
+                  <th scope="col" className="px-6 py-3 text-center">
+                    Domisili
+                  </th>
+                  <th scope="col" className="px-6 py-3 text-center">
+                    Kode Stasiun
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {dataStations?.data?.map((data, i) => {
+                  return (
+                    <RowDaftarStasiun
+                      data={data}
+                      index={i}
+                      setModalDetail={setModalDetail}
+                      key={i}
+                    />
+                  );
+                })}
+              </tbody>
+            </table>
 
-          <Pagination
-            changePage={changePage}
-            setChangePage={setChangePage}
-            isLoading={isLoading}
-            infoPaginate={infoPaginate}
-          />
+            <Pagination
+              changePage={changePage}
+              setChangePage={setChangePage}
+              isLoading={isLoading}
+              infoPaginate={infoPaginate}
+            />
+          </div>
         </div>
-      </div>
+      )}
+
+      {isLoading && <LoaderPages />}
 
       {modal && (
         <ModalConfirm
