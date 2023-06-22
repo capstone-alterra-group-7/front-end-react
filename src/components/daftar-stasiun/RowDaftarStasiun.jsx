@@ -1,11 +1,8 @@
-// ** Import Other
-import { idGenerator } from "generate-custom-id";
-
 const RowDaftarStasiun = ({ data, index, setModalDetail }) => {
   return (
     <tr
-      className={`font-[400]  text-[#262627] cursor-pointer ${
-        index % 2 === 0 ? "bg-[#F9FAFB]" : "bg-[#FFFFF] border-b"
+      className={`font-[400]  text-[#262627] cursor-pointer border-b ${
+        index % 2 === 0 ? "bg-[#F9FAFB]" : "bg-[#FFFFF]"
       }`}
       onClick={() =>
         setModalDetail((prev) => {

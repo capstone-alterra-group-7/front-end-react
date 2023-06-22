@@ -5,12 +5,15 @@ import { useState } from "react";
 import BarDaftarTiket from "../../components/daftar-tiket/BarDaftarTiket";
 import CardDaftarTiket from "../../components/daftar-tiket/CardDaftarTiket";
 import Pagination from "../daftar-KA/Pagination";
+import ModalFilterTicket from "./ModalFilterTicket";
+import ErrorPages from "../../globals/ErrorPages";
+import NotFoundSearch from "../../globals/NotFoundSearch";
+import LoaderPages from "../../globals/LoaderPages";
 
 // ** Import Other
 import axios from "axios";
 import { baseUrl } from "../../services/base";
 import useSWR from "swr";
-import ModalFilterTicket from "./ModalFilterTicket";
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
@@ -24,7 +27,11 @@ const DaftarTiket = () => {
   const [showFilter, setShowFilter] = useState(false);
   const [saveFilter, setSaveFilter] = useState("");
 
-  const { data: daftarTicket, isLoading } = useSWR(
+  const {
+    data: daftarTicket,
+    isLoading,
+    error,
+  } = useSWR(
     baseUrl(
       `/admin/order/ticket?limit=20&page=${changePage}&search=${searchVal}&date_start=${startDate}&date_end=${endDate}&order_by=${urutkan}&filter=${saveFilter}`
     ),
@@ -45,6 +52,10 @@ const DaftarTiket = () => {
 
   const infoPaginate = daftarTicket?.meta;
 
+  if (error) {
+    return <ErrorPages />;
+  }
+
   return (
     <div className="relative h-full">
       <BarDaftarTiket
@@ -56,47 +67,30 @@ const DaftarTiket = () => {
         setShowFilter={setShowFilter}
       />
 
-      {isLoading && <p className="text-center py-6">Loading...</p>}
-      {manimpulateData?.map((ticket, index) => (
-        <CardDaftarTiket key={index} data={ticket} />
-      ))}
+      {daftarTicket?.data === null ? (
+        <NotFoundSearch />
+      ) : (
+        <>
+          {manimpulateData?.map((ticket, index) => (
+            <CardDaftarTiket key={index} data={ticket} />
+          ))}
 
-      {daftarTicket?.data === null && (
-        <div>
-          <img
-            src="https://gcdnb.pbrd.co/images/YQ1ngF8DVrY9.png?o=1"
-            alt="not-found"
-            className="mx-auto"
-          />
+          <div
+            className={`${infoPaginate?.total >= 200 ? "mt-36" : "mt-36"}`}
+          ></div>
 
-          <p className="text-[24px] font-[700] text-[#262627] mx-auto text-center w-[30rem] pb-9">
-            Ups! Tidak ada hasil yang sesuai. Silakan coba dengan kata kunci
-            lain.
-          </p>
-        </div>
+          <div className="absolute bottom-0 w-full">
+            <Pagination
+              changePage={changePage}
+              setChangePage={setChangePage}
+              isLoading={isLoading}
+              infoPaginate={infoPaginate}
+            />
+          </div>
+        </>
       )}
 
-      {daftarTicket === undefined && (
-        <div>
-          <img
-            src="https://gcdnb.pbrd.co/images/YQ1ngF8DVrY9.png?o=1"
-            alt="not-found"
-            className="mx-auto"
-          />
-
-          <p className="text-[24px] font-[700] text-[#262627] mx-auto text-center w-[30rem] pb-9">
-            Ups! Tidak ada hasil yang sesuai. Silakan coba dengan kata kunci
-            lain.
-          </p>
-        </div>
-      )}
-
-      <Pagination
-        changePage={changePage}
-        setChangePage={setChangePage}
-        isLoading={isLoading}
-        infoPaginate={infoPaginate}
-      />
+      {isLoading && <LoaderPages />}
 
       {showFilter && (
         <ModalFilterTicket

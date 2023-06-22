@@ -5,14 +5,17 @@ import { useState } from "react";
 import Bar from "../../components/daftar-ka/Bar";
 import ModalConfirm from "../../components/daftar-stasiun/ModalConfirm";
 import ModalFilter from "./ModalFilter";
+import Pagination from "./Pagination";
+import ErrorPages from "../../globals/ErrorPages";
+import NotFoundSearch from "../../globals/NotFoundSearch";
+import LoaderPages from "../../globals/LoaderPages";
+import TableDaftarKa from "../../components/daftar-ka/TableDaftarKa";
 
 // ** import Other
 import { useNavigate } from "react-router-dom";
-import TableDaftarKa from "../../components/daftar-ka/TableDaftarKa";
 import useSWR from "swr";
 import { baseUrl } from "../../services/base";
 import axios from "axios";
-import Pagination from "./Pagination";
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
@@ -26,7 +29,11 @@ const DaftarKA = () => {
   const [showFilter, setShowFilter] = useState(false);
   const [saveFilter, setSaveFilter] = useState("");
 
-  const { data: daftarKa, isLoading } = useSWR(
+  const {
+    data: daftarKa,
+    isLoading,
+    error,
+  } = useSWR(
     baseUrl(`/admin/train?page=${changePage}&limit=20&search=${searchVal}&sort_by=${urutkan}&filter=${saveFilter}
     `),
     fetcher
@@ -34,11 +41,15 @@ const DaftarKA = () => {
 
   const infoPaginate = daftarKa?.meta;
 
-  const navigate = useNavigate("");
+  const navigate = useNavigate();
 
   const handleAdd = () => {
     navigate("/daftar-ka/tambah-ka");
   };
+
+  if (error) {
+    return <ErrorPages />;
+  }
 
   return (
     <div className="relative h-full ">
@@ -55,22 +66,9 @@ const DaftarKA = () => {
         />
       </div>
 
-      {daftarKa?.data === null && (
-        <div>
-          <img
-            src="https://gcdnb.pbrd.co/images/YQ1ngF8DVrY9.png?o=1"
-            alt="not-found"
-            className="mx-auto"
-          />
-
-          <p className="text-[24px] font-[700] text-[#262627] mx-auto text-center w-[30rem] pb-9">
-            Ups! Tidak ada hasil yang sesuai. Silakan coba dengan kata kunci
-            lain.
-          </p>
-        </div>
-      )}
-
-      {daftarKa?.data !== null && (
+      {daftarKa?.data === null ? (
+        <NotFoundSearch />
+      ) : (
         <div className=" mt-8 pt-8  mx-7 shadow-[0_1px_3px_rgb(0,0,0,0.2)] bg-white rounded-t-3xl mb-8">
           <div className="flex justify-between border-b-2 pb-5 px-10">
             <h1 className="text-[16px] font-[600] text-[#262627]">
@@ -84,7 +82,6 @@ const DaftarKA = () => {
             </h1>
           </div>
 
-          {isLoading && <p className="text-center mt-6">loading....</p>}
           {daftarKa?.data?.map((ka, index) => (
             <TableDaftarKa key={ka.train_id} data={ka} index={index} />
           ))}
@@ -96,6 +93,8 @@ const DaftarKA = () => {
           />
         </div>
       )}
+
+      {isLoading && <LoaderPages />}
 
       {modal && (
         <ModalConfirm

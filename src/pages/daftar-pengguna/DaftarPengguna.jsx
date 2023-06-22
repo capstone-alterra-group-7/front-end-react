@@ -1,21 +1,24 @@
-// ** Import Assets
-import assets from "../../assets/assets";
-
 // ** Import Components
 import Bar from "../../components/daftar-pengguna/Bar";
 import ModalDaftarPengguna from "../../components/daftar-pengguna/ModalDaftarPengguna";
 import TablePengguna from "../../components/daftar-pengguna/TablePengguna";
+import ErrorPages from "../../globals/ErrorPages";
+import NotFoundSearch from "../../globals/NotFoundSearch";
+import LoaderPages from "../../globals/LoaderPages";
+import ModalFilter from "./ModalFilter";
 
 // ** Import Others
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ModalFilter from "./ModalFilter";
-import Pagination from "./Pagination";
+import { baseUrl } from "../../services/base";
+import axios from "axios";
+import useSWR from "swr";
 
+const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const DaftarPengguna = () => {
   const [modal, setModal] = useState(false);
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
   const [urutkan, setUrutkan] = useState("");
   const [filter, setFilter] = useState("");
   const [showFilter, setShowFilter] = useState(false);
@@ -23,28 +26,55 @@ const DaftarPengguna = () => {
   const [changePage, setChangePage] = useState(1);
   const navigate = useNavigate();
 
+  const {
+    data: daftarPengguna,
+    isLoading,
+    error,
+  } = useSWR(
+    baseUrl(
+      `/admin/user?sort_by=${urutkan}&search=${search}&filter=${saveFilter}&page=${changePage}&limit=20&search`
+    ),
+    fetcher
+  );
+
+  const infoPaginate = daftarPengguna?.meta;
+
   const handleAdd = () => {
     navigate("/tambah-pengguna");
   };
 
+  if (error) {
+    return <ErrorPages />;
+  }
+
   return (
     <div className="relative">
       <div className="bg-white px-7 pt-3 pb-6 space-y-6">
+        <h1 className="text-[32px] font-bold">Daftar Pengguna</h1>
 
-          <h1 className="text-[32px] font-bold">Daftar Pengguna</h1>
-
-        <Bar 
+        <Bar
           setModal={setModal}
           setSearch={setSearch}
           urutkan={urutkan}
           setUrutkan={setUrutkan}
           setShowFilter={setShowFilter}
-          saveFilter={saveFilter} />
+          saveFilter={saveFilter}
+        />
       </div>
-      <TablePengguna
-        urutkan={urutkan}
-        search={search}
-        saveFilter={saveFilter}/>
+
+      {daftarPengguna?.data === null ? (
+        <NotFoundSearch />
+      ) : (
+        <TablePengguna
+          daftarPengguna={daftarPengguna}
+          infoPaginate={infoPaginate}
+          changePage={changePage}
+          setChangePage={setChangePage}
+          isLoading={isLoading}
+        />
+      )}
+
+      {isLoading && <LoaderPages />}
 
       {modal && (
         <ModalDaftarPengguna
@@ -64,9 +94,9 @@ const DaftarPengguna = () => {
           setShowFilter={setShowFilter}
           setSaveFilter={setSaveFilter}
         />
-      )}    
+      )}
     </div>
-  )
+  );
 };
 
 export default DaftarPengguna;
