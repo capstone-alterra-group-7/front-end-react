@@ -70,15 +70,20 @@ export default function CardPesananKA({ data }) {
           <div>
             <div className="mb-14">
               <h1 className="mb-1 text-[15px] font-semibold">
-                {data.station_origin.name} ({data.station_origin.initial})
+                {data.station_origin.name.length >= 5
+                  ? `${data.station_origin.name.substring(0, 5)}...`
+                  : data.station_origin.name}{" "}
+                {""}({data.station_origin.initial})
               </h1>
               <h1 className="text-sm">{data.station_origin.origin}</h1>
             </div>
 
             <div>
               <h1 className="mb-1 text-[15px] font-semibold">
-                {data.station_destination.name} (
-                {data.station_destination.initial})
+                {data.station_destination.name.length >= 5
+                  ? `${data.station_destination.name.substring(0, 5)}...`
+                  : data.station_destination.name}{" "}
+                ({data.station_destination.initial})
               </h1>
               <h1 className="text-sm">{data.station_destination.origin}</h1>
             </div>

@@ -5,6 +5,8 @@ import CardKeretaApi from "../../components/dashboard/CardKeretaApi";
 import CardPesanan from "../../components/dashboard/CardPesanan";
 import CardPenggunaBaru from "../../components/dashboard/CardPenggunaBaru";
 import CardPesananBaru from "../../components/dashboard/CardPesananBaru";
+import LoaderPages from "../../globals/LoaderPages";
+import ErrorPages from "../../globals/ErrorPages";
 
 // ** Import Axios
 import axios from "axios";
@@ -14,10 +16,15 @@ import { baseUrl } from "../../services/base";
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const Dashboard = () => {
-  const { data: dataDashboard, isLoading } = useSWR(
-    baseUrl(`/admin/dashboard`),
-    fetcher
-  );
+  const {
+    data: dataDashboard,
+    isLoading,
+    error,
+  } = useSWR(baseUrl(`/admin/dashboard`), fetcher);
+
+  if (error) {
+    return <ErrorPages />;
+  }
 
   return (
     <div className="relative">
@@ -36,6 +43,8 @@ const Dashboard = () => {
         <CardPesananBaru dataPesananBaru={dataDashboard} />
         <CardPenggunaBaru dataPenggunaBaru={dataDashboard} />
       </div>
+
+      {isLoading && <LoaderPages />}
     </div>
   );
 };

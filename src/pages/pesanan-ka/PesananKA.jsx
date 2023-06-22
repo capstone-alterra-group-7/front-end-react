@@ -1,14 +1,17 @@
 // ** Import Components
-import axios from "axios";
 import CardPesananKA from "../../components/pesanan-ka/CardPesananKA";
+import BarPesananKa from "../../components/pesanan-ka/BarPesananKA";
+import Pagination from "../daftar-KA/Pagination";
+import ModalFilterTicket from "../daftar-tiket/ModalFilterTicket";
+import ErrorPages from "../../globals/ErrorPages";
+import LoaderPages from "../../globals/LoaderPages";
+import NotFoundSearch from "../../globals/NotFoundSearch";
 
 // ** Import Other
 import useSWR from "swr";
 import { baseUrl } from "../../services/base";
 import { useState } from "react";
-import BarPesananKa from "../../components/pesanan-ka/BarPesananKA";
-import Pagination from "../daftar-KA/Pagination";
-import ModalFilterTicket from "../daftar-tiket/ModalFilterTicket";
+import axios from "axios";
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
@@ -22,7 +25,11 @@ const PesananKA = () => {
   const [showFilter, setShowFilter] = useState(false);
   const [saveFilter, setSaveFilter] = useState("");
 
-  const { data: daftarPesanan, isLoading } = useSWR(
+  const {
+    data: daftarPesanan,
+    isLoading,
+    error,
+  } = useSWR(
     baseUrl(
       `/admin/order/ticket?limit=20&page=${changePage}&search=${searchVal}&date_start=${startDate}&date_end=${endDate}&order_by=${urutkan}&filter=${saveFilter}`
     ),
@@ -31,8 +38,12 @@ const PesananKA = () => {
 
   const infoPaginate = daftarPesanan?.meta;
 
+  if (error) {
+    return <ErrorPages />;
+  }
+
   return (
-    <div>
+    <div className="relative h-full">
       <BarPesananKa
         setSearchVal={setSearchVal}
         setStartDate={setStartDate}
@@ -42,46 +53,30 @@ const PesananKA = () => {
         setShowFilter={setShowFilter}
       />
 
-      {daftarPesanan?.data?.map((pesanan, index) => (
-        <CardPesananKA data={pesanan} key={index} />
-      ))}
+      {daftarPesanan?.data === null ? (
+        <NotFoundSearch />
+      ) : (
+        <>
+          {daftarPesanan?.data?.map((pesanan, index) => (
+            <CardPesananKA data={pesanan} key={index} />
+          ))}
 
-      {daftarPesanan?.data === null && (
-        <div>
-          <img
-            src="https://gcdnb.pbrd.co/images/YQ1ngF8DVrY9.png?o=1"
-            alt="not-found"
-            className="mx-auto"
-          />
+          <div
+            className={`${infoPaginate?.total >= 200 ? "mt-32" : "mt-20"}`}
+          ></div>
 
-          <p className="text-[24px] font-[700] text-[#262627] mx-auto text-center w-[30rem] pb-9">
-            Ups! Tidak ada hasil yang sesuai. Silakan coba dengan kata kunci
-            lain.
-          </p>
-        </div>
+          <div className="absolute bottom-0 w-full">
+            <Pagination
+              changePage={changePage}
+              setChangePage={setChangePage}
+              isLoading={isLoading}
+              infoPaginate={infoPaginate}
+            />
+          </div>
+        </>
       )}
 
-      {daftarPesanan === undefined && (
-        <div>
-          <img
-            src="https://gcdnb.pbrd.co/images/YQ1ngF8DVrY9.png?o=1"
-            alt="not-found"
-            className="mx-auto"
-          />
-
-          <p className="text-[24px] font-[700] text-[#262627] mx-auto text-center w-[30rem] pb-9">
-            Ups! Tidak ada hasil yang sesuai. Silakan coba dengan kata kunci
-            lain.
-          </p>
-        </div>
-      )}
-
-      <Pagination
-        changePage={changePage}
-        setChangePage={setChangePage}
-        isLoading={isLoading}
-        infoPaginate={infoPaginate}
-      />
+      {isLoading && <LoaderPages />}
 
       {showFilter && (
         <ModalFilterTicket

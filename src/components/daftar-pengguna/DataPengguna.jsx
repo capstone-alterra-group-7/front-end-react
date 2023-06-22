@@ -24,25 +24,25 @@ const DataPengguna = ({ data, index }) => {
         onClick={handleClick}
         className={` ${
           index % 2 === 0 ? "bg-[#F9FAFB]" : "bg-[#FFFFFF]"
-        } px-[2rem] py-[1.125rem] cursor-pointer`}
+        } px-[2rem] py-[2rem] cursor-pointer border-b`}
       >
-        <td className="whitespace-nowrap px-6 py-4 flex items-center text-[15px]">
+        <td className="whitespace-nowrap px-6 py-5 flex items-center text-[15px]">
           <img
             src={data.profile_picture_url}
             alt="photoprofile"
             className="max-w-[44px]"
           />
 
-          <div className="felx ms-3 ]">
+          <div className="felx ms-3 ">
             <p className="font-[600]">{data.full_name}</p>
             <p className="font-[400]">{data.email}</p>
           </div>
         </td>
-        <td className="whitespace-nowrap px-6 py-4">{data.phone_number}</td>
-        <td className="whitespace-nowrap px-6 py-4 text-center">
+        <td className="py-4">{data.phone_number}</td>
+        <td className="py-4 text-center">
           {moment(data.created_at).format("D MMM YYYY")}{" "}
         </td>
-        <td className="whitespace-nowrap px-6 py-4 text-center">
+        <td className="py-4 text-center">
           {moment(data.created_at).fromNow(true)}
         </td>
         <td className="whitespace-nowrap py-4 items-center">
