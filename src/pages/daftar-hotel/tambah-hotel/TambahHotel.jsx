@@ -67,7 +67,7 @@ const TambahHotel = () => {
   const defaultRoomData = state?.data?.hotel_room.map((x) => ({
     ...x,
     hotel_room_facility: x.hotel_room_facility !== null ? x.hotel_room_facility?.map((facility) => ({ name: facility.name })) : [],
-    hotel_room_image: x.hotel_room_image !== null ? x.hotel_room_image?.map((img, idx) => ({ id: idx, imageFile: img })) : [],
+    hotel_room_image: x.hotel_room_image !== null ? x.hotel_room_image?.map((img, idx) => ({ id: idx, imageFile: img.image_url })) : [],
   }));
 
   const [dataRooms, setDataRooms] = useState(state ? defaultRoomData : []);
