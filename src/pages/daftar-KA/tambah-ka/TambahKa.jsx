@@ -3,11 +3,10 @@ import { useState } from "react";
 
 // ** Import Components
 import HeaderTambahKa from "../../../components/daftar-ka/tambah-ka/HeaderTambahKa";
-import ModalDaftarKa from "../../../components/daftar-ka/ModalDaftarKa";
 import NavDetailka from "../../../components/daftar-ka/NavDetailka";
 import FormTambahKa from "../../../components/daftar-ka/tambah-ka/FormTambahKa";
 import GerbongDaftarKa from "../../../components/daftar-ka/tambah-ka/GerbongDaftarKa";
-import ModalConfirm from "../../../components/daftar-stasiun/ModalConfirm";
+import ModalConfirm from "../../../globals/ModalConfirm";
 
 // ** Import Redux
 import { useDispatch } from "react-redux";
@@ -17,17 +16,13 @@ import { addIdKa } from "../../../redux/daftar-ka/daftarKaSlices";
 import { useLocation, useNavigate } from "react-router-dom";
 import { idGenerator } from "generate-custom-id";
 import { baseUrl } from "../../../services/base";
-import axios from "axios";
 import useSWR from "swr";
 import { customAlert } from "../../../helpers/customAlert";
-
-const fetcherTambahKa = (url, payload) =>
-  axios.post(url, payload).then((res) => res.data);
-
-const fetcherEditKa = (url, payload) =>
-  axios.put(url, payload).then((res) => res.data);
-
-const fetcherGerbongKa = (url) => axios.get(url).then((res) => res.data);
+import {
+  fetcherGet,
+  fetcherPost,
+  fetcherPut,
+} from "../../../services/fetcher/fetcher";
 
 const TambahKa = () => {
   const { state } = useLocation();
@@ -46,7 +41,7 @@ const TambahKa = () => {
 
   const { data: gerbongKa, isLoading } = useSWR(
     baseUrl("/public/train-carriage?limit=9999"),
-    fetcherGerbongKa
+    fetcherGet
   );
 
   const findGerbong = isLoading
@@ -104,7 +99,7 @@ const TambahKa = () => {
   const handleTambahInformasiKa = () => {
     setLoading(true);
 
-    fetcherTambahKa(baseUrl("/admin/train"), {
+    fetcherPost(baseUrl("/admin/train"), {
       code_train: code_train,
       name: input.name,
       route: input.rute.map((r) => ({
@@ -135,7 +130,7 @@ const TambahKa = () => {
   const handleEditInformasiKa = () => {
     setLoading(true);
 
-    fetcherEditKa(baseUrl(`/admin/train/${dataEdit.train_id}`), {
+    fetcherPut(baseUrl(`/admin/train/${dataEdit.train_id}`), {
       code_train: dataEdit.code_train,
       name: input.name,
       route: input.rute.map((r) => ({
@@ -172,7 +167,7 @@ const TambahKa = () => {
   const handleTambahGerbong = () => {
     setLoading(true);
 
-    fetcherTambahKa(baseUrl("/admin/train-carriage"), dataGerbong)
+    fetcherPost(baseUrl("/admin/train-carriage"), dataGerbong)
       .then(() => {
         setModal(false);
 

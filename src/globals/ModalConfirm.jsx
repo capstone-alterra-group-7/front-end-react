@@ -1,17 +1,19 @@
+// ** Import Redux
+import { useDispatch } from "react-redux";
+import { isLogout } from "../redux/auth/tokenSlices";
+
 // ** Import Other
 import ReactLoading from "react-loading";
 
-const ModalConfirmAddKamar = (props) => {
-  const {
-    handleConfirm,
-    handleCancel,
-    title,
-    desc,
-    bg,
-    cancel,
-    confirm,
-    loading,
-  } = props;
+const ModalConfirm = (props) => {
+  const { setModal, handle, title, desc, bg, cancel, confirm, loading } = props;
+
+  const dispatch = useDispatch();
+
+  const handleCancel = () => {
+    setModal(false);
+    dispatch(isLogout(false));
+  };
 
   return (
     <div className="fixed z-50 duration-500 -top-6 right-0 left-0 bottom-0 flex justify-center items-center bg-gray-700/50">
@@ -29,8 +31,8 @@ const ModalConfirmAddKamar = (props) => {
           </button>
           <button
             disabled={loading}
-            className={`py-[10px] border text-[#FFFFFF] rounded-lg text-lg ${bg} disabled:bg-gray-300 disabled:cursor-not-allowed`}
-            onClick={handleConfirm}
+            className={`py-[10px] border text-[#FFFFFF] rounded-lg text-lg ${bg} disabled:bg-gray-300  disabled:cursor-not-allowed`}
+            onClick={handle}
           >
             {loading ? (
               <div className="flex justify-center -mt-4">
@@ -51,4 +53,4 @@ const ModalConfirmAddKamar = (props) => {
   );
 };
 
-export default ModalConfirmAddKamar;
+export default ModalConfirm;

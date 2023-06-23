@@ -2,23 +2,19 @@
 import SecondBar from "../../../components/daftar-pengguna/detail-pengguna/SecondBar";
 import CardProfile from "../../../components/daftar-pengguna/detail-pengguna/CardProfile";
 import ModalDaftarPengguna from "../../../components/daftar-pengguna/ModalDaftarPengguna";
+import LoaderPages from "../../../globals/LoaderPages";
+import ErrorPages from "../../../globals/ErrorPages";
 
 // ** Import Others
-import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import useSWR from "swr";
-import axios from "axios";
 import { baseUrl } from "../../../services/base";
-import { customAlert } from "../../../helpers/customAlert";
-
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+import { fetcherGet } from "../../../services/fetcher/fetcher";
 
 export default function DetailPengguna() {
   const [modal, setModal] = useState(false);
   const [isDelete, setIsDelete] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  const navigate = useNavigate();
 
   const {
     state: { data },
@@ -26,16 +22,20 @@ export default function DetailPengguna() {
 
   const {
     data: detailPengguna,
-    mutate,
     isLoading,
+    error,
   } = useSWR(
     baseUrl(
       `/admin/user/detail?id=${data.id}&isDeleted=${
         isDelete || (data.deleted_at !== "" && true)
       }`
     ),
-    fetcher
+    fetcherGet
   );
+
+  if (error) {
+    return <ErrorPages />;
+  }
 
   return (
     <div className=" fixed overflow-y-auto left-0 right-0 h-full">
@@ -50,6 +50,8 @@ export default function DetailPengguna() {
         isDelete={isDelete}
         detailPengguna={detailPengguna}
       />
+
+      {isLoading && <LoaderPages />}
 
       {modal && (
         <ModalDaftarPengguna

@@ -6,17 +6,15 @@ import { DetailKursi } from "../../../components/daftar-ka/detail-kursi/DetailKu
 import BackDetailKa from "../../../components/daftar-ka/detail-ka/BackDetailKa";
 import ButtonDetailKa from "../../../components/daftar-ka/detail-ka/ButtonDetailKa";
 import Informasi from "../../../components/daftar-ka/detail-ka/Informasi";
-import ModalDaftarKa from "../../../components/daftar-ka/ModalDaftarKa";
 import NavDetailka from "../../../components/daftar-ka/NavDetailka";
+import ModalConfirm from "../../../globals/ModalConfirm";
 
 // ** Import Other
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { baseUrl } from "../../../services/base";
 import { customAlert } from "../../../helpers/customAlert";
-import ModalConfirm from "../../../components/daftar-stasiun/ModalConfirm";
-
-const fetcher = (url) => axios.delete(url).then((res) => res.data);
+import { fetcherDelete } from "../../../services/fetcher/fetcher";
 
 const DetailKA = () => {
   // ** Local State
@@ -34,7 +32,7 @@ const DetailKA = () => {
   const handleDeleteKa = async () => {
     setLoading(true);
 
-    fetcher(baseUrl(`/admin/train/${data.train_id}`))
+    fetcherDelete(baseUrl(`/admin/train/${data.train_id}`))
       .then(() => {
         customAlert(
           "https://gcdnb.pbrd.co/images/UsggKXgrW4ny.png?o=1",

@@ -1,18 +1,14 @@
 // ** Import Components
-import ModalDaftarPengguna from "../../../components/daftar-pengguna/ModalDaftarPengguna";
 import BarTambahPengguna from "../../../components/daftar-pengguna/tambah-pengguna/BarTambahPengguna";
 import FormTambahPengguna from "../../../components/daftar-pengguna/tambah-pengguna/FormTambahPengguna";
-import ModalBack from "../../../components/daftar-pengguna/ModalBack";
+import ModalConfirm from "../../../globals/ModalConfirm";
 
 // ** Import Others
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { baseUrl } from "../../../services/base";
-import axios from "axios";
 import { customAlert } from "../../../helpers/customAlert";
-
-const fetcherAdd = (url, payload) =>
-  axios.post(url, payload).then((res) => res.data);
+import { fetcherPost } from "../../../services/fetcher/fetcher";
 
 const TambahPengguna = () => {
   const { state } = useLocation();
@@ -52,14 +48,14 @@ const TambahPengguna = () => {
     input.phone_number === "" ||
     input.birth_date === "" ||
     input.password !== input.confirm_password ||
-    input.password.length < 8
-  
+    input.password.length < 8;
+
   const navigate = useNavigate();
 
   const handleAdd = () => {
     setLoading(true);
 
-    fetcherAdd(baseUrl("/admin/user/register"), {
+    fetcherPost(baseUrl("/admin/user/register"), {
       birth_date: input.birth_date,
       confirm_password: input.confirm_password,
       email: input.email,
@@ -114,24 +110,31 @@ const TambahPengguna = () => {
       />
 
       {modal && (
-        <ModalDaftarPengguna
-          title="Simpan Data Pengguna?"
-          description=" This blog post has been published. Team members will be able to edit this post and republish changes."
-          bgButton="bg-[#0080FF]"
-          titleButton="Iya, Simpan Data"
+        <ModalConfirm
           setModal={setModal}
           handle={handleAdd}
+          loading={loading}
+          title={"Simpan Data Pengguna?"}
+          desc={
+            "Anda akan menyimpan data pengguna baru. Apakah Anda yakin ingin melanjutkan?"
+          }
+          bg={"bg-[#0080FF]"}
+          cancel={"Batal"}
+          confirm={"Simpan"}
         />
       )}
 
       {modalBack && (
-        <ModalBack
-          title="Batalkan Menyimpan Pengguna?"
-          description=" This blog post has been published. Team members will be able to edit this post and republish changes."
-          bgButton="bg-[#DB2D24]"
-          titleButton="Batal Menyimpan"
-          setModalBack={setModalBack}
+        <ModalConfirm
+          setModal={setModalBack}
           handle={handleBack}
+          title={"Batal Menambahkan Data Pengguna"}
+          desc={
+            "Anda akan membatalkan penambahan data pengguna .Apakah Anda yakin ingin melanjutkan?"
+          }
+          bg={"bg-[#DB2D24]"}
+          cancel={"Tutup"}
+          confirm={"Batalkan"}
         />
       )}
     </div>

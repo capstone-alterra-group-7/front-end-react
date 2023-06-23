@@ -2,22 +2,24 @@
 import { useState } from "react";
 
 // ** Import Components
-import Bar from "../../components/daftar-ka/Bar";
-import ModalConfirm from "../../components/daftar-stasiun/ModalConfirm";
-import ModalFilter from "./ModalFilter";
-import Pagination from "./Pagination";
 import ErrorPages from "../../globals/ErrorPages";
 import NotFoundSearch from "../../globals/NotFoundSearch";
 import LoaderPages from "../../globals/LoaderPages";
 import TableDaftarKa from "../../components/daftar-ka/TableDaftarKa";
+import HeaderPages from "../../globals/HeaderPages";
+import Pagination from "../../globals/Pagination";
+import FilterItemKeaktifan from "../../globals/FilterItemKeaktifan";
+import ModalFilter from "../../globals/ModalFilter";
+import SortItemAsc from "../../globals/SortItemAsc";
+import ModalConfirm from "../../globals/ModalConfirm";
+import TitlePage from "../../globals/TitlePage";
 
 // ** import Other
 import { useNavigate } from "react-router-dom";
 import useSWR from "swr";
 import { baseUrl } from "../../services/base";
-import axios from "axios";
-
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+import { useDebounce } from "use-debounce";
+import { fetcherGet } from "../../services/fetcher/fetcher";
 
 const DaftarKA = () => {
   // ** Local State
@@ -29,14 +31,16 @@ const DaftarKA = () => {
   const [showFilter, setShowFilter] = useState(false);
   const [saveFilter, setSaveFilter] = useState("");
 
+  const [searchDebounce] = useDebounce(searchVal, 500);
+
   const {
     data: daftarKa,
     isLoading,
     error,
   } = useSWR(
-    baseUrl(`/admin/train?page=${changePage}&limit=20&search=${searchVal}&sort_by=${urutkan}&filter=${saveFilter}
+    baseUrl(`/admin/train?page=${changePage}&limit=20&search=${searchDebounce}&sort_by=${urutkan}&filter=${saveFilter}
     `),
-    fetcher
+    fetcherGet
   );
 
   const infoPaginate = daftarKa?.meta;
@@ -53,18 +57,25 @@ const DaftarKA = () => {
 
   return (
     <div className="relative h-full ">
-      <div className=" bg-white px-8 pr-7 pt-3 pb-6 space-y-6">
-        <h1 className="text-[34px] font-bold">Daftar Kereta Api</h1>
+      <TitlePage title="Kereta Api" />
 
-        <Bar
-          setSearchVal={setSearchVal}
-          setModal={setModal}
-          urutkan={urutkan}
-          setUrutkan={setUrutkan}
-          setShowFilter={setShowFilter}
-          saveFilter={saveFilter}
-        />
-      </div>
+      <HeaderPages
+        title="Daftar Kereta Api"
+        placeholderSearch="Cari data kereta api"
+        textButton="Tambah KA"
+        setSearchVal={setSearchVal}
+        setModal={setModal}
+        urutkan={urutkan}
+        setShowFilter={setShowFilter}
+        sort={
+          <SortItemAsc
+            title1="Ascending (A-Z)"
+            title2="Descending (Z-A)"
+            urutkan={urutkan}
+            setUrutkan={setUrutkan}
+          />
+        }
+      />
 
       {daftarKa?.data === null ? (
         <NotFoundSearch />
@@ -116,6 +127,9 @@ const DaftarKA = () => {
           setFilter={setFilter}
           setShowFilter={setShowFilter}
           setSaveFilter={setSaveFilter}
+          contentFilter={
+            <FilterItemKeaktifan filter={filter} setFilter={setFilter} />
+          }
         />
       )}
     </div>

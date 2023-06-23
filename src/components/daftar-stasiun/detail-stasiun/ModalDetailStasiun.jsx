@@ -1,23 +1,16 @@
 // ** Import React
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 
 // ** Import Assets
 import assets from "../../../assets/assets";
 
 // ** Import Components
-import Policy from "../../daftar-hotel/tambah-hotel/kebijakan-kamar/Policy";
-import ModalConfirm from "../ModalConfirm.jsx";
+import ModalConfirm from "../../../globals/ModalConfirm";
 
 // ** Import Other
-import axios from "axios";
 import { baseUrl } from "../../../services/base";
-import Swal from "sweetalert2";
 import { customAlert } from "../../../helpers/customAlert";
-
-const fetcherDelete = (url) => axios.delete(url).then((res) => res.data);
-
-const fetcherEdit = (url, payload) =>
-  axios.put(url, payload).then((res) => res.data);
+import { fetcherDelete, fetcherPut } from "../../../services/fetcher/fetcher";
 
 const ModalDetailStasiun = (props) => {
   const { data, setModalDetail, mutate } = props;
@@ -31,8 +24,6 @@ const ModalDetailStasiun = (props) => {
 
   // validate between two object is equal
   const validateEdit = JSON.stringify(data) === JSON.stringify(input);
-
-  const isDelete = data?.deleted_at !== "";
 
   // DELETE DATA
   const handleDelete = () => {
@@ -61,7 +52,7 @@ const ModalDetailStasiun = (props) => {
   const handleEdit = () => {
     setLoading(true);
 
-    fetcherEdit(baseUrl(`/admin/station/${input.station_id}`), {
+    fetcherPut(baseUrl(`/admin/station/${input.station_id}`), {
       initial: input.initial,
       name: input.name,
       origin: input.origin,

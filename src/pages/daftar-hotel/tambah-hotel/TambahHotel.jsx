@@ -7,13 +7,14 @@ import NavTambahHotel from "../../../components/daftar-hotel/tambah-hotel/NavTam
 import InformasiTambahHotel from "../../../components/daftar-hotel/tambah-hotel/InformasiTambahHotel";
 import KebijakanKamar from "../../../components/daftar-hotel/tambah-hotel/KebijakanKamar";
 import DaftarTambahKamar from "../../../components/daftar-hotel/tambah-hotel/DaftarTambahKamar";
-import ModalConfirmHotel from "../../../components/daftar-hotel/ModalConfirmHotel";
+
+// ** Import Other
 import { useLocation, useNavigate } from "react-router-dom";
 import { baseUrl } from "../../../services/base";
 import { customAlert } from "../../../helpers/customAlert";
+import ModalConfirm from "../../../globals/ModalConfirm";
+import { fetcherPost, fetcherPut } from "../../../services/fetcher/fetcher";
 
-const fetcherTambahHotel = (url, payload) => axios.post(url, payload).then((res) => res.data);
-const fetcherEditHotel = (url, payload) => axios.put(url, payload).then((res) => res.data);
 const fetcherTambahGambar = (url, payload) =>
   axios.post(url, payload, { headers: { "Content-Type": "multipart/form-data" } }).then((res) => res.data);
 
@@ -37,9 +38,19 @@ const TambahHotel = () => {
     email: state ? state?.data?.email : "",
     address: state ? state?.data?.address : "",
     hotel_facilities:
-      state && state?.data?.hotel_facilities !== null ? state?.data?.hotel_facilities?.map((x, idx) => ({ id: idx, name: x.name })) : [],
+      state && state?.data?.hotel_facilities !== null
+        ? state?.data?.hotel_facilities?.map((x, idx) => ({
+            id: idx,
+            name: x.name,
+          }))
+        : [],
     hotel_image:
-      state && state?.data?.hotel_image !== null ? state?.data?.hotel_image?.map((x, idx) => ({ id: idx, imageFile: x.image_url })) : [],
+      state && state?.data?.hotel_image !== null
+        ? state?.data?.hotel_image?.map((x, idx) => ({
+            id: idx,
+            imageFile: x.image_url,
+          }))
+        : [],
     hotel_policy: state
       ? [Object.fromEntries(Object.entries(state?.data?.hotel_policy).filter((e) => e[0] != "hotel_id"))]
       : [
@@ -67,7 +78,7 @@ const TambahHotel = () => {
   const defaultRoomData = state?.data?.hotel_room.map((x) => ({
     ...x,
     hotel_room_facility: x.hotel_room_facility !== null ? x.hotel_room_facility?.map((facility) => ({ name: facility.name })) : [],
-    hotel_room_image: x.hotel_room_image !== null ? x.hotel_room_image?.map((img, idx) => ({ id: idx, imageFile: img.image_url })) : [],
+    hotel_room_image: x.hotel_room_image !== null ? x.hotel_room_image?.map((img, idx) => ({ id: idx, imageFile: img })) : [],
   }));
 
   const [dataRooms, setDataRooms] = useState(state ? defaultRoomData : []);
@@ -125,7 +136,7 @@ const TambahHotel = () => {
       hotel_image: imageUploadedHotel,
     };
 
-    await fetcherTambahHotel(baseUrl("/admin/hotel"), dataHotel)
+    await fetcherPost(baseUrl("/admin/hotel"), dataHotel)
       .then((res) => {
         hotel_id = res.data?.hotel_id;
       })
@@ -169,7 +180,7 @@ const TambahHotel = () => {
       };
       dataEachRoom?.hotel_room_facility?.forEach((x) => delete x.id);
 
-      await fetcherTambahHotel(baseUrl("/admin/hotel-room"), dataEachRoom)
+      await fetcherPost(baseUrl("/admin/hotel-room"), dataEachRoom)
         .then((res) => {
           console.log(res);
         })
@@ -238,10 +249,13 @@ const TambahHotel = () => {
 
       // check if hotel room is already in database, if it is true, PUT. If it's not, POST
       if (dataEachRoom["hotel_room_id"] !== undefined) {
-        let dataEachRoomEdited = { ...dataEachRoom, hotel_id: state?.data?.hotel_id };
+        let dataEachRoomEdited = {
+          ...dataEachRoom,
+          hotel_id: state?.data?.hotel_id,
+        };
         delete dataEachRoomEdited["hotel_room_id"];
 
-        await fetcherEditHotel(baseUrl(`/admin/hotel-room/${dataEachRoom?.hotel_room_id}`), dataEachRoom)
+        await fetcherPut(baseUrl(`/admin/hotel-room/${dataEachRoom?.hotel_room_id}`), dataEachRoom)
           .then((res) => {
             console.log(res);
           })
@@ -251,7 +265,7 @@ const TambahHotel = () => {
             setModal((prev) => ({ ...prev, add: false }));
           });
       } else {
-        await fetcherTambahHotel(baseUrl("/admin/hotel-room"), dataEachRoom)
+        await fetcherPost(baseUrl("/admin/hotel-room"), dataEachRoom)
           .then((res) => {
             console.log(res);
           })
@@ -304,7 +318,7 @@ const TambahHotel = () => {
     };
 
     // 5. PUT data hotel
-    await fetcherEditHotel(baseUrl(`/admin/hotel/${state?.data?.hotel_id}`), dataHotel)
+    await fetcherPut(baseUrl(`/admin/hotel/${state?.data?.hotel_id}`), dataHotel)
       .then((res) => {
         console.log(res);
         customAlert(
@@ -338,7 +352,7 @@ const TambahHotel = () => {
       )}
 
       {modal.back && (
-        <ModalConfirmHotel
+        <ModalConfirm
           title={`Batal ${state ? "Mengubah" : "Menambahkan"} Data Hotel`}
           desc={`Anda akan membatalkan ${state ? "pengubahan" : "penambahan"}  data hotel .Apakah Anda yakin ingin melanjutkan?`}
           bg="bg-[#DB2D24]"
@@ -346,11 +360,11 @@ const TambahHotel = () => {
           confirm="Batalkan"
           name="back"
           setModal={setModal}
-          handle={state === null ? () => navigate("/daftar-hotel") : () => navigate(`/detail-hotel/${state?.data?.hotel_id}`)}
+          handle={state === null ? () => navigate(-1) : () => navigate(-1)}
         />
       )}
       {modal.add && (
-        <ModalConfirmHotel
+        <ModalConfirm
           title={`Simpan ${state ? "Perubahan" : ""} Data Hotel`}
           desc={`Anda akan menyimpan  ${state ? "Perubahan" : ""} data hotel baru. Apakah Anda yakin ingin melanjutkan?`}
           bg="bg-[#0080FF]"

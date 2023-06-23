@@ -10,10 +10,12 @@ import { baseUrl } from "../../../services/base";
 import FormAddKamar from "./FormAddKamar";
 import ModalConfirmAddKamar from "../../../components/daftar-hotel/tambah-hotel/daftar-kamar/ModalConfirmAddKamar";
 import { customAlert } from "../../../helpers/customAlert";
+import { fetcherPut } from "../../../services/fetcher/fetcher";
 
-const fetcherEditKamar = (url, payload) => axios.put(url, payload).then((res) => res.data);
 const fetcherTambahGambar = (url, payload) =>
-  axios.post(url, payload, { headers: { "Content-Type": "multipart/form-data" } }).then((res) => res.data);
+  axios
+    .post(url, payload, { headers: { "Content-Type": "multipart/form-data" } })
+    .then((res) => res.data);
 
 const TambahKamar = (props) => {
   const { setAddingRoom, setDataRooms, name, dataEdit, index } = props;
@@ -31,7 +33,9 @@ const TambahKamar = (props) => {
   const [loading, setLoading] = useState(false);
 
   // state for clicked kebijakan kamar
-  const [clicked, setClicked] = useState({ discount: state ? (state?.data?.discount > 0 ? true : false) : false });
+  const [clicked, setClicked] = useState({
+    discount: state ? (state?.data?.discount > 0 ? true : false) : false,
+  });
 
   const [dataKamar, setDataKamar] = useState({
     discount: state ? state?.data?.discount : 0,
@@ -39,12 +43,18 @@ const TambahKamar = (props) => {
     description: state ? state?.data?.description : "",
     hotel_room_facility:
       state && state?.data?.hotel_room_facility !== null
-        ? state?.data?.hotel_room_facility?.map((x, idx) => ({ id: idx, name: x.name }))
+        ? state?.data?.hotel_room_facility?.map((x, idx) => ({
+            id: idx,
+            name: x.name,
+          }))
         : [],
     hotel_room_image: dataEdit
       ? dataEdit.hotel_room_image
       : state && state?.data?.hotel_room_image !== null
-      ? state?.data?.hotel_room_image?.map((x, idx) => ({ id: idx, imageFile: x.image_url }))
+      ? state?.data?.hotel_room_image?.map((x, idx) => ({
+          id: idx,
+          imageFile: x.image_url,
+        }))
       : [],
     normal_price: state ? state?.data?.normal_price : "",
     number_of_guest: state ? state?.data?.number_of_guest : "",
@@ -75,7 +85,10 @@ const TambahKamar = (props) => {
 
       let formData = new FormData();
       formData.append("file", image.imageFile);
-      await fetcherTambahGambar(baseUrl("/public/cloudinary/file-upload"), formData)
+      await fetcherTambahGambar(
+        baseUrl("/public/cloudinary/file-upload"),
+        formData
+      )
         .then((res) => {
           console.log(res);
           imageUploadedKamar.push({ image_url: res?.data?.url });
@@ -96,11 +109,16 @@ const TambahKamar = (props) => {
       quantity_of_room: parseInt(dataKamar?.quantity_of_room),
       size_of_room: parseInt(dataKamar?.size_of_room),
       hotel_room_image: imageUploadedKamar,
-      hotel_room_facility: dataKamar?.hotel_room_facility?.map((x) => ({ name: x.name })),
+      hotel_room_facility: dataKamar?.hotel_room_facility?.map((x) => ({
+        name: x.name,
+      })),
     };
 
     // 3. Put Data Edited
-    fetcherEditKamar(baseUrl(`/admin/hotel-room/${state?.data?.hotel_room_id}`), dataEdited)
+    fetcherPut(
+      baseUrl(`/admin/hotel-room/${state?.data?.hotel_room_id}`),
+      dataEdited
+    )
       .then((res) => {
         const {
           data: { name },
@@ -171,15 +189,23 @@ const TambahKamar = (props) => {
             }}
             className="px-8 py-[13.5px] font-bold text-white disabled:bg-[#B3D9FF] bg-[#0080FF] flex gap-3 items-center rounded-lg disabled:cursor-not-allowed"
           >
-            <h1 className="mt-[1.2px]">{name === "edit" ? "Ubah" : "Tambah"} Data Kamar</h1>
+            <h1 className="mt-[1.2px]">
+              {name === "edit" ? "Ubah" : "Tambah"} Data Kamar
+            </h1>
             <img src={assets.iconSaveHotel} alt="button" />
           </button>
         </div>
 
         {modal.back && (
           <ModalConfirmAddKamar
-            title={name === "add" ? "Batal Menambahkan Data Kamar" : "Batal Mengubah Data Kamar"}
-            desc={`Anda akan membatalkan ${name === "add" ? "penambahan" : "perubahan"} data kamar .Apakah Anda yakin ingin melanjutkan?`}
+            title={
+              name === "add"
+                ? "Batal Menambahkan Data Kamar"
+                : "Batal Mengubah Data Kamar"
+            }
+            desc={`Anda akan membatalkan ${
+              name === "add" ? "penambahan" : "perubahan"
+            } data kamar .Apakah Anda yakin ingin melanjutkan?`}
             bg="bg-[#DB2D24]"
             cancel="Tutup"
             confirm="Batalkan"
@@ -187,14 +213,18 @@ const TambahKamar = (props) => {
             handleConfirm={
               name === "add" || (state !== null && name === "edit")
                 ? () => setAddingRoom(false)
-                : () => navigate(`/detail-hotel/${state?.data?.hotel_id}`)
+                : () => navigate(-1)
             }
           />
         )}
 
         {modal.add && (
           <ModalConfirmAddKamar
-            title={name === "add" ? "Simpan Data Kamar" : "Simpan Perubahan Data Kamar"}
+            title={
+              name === "add"
+                ? "Simpan Data Kamar"
+                : "Simpan Perubahan Data Kamar"
+            }
             desc={`Anda akan menyimpan ${
               name === "add" ? "data kamar baru" : "perubahan pada data kamar"
             } . Apakah Anda yakin ingin melanjutkan?`}
@@ -204,13 +234,22 @@ const TambahKamar = (props) => {
             confirm="Simpan"
             handleCancel={() => setModal((prev) => ({ ...prev, add: false }))}
             handleConfirm={
-              name === "add" ? handleAddKamar : name === "edit" || dataEdit !== undefined ? handleEditKamarWithArray : handleEditKamar
+              name === "add"
+                ? handleAddKamar
+                : name === "edit" || dataEdit !== undefined
+                ? handleEditKamarWithArray
+                : handleEditKamar
             }
           />
         )}
       </div>
 
-      <FormAddKamar dataKamar={dataKamar} setDataKamar={setDataKamar} clicked={clicked} setClicked={setClicked} />
+      <FormAddKamar
+        dataKamar={dataKamar}
+        setDataKamar={setDataKamar}
+        clicked={clicked}
+        setClicked={setClicked}
+      />
     </div>
   );
 };

@@ -6,12 +6,10 @@ import TiketBisnis from "../TiketBisnis";
 import TiketEksekutif from "../TiketEksekutif";
 
 // ** Import Other
-import axios from "axios";
 import useSWR from "swr";
 import { baseUrl } from "../../../services/base";
 import moment from "moment";
-
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+import { fetcherGet } from "../../../services/fetcher/fetcher";
 
 export default function Gerbong({ data }) {
   const findIdTrain = data.train.train_id;
@@ -24,7 +22,7 @@ export default function Gerbong({ data }) {
     baseUrl(
       `/public/train-carriage?limit=9999&date=${findDate}&train_id=${findIdTrain}`
     ),
-    fetcher
+    fetcherGet
   );
 
   const pickGerbong =
