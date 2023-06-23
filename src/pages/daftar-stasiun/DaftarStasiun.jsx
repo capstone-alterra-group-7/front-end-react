@@ -1,20 +1,23 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// ** Import React
+import { useState } from "react";
 
 // ** Import components
-import Header from "../../components/daftar-stasiun/Header";
 import RowDaftarStasiun from "../../components/daftar-stasiun/RowDaftarStasiun";
 import ModalDetailStasiun from "../../components/daftar-stasiun/detail-stasiun/ModalDetailStasiun";
 import ModalConfirm from "../../components/daftar-stasiun/ModalConfirm";
-import Pagination from "../daftar-KA/Pagination";
 import LoaderPages from "../../globals/LoaderPages";
 import NotFoundSearch from "../../globals/NotFoundSearch";
 import ErrorPages from "../../globals/ErrorPages";
+import HeaderPages from "../../globals/HeaderPages";
+import Pagination from "../../globals/Pagination";
+import SortItemAsc from "../../globals/SortItemAsc";
 
 // ** Import Other
 import useSWR from "swr";
 import { baseUrl } from "../../services/base";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useDebounce } from "use-debounce";
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
@@ -26,6 +29,8 @@ const DaftarStasiun = () => {
   const [searchVal, setSearchVal] = useState("");
   const [urutkan, setUrutkan] = useState("");
 
+  const [searchDebounce] = useDebounce(searchVal, 500);
+
   const {
     data: dataStations,
     isLoading,
@@ -33,7 +38,7 @@ const DaftarStasiun = () => {
     mutate,
   } = useSWR(
     baseUrl(
-      `/admin/station?page=${changePage}&limit=20&search=${searchVal}&sort_by=${urutkan}`
+      `/admin/station?page=${changePage}&limit=20&search=${searchDebounce}&sort_by=${urutkan}`
     ),
     fetcher
   );
@@ -52,16 +57,21 @@ const DaftarStasiun = () => {
 
   return (
     <div className="relative h-full">
-      <div className="bg-white px-8 pr-7 pt-3 pb-6 space-y-6">
-        <h1 className="text-[34px] font-bold">Daftar Stasiun</h1>
-
-        <Header
-          setSearchVal={setSearchVal}
-          setModal={setModal}
-          urutkan={urutkan}
-          setUrutkan={setUrutkan}
-        />
-      </div>
+      <HeaderPages
+        title="Daftar Stasiun"
+        placeholderSearch="Cari data stasiun"
+        textButton="Tambah Stasiun"
+        setSearchVal={setSearchVal}
+        setModal={setModal}
+        sort={
+          <SortItemAsc
+            title1="Ascending (A-Z)"
+            title2="Descending (Z-A)"
+            urutkan={urutkan}
+            setUrutkan={setUrutkan}
+          />
+        }
+      />
 
       {dataStations?.data === null ? (
         <NotFoundSearch />
