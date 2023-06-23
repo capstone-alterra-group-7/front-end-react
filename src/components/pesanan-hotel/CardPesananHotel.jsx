@@ -101,12 +101,23 @@ const CardPesananHotel = ({ data }) => {
           </div>
 
           <div>
-            <div className="ml-[40.67px]">
+            <div>
               <button
                 onClick={() => setModal(true)}
-                className="bg-[#0080FF] w-[128px] h-[40px] text-white rounded-[16px] flex items-center justify-center mb-[57px] ml-[65px] "
+                className={` w-[128px] h-[40px] bg-[#CCE5FF] text-[#0066CC] border border-[#0066CC] rounded-[16px] flex items-center justify-center mb-[57px] ml-[65px]  ${
+                  data.status === "unpaid" &&
+                  "bg-[#FFF3CC] text-[#E6B000] border-[#E6B000]"
+                }  ${
+                  (data.status === "refund" &&
+                    "bg-[#F8D5D3] text-[#C52920] border-[#C52920]") ||
+                  (data.status === "canceled" &&
+                    "bg-[#F8D5D3] text-[#C52920] border-[#C52920]")
+                } ${
+                  data.status === "paid" &&
+                  "bg-[#DBF8D3] text-[#45C521] border-[#45C521]"
+                }`}
               >
-                <h1 className=" text-[14px] font-[700]">{data.status}</h1>
+                {data.status}
               </button>
               <h1 className="text-start text-[#262627] text-[16px] leading-[24px] font-[400]">
                 Total Harga

@@ -3,7 +3,7 @@ import { useState } from "react";
 import assets from "../../../assets/assets";
 
 // ** Import Components
-import ModalConfirm from "../../daftar-stasiun/ModalConfirm";
+import ModalConfirm from "../../../globals/ModalConfirm";
 
 // ** Import Other
 import { useNavigate } from "react-router-dom";

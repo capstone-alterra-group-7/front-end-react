@@ -11,14 +11,13 @@ import Pagination from "../../globals/Pagination";
 import ModalFilter from "../../globals/ModalFilter";
 import FilterItemStatusPesanan from "../../globals/FilterItemStatusPesanan";
 import SortItemAsc from "../../globals/SortItemAsc";
+import TitlePage from "../../globals/TitlePage";
 
 // ** Import Other
-import axios from "axios";
 import { baseUrl } from "../../services/base";
 import useSWR from "swr";
 import { useDebounce } from "use-debounce";
-
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+import { fetcherGet } from "../../services/fetcher/fetcher";
 
 const DaftarTiket = () => {
   // ** Local State
@@ -41,12 +40,12 @@ const DaftarTiket = () => {
     baseUrl(
       `/admin/order/ticket?limit=20&page=${changePage}&search=${searchDebounce}&date_start=${startDate}&date_end=${endDate}&order_by=${urutkan}&filter=${saveFilter}`
     ),
-    fetcher
+    fetcherGet
   );
 
   const { data: daftarGerbong } = useSWR(
     baseUrl(`/public/train-carriage?limit=9999`),
-    fetcher
+    fetcherGet
   );
 
   const manimpulateData = daftarTicket?.data?.map((data) => ({
@@ -64,6 +63,8 @@ const DaftarTiket = () => {
 
   return (
     <div className="relative h-full">
+      <TitlePage title="Tiket kereta Api" />
+
       <HeaderPagesDate
         title="Daftar Tiket"
         placeholderSearch="Cari data tiket kereta api"

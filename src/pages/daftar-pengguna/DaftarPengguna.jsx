@@ -1,5 +1,4 @@
 // ** Import Components
-import ModalDaftarPengguna from "../../components/daftar-pengguna/ModalDaftarPengguna";
 import TablePengguna from "../../components/daftar-pengguna/TablePengguna";
 import ErrorPages from "../../globals/ErrorPages";
 import NotFoundSearch from "../../globals/NotFoundSearch";
@@ -8,16 +7,16 @@ import HeaderPages from "../../globals/HeaderPages";
 import ModalFilter from "../../globals/ModalFilter";
 import FilterItemKeaktifan from "../../globals/FilterItemKeaktifan";
 import SortItemAsc from "../../globals/SortItemAsc";
+import ModalConfirm from "../../globals/ModalConfirm";
+import TitlePage from "../../globals/TitlePage";
 
 // ** Import Others
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../../services/base";
-import axios from "axios";
 import useSWR from "swr";
 import { useDebounce } from "use-debounce";
-
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+import { fetcherGet } from "../../services/fetcher/fetcher";
 
 const DaftarPengguna = () => {
   // ** Local State
@@ -41,7 +40,7 @@ const DaftarPengguna = () => {
     baseUrl(
       `/admin/user?sort_by=${urutkan}&search=${searchDebounce}&filter=${saveFilter}&page=${changePage}&limit=20`
     ),
-    fetcher
+    fetcherGet
   );
 
   const infoPaginate = daftarPengguna?.meta;
@@ -56,6 +55,8 @@ const DaftarPengguna = () => {
 
   return (
     <div className="relative">
+      <TitlePage title="Pengguna" />
+
       <HeaderPages
         title="Daftar Pengguna"
         placeholderSearch="Cari data pengguna"
@@ -90,13 +91,16 @@ const DaftarPengguna = () => {
       {isLoading && <LoaderPages />}
 
       {modal && (
-        <ModalDaftarPengguna
-          title="Ingin Menambahkan Pengguna Baru?"
-          description="Anda akan menambahkan data pengguna baru. Apakah Anda yakin ingin melanjutkan?"
-          bgButton="bg-[#0080FF]"
-          titleButton="Tambahkan Pengguna"
+        <ModalConfirm
           setModal={setModal}
           handle={handleAdd}
+          title={"Ingin Menambahkan Pengguna Baru?"}
+          desc={
+            "Anda akan menambahkan data pengguna baru. Apakah Anda yakin ingin melanjutkan?"
+          }
+          bg={"bg-[#0080FF]"}
+          cancel={"Batal"}
+          confirm={"Tambahkan Pengguna"}
         />
       )}
 

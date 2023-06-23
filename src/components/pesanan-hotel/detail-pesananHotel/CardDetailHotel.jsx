@@ -67,8 +67,22 @@ const CardDetailHotel = ({ data }) => {
 
           <div className="w-64">
             <div className="ml-[40.67px]">
-              <button className="bg-[#0080FF] w-[128px] h-[40px] text-white rounded-[16px] flex items-center justify-center mb-[57px] ml-[65px] ">
-                <h1 className=" text-[14px] font-[700]">{data.status}</h1>
+              <button
+                onClick={() => setModal(true)}
+                className={` w-[128px] h-[40px] bg-[#CCE5FF] text-[#0066CC] border border-[#0066CC] rounded-[16px] flex items-center justify-center mb-[57px] ml-[65px]  ${
+                  data.status === "unpaid" &&
+                  "bg-[#FFF3CC] text-[#E6B000] border-[#E6B000]"
+                }  ${
+                  (data.status === "refund" &&
+                    "bg-[#F8D5D3] text-[#C52920] border-[#C52920]") ||
+                  (data.status === "canceled" &&
+                    "bg-[#F8D5D3] text-[#C52920] border-[#C52920]")
+                } ${
+                  data.status === "paid" &&
+                  "bg-[#DBF8D3] text-[#45C521] border-[#45C521]"
+                }`}
+              >
+                {data.status}
               </button>
 
               <div className="-mt-[2rem] ml-[5rem]">

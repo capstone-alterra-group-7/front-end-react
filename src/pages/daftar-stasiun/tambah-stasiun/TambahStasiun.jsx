@@ -1,20 +1,15 @@
 // ** Import React
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 
 // ** Import Components
 import HeaderTambahStasiun from "../../../components/daftar-stasiun/tambah-stasiun/HeaderTambahStasiun";
-import Policy from "../../../components/daftar-hotel/tambah-hotel/kebijakan-kamar/Policy";
-import ModalConfirm from "../../../components/daftar-stasiun/ModalConfirm";
+import ModalConfirm from "../../../globals/ModalConfirm";
 
 // ** Import Other
-import axios from "axios";
 import { baseUrl } from "../../../services/base";
-import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { customAlert } from "../../../helpers/customAlert";
-
-const fetcher = (url, payload) =>
-  axios.post(url, payload).then((res) => res.data);
+import { fetcherPost } from "../../../services/fetcher/fetcher";
 
 const TambahStasiun = () => {
   const navigate = useNavigate();
@@ -30,7 +25,7 @@ const TambahStasiun = () => {
   const handleTambahStasiun = () => {
     setLoading(true);
 
-    fetcher(baseUrl("/admin/station"), {
+    fetcherPost(baseUrl("/admin/station"), {
       name: input.name,
       initial: input.initial,
       origin: input.region,

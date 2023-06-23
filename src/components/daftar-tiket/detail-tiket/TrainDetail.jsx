@@ -1,12 +1,29 @@
 // ** Import Assets
 import assets from "../../../assets/assets";
 
+// ** Import Other
+import moment from "moment";
+import { baseUrl } from "../../../services/base";
+import { fetcherGet } from "../../../services/fetcher/fetcher";
+import useSWR from "swr";
+
 export default function TrainDetail({ data }) {
-  const findKursiAvailable = data.gerbong.map((gerbong) => {
+  const findIdTrain = data.train.train_id;
+
+  const findDate = moment(data.date).format("YYYY-MM-D");
+
+  const { data: daftarGerbong } = useSWR(
+    baseUrl(
+      `/public/train-carriage?limit=9999&date=${findDate}&train_id=${findIdTrain}`
+    ),
+    fetcherGet
+  );
+
+  const findKursiAvailable = daftarGerbong?.data?.map((gerbong) => {
     return gerbong.seat.filter((seat) => seat.available === true);
   });
 
-  const totalKursi = findKursiAvailable.map((kursi) => kursi.length);
+  const totalKursi = findKursiAvailable?.map((kursi) => kursi?.length);
 
   return (
     <div className="bg-white flex justify-between p-[32px]">
@@ -32,7 +49,7 @@ export default function TrainDetail({ data }) {
             }).format(data.train.train_price)}
           </p>
           <p className="text-[#262627] text-[20px] font-[400]">
-            Sisa {totalKursi.reduce((acc, curr) => acc + curr)} Kursi
+            Sisa {totalKursi?.reduce((acc, curr) => acc + curr)} Kursi
           </p>
         </div>
       </div>
