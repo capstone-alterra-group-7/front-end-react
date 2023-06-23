@@ -45,7 +45,7 @@ export const transactions = [
   {
     icon: assets.iconPesananKa,
     active: assets.pesananKaActive,
-    name: "Pesanan KA",
+    name: "Pesanan Kereta Api",
     link: "/pesanan-ka",
   },
   {

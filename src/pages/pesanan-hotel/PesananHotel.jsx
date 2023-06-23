@@ -1,22 +1,26 @@
 // Import React
-import React, { useState } from "react";
+import { useState } from "react";
 
 // Import Components
 import CardContainerPesananHotel from "../../components/pesanan-hotel/CardContainerPesananHotel";
-import BarPesananHotel from "../../components/pesanan-hotel/barPesananHotel";
 import LoaderPages from "../../globals/LoaderPages";
 import NotFoundSearch from "../../globals/NotFoundSearch";
-import Pagination from "../daftar-KA/Pagination";
 import ModalFilterPesananHotel from "../../components/pesanan-hotel/ModalFilterPesananHotel";
+import ErrorPages from "../../globals/ErrorPages";
+import HeaderPagesDate from "../../globals/HeaderPagesDate";
+import Pagination from "../../globals/Pagination";
 
-// ** Import Assets
+// ** Import Other
 import { baseUrl } from "../../services/base";
 import axios from "axios";
 import useSWR from "swr";
+import { useDebounce } from "use-debounce";
+import SortItemHotel from "../../globals/SortItemHotel";
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const PesananHotel = () => {
+  // ** Local State
   const [changePage, setChangePage] = useState(1);
   const [searchVal, setSearchVal] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -28,13 +32,15 @@ const PesananHotel = () => {
   const [filterClass, setFilterClass] = useState("");
   const [saveFilterClass, setSaveFilterClass] = useState("");
 
+  const [searchDebounce] = useDebounce(searchVal, 500);
+
   const {
     data: daftarHotel,
     isLoading,
     error,
   } = useSWR(
     baseUrl(
-      `/admin/order/hotel?page=${changePage}&limit=20&search=${searchVal}&date_start=${startDate}&date_end=${endDate}&order_by=${urutkan}&filter=${saveFilter}&rating_class=${saveFilterClass}`
+      `/admin/order/hotel?page=${changePage}&limit=20&search=${searchDebounce}&date_start=${startDate}&date_end=${endDate}&order_by=${urutkan}&filter=${saveFilter}&rating_class=${saveFilterClass}`
     ),
     fetcher
   );
@@ -47,13 +53,15 @@ const PesananHotel = () => {
 
   return (
     <div className="relative h-full">
-      <BarPesananHotel
+      <HeaderPagesDate
+        title="Daftar Pesanan Hotel"
+        placeholderSearch="Cari data pesanan hotel"
         setSearchVal={setSearchVal}
         setStartDate={setStartDate}
         setEndDate={setEndDate}
-        urutkan={urutkan}
-        setUrutkan={setUrutkan}
         setShowFilter={setShowFilter}
+        pesananHotel={true}
+        sort={<SortItemHotel urutkan={urutkan} setUrutkan={setUrutkan} />}
       />
 
       {daftarHotel?.data === null ? (

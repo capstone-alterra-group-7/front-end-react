@@ -2,22 +2,26 @@
 import { useState } from "react";
 
 // * Import Components
-import BarDaftarTiket from "../../components/daftar-tiket/BarDaftarTiket";
 import CardDaftarTiket from "../../components/daftar-tiket/CardDaftarTiket";
-import Pagination from "../daftar-KA/Pagination";
-import ModalFilterTicket from "./ModalFilterTicket";
 import ErrorPages from "../../globals/ErrorPages";
 import NotFoundSearch from "../../globals/NotFoundSearch";
 import LoaderPages from "../../globals/LoaderPages";
+import HeaderPagesDate from "../../globals/HeaderPagesDate";
+import Pagination from "../../globals/Pagination";
+import ModalFilter from "../../globals/ModalFilter";
+import FilterItemStatusPesanan from "../../globals/FilterItemStatusPesanan";
+import SortItemAsc from "../../globals/SortItemAsc";
 
 // ** Import Other
 import axios from "axios";
 import { baseUrl } from "../../services/base";
 import useSWR from "swr";
+import { useDebounce } from "use-debounce";
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const DaftarTiket = () => {
+  // ** Local State
   const [changePage, setChangePage] = useState(1);
   const [searchVal, setSearchVal] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -27,13 +31,15 @@ const DaftarTiket = () => {
   const [showFilter, setShowFilter] = useState(false);
   const [saveFilter, setSaveFilter] = useState("");
 
+  const [searchDebounce] = useDebounce(searchVal, 500);
+
   const {
     data: daftarTicket,
     isLoading,
     error,
   } = useSWR(
     baseUrl(
-      `/admin/order/ticket?limit=20&page=${changePage}&search=${searchVal}&date_start=${startDate}&date_end=${endDate}&order_by=${urutkan}&filter=${saveFilter}`
+      `/admin/order/ticket?limit=20&page=${changePage}&search=${searchDebounce}&date_start=${startDate}&date_end=${endDate}&order_by=${urutkan}&filter=${saveFilter}`
     ),
     fetcher
   );
@@ -58,13 +64,21 @@ const DaftarTiket = () => {
 
   return (
     <div className="relative h-full">
-      <BarDaftarTiket
+      <HeaderPagesDate
+        title="Daftar Tiket"
+        placeholderSearch="Cari data tiket kereta api"
         setSearchVal={setSearchVal}
         setStartDate={setStartDate}
         setEndDate={setEndDate}
-        urutkan={urutkan}
-        setUrutkan={setUrutkan}
         setShowFilter={setShowFilter}
+        sort={
+          <SortItemAsc
+            title1="Ascending (A-Z)"
+            title2="Descending (Z-A)"
+            urutkan={urutkan}
+            setUrutkan={setUrutkan}
+          />
+        }
       />
 
       {daftarTicket?.data === null ? (
@@ -93,11 +107,14 @@ const DaftarTiket = () => {
       {isLoading && <LoaderPages />}
 
       {showFilter && (
-        <ModalFilterTicket
+        <ModalFilter
           filter={filter}
           setFilter={setFilter}
           setShowFilter={setShowFilter}
           setSaveFilter={setSaveFilter}
+          contentFilter={
+            <FilterItemStatusPesanan filter={filter} setFilter={setFilter} />
+          }
         />
       )}
     </div>
