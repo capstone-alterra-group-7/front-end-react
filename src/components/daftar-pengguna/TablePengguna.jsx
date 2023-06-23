@@ -1,13 +1,6 @@
-// ** Import Others
-import axios from "axios";
-import { baseUrl } from "../../services/base";
-
 // ** Import Components
 import DataPengguna from "./DataPengguna";
-import Pagination from "../../pages/daftar-pengguna/Pagination";
-import { useState } from "react";
-
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+import Pagination from "../../globals/Pagination";
 
 export default function TablePengguna(props) {
   const { daftarPengguna, infoPaginate, changePage, setChangePage, isLoading } =

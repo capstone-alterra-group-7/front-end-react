@@ -1,5 +1,3 @@
-import React from "react";
-
 const ModalFilter = (props) => {
   const { filter, setFilter, setShowFilter, setSaveFilter, contentFilter } =
     props;
