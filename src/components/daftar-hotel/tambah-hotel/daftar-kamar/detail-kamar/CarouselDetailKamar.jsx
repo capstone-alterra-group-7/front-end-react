@@ -21,7 +21,13 @@ const CarouselDetailKamar = ({ url, imageIndex, setImageIndex }) => {
 
       <div className="duration-300 w-full flex justify-center">
         <img
-          src={url?.length < 1 ? "" : URL.createObjectURL(url[imageIndex].imageFile)}
+          src={
+            url?.length < 1
+              ? ""
+              : typeof url[imageIndex]?.imageFile === "string"
+              ? url[imageIndex]?.imageFile
+              : URL.createObjectURL(url[imageIndex].imageFile)
+          }
           alt=""
           className="h-[30rem] w-10/12 object-contain"
         />

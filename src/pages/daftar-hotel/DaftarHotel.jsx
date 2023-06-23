@@ -8,18 +8,17 @@ import ModalFilterHotel from "../../components/daftar-hotel/ModalFilterHotel";
 import ErrorPages from "../../globals/ErrorPages";
 import NotFoundSearch from "../../globals/NotFoundSearch";
 import LoaderPages from "../../globals/LoaderPages";
-import ModalConfirmHotel from "../../components/daftar-hotel/ModalConfirmHotel";
 import Pagination from "../../globals/Pagination";
+import ModalConfirm from "../../globals/ModalConfirm";
+import TitlePage from "../../globals/TitlePage";
 
 // ** import others
-import axios from "axios";
 import useSWR from "swr";
 import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../../services/base";
 import { useDebounce } from "use-debounce";
 import SortItemAsc from "../../globals/SortItemAsc";
-
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+import { fetcherGet } from "../../services/fetcher/fetcher";
 
 const DaftarHotel = () => {
   // ** Local State
@@ -53,7 +52,7 @@ const DaftarHotel = () => {
     baseUrl(
       `/public/hotel?page=${changePage}&limit=20&name=${searchDebounce}&sort_by_price=${urutkan}&rating_class=${saveFilterClass}&minimum_price=${saveFilterPrice.mulai}&maximum_price=${saveFilterPrice.sampai}`
     ),
-    fetcher
+    fetcherGet
   );
 
   const infoPaginate = dataHotel?.meta;
@@ -68,6 +67,8 @@ const DaftarHotel = () => {
 
   return (
     <div className="relative h-full">
+      <TitlePage title="Hotel" />
+
       <HeaderPages
         title="Daftar Hotel"
         placeholderSearch="Cari data hotel"
@@ -111,7 +112,7 @@ const DaftarHotel = () => {
       {isLoading && <LoaderPages />}
 
       {modal && (
-        <ModalConfirmHotel
+        <ModalConfirm
           title="Tambahkan Data Hotel"
           desc="Anda akan menambahkan data hotel baru. Apakah Anda yakin ingin melanjutkan?"
           bg="bg-[#0080FF]"

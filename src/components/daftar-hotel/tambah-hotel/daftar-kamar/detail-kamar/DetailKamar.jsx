@@ -32,7 +32,7 @@ const DetailKamar = ({ data, setShowDetail }) => {
         <div className="mt-8 flex">
           {data?.hotel_room_image?.map((data, idx) => (
             <img
-              src={URL.createObjectURL(data?.imageFile)}
+              src={typeof data?.imageFile === "string" ? data?.imageFile : URL.createObjectURL(data?.imageFile)}
               alt=""
               className={`cursor-pointer mr-4 w-32 h-32 object-cover ${imageIndex === idx ? "border-4 border-[#0080FF]" : null}`}
               onClick={(e) => setImageIndex(idx)}
