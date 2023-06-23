@@ -7,20 +7,19 @@ import CardPenggunaBaru from "../../components/dashboard/CardPenggunaBaru";
 import CardPesananBaru from "../../components/dashboard/CardPesananBaru";
 import LoaderPages from "../../globals/LoaderPages";
 import ErrorPages from "../../globals/ErrorPages";
+import TitlePage from "../../globals/TitlePage";
 
 // ** Import Axios
-import axios from "axios";
 import useSWR from "swr";
 import { baseUrl } from "../../services/base";
-
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+import { fetcherGet } from "../../services/fetcher/fetcher";
 
 const Dashboard = () => {
   const {
     data: dataDashboard,
     isLoading,
     error,
-  } = useSWR(baseUrl(`/admin/dashboard`), fetcher);
+  } = useSWR(baseUrl(`/admin/dashboard`), fetcherGet);
 
   if (error) {
     return <ErrorPages />;
@@ -28,7 +27,9 @@ const Dashboard = () => {
 
   return (
     <div className="relative">
-      <div className=" bg-white px-[32px] pt-[18px] pb-6 pr-8 py-[16px] flex justify-between">
+      <TitlePage title="Dashboard" />
+
+      <div className=" bg-white px-[32px] pt-[18px] pb-6 pr-8 py-[16px] flex justify-between border-b">
         <h1 className="text-[32px] font-bold ">Dashboard</h1>
       </div>
 

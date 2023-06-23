@@ -9,15 +9,14 @@ import ModalFilterPesananHotel from "../../components/pesanan-hotel/ModalFilterP
 import ErrorPages from "../../globals/ErrorPages";
 import HeaderPagesDate from "../../globals/HeaderPagesDate";
 import Pagination from "../../globals/Pagination";
+import SortItemHotel from "../../globals/SortItemHotel";
+import TitlePage from "../../globals/TitlePage";
 
 // ** Import Other
 import { baseUrl } from "../../services/base";
-import axios from "axios";
 import useSWR from "swr";
 import { useDebounce } from "use-debounce";
-import SortItemHotel from "../../globals/SortItemHotel";
-
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+import { fetcherGet } from "../../services/fetcher/fetcher";
 
 const PesananHotel = () => {
   // ** Local State
@@ -42,7 +41,7 @@ const PesananHotel = () => {
     baseUrl(
       `/admin/order/hotel?page=${changePage}&limit=20&search=${searchDebounce}&date_start=${startDate}&date_end=${endDate}&order_by=${urutkan}&filter=${saveFilter}&rating_class=${saveFilterClass}`
     ),
-    fetcher
+    fetcherGet
   );
 
   const infoPaginate = daftarHotel?.meta;
@@ -53,6 +52,8 @@ const PesananHotel = () => {
 
   return (
     <div className="relative h-full">
+      <TitlePage title="Pesanan Hotel" />
+
       <HeaderPagesDate
         title="Daftar Pesanan Hotel"
         placeholderSearch="Cari data pesanan hotel"

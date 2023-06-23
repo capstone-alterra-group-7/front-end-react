@@ -39,6 +39,9 @@ const Informasi = ({ data }) => {
         </h2>
 
         <div className="pb-9 space-y-2">
+          {data.route === null && (
+            <p className="text-gray-600">* Rute tidak Tersedia</p>
+          )}
           {data?.route?.map((rut, i) => (
             <ListNumber key={i} label={i + 1} data={rut} />
           ))}

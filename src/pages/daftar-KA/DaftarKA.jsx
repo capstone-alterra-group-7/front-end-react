@@ -2,7 +2,6 @@
 import { useState } from "react";
 
 // ** Import Components
-import ModalConfirm from "../../components/daftar-stasiun/ModalConfirm";
 import ErrorPages from "../../globals/ErrorPages";
 import NotFoundSearch from "../../globals/NotFoundSearch";
 import LoaderPages from "../../globals/LoaderPages";
@@ -12,15 +11,15 @@ import Pagination from "../../globals/Pagination";
 import FilterItemKeaktifan from "../../globals/FilterItemKeaktifan";
 import ModalFilter from "../../globals/ModalFilter";
 import SortItemAsc from "../../globals/SortItemAsc";
+import ModalConfirm from "../../globals/ModalConfirm";
+import TitlePage from "../../globals/TitlePage";
 
 // ** import Other
 import { useNavigate } from "react-router-dom";
 import useSWR from "swr";
 import { baseUrl } from "../../services/base";
-import axios from "axios";
 import { useDebounce } from "use-debounce";
-
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+import { fetcherGet } from "../../services/fetcher/fetcher";
 
 const DaftarKA = () => {
   // ** Local State
@@ -41,7 +40,7 @@ const DaftarKA = () => {
   } = useSWR(
     baseUrl(`/admin/train?page=${changePage}&limit=20&search=${searchDebounce}&sort_by=${urutkan}&filter=${saveFilter}
     `),
-    fetcher
+    fetcherGet
   );
 
   const infoPaginate = daftarKa?.meta;
@@ -58,6 +57,8 @@ const DaftarKA = () => {
 
   return (
     <div className="relative h-full ">
+      <TitlePage title="Kereta Api" />
+
       <HeaderPages
         title="Daftar Kereta Api"
         placeholderSearch="Cari data kereta api"

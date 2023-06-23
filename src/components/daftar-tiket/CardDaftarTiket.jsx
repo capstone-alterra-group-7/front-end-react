@@ -43,7 +43,7 @@ export default function CardDaftarTiket({ data }) {
           </p>
 
           <p className="text-[#262627] text-[20px] font-[400] pt-[12px]">
-            Sisa {totalKursi?.reduce((acc, curr) => acc + curr)} Kursi
+            {totalKursi?.reduce((acc, curr) => acc + curr)} Kursi
           </p>
         </div>
 

@@ -1,5 +1,6 @@
 // ** Import Components
 import CardAuth from "../../components/auth/CardAuth";
+import TitlePage from "../../globals/TitlePage";
 
 // ** Import Assets
 import assets from "../../assets/assets";
@@ -24,6 +25,8 @@ const Auth = () => {
   };
   return (
     <>
+      <TitlePage title="Login" />
+
       {/* Hero Section */}
       <div className="h-screen">
         <div style={style} className="brightness-50"></div>

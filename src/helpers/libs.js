@@ -28,7 +28,10 @@ const assetsCollection = {
 };
 export const chooseIconFacility = (key) => {
   for (var property in assetsCollection) {
-    if (assetsCollection.hasOwnProperty(property) && key.toLowerCase().includes(property.toString().toLowerCase())) {
+    if (
+      assetsCollection.hasOwnProperty(property) &&
+      key.toLowerCase().includes(property.toString().toLowerCase())
+    ) {
       return assetsCollection[property];
     }
   }
@@ -38,10 +41,8 @@ export const chooseIconFacility = (key) => {
 
 // Function for find lowest price
 export const findLowestRoomPrice = (data) => {
-  if (data === null) return 0;
-
-  let tmp = data[0].discount_price;
-  for (let i = 1; i < data.length; i++) {
+  let tmp = data === undefined ? 0 : data === null ? 0 : data[0].discount_price;
+  for (let i = 1; i < data?.length; i++) {
     if (tmp > data[i].discount_price) tmp = data[i].discount_price;
   }
   return tmp;

@@ -4,22 +4,21 @@ import { useState } from "react";
 // ** Import components
 import RowDaftarStasiun from "../../components/daftar-stasiun/RowDaftarStasiun";
 import ModalDetailStasiun from "../../components/daftar-stasiun/detail-stasiun/ModalDetailStasiun";
-import ModalConfirm from "../../components/daftar-stasiun/ModalConfirm";
 import LoaderPages from "../../globals/LoaderPages";
 import NotFoundSearch from "../../globals/NotFoundSearch";
 import ErrorPages from "../../globals/ErrorPages";
 import HeaderPages from "../../globals/HeaderPages";
 import Pagination from "../../globals/Pagination";
 import SortItemAsc from "../../globals/SortItemAsc";
+import ModalConfirm from "../../globals/ModalConfirm";
+import TitlePage from "../../globals/TitlePage";
 
 // ** Import Other
 import useSWR from "swr";
 import { baseUrl } from "../../services/base";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDebounce } from "use-debounce";
-
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+import { fetcherGet } from "../../services/fetcher/fetcher";
 
 const DaftarStasiun = () => {
   // ** Local State
@@ -40,7 +39,7 @@ const DaftarStasiun = () => {
     baseUrl(
       `/admin/station?page=${changePage}&limit=20&search=${searchDebounce}&sort_by=${urutkan}`
     ),
-    fetcher
+    fetcherGet
   );
 
   const infoPaginate = dataStations?.meta;
@@ -57,6 +56,8 @@ const DaftarStasiun = () => {
 
   return (
     <div className="relative h-full">
+      <TitlePage title="Stasiun" />
+
       <HeaderPages
         title="Daftar Stasiun"
         placeholderSearch="Cari data stasiun"

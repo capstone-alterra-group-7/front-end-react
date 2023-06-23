@@ -36,7 +36,9 @@ const ManyItems = (props) => {
             <h1
               className={`text-[16px] ${
                 isActive === data.link ? "text-[#0080FF]" : "text-[#96989C]"
-              } font-[500]`}
+              } font-[500] ${data.name === "Kereta Api" && "ml-[5px]"} ${
+                data.name === "Hotel" && "ml-[8.5px]"
+              }`}
             >
               {data.name}
             </h1>

@@ -7,16 +7,15 @@ import HeaderPagesDate from "../../globals/HeaderPagesDate";
 import FilterItemStatusPesanan from "../../globals/FilterItemStatusPesanan";
 import Pagination from "../../globals/Pagination";
 import SortItemAsc from "../../globals/SortItemAsc";
+import ModalFilter from "../../globals/ModalFilter";
+import TitlePage from "../../globals/TitlePage";
 
 // ** Import Other
 import useSWR from "swr";
 import { baseUrl } from "../../services/base";
 import { useState } from "react";
-import axios from "axios";
 import { useDebounce } from "use-debounce";
-import ModalFilter from "../../globals/ModalFilter";
-
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+import { fetcherGet } from "../../services/fetcher/fetcher";
 
 const PesananKA = () => {
   // ** Local State
@@ -39,7 +38,7 @@ const PesananKA = () => {
     baseUrl(
       `/admin/order/ticket?limit=20&page=${changePage}&search=${searchDebounce}&date_start=${startDate}&date_end=${endDate}&order_by=${urutkan}&filter=${saveFilter}`
     ),
-    fetcher
+    fetcherGet
   );
 
   const infoPaginate = daftarPesanan?.meta;
@@ -50,6 +49,8 @@ const PesananKA = () => {
 
   return (
     <div className="relative h-full">
+      <TitlePage title="Pesanan Kereta" />
+
       <HeaderPagesDate
         title="Pesanan Kereta Api"
         placeholderSearch="Cari data pesanan kereta api"
