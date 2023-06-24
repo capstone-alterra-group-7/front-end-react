@@ -1,6 +1,9 @@
 // ** Import React
 import { useState } from "react";
 
+// ** Import Components
+import LoaderPages from "../../../globals/LoaderPages";
+
 // ** Import Assets
 import assets from "../../../assets/assets";
 
@@ -8,6 +11,7 @@ import assets from "../../../assets/assets";
 import useSWR from "swr";
 import { baseUrl } from "../../../services/base";
 import axios from "axios";
+import { useDebounce } from "use-debounce";
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
@@ -18,8 +22,10 @@ const ModalRuteTambahKa = (props) => {
   const [selectStation, setSelectStation] = useState([]);
   const [search, setSearch] = useState("");
 
+  const [searchDebounce] = useDebounce(search, 500);
+
   const { data: station, isLoading } = useSWR(
-    baseUrl(`/admin/station?filter=active&search=${search}`),
+    baseUrl(`/admin/station?filter=active&search=${searchDebounce}`),
     fetcher
   );
 
@@ -64,8 +70,8 @@ const ModalRuteTambahKa = (props) => {
           </div>
 
           <div className="space-y-5 fixed h-[21rem] w-full overflow-y-auto">
-            {isLoading && <p>Loading...</p>}
             {station?.data === null && <p>Data Kereta Tidak Ditemukan</p>}
+
             {station?.data?.map((station, i) => (
               <div key={i} className="flex gap-3">
                 <input
@@ -99,6 +105,8 @@ const ModalRuteTambahKa = (props) => {
           </button>
         </div>
       </div>
+
+      {isLoading && <LoaderPages />}
     </div>
   );
 };

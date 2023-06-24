@@ -1,24 +1,22 @@
 // ** Import React
-import React, { useState } from "react";
+import React from "react";
 
 // ** Import Components
 import InputPengguna from "./InputPengguna";
 import InputPassword from "../edit-pengguna/InputPassword";
 
+// ** Import Other
+import moment from "moment";
+
 const FormTambahPengguna = (props) => {
   const { onChangePengguna, input, setInput, edit, dataEdit } = props;
-  const [error, setError] = useState("")
 
-  const validate = () => {
-    if (input.password.length <= 8) {
-      setError("Password must be at least 8 characters")
-    } else {
-      setError("")
-    }
-  }
+  const date = new Date();
+
+  const validateTanggalLahir = moment(date).isBefore(input.birth_date);
 
   return (
-    <div className="grid gap-6 pb-[100px] text-[#262627] bg-white p-10">
+    <div className="grid gap-6 pb-[30px] text-[#262627] bg-white p-10">
       <div className="space-y-4">
         <div className="flex items-center gap-5">
           <h1 className="text-[20px] font-[600] text-[#262627]">
@@ -47,28 +45,27 @@ const FormTambahPengguna = (props) => {
         </p>
       </div>
 
-      <div 
-        onClick={validate}
-        className="informasi-akun">
+      <div className="informasi-akun">
         <h1 className="text-[20px] font-semibold pb-5">Informasi Akun</h1>
-
         <InputPengguna
           name={"email"}
+          placeholder="Fau@me.com"
           id={"email"}
           type={"email"}
           label={"Email"}
           onChange={onChangePengguna}
           value={input.email}
         />
-
         <InputPassword
           name={"password"}
           id={"password"}
           label={"Password"}
           onChange={onChangePengguna}
           value={input.password}
-        /> <p className="mb-4 text-sm text-red-500">{error}</p>
-
+        />{" "}
+        <p className="mb-4 text-sm text-red-500">
+          {input.password.length < 8 && "* Minimun Password 8 Karakter"}
+        </p>
         <InputPassword
           name={"confirm_password"}
           id={"confirm_password"}
@@ -76,6 +73,9 @@ const FormTambahPengguna = (props) => {
           value={input.confirm_password}
           onChange={onChangePengguna}
         />
+        <p className="mb-4 text-sm text-red-500">
+          {input.password !== input.confirm_password && "* Pasword Tidak Sama"}
+        </p>
       </div>
 
       <div className="detail-pengguna">
@@ -83,6 +83,7 @@ const FormTambahPengguna = (props) => {
 
         <InputPengguna
           name={"full_name"}
+          placeholder="Fauziah Nur"
           id={"full_name"}
           type={"text"}
           label={"Nama Pengguna"}
@@ -98,9 +99,14 @@ const FormTambahPengguna = (props) => {
           onChange={onChangePengguna}
           value={input.birth_date}
         />
+        <p className="mb-4 text-sm text-red-500">
+          {validateTanggalLahir &&
+            "* Tanggal Lahir Tidak Boleh Melebihi Dari Tanggal Hari Ini"}
+        </p>
 
         <InputPengguna
           name={"phone_number"}
+          placeholder="0898980980"
           id={"phone_number"}
           type={"number"}
           label={"Nomor Handphone"}

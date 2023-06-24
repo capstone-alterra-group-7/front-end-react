@@ -11,6 +11,8 @@ import ModalConfirm from "../../../globals/ModalConfirm";
 import { useLocation, useNavigate } from "react-router-dom";
 import { baseUrl } from "../../../services/base";
 import { fetcherPut } from "../../../services/fetcher/fetcher";
+import Swal from "sweetalert2";
+import moment from "moment";
 
 export default function EditPengguna() {
   const [modalBack, setModalBack] = useState(false);
@@ -18,8 +20,6 @@ export default function EditPengguna() {
   const [loading, setLoading] = useState(false);
 
   const { state } = useLocation();
-
-  console.log(state);
 
   const Navigate = useNavigate();
 
@@ -40,12 +40,16 @@ export default function EditPengguna() {
     role: "user",
   });
 
+  const date = new Date();
+
+  const validateTanggalLahir = moment(date).isBefore(input.birth_date);
+
   const validateData =
     input.email === "" ||
     input.full_name === "" ||
     input.phone_number === "" ||
     input.birth_date === "" ||
-    input.password !== input.confirm_password;
+    validateTanggalLahir;
 
   const handleEdit = () => {
     setLoading(true);
@@ -75,14 +79,23 @@ export default function EditPengguna() {
         setLoading(false);
       })
       .catch((err) => {
+        const {
+          response: { data },
+        } = err;
+
+        setModal(false);
+
         setLoading(false);
-        console.log(err);
+
+        Swal.fire(`${data.errors}`, `${data.message}`, "error");
+
+        console.log(data);
       });
   };
   return (
-    <div className="fixed overflow-y-auto left-0 right-0 h-full">
-      <div className="bg-white px-7 pt-3 pb-6 space-y-6">
-        <h1 className="text-[34px] font-bold">Edit Pengguna</h1>
+    <div className="absolute left-0 right-0 h-full">
+      <div className="bg-white pt-3 pb-5 space-y-6 border-b">
+        <h1 className="text-[34px] font-bold px-7">Edit Pengguna</h1>
 
         <BarEditPengguna
           validate={validateData}

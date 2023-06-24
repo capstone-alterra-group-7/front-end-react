@@ -11,8 +11,6 @@ import { Outlet } from "react-router-dom";
 const LayoutDashboard = () => {
   const { logout } = useSelector((state) => state.tokenAuth);
 
-  console.log(logout);
-
   return (
     <div className="flex relative">
       <div className="bg-white w-[18rem] border-r border-[#EBEDF1]">

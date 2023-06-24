@@ -10,6 +10,7 @@ import { baseUrl } from "../../../services/base";
 import { useNavigate } from "react-router-dom";
 import { customAlert } from "../../../helpers/customAlert";
 import { fetcherPost } from "../../../services/fetcher/fetcher";
+import Swal from "sweetalert2";
 
 const TambahStasiun = () => {
   const navigate = useNavigate();
@@ -45,7 +46,19 @@ const TambahStasiun = () => {
 
         navigate("/daftar-stasiun");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        const {
+          response: { data },
+        } = err;
+
+        setLoading(false);
+
+        setModal(false);
+
+        Swal.fire(`Station Name Already Used`, `${data.message}`, "error");
+
+        console.log(err);
+      });
   };
 
   const validate =

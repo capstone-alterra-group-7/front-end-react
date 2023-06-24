@@ -1,24 +1,20 @@
-
 export default function InputPengguna(props) {
-    const {name, type, label, id, onChange, value} = props
+  const { name, type, label, id, onChange, value, placeholder } = props;
   return (
     <div className="flex flex-col pb-5">
+      <label htmlFor={name} className="font-medium pb-3">
+        {label}
+      </label>
 
-    <label 
-        htmlFor={name}
-        className='font-medium pb-3'>
-            {label}
-    </label>
-
-    <input 
+      <input
         type={type}
-        name={name} 
+        name={name}
         id={id}
-        className='bg-[#F9FAFB] border border-[#D2D7E0] p-2 rounded-md focus:ring-blue-500 focus:border-blue-500'
-        placeholder='123@gmail.com'
+        className="bg-[#F9FAFB] border border-[#D2D7E0] p-2 rounded-md focus:outline-blue-500"
+        placeholder={placeholder}
         onChange={onChange}
-        value={value} />
-        
-</div>
-  )
+        value={value}
+      />
+    </div>
+  );
 }

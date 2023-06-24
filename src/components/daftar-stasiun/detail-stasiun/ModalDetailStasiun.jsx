@@ -11,6 +11,7 @@ import ModalConfirm from "../../../globals/ModalConfirm";
 import { baseUrl } from "../../../services/base";
 import { customAlert } from "../../../helpers/customAlert";
 import { fetcherDelete, fetcherPut } from "../../../services/fetcher/fetcher";
+import Swal from "sweetalert2";
 
 const ModalDetailStasiun = (props) => {
   const { data, setModalDetail, mutate } = props;
@@ -76,7 +77,19 @@ const ModalDetailStasiun = (props) => {
 
         setModalDetail(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        const {
+          response: { data },
+        } = err;
+
+        setLoading(false);
+
+        setModalEdit(false);
+
+        Swal.fire(`Station Name Already Used`, `${data.message}`, "error");
+
+        console.log(err);
+      });
   };
 
   return (
