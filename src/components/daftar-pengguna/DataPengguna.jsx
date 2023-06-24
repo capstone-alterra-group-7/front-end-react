@@ -30,7 +30,7 @@ const DataPengguna = ({ data, index }) => {
           <img
             src={data.profile_picture_url}
             alt="photoprofile"
-            className="max-w-[44px]"
+            className="w-[44px] h-[44px] rounded-full object-cover"
           />
 
           <div className="felx ms-3 ">

@@ -2,8 +2,6 @@ import React from "react";
 import assets from "../../../assets/assets";
 
 const CardPesanan = ({ data }) => {
-  console.log(data);
-
   return (
     <div>
       <div className="h-[368px] bg-[#FFFFFF]  my-[10px] py-1 cursor-pointer px-[32px]">

@@ -8,7 +8,7 @@ export default function CardProfile({ data, detailPengguna }) {
         <img
           src={detailPengguna?.data?.profile_picture_url}
           alt="profileimage"
-          className="max-w-[128px]"
+          className="w-[158px] h-[158px] object-cover rounded-full"
         />
 
         <h1 className="text-[24px] mt-[24px] mb-10">

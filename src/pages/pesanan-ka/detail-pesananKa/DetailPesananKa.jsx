@@ -3,23 +3,22 @@ import BarDetailPesananKa from "../../../components/pesanan-ka/detail-pesananKa/
 import TrainDetail from "../../../components/pesanan-ka/detail-pesananKa/TrainDetail";
 import PessangerDetail from "../../../components/pesanan-ka/detail-pesananKa/PessangerDetail";
 import PriceDetail from "../../../components/pesanan-ka/detail-pesananKa/PriceDetail";
+import LoaderPages from "../../../globals/LoaderPages";
 
 // ** Import Other
 import { useLocation } from "react-router-dom";
-import axios from "axios";
 import { baseUrl } from "../../../services/base";
 import useSWR from "swr";
-
-const fetcher = (url) => axios.get(url).then((res) => res.data);
+import { fetcherGet } from "../../../services/fetcher/fetcher";
 
 export default function DetailPesananKa() {
   const {
     state: { data },
   } = useLocation();
 
-  const { data: daftarPengguna } = useSWR(
+  const { data: daftarPengguna, isLoading } = useSWR(
     baseUrl(`/admin/user?limit=9999`),
-    fetcher
+    fetcherGet
   );
 
   const findUser = daftarPengguna?.data?.find(
@@ -39,6 +38,8 @@ export default function DetailPesananKa() {
 
         <PriceDetail data={data} />
       </div>
+
+      {isLoading && <LoaderPages />}
     </div>
   );
 }

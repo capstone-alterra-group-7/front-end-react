@@ -1,5 +1,5 @@
 // ** Import React
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 // ** Import Assets
 import assets from "../../../assets/assets";
@@ -13,6 +13,7 @@ import KelasEkonomi from "./KelasEkonomi";
 import KelasBisnis from "./KelasBisnis";
 import KelasEksekutif from "./KelasEksekutif";
 import NavDetailka from "../NavDetailka";
+import LoaderPages from "../../../globals/LoaderPages";
 
 const GerbongDaftarKa = (props) => {
   const { datas, setDatas, edit, dataEdit, loading, nav, setNav } = props;
@@ -62,11 +63,14 @@ const GerbongDaftarKa = (props) => {
 
   return (
     <div className={`${loading ? "h-screen" : "h-full"}`}>
-      {loading ? (
-        <p className="text-center">Loading...</p>
-      ) : (
-        <div className="border-2 rounded-3xl">
-          <NavDetailka nav={nav} setNav={setNav} isEdit={edit} />
+      <div className="border-2 rounded-3xl">
+        <NavDetailka nav={nav} setNav={setNav} isEdit={edit} />
+
+        {dataEdit?.length === 0 ? (
+          <div className="text-center text-gray-600 bg-white py-36 text-3xl rounded-b-3xl">
+            * Gerbong Tidak Tersedia
+          </div>
+        ) : (
           <div className="space-y-7 px-10 bg-white pb-12 rounded-b-3xl">
             <InputGerbong
               title="Harga"
@@ -103,8 +107,8 @@ const GerbongDaftarKa = (props) => {
               disable={edit}
             />
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       {validate ? null : (
         <>
@@ -305,6 +309,8 @@ const GerbongDaftarKa = (props) => {
           </div>
         </>
       )}
+
+      {loading && <LoaderPages />}
 
       {validate && <div className="mb-8"></div>}
     </div>

@@ -31,14 +31,14 @@ const ModalConfirm = (props) => {
           </button>
           <button
             disabled={loading}
-            className={`py-[10px] border text-[#FFFFFF] rounded-lg text-lg ${bg} disabled:bg-gray-300  disabled:cursor-not-allowed`}
+            className={`py-[10px] border text-[#FFFFFF] rounded-lg text-lg ${bg} disabled:cursor-not-allowed`}
             onClick={handle}
           >
             {loading ? (
               <div className="flex justify-center -mt-4">
                 <ReactLoading
                   type="bars"
-                  color="#0080FF"
+                  color="#FFFFFF"
                   height={20}
                   width={35}
                 />

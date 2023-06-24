@@ -1,7 +1,21 @@
+// ** Import React
 import React from "react";
+
+// ** Import CSS
 import "./StyleCardPenggunaBaru.css";
 
+// ** Import Other
+import { useNavigate } from "react-router-dom";
+
 const CardPenggunaBaru = ({ dataPenggunaBaru }) => {
+  const navigate = useNavigate();
+
+  const handleNavigatePengguna = (id, deleted) => {
+    navigate("/detail-pengguna", {
+      state: { data: { id: id, deleted_at: deleted } },
+    });
+  };
+
   return (
     <div className="col-span-2 rounded-[16px] bg-[#FFFFFF] p-6 border-2 border-[#E1E4EA] mr-[32px] mb-[24px] overflow-y-scroll no-scrollbar">
       <h1 className="font-bold text-xl mb-4">Pengguna Baru</h1>
@@ -10,13 +24,24 @@ const CardPenggunaBaru = ({ dataPenggunaBaru }) => {
         {dataPenggunaBaru?.data?.new_user.map((data, i) => {
           return (
             <React.Fragment key={data.id}>
-              <div className="flex px-6 py-3">
-                <img src={data.profile_picture} alt="" className="w-12 h-12 mr-3 rounded-3xl" />
+              <div
+                onClick={() => handleNavigatePengguna(data.id, data.deleted_at)}
+                className="flex px-6 py-3 cursor-pointer"
+              >
+                <img
+                  src={data.profile_picture}
+                  alt=""
+                  className="w-12 h-12 mr-3 rounded-full object-cover"
+                />
                 <div className="flex flex-col w-full">
-                  <h1 className="font-bold">{data.full_name}</h1>
+                  <h1 className="font-bold">
+                    {data.full_name.length >= 16
+                      ? `${data.full_name.substring(0, 16)}...`
+                      : data.full_name}
+                  </h1>
 
                   <div className="flex justify-between items-center">
-                    <h1>0000{i + 1}</h1>
+                    <h1>{data.id}</h1>
 
                     <h1 className="font-medium text-sm">
                       {new Date(data.created_at).toLocaleTimeString("id", {

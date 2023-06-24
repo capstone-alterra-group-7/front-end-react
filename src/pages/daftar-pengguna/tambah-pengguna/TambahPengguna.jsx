@@ -9,6 +9,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { baseUrl } from "../../../services/base";
 import { customAlert } from "../../../helpers/customAlert";
 import { fetcherPost } from "../../../services/fetcher/fetcher";
+import Swal from "sweetalert2";
+import moment from "moment";
 
 const TambahPengguna = () => {
   const { state } = useLocation();
@@ -40,6 +42,10 @@ const TambahPengguna = () => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
+  const date = new Date();
+
+  const validateTanggalLahir = moment(date).isBefore(input.birth_date);
+
   const validateData =
     input.email === "" ||
     input.password === "" ||
@@ -48,7 +54,8 @@ const TambahPengguna = () => {
     input.phone_number === "" ||
     input.birth_date === "" ||
     input.password !== input.confirm_password ||
-    input.password.length < 8;
+    input.password.length < 8 ||
+    validateTanggalLahir;
 
   const navigate = useNavigate();
 
@@ -81,8 +88,17 @@ const TambahPengguna = () => {
         navigate("/daftar-pengguna");
       })
       .catch((err) => {
+        const {
+          response: { data },
+        } = err;
+
+        setModal(false);
+
         setLoading(false);
-        console.log(err);
+
+        Swal.fire(`${data.errors}`, `${data.message}`, "error");
+
+        console.log(data);
       });
   };
 
@@ -91,9 +107,9 @@ const TambahPengguna = () => {
   };
 
   return (
-    <div className="fixed overflow-y-auto left-0 right-0 h-full">
-      <div className="bg-white px-7 pt-3 pb-6 space-y-6">
-        <h1 className="text-[32px] font-bold">Tambah Pengguna</h1>
+    <div className="absolute left-0 right-0 h-full">
+      <div className="bg-white pt-3 pb-5 space-y-6 border-b">
+        <h1 className="text-[32px] font-bold  px-7">Tambah Pengguna</h1>
 
         <BarTambahPengguna
           setModal={setModal}
