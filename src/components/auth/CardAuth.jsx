@@ -4,10 +4,10 @@ import { useState } from "react";
 // ** Import Assets
 import assets from "../../assets/assets";
 
-// ** Import Redux
-import { useDispatch } from "react-redux";
-import { addActive } from "../../redux/sidebar/NavItemSlices";
-import { addToken } from "../../redux/auth/tokenSlices";
+// ** Import Jotai
+import { useAtom, useSetAtom } from "jotai";
+import { auth } from "../../jotai/auth";
+import { sideNavItem } from "../../jotai/sidenav-item";
 
 // ** Import Other
 import { useNavigate } from "react-router-dom";
@@ -18,6 +18,10 @@ import { customAlert } from "../../helpers/customAlert";
 import ReactLoading from "react-loading";
 
 const CardAuth = () => {
+  // ** Jotai State
+  const [dataAuth, setToken] = useAtom(auth);
+  const setnavItem = useSetAtom(sideNavItem);
+
   // ** Local State
   const [input, setInput] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
@@ -28,8 +32,6 @@ const CardAuth = () => {
   };
 
   const navigate = useNavigate();
-
-  const dispatch = useDispatch();
 
   const handleLogin = async () => {
     setLoading(true);
@@ -48,9 +50,9 @@ const CardAuth = () => {
           "Selamat datang di panel administrasi. Anda sekarang memiliki akses penuh untuk mengelola sistem."
         );
 
-        dispatch(addToken(data.data.token));
+        setToken({ ...dataAuth, token: data.data.token });
 
-        dispatch(addActive("/dashboard"));
+        setnavItem("/dashboard");
 
         navigate("/dashboard");
 
@@ -59,6 +61,7 @@ const CardAuth = () => {
         Swal.fire(`Failed to login`, `Email or password is wrong`, "error");
       }
     } catch (error) {
+      console.log(error);
       const {
         response: { data },
       } = error;

@@ -9,9 +9,9 @@ import { useState } from "react";
 // ** Import Schema
 import { dashboard, databases, transactions } from "../../schema/navigation";
 
-// ** Import Redux
-import { useDispatch } from "react-redux";
-import { isLogout } from "../../redux/auth/tokenSlices";
+// ** Import Jotai
+import { useAtom } from "jotai";
+import { auth } from "../../jotai/auth";
 
 // ** Import Ohter
 import { useNavigate } from "react-router-dom";
@@ -19,12 +19,13 @@ import assets from "../../assets/assets";
 import { customAlert } from "../../helpers/customAlert";
 
 const Sidebar = () => {
+  // ** Jotai State
+  const [dataAuth, setLogout] = useAtom(auth);
+
   // ** Local State
   const [modal, setModal] = useState(false);
 
   const navigate = useNavigate();
-
-  const dispatch = useDispatch();
 
   const handleLogout = () => {
     customAlert(
@@ -35,14 +36,13 @@ const Sidebar = () => {
 
     sessionStorage.removeItem("token");
 
-    dispatch(isLogout(false));
-
+    setLogout({ ...dataAuth, logout: false });
     navigate("/");
   };
 
   const handleModal = () => {
     setModal(true);
-    dispatch(isLogout(true));
+    setLogout({ ...dataAuth, logout: true });
   };
 
   return (

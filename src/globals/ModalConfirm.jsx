@@ -1,6 +1,6 @@
-// ** Import Redux
-import { useDispatch } from "react-redux";
-import { isLogout } from "../redux/auth/tokenSlices";
+// ** Import Jotai
+import { useAtom } from "jotai";
+import { auth } from "../jotai/auth";
 
 // ** Import Other
 import ReactLoading from "react-loading";
@@ -8,11 +8,13 @@ import ReactLoading from "react-loading";
 const ModalConfirm = (props) => {
   const { setModal, handle, title, desc, bg, cancel, confirm, loading } = props;
 
-  const dispatch = useDispatch();
+  const [dataAuth, setLogout] = useAtom(auth);
+
+  console.log(dataAuth);
 
   const handleCancel = () => {
     setModal(false);
-    dispatch(isLogout(false));
+    setLogout({ ...dataAuth, logout: false });
   };
 
   return (
