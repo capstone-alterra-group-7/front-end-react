@@ -8,7 +8,7 @@ export default function SecondBar(props) {
   const { setModal, data } = props;
   const Navigate = useNavigate("");
   const handleClick = () => {
-    Navigate("/edit-pengguna", { state: data });
+    Navigate("/edit-pengguna", { state: data?.data });
   };
   return (
     <div className="flex justify-between items-center">
