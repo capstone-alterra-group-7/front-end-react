@@ -4,8 +4,9 @@ import { useState } from "react";
 // ** Import Assets
 import assets from "../../../assets/assets";
 
-// ** Import Redux
-import { useSelector } from "react-redux";
+// ** Import Jotai
+import { useAtomValue } from "jotai";
+import { daftarka } from "../../../jotai/daftarka";
 
 // ** Import Components
 import InputGerbong from "./InputGerbong";
@@ -35,8 +36,8 @@ const GerbongDaftarKa = (props) => {
     (gerbong) => gerbong.class === "Eksekutif"
   );
 
-  // ** Redux State
-  const trainId = useSelector((state) => state.daftarKa.train_id);
+  // ** Jotai State
+  const trainId = useAtomValue(daftarka);
 
   // ** Local State
   const [price, setPrice] = useState({
