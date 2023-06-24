@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import TiketEkonomi from "../TiketEkonomi";
 import TiketBisnis from "../TiketBisnis";
 import TiketEksekutif from "../TiketEksekutif";
+import LoaderPages from "../../../globals/LoaderPages";
 
 // ** Import Other
 import useSWR from "swr";
@@ -52,7 +53,7 @@ export default function Gerbong({ data }) {
         </button>
 
         <h1 className="text-[#262627] text-[20px] font-[600]">
-          {isLoading ? "Loading..." : pickGerbong.name}
+          {isLoading ? "..." : pickGerbong.name}
         </h1>
 
         <button
@@ -91,6 +92,8 @@ export default function Gerbong({ data }) {
           <TiketEksekutif data={pickGerbong.seat} />
         )}
       </div>
+
+      {isLoading && <LoaderPages />}
     </div>
   );
 }

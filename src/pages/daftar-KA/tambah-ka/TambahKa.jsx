@@ -7,6 +7,7 @@ import NavDetailka from "../../../components/daftar-ka/NavDetailka";
 import FormTambahKa from "../../../components/daftar-ka/tambah-ka/FormTambahKa";
 import GerbongDaftarKa from "../../../components/daftar-ka/tambah-ka/GerbongDaftarKa";
 import ModalConfirm from "../../../globals/ModalConfirm";
+import LoaderPages from "../../../globals/LoaderPages";
 
 // ** Import Redux
 import { useDispatch } from "react-redux";
@@ -236,6 +237,8 @@ const TambahKa = () => {
           />
         </div>
       )}
+
+      {isLoading && <LoaderPages />}
 
       {state === null
         ? modal && (

@@ -15,6 +15,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { baseUrl } from "../../services/base";
 import { customAlert } from "../../helpers/customAlert";
+import ReactLoading from "react-loading";
 
 const CardAuth = () => {
   // ** Local State
@@ -159,10 +160,16 @@ const CardAuth = () => {
       {/* <!-- Button Masuk --> */}
       <button
         onClick={handleLogin}
-        disabled={validate}
-        className="w-[612px] h-[44px] mt-[64px] mb-[15px] rounded-[8px] font-semibold text-[16px] text-white bg-[#0080FF] disabled:bg-blue-200 disabled:cursor-not-allowed"
+        disabled={validate || loading}
+        className="w-[612px] h-[44px] mt-[64px] mb-[15px] rounded-[8px] font-semibold text-[16px] text-white bg-[#0080FF] disabled:cursor-not-allowed"
       >
-        {loading ? "Loading..." : " Masuk"}
+        {loading ? (
+          <div className="flex justify-center -mt-4">
+            <ReactLoading type="bars" color="#FFFFFF" height={20} width={35} />
+          </div>
+        ) : (
+          " Masuk"
+        )}
       </button>
     </div>
     // </div>

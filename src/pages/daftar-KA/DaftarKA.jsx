@@ -40,7 +40,8 @@ const DaftarKA = () => {
   } = useSWR(
     baseUrl(`/admin/train?page=${changePage}&limit=20&search=${searchDebounce}&sort_by=${urutkan}&filter=${saveFilter}
     `),
-    fetcherGet
+    fetcherGet,
+    { refreshInterval: 1000 }
   );
 
   const infoPaginate = daftarKa?.meta;

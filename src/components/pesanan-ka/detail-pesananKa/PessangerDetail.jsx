@@ -14,8 +14,6 @@ export default function PessangerDetail({ data, user }) {
     });
   };
 
-  console.log(data);
-
   return (
     <div>
       <div className="mt-2 bg-white px-[32px] py-[16px] text-[#262627]">

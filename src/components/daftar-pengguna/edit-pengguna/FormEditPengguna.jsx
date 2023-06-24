@@ -1,7 +1,8 @@
 // ** Import Components
-import { useLocation } from "react-router-dom";
 import InputEditPengguna from "./InputEditPengguna";
-import InputPassword from "./InputPassword";
+
+// ** Import Other
+import moment from "moment";
 
 export default function FormEditPengguna({
   setInput,
@@ -9,6 +10,10 @@ export default function FormEditPengguna({
   onChangePengguna,
   data,
 }) {
+  const date = new Date();
+
+  const validateTanggalLahir = moment(date).isBefore(input.birth_date);
+
   return (
     <div className="grid gap-6 mb-6  bg-white p-10">
       <div className="space-y-4">
@@ -48,7 +53,6 @@ export default function FormEditPengguna({
           label={"Email"}
           onChange={onChangePengguna}
         />
-        
       </div>
 
       <div className="detail-pengguna">
@@ -69,6 +73,11 @@ export default function FormEditPengguna({
           label={"Tanggal Lahir"}
           onChange={onChangePengguna}
         />
+
+        <p className="mb-4 text-sm text-red-500">
+          {validateTanggalLahir &&
+            "* Tanggal Lahir Tidak Boleh Melebihi Dari Tanggal Hari Ini"}
+        </p>
 
         <InputEditPengguna
           name={"phone_number"}

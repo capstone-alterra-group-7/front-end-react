@@ -45,7 +45,8 @@ const DaftarTiket = () => {
 
   const { data: daftarGerbong } = useSWR(
     baseUrl(`/public/train-carriage?limit=9999`),
-    fetcherGet
+    fetcherGet,
+    { refreshInterval: 1000 }
   );
 
   const manimpulateData = daftarTicket?.data?.map((data) => ({

@@ -40,9 +40,9 @@ const CardPesananHotel = ({ data }) => {
               <div className="w-[20.56px] h-[20.68px] flex">
                 {[...Array(5)].map((none, i) => {
                   if (i <= Math.floor(data.hotel.class) - 1) {
-                    return <img src={assets.iconStarRating} alt="" />;
+                    return <img key={i} src={assets.iconStarRating} alt="" />;
                   }
-                  return <img src={assets.iconStarNotRating} alt="" />;
+                  return <img key={i} src={assets.iconStarNotRating} alt="" />;
                 })}
               </div>
 

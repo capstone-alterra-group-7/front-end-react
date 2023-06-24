@@ -52,7 +52,8 @@ const DaftarHotel = () => {
     baseUrl(
       `/public/hotel?page=${changePage}&limit=20&name=${searchDebounce}&sort_by_price=${urutkan}&rating_class=${saveFilterClass}&minimum_price=${saveFilterPrice.mulai}&maximum_price=${saveFilterPrice.sampai}`
     ),
-    fetcherGet
+    fetcherGet,
+    { refreshInterval: 1000 }
   );
 
   const infoPaginate = dataHotel?.meta;
