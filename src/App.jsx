@@ -8,12 +8,12 @@ import LayoutDashboard from "./layouts/LayoutDashboard";
 import { routeLogin, routes } from "./schema/route";
 
 // ** Import Jotai
+import { useAtomValue } from "jotai";
+import { auth } from "./jotai/auth";
 
 // ** Import Other
 import { Route, Routes } from "react-router-dom";
 import axios from "axios";
-import { useAtomValue } from "jotai";
-import { auth } from "./jotai/auth";
 
 const App = () => {
   // ** Jotai State
