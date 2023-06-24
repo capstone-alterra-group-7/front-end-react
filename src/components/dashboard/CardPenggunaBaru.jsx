@@ -4,18 +4,7 @@ import React from "react";
 // ** Import CSS
 import "./StyleCardPenggunaBaru.css";
 
-// ** Import Other
-import { useNavigate } from "react-router-dom";
-
 const CardPenggunaBaru = ({ dataPenggunaBaru }) => {
-  const navigate = useNavigate();
-
-  const handleNavigatePengguna = (id, deleted) => {
-    navigate("/detail-pengguna", {
-      state: { data: { id: id, deleted_at: deleted } },
-    });
-  };
-
   return (
     <div className="col-span-2 rounded-[16px] bg-[#FFFFFF] p-6 border-2 border-[#E1E4EA] mr-[32px] mb-[24px] overflow-y-scroll no-scrollbar">
       <h1 className="font-bold text-xl mb-4">Pengguna Baru</h1>
@@ -24,10 +13,7 @@ const CardPenggunaBaru = ({ dataPenggunaBaru }) => {
         {dataPenggunaBaru?.data?.new_user.map((data, i) => {
           return (
             <React.Fragment key={data.id}>
-              <div
-                onClick={() => handleNavigatePengguna(data.id, data.deleted_at)}
-                className="flex px-6 py-3 cursor-pointer"
-              >
+              <div className="flex px-6 py-3">
                 <img
                   src={data.profile_picture}
                   alt=""
