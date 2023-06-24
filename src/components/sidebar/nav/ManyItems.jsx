@@ -1,6 +1,6 @@
-// ** Import Redux
-import { useDispatch, useSelector } from "react-redux";
-import { addActive } from "../../../redux/sidebar/NavItemSlices";
+// ** Import Jotai
+import { useAtom } from "jotai";
+import { sideNavItem } from "../../../jotai/sidenav-item";
 
 // ** Import Other
 import { Link } from "react-router-dom";
@@ -8,9 +8,8 @@ import { Link } from "react-router-dom";
 const ManyItems = (props) => {
   const { title, datas } = props;
 
-  // ** Redux State
-  const isActive = useSelector((state) => state.navItem.isActive);
-  const dispatch = useDispatch();
+  // ** Jotai State
+  const [navItem, setNavItem] = useAtom(sideNavItem);
 
   return (
     <div className="space-y-7">
@@ -22,20 +21,20 @@ const ManyItems = (props) => {
             to={data.link ?? "/"}
             key={index}
             className={`flex gap-3 items-center px-3 ${
-              isActive === data.link
+              navItem === data.link
                 ? "bg-[#E5F2FF] py-3 rounded-lg duration-500 "
                 : "duration-500"
             }`}
-            onClick={() => dispatch(addActive(data.link))}
+            onClick={() => setNavItem(data.link)}
           >
             <img
-              src={isActive === data.link ? data.active : data.icon}
+              src={navItem === data.link ? data.active : data.icon}
               alt="icon"
             />
 
             <h1
               className={`text-[16px] ${
-                isActive === data.link ? "text-[#0080FF]" : "text-[#96989C]"
+                navItem === data.link ? "text-[#0080FF]" : "text-[#96989C]"
               } font-[500] ${data.name === "Kereta Api" && "ml-[5px]"} ${
                 data.name === "Hotel" && "ml-[8.5px]"
               }`}

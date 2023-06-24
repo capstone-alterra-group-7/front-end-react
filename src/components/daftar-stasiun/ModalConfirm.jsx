@@ -1,15 +1,8 @@
-// ** Import Redux
-import { useDispatch } from "react-redux";
-import { isLogout } from "../../redux/auth/tokenSlices";
-
 const ModalConfirm = (props) => {
   const { setModal, handle, title, desc, bg, cancel, confirm, loading } = props;
 
-  const dispatch = useDispatch();
-
   const handleCancel = () => {
     setModal(false);
-    dispatch(isLogout(false));
   };
 
   return (

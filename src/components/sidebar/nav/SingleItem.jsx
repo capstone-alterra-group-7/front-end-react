@@ -1,34 +1,30 @@
-// ** Import Redux
-import { useDispatch, useSelector } from "react-redux";
-import { addActive } from "../../../redux/sidebar/NavItemSlices";
+// ** Import Jotai
+import { sideNavItem } from "../../../jotai/sidenav-item";
+import { useAtom } from "jotai";
 
 // ** Import Other
 import { Link } from "react-router-dom";
 
 const SingleItem = ({ data }) => {
-  // ** Redux State
-  const isActive = useSelector((state) => state.navItem.isActive);
-  const dispatch = useDispatch();
+  // ** Jotai State
+  const [navItem, setNavItem] = useAtom(sideNavItem);
 
   return (
     <div>
       <Link
         to={data.link}
-        onClick={() => dispatch(addActive(data.link))}
+        onClick={() => setNavItem(data.link)}
         className={`flex gap-3 px-3 ${
-          isActive === data.link
+          navItem === data.link
             ? "bg-[#F5F6F8] py-3 rounded-lg duration-500 "
             : "duration-500"
         }`}
       >
-        <img
-          src={isActive === data.link ? data.active : data.icon}
-          alt="icon"
-        />
+        <img src={navItem === data.link ? data.active : data.icon} alt="icon" />
 
         <h1
           className={`text-[16px] ${
-            isActive === data.link ? "text-[#0080FF]" : "text-[#96989C]"
+            navItem === data.link ? "text-[#0080FF]" : "text-[#96989C]"
           } font-[500]`}
         >
           {data.name}

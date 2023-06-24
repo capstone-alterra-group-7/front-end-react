@@ -9,9 +9,9 @@ import GerbongDaftarKa from "../../../components/daftar-ka/tambah-ka/GerbongDaft
 import ModalConfirm from "../../../globals/ModalConfirm";
 import LoaderPages from "../../../globals/LoaderPages";
 
-// ** Import Redux
-import { useDispatch } from "react-redux";
-import { addIdKa } from "../../../redux/daftar-ka/daftarKaSlices";
+// ** Import Jotai
+import { useSetAtom } from "jotai";
+import { daftarka } from "../../../jotai/daftarka";
 
 // ** Import Other
 import { useLocation, useNavigate } from "react-router-dom";
@@ -58,13 +58,15 @@ const TambahKa = () => {
     train_id: gerbong.train.train_id,
   }));
 
+  // ** Jotai State
+  const setIdTrain = useSetAtom(daftarka);
+
   // ** Local State
   const [input, setInput] = useState({
     status: state ? dataEdit.status : "unavailable",
     name: state ? dataEdit.name : "",
     rute: state ? dataEdit.route : [],
   });
-
   const [dataGerbong, setDataGerbong] = useState([]);
   const [loading, setLoading] = useState(false);
   const [nav, setNav] = useState("informasi");
@@ -90,8 +92,6 @@ const TambahKa = () => {
 
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
-
   const code_train = idGenerator("example", 2, 1, {
     prefix: "TRAIN",
     trace: true,
@@ -114,7 +114,7 @@ const TambahKa = () => {
           data: { train_id },
         } = res;
 
-        dispatch(addIdKa(train_id));
+        setIdTrain(train_id);
 
         setNav("gerbong");
 

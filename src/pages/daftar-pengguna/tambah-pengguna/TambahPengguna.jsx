@@ -96,7 +96,7 @@ const TambahPengguna = () => {
 
         setLoading(false);
 
-        Swal.fire(`${data.errors}`, `${data.message}`, "error");
+        Swal.fire(`Email Sudah Digunakan`, `${data.message}`, "error");
 
         console.log(data);
       });

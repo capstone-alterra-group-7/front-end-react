@@ -7,14 +7,17 @@ import LayoutDashboard from "./layouts/LayoutDashboard";
 // ** Import Route Map
 import { routeLogin, routes } from "./schema/route";
 
+// ** Import Jotai
+
 // ** Import Other
 import { Route, Routes } from "react-router-dom";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useAtomValue } from "jotai";
+import { auth } from "./jotai/auth";
 
 const App = () => {
-  // ** Redux State
-  const temporaryToken = useSelector((state) => state.tokenAuth.token_jwt);
+  // ** Jotai State
+  const { token: temporaryToken } = useAtomValue(auth);
 
   const token = sessionStorage.getItem("token");
 

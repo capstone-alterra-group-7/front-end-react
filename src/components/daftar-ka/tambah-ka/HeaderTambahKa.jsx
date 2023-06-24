@@ -51,9 +51,7 @@ const HeaderTambahKa = (props) => {
         ) : (
           <div
             onClick={() => setModalBack(true)}
-            className={`flex items-center gap-2 ml-2  ${
-              nav === "informasi" ? "cursor-pointer" : "cursor-not-allowed"
-            } `}
+            className={`flex items-center gap-2 ml-2 cursor-pointer`}
           >
             <img src={assets.iconKembaliDaftarKa} alt="back" />
 

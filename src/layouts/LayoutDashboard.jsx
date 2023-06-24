@@ -1,6 +1,9 @@
 // ** Import Components
-import { useSelector } from "react-redux";
 import Sidebar from "../components/sidebar/Sidebar";
+
+// ** Import Jotai
+import { useAtomValue } from "jotai";
+import { auth } from "../jotai/auth";
 
 // ** Import Css
 import "./styleLayoutDashboard.css";
@@ -9,7 +12,7 @@ import "./styleLayoutDashboard.css";
 import { Outlet } from "react-router-dom";
 
 const LayoutDashboard = () => {
-  const { logout } = useSelector((state) => state.tokenAuth);
+  const { logout } = useAtomValue(auth);
 
   return (
     <div className="flex relative">

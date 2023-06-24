@@ -55,7 +55,7 @@ const TambahStasiun = () => {
 
         setModal(false);
 
-        Swal.fire(`Station Name Already Used`, `${data.message}`, "error");
+        Swal.fire(`Nama Stasiun Sudah Digunakan`, `${data.message}`, "error");
 
         console.log(err);
       });

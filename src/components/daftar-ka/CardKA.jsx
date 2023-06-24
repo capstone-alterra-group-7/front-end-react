@@ -2,7 +2,7 @@
 import assets from "./../../assets/assets";
 
 // ** Import Other
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CardKA = ({ data }) => {
   const navigate = useNavigate();
