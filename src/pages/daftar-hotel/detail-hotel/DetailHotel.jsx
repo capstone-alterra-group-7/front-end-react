@@ -23,15 +23,8 @@ const DetailHotel = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const {
-    data: dataHotelById,
-    isLoading,
-    error,
-  } = useSWR(baseUrl(`/public/hotel/${id}`), fetcherGet);
-  const { data: dataRating } = useSWR(
-    baseUrl(`/public/hotel/${dataHotelById?.data?.hotel_id}/rating?limit=1`),
-    fetcherGet
-  );
+  const { data: dataHotelById, isLoading, error } = useSWR(baseUrl(`/public/hotel/${id}`), fetcherGet);
+  const { data: dataRating } = useSWR(baseUrl(`/public/hotel/${dataHotelById?.data?.hotel_id}/rating?limit=1`), fetcherGet);
 
   // ** Local State
   const [nav, setNav] = useState("informasi");
@@ -80,11 +73,8 @@ const DetailHotel = () => {
           <h1 className=" text-[34px] font-bold">Detail Hotel</h1>
 
           <div className="pt-7 flex justify-between items-center">
-            <BackButtonHotel url={-1} />
-            <ButtonDetailHotel
-              title={"Hotel"}
-              setModal={setModalButtonDetail}
-            />
+            <BackButtonHotel url={"/daftar-hotel"} />
+            <ButtonDetailHotel title={"Hotel"} setModal={setModalButtonDetail} />
           </div>
         </div>
 

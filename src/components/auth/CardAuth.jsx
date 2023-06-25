@@ -72,11 +72,6 @@ const CardAuth = () => {
     }
   };
 
-  const handleKeypress = (e) => {
-    if (e.key === "Enter") {
-      handleLogin();
-    }
-  };
   const validate = input.email === "" || input.password === "";
 
   return (
@@ -97,7 +92,6 @@ const CardAuth = () => {
         name="email"
         value={input.email}
         onChange={handleInput}
-        onKeyUp={handleKeypress}
         placeholder="Masukkan Email"
         className="rounded-[8px] border border-gray-400 bg-[#F9FAFB] focus:outline-blue-500 px-[50px] w-full h-[52px]"
       />
@@ -119,7 +113,6 @@ const CardAuth = () => {
           name="password"
           value={input.password}
           onChange={handleInput}
-          onKeyUp={handleKeypress}
           placeholder="Masukkan Password"
           className="rounded-[8px] border border-gray-400 bg-[#F9FAFB] focus:outline-blue-500 px-[50px]  w-full h-[52px]"
         />
