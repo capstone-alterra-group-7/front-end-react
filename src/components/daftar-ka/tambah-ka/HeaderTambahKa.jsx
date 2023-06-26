@@ -49,14 +49,15 @@ const HeaderTambahKa = (props) => {
             <h5 className="text-[#0080FF] text-[16px] mt-[1px]">Kembali</h5>
           </div>
         ) : (
-          <div
+          <button
+            disabled={nav === "gerbong"}
             onClick={() => setModalBack(true)}
-            className={`flex items-center gap-2 ml-2 cursor-pointer`}
+            className={`flex items-center gap-2 ml-2 disabled:cursor-not-allowed`}
           >
             <img src={assets.iconKembaliDaftarKa} alt="back" />
 
             <h5 className="text-[#0080FF] text-[16px] mt-[1px]">Kembali</h5>
-          </div>
+          </button>
         )}
 
         <button
